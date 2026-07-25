@@ -1,0 +1,56 @@
+/* roadmap — NeetCode-style topic graph */
+.rm-nav{display:flex;align-items:center;gap:14px;}
+.rm-nav a{color:var(--mut);text-decoration:none;font-size:12px;padding:5px 10px;border:1px solid transparent;border-radius:4px;}
+.rm-nav a:hover{color:var(--grn);border-color:var(--bd);}
+.rm-nav a.on{color:var(--grn);border-color:var(--bd);text-shadow:var(--glow);}
+
+.rm-wrap{height:calc(100vh - 44px);overflow:auto;background:
+  radial-gradient(circle at 50% 0,rgba(51,255,119,.05),transparent 60%),var(--bg);}
+.rm-head{text-align:center;padding:26px 20px 6px;}
+.rm-head h1{margin:0;font-size:20px;color:var(--grn);text-shadow:var(--glow);letter-spacing:.5px;}
+.rm-head h1::before{content:"~/ ";color:var(--dim);}
+.rm-head p{margin:6px 0 0;color:var(--mut);font-size:12px;}
+.rm-legend{display:flex;gap:16px;justify-content:center;padding:10px;color:var(--mut);font-size:11px;}
+.rm-legend b{font-weight:400;} .lg{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:middle;}
+.lg.done{background:var(--grn);} .lg.active{background:var(--amber);} .lg.locked{background:var(--bd);}
+
+.rm-svg{display:block;margin:0 auto 40px;}
+.edge{fill:none;stroke:var(--bd);stroke-width:2;}
+.edge.hot{stroke:var(--grn2);stroke-width:2.5;opacity:.8;}
+
+.node{cursor:pointer;}
+.node rect{fill:var(--panel);stroke:var(--bd);stroke-width:1.5;rx:8;transition:filter .12s,stroke .12s;}
+.node .lbl{fill:var(--fg);font:600 12px "JetBrains Mono",ui-monospace,monospace;}
+.node .sub{fill:var(--mut);font:10px "JetBrains Mono",ui-monospace,monospace;}
+.node .dot{}
+.node:hover rect{stroke:var(--grn2);filter:drop-shadow(0 0 6px rgba(51,255,119,.4));}
+
+.node.done rect{stroke:var(--grn);} .node.done .lbl{fill:var(--grn);}
+.node.active rect{stroke:var(--amber);} .node.active .lbl{fill:var(--amber);}
+.node.locked{opacity:.6;} .node.locked rect{stroke-dasharray:4 3;}
+.node .nico{color:var(--mut);}
+.node.done .nico{color:var(--grn);} .node.active .nico{color:var(--amber);}
+
+.rm-tip{position:fixed;background:var(--panel);border:1px solid var(--bd);border-radius:6px;
+  padding:8px 11px;font-size:11px;color:var(--fg);pointer-events:none;box-shadow:var(--glow);
+  z-index:50;max-width:240px;display:none;}
+.rm-tip .t{color:var(--grn);font-weight:700;} .rm-tip .m{color:var(--mut);margin-top:3px;}
+
+/* lesson popover (NeetCode-style) */
+.rm-menu{position:fixed;z-index:60;min-width:250px;background:var(--panel);border:1px solid var(--bd);
+  border-radius:9px;box-shadow:0 8px 40px rgba(0,0,0,.5),var(--glow);display:none;overflow:hidden;}
+.rm-menu.open{display:block;}
+.rm-menu .mh{padding:11px 14px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:8px;}
+.rm-menu .mh .tt{color:var(--grn);font-weight:700;font-size:13px;text-shadow:var(--glow);flex:1;}
+.rm-menu .mh .x{color:var(--mut);cursor:pointer;font-size:14px;}
+.rm-menu .mh .x:hover{color:var(--red);}
+.rm-list{list-style:none;margin:0;padding:6px;}
+.rm-list li{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:6px;cursor:pointer;font-size:12px;}
+.rm-list li:hover{background:var(--panel2);}
+.rm-list li .st{width:15px;text-align:center;}
+.rm-list li.done .st{color:var(--grn);} .rm-list li.active .st{color:var(--amber);}
+.rm-list li.locked{opacity:.5;cursor:not-allowed;}
+.rm-list li .nm{flex:1;color:var(--fg);} .rm-list li.active .nm{color:var(--amber);}
+.rm-list li .lv{font-size:10px;padding:1px 7px;border:1px solid var(--bd);border-radius:3px;color:var(--mut);}
+.rm-list li .tag{font-size:9px;color:var(--amber);border:1px solid var(--bd);padding:0 5px;border-radius:3px;}
+.rm-empty{padding:14px;color:var(--mut);font-size:12px;text-align:center;}

@@ -1,0 +1,15 @@
+# Deploy the static site on Netlify.
+#   1. ./scripts/build.sh   (produces web/assets/wasm/gopher.wasm + .gz)
+#   2. push; Netlify publishes ./web
+[build]
+  publish = "web"
+  command = "./scripts/build.sh"
+
+[build.environment]
+  GO_VERSION = "1.26"
+
+[[headers]]
+  for = "/assets/wasm/*.wasm"
+  [headers.values]
+    Content-Type = "application/wasm"
+    Cache-Control = "public, max-age=3600"

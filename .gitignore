@@ -1,0 +1,19 @@
+# Compiled localrunner binary (build with: go run ./site/cmd/localrunner)
+/site/cmd/localrunner/localrunner
+site/cmd/localrunner/localrunner
+
+# Local runner state (sqlite history) — usually under ~/.gopher-workplace/
+*.db
+*.db-shm
+*.db-wal
+
+# Authoring scratch — the covered-set reference is deleted before a puzzle ships
+COVERED.txt
+
+# Go build / test artifacts
+*.test
+*.out
+
+# OS / editor cruft
+.DS_Store
+*.swp

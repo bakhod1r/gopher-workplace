@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>gopher workplace · learn go by fixing real code</title>
+<link rel="stylesheet" href="assets/css/styles.css?v=15">
+<link rel="stylesheet" href="assets/css/roadmap.css?v=15">
+<link rel="stylesheet" href="assets/css/home.css?v=15">
+</head>
+<body>
+  <div class="nav">
+    <div class="brand"><span class="logo">🐹</span> gopher workplace</div>
+    <div class="rm-nav">
+      <a href="index.html" class="on">home</a>
+      <a href="roadmap.html">roadmap</a>
+      <a href="problemset.html">problems</a>
+    </div>
+    <div class="actions">
+      <select class="navbtn" id="theme" title="theme">
+        <option value="light">☀ light</option>
+        <option value="dark">🌙 dark</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="home">
+    <div class="dash">
+
+      <!-- ===== dashboard top: progress ring + streak + difficulty ===== -->
+      <section class="board">
+        <div class="panel ringpanel">
+          <div class="ring" id="ring"><!-- svg donut --></div>
+          <div class="ringmeta" id="ringmeta"></div>
+        </div>
+
+        <div class="panel diffpanel">
+          <div class="panel-h">By difficulty</div>
+          <div class="diffs" id="diffs"></div>
+        </div>
+
+        <div class="panel streakpanel">
+          <div class="streak-num" id="streakNum">0</div>
+          <div class="streak-lbl">day streak 🔥</div>
+          <a class="streak-cta" id="continueBtn" href="problemset.html">▸ continue</a>
+        </div>
+      </section>
+
+      <!-- ===== study plans / topic cards ===== -->
+      <section class="section">
+        <div class="sec-h"><h2>Study plan</h2><a href="roadmap.html">roadmap →</a></div>
+        <div class="plans" id="plans"></div>
+      </section>
+
+      <!-- ===== problems table preview ===== -->
+      <section class="section">
+        <div class="sec-h"><h2>Problems</h2><a href="problemset.html">view all →</a></div>
+        <div class="ptable-wrap">
+          <table class="ptable">
+            <thead><tr><th class="c-st"></th><th class="c-ti">Title</th>
+              <th class="c-tp">Topic</th><th class="c-df">Difficulty</th></tr></thead>
+            <tbody id="ptbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="assets/js/icons.js?v=15"></script>
+  <script src="assets/js/problems.js?v=15"></script>
+  <script src="assets/js/progress.js?v=15"></script>
+  <script src="assets/js/home.js?v=15"></script>
+  <script>
+    (function(){
+      const sel=document.getElementById('theme');
+      const saved=localStorage.getItem('gw-theme')||'light';
+      document.documentElement.setAttribute('data-theme',saved); sel.value=saved;
+      sel.addEventListener('change',()=>{ document.documentElement.setAttribute('data-theme',sel.value); localStorage.setItem('gw-theme',sel.value); });
+    })();
+  </script>
+</body>
+</html>

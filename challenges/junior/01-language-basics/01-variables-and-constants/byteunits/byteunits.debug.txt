@@ -1,0 +1,26 @@
+// Package byteunits — Gopher Workplace challenge.
+//
+// DEBUG MODE: this version compiles and looks right, but ships one planted bug.
+// Find it between the CHANGE CODE markers and fix it so all tests pass.
+package byteunits
+
+// Binary storage units expressed as untyped integer constants using iota.
+// Each step up is 1024x (2^10) the previous one:
+//
+//	KiB = 1024
+//	MiB = 1024 * 1024
+//	GiB = 1024 * 1024 * 1024
+const (
+	// CHANGE CODE BELOW THIS LINE
+
+	KiB = 1 << (10 * iota)
+	MiB
+	GiB
+
+	// CHANGE CODE ABOVE THIS LINE
+)
+
+// Bytes returns n whole KiB expressed in bytes.
+func Bytes(n int) int {
+	return n * KiB
+}

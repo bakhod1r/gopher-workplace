@@ -1,0 +1,24 @@
+// Package temperature — Gopher Workplace challenge.
+//
+// DEBUG MODE: this version compiles and looks right, but ships one planted bug.
+// Find it between the CHANGE CODE markers and fix it so all tests pass.
+package temperature
+
+// freezingF is the Fahrenheit value of 0 °C.
+const freezingF = 32
+
+// CToF converts a Celsius temperature to Fahrenheit: F = C*(9/5) + 32.
+//
+// Examples:
+//
+//	CToF(0)   => 32
+//	CToF(100) => 212
+//	CToF(-40) => -40
+func CToF(c float64) float64 {
+	// CHANGE CODE BELOW THIS LINE
+
+	const ratio = 9 / 5
+
+	// CHANGE CODE ABOVE THIS LINE
+	return c*ratio + freezingF
+}

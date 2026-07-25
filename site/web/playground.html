@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>gopher workplace</title>
+<link rel="stylesheet" href="assets/css/styles.css?v=15">
+<link rel="stylesheet" href="assets/css/roadmap.css?v=15">
+</head>
+<body>
+  <div class="nav">
+    <button class="navbtn" id="probsBtn">▚ problems</button>
+    <div class="brand"><span class="logo">🐹</span> gopher workplace</div>
+    <div class="rm-nav">
+      <a href="index.html">home</a>
+      <a href="roadmap.html">roadmap</a>
+      <a href="problemset.html" class="on">problems</a>
+    </div>
+    <div class="actions">
+      <select class="navbtn" id="theme" title="theme">
+        <option value="light">☀ light</option>
+        <option value="dark">🌙 dark</option>
+      </select>
+      <button class="btn run" id="run" disabled>▶ run</button>
+      <button class="btn submit" id="submit" disabled>✓ submit</button>
+    </div>
+  </div>
+
+  <div class="scrim" id="scrim"></div>
+  <aside class="drawer" id="drawer"><!-- built from CATALOG --></aside>
+
+  <div class="wrap">
+    <div class="left">
+      <div class="tabs"><div class="tab on">description</div></div>
+      <div class="desc" id="desc"><!-- built from PROBLEMS --></div>
+    </div>
+
+    <div class="gutter" id="gutter"></div>
+
+    <div class="right">
+      <div class="edwrap" id="edwrap">
+        <div class="edhead">
+          <span class="lang">GO</span><span id="edFile">dedupe.go</span>
+          <span id="solvedBadge" class="solved-badge" hidden>✓ submitted</span>
+          <div class="edtools">
+            <button class="edtool" id="btnMode" title="switch between building from scratch and fixing a planted bug" hidden>◧ learn</button>
+            <button class="edtool" id="btnReset" title="reset code">⟲ reset</button>
+            <button class="edtool" id="btnFormat" title="tidy indentation">⌁ format</button>
+            <button class="edtool" id="btnCopy" title="copy">⧉ copy</button>
+            <button class="edtool" id="btnFontDn" title="smaller">A−</button>
+            <button class="edtool" id="btnFontUp" title="bigger">A+</button>
+            <button class="edtool" id="btnFull" title="fullscreen editor">⛶</button>
+          </div>
+        </div>
+        <div class="tabs"><div class="tab on">code</div></div>
+        <div class="editor">
+          <pre class="lines" id="lines">1</pre>
+          <div class="codebox">
+            <pre class="hl" id="hl" aria-hidden="true"></pre>
+            <textarea id="code" spellcheck="false" wrap="off"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="vgutter" id="vgutter" title="drag to resize"></div>
+      <div class="console" id="console">
+        <div class="tabs">
+          <div class="tab on" data-panel="result">test result</div>
+          <div class="tab" data-panel="subs">submissions</div>
+          <div class="tab" data-panel="testcase">testcase</div>
+        </div>
+        <div class="cpanel on" id="p-result"></div>
+        <div class="cpanel" id="p-subs"></div>
+        <div class="cpanel" id="p-testcase">
+          <div class="tcrow">
+            <span class="tclabel">custom input (int slice)</span>
+            <input id="tcInput" spellcheck="false">
+          </div>
+          <div class="runline"><button class="btn run" id="tcRun">▶ run custom</button></div>
+          <div class="tcout" id="tcOut"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/problems.js?v=15"></script>
+  <script src="assets/js/progress.js?v=15"></script>
+  <script src="assets/js/localrunner.js?v=15"></script>
+  <script src="assets/js/app.js?v=15"></script>
+</body>
+</html>

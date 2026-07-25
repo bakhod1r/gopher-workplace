@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>gopher workplace · roadmap</title>
+<link rel="stylesheet" href="assets/css/styles.css?v=15">
+<link rel="stylesheet" href="assets/css/roadmap.css?v=15">
+</head>
+<body>
+  <div class="nav">
+    <div class="brand"><span class="logo">🐹</span> gopher workplace</div>
+    <div class="rm-nav">
+      <a href="index.html">home</a>
+      <a href="roadmap.html" class="on">roadmap</a>
+      <a href="problemset.html">problems</a>
+    </div>
+    <div class="actions">
+      <select class="navbtn" id="theme" title="theme">
+        <option value="light">☀ light</option>
+        <option value="dark">🌙 dark</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="rm-wrap">
+    <div class="rm-head">
+      <h1>go roadmap</h1>
+      <p>junior → staff · click a topic to start</p>
+    </div>
+    <div class="rm-legend">
+      <span><i class="lg done"></i><b>done</b></span>
+      <span><i class="lg active"></i><b>in progress</b></span>
+      <span><i class="lg locked"></i><b>locked</b></span>
+    </div>
+    <div id="rm-graph"></div>
+  </div>
+
+  <div class="rm-tip" id="rm-tip"></div>
+  <div class="rm-menu" id="rm-menu"></div>
+  <script src="assets/js/icons.js?v=15"></script>
+  <script src="assets/js/roadmap.js?v=15"></script>
+</body>
+</html>

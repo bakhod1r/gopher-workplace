@@ -1,0 +1,21 @@
+// Package swap — Gopher Workplace challenge.
+//
+// DEBUG MODE: this version compiles and looks right, but ships one planted bug.
+// Find it between the CHANGE CODE markers and fix it so all tests pass.
+package swap
+
+// Swap returns its two arguments with their values exchanged.
+//
+// Examples:
+//
+//	Swap(1, 2)  => 2, 1
+//	Swap(9, 9)  => 9, 9
+//	Swap(-3, 7) => 7, -3
+func Swap(a, b int) (int, int) {
+	// CHANGE CODE BELOW THIS LINE
+
+	a, b = a, b
+
+	// CHANGE CODE ABOVE THIS LINE
+	return a, b
+}

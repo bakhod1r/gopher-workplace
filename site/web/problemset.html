@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>gopher workplace · problems</title>
+<link rel="stylesheet" href="assets/css/styles.css?v=15">
+<link rel="stylesheet" href="assets/css/roadmap.css?v=15">
+<link rel="stylesheet" href="assets/css/problemset.css?v=15">
+</head>
+<body>
+  <div class="nav">
+    <div class="brand"><span class="logo">🐹</span> gopher workplace</div>
+    <div class="rm-nav">
+      <a href="index.html">home</a>
+      <a href="roadmap.html">roadmap</a>
+      <a href="problemset.html" class="on">problems</a>
+    </div>
+    <div class="actions">
+      <select class="navbtn" id="theme" title="theme">
+        <option value="light">☀ light</option>
+        <option value="dark">🌙 dark</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="ps">
+    <div class="ps-head">
+      <h1>problems</h1>
+      <div class="ps-stats" id="psStats"></div>
+    </div>
+
+    <div class="ps-filters">
+      <input id="psSearch" class="ps-search" type="text" placeholder="Search challenges…">
+      <select id="psLevel" class="ps-sel">
+        <option value="">Difficulty</option>
+        <option value="J">Junior</option>
+        <option value="M">Middle</option>
+        <option value="S">Senior</option>
+        <option value="ST">Staff</option>
+      </select>
+      <select id="psTopic" class="ps-sel"><option value="">Topic</option></select>
+      <select id="psStatus" class="ps-sel">
+        <option value="">Status</option>
+        <option value="solved">Solved</option>
+        <option value="todo">Todo</option>
+        <option value="locked">Locked</option>
+      </select>
+      <button id="psReset" class="ps-reset">reset</button>
+    </div>
+
+    <div class="ps-tablewrap">
+      <table class="ps-table">
+        <thead>
+          <tr>
+            <th class="c-st">Status</th>
+            <th class="c-ti">Title</th>
+            <th class="c-tp">Topic</th>
+            <th class="c-df">Difficulty</th>
+            <th class="c-tg">Tags</th>
+          </tr>
+        </thead>
+        <tbody id="psBody"></tbody>
+      </table>
+      <div id="psEmpty" class="ps-empty" hidden>No challenges match your filters.</div>
+    </div>
+  </div>
+
+  <script src="assets/js/problems.js?v=15"></script>
+  <script src="assets/js/progress.js?v=15"></script>
+  <script src="assets/js/problemset.js?v=15"></script>
+  <script>
+    (function(){
+      const sel=document.getElementById('theme');
+      const saved=localStorage.getItem('gw-theme')||'light';
+      document.documentElement.setAttribute('data-theme',saved); sel.value=saved;
+      sel.addEventListener('change',()=>{ document.documentElement.setAttribute('data-theme',sel.value); localStorage.setItem('gw-theme',sel.value); });
+    })();
+  </script>
+</body>
+</html>

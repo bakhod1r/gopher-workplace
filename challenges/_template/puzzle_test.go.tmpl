@@ -1,0 +1,26 @@
+package {{PKG}}
+
+import (
+	"reflect"
+	"testing"
+)
+
+func Test{{FUNC}}(t *testing.T) {
+	cases := []struct {
+		name string
+		// in   ...
+		// want ...
+	}{
+		// >= 3 cases; must be RED against the planted bug, GREEN once fixed.
+	}
+
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			// got := {{FUNC}}(tc.in)
+			// if !reflect.DeepEqual(got, tc.want) {
+			// 	t.Errorf("{{FUNC}}(%v) = %v, want %v", tc.in, got, tc.want)
+			// }
+			_ = reflect.DeepEqual
+		})
+	}
+}
