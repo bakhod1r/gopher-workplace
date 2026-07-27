@@ -162,6 +162,15 @@ func headerHTML(md, title string) string {
 		`<div class="p-meta">%s</div></div>`, mdInline(title), meta)
 }
 
+// educationHTML renders a puzzle's EDUCATION.md. Empty in, empty out — the
+// tab is hidden when a puzzle ships no teaching material.
+func educationHTML(md string) string {
+	if strings.TrimSpace(md) == "" {
+		return ""
+	}
+	return mdToHTML(md)
+}
+
 // markSolutionNocopy tags the Solution <details> so the frontend can block
 // selection/copy.
 func markSolutionNocopy(html string) string {

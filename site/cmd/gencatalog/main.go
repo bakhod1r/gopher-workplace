@@ -45,6 +45,7 @@ type problem struct {
 	Level         string `json:"level"`
 	Tag           string `json:"tag"`
 	Description   string `json:"description"`
+	Education     string `json:"education"`
 	Starter       string `json:"starter"`
 	Debug         string `json:"debug"`
 	File          string `json:"file"`
@@ -208,6 +209,10 @@ func build(repo string) (map[string]problem, []catGroup, error) {
 			debug = readFile(dir, debugFiles[0])
 		}
 
+		// Optional teaching material for the puzzle's concept, shown in its own
+		// tab beside the description.
+		education := readFile(dir, "EDUCATION.md")
+
 		md := readFile(dir, "README.md")
 		title := titleOf(md, slug)
 		level := strings.ToLower(field(md, "Level"))
@@ -229,8 +234,9 @@ func build(repo string) (map[string]problem, []catGroup, error) {
 				headerHTML(md, title) +
 					mdToHTML(stripHeadFields(stripTopicsSection(md))) +
 					topicsFooterHTML(md)),
-			Starter: starter,
-			Debug:   debug,
+			Education: educationHTML(education),
+			Starter:   starter,
+			Debug:     debug,
 			// goFiles is sorted, so this is the first non-test .go file by name,
 			// which is not necessarily the starter (shortest name).
 			File: firstOr(goFiles, ""),

@@ -18,3 +18,8 @@ COVERED.txt
 .DS_Store
 *.swp
 cover.out
+
+# built binaries (go build in a module dir drops one next to the source)
+site/cmd/gencatalog/gencatalog
+site/cmd/localrunner/localrunner
+site/server/server

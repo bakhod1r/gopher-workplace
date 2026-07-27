@@ -20,18 +20,16 @@ let CUR = window.PROBLEMS[Object.keys(window.PROBLEMS)[0]] || null;
 
 const codeEl = $('#code'), linesEl = $('#lines'), hlEl = $('#hl'), runEl = $('#run'), subEl = $('#submit');
 const pResult = $('#p-result'), tcOut = $('#tcOut'), tcInput = $('#tcInput'), descEl = $('#desc');
+const eduEl = $('#edu');
 
-// Editor mode: 'learn' = implement-from-scratch stub (p.starter),
-// 'debug' = fix a planted bug (p.debug, only when the puzzle ships one).
-let MODE = 'learn';
-const modeBtn = $('#btnMode');
-const hasDebug = p => !!(p && p.debug);
-const modeBase = () => (MODE === 'debug' && hasDebug(CUR)) ? CUR.debug : CUR.starter;
+// The editor always starts from the puzzle's stub: every puzzle is built from
+// scratch.
+const modeBase = () => CUR ? CUR.starter : '';
 
 // Per-puzzle, per-mode editor draft, persisted in localStorage so in-progress
 // typing survives a page refresh. This is the CURRENT draft, not past
 // submissions (those live in the Submissions tab).
-const draftKey = () => CUR ? 'gw-draft:' + CUR.id + ':' + MODE : '';
+const draftKey = () => CUR ? 'gw-draft:' + CUR.id : '';
 function saveDraft(){
   if(!CUR) return;
   try{ localStorage.setItem(draftKey(), codeEl.value); }catch(e){}
@@ -48,18 +46,6 @@ function baseOrDraft(){
   return base;
 }
 
-function syncModeBtn(){
-  if(!modeBtn) return;
-  if(hasDebug(CUR)){
-    modeBtn.hidden = false;
-    modeBtn.textContent = MODE === 'debug' ? '◨ debug' : '◧ learn';
-    modeBtn.title = MODE === 'debug'
-      ? 'Debug mode: fix the planted bug. Click to build from scratch instead.'
-      : 'Learn mode: build from scratch. Click to fix a planted bug instead.';
-  } else {
-    modeBtn.hidden = true;
-  }
-}
 
 const solvedBadge = $('#solvedBadge');
 const isSolved = id => !!(id && window.GWProgress && window.GWProgress.isSolved(id));
@@ -84,12 +70,12 @@ function refreshDrawerSolved(){
 
 function loadProblem(p){
   CUR = p;
-  MODE = 'learn';                 // every problem opens in learn mode
   if(!p){
     descEl.innerHTML = '<div class="verdict mut">no problems loaded</div>';
-    codeEl.value = ''; syncLines(); syncModeBtn(); syncSolvedBadge(); return;
+    codeEl.value = ''; syncLines(); syncSolvedBadge(); return;
   }
   descEl.innerHTML = p.description;
+  setEducation(p);
   codeEl.value = baseOrDraft();
   tcInput.value = p.customDefault || '';
   $('#edFile').textContent = p.file;
@@ -97,20 +83,11 @@ function loadProblem(p){
     ? '<div class="verdict ok">✓ submitted — solved earlier. Run again anytime.</div>'
     : '<div class="verdict mut">run your code<span class="blink">_</span></div>';
   syncLines();
-  syncModeBtn();
   syncSolvedBadge();
 }
-// Note: the editor always opens on the pristine stub (modeBase). Past
-// submissions are not auto-restored — view/load them from the Submissions tab.
+// Note: the editor always opens on the pristine stub. Past submissions are not
+// auto-restored — view/load them from the Submissions tab.
 
-if(modeBtn){
-  modeBtn.addEventListener('click', () => {
-    if(!hasDebug(CUR)) return;
-    MODE = MODE === 'debug' ? 'learn' : 'debug';
-    codeEl.value = baseOrDraft();  // swap to the chosen mode's draft (or stub)
-    syncLines(); syncModeBtn(); codeEl.focus();
-  });
-}
 
 /* ---- Go syntax highlight (overlay) ---- */
 const GO_KW = new Set("break case chan const continue default defer else fallthrough for func go goto if import interface map package range return select struct switch type var".split(" "));
@@ -263,6 +240,28 @@ codeEl.addEventListener('keydown', e => {
 })();
 
 /* ---- console tabs ---- */
+/* ---- left pane: description | education ---- */
+// A puzzle without EDUCATION.md has no education HTML; hide the tab rather than
+// offering an empty panel.
+function setEducation(p){
+  if(!eduEl) return;
+  const html = (p && p.education) || '';
+  eduEl.innerHTML = html;
+  const tab = document.querySelector('.left .tab[data-left="edu"]');
+  if(tab) tab.hidden = !html;
+  if(!html) showLeft('desc');            // fall back if the tab vanishes under us
+}
+
+function showLeft(which){
+  document.querySelectorAll('.left .tab[data-left]').forEach(t =>
+    t.classList.toggle('on', t.dataset.left === which));
+  if(descEl) descEl.hidden = which !== 'desc';
+  if(eduEl) eduEl.hidden = which !== 'edu';
+}
+
+document.querySelectorAll('.left .tab[data-left]').forEach(t =>
+  t.addEventListener('click', () => showLeft(t.dataset.left)));
+
 $$('.console .tab').forEach(t => t.addEventListener('click', () => {
   $$('.console .tab').forEach(x => x.classList.remove('on')); t.classList.add('on');
   const p = t.dataset.panel;
@@ -501,9 +500,10 @@ document.addEventListener('gw-runner', e => {
 });
 boot();
 
-// Block copy/cut/context-menu inside Solution blocks (belt-and-braces on top of
-// CSS user-select:none) so the answer can be read but not lifted out.
-['copy','cut','contextmenu'].forEach(function(ev){
+// Block copy/cut/drag/context-menu inside .nocopy regions — Solution blocks and
+// the education tab (belt-and-braces on top of CSS user-select:none). The
+// material is there to be read and typed out, not lifted wholesale.
+['copy','cut','contextmenu','dragstart'].forEach(function(ev){
   document.addEventListener(ev, function(e){
     if (e.target.closest && e.target.closest('.nocopy')) e.preventDefault();
   });

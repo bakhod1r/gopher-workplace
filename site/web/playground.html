@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>gopher workplace</title>
-<link rel="stylesheet" href="assets/css/styles.css?v=21">
-<link rel="stylesheet" href="assets/css/roadmap.css?v=21">
+<link rel="stylesheet" href="assets/css/styles.css?v=22">
+<link rel="stylesheet" href="assets/css/roadmap.css?v=22">
 </head>
 <body>
   <div class="nav">
@@ -31,8 +31,12 @@
 
   <div class="wrap">
     <div class="left">
-      <div class="tabs"><div class="tab on">description</div></div>
+      <div class="tabs">
+        <div class="tab on" data-left="desc">description</div>
+        <div class="tab" data-left="edu">education</div>
+      </div>
       <div class="desc" id="desc"><!-- built from PROBLEMS --></div>
+      <div class="desc nocopy" id="edu" hidden><!-- built from PROBLEMS --></div>
     </div>
 
     <div class="gutter" id="gutter"></div>
@@ -43,7 +47,6 @@
           <span class="lang">GO</span><span id="edFile">dedupe.go</span>
           <span id="solvedBadge" class="solved-badge" hidden>✓ submitted</span>
           <div class="edtools">
-            <button class="edtool" id="btnMode" title="switch between building from scratch and fixing a planted bug" hidden>◧ learn</button>
             <button class="edtool" id="btnReset" title="reset code">⟲ reset</button>
             <button class="edtool" id="btnFormat" title="tidy indentation">⌁ format</button>
             <button class="edtool" id="btnCopy" title="copy">⧉ copy</button>
@@ -82,9 +85,9 @@
     </div>
   </div>
 
-  <script src="assets/js/problems.js?v=21"></script>
-  <script src="assets/js/progress.js?v=21"></script>
-  <script src="assets/js/localrunner.js?v=21"></script>
-  <script src="assets/js/app.js?v=21"></script>
+  <script src="assets/js/problems.js?v=22"></script>
+  <script src="assets/js/progress.js?v=22"></script>
+  <script src="assets/js/localrunner.js?v=22"></script>
+  <script src="assets/js/app.js?v=22"></script>
 </body>
 </html>

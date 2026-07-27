@@ -2,6 +2,44 @@
 
 All notable changes to this project are documented here. Dates are ISO 8601.
 
+## [0.3.0] — 2026-07-27
+
+Teaching material next to every puzzle, three new constants puzzles, and one
+fewer mode to explain.
+
+### Added
+
+- **An `education` tab beside the description.** Each puzzle may ship an
+  `EDUCATION.md` — the concept explained properly: the idea, why it matters, the
+  traps, and a short "try it yourself". The catalog generator renders it and the
+  playground shows it as a second tab; puzzles without one simply hide the tab.
+  All ten `01-variables-and-constants` puzzles now have it.
+- The education text is **not copyable** — `user-select: none` plus blocked
+  `copy`/`cut`/`contextmenu`/`dragstart`. It is there to be read and retyped, not
+  lifted. The description stays copyable.
+- **Three puzzles**, taking `junior/01-language-basics/01-variables-and-constants`
+  to ten, each on a concept the other seven do not cover:
+  - `typedconst` — typed vs untyped constants, and why conversion *direction*
+    decides correctness (`byte(256)` wraps to 0).
+  - `discard` — the blank identifier: why Go forces you to receive every value,
+    and how `_` discards one.
+  - `endpoint` — `const` vs package-level `var`, deriving a value instead of
+    pasting it.
+
+### Changed
+
+- **The learn ⇄ debug toggle is gone.** Every puzzle now opens on its stub and is
+  built from scratch. The editor is simpler and there is one less mode to
+  explain. Draft storage keys lose their mode suffix.
+- Markdown rendering understands `*italic*`.
+
+### Fixed
+
+- Built binaries (`gencatalog`, `localrunner`, `server`) are gitignored instead
+  of landing in a commit.
+
+[0.3.0]: https://github.com/bakhod1r/gopher-workplace/releases/tag/v0.3.0
+
 ## [0.2.0] — 2026-07-27
 
 The runner grew up: it is now safe to leave running, it serves the UI itself,

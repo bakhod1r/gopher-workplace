@@ -14,6 +14,7 @@ import (
 var (
 	reInlineCode = regexp.MustCompile("`([^`]+)`")
 	reBold       = regexp.MustCompile(`\*\*([^*]+)\*\*`)
+	reItalic     = regexp.MustCompile(`\*([^*\n]+)\*`)
 	reLink       = regexp.MustCompile(`\[([^\]]+)\]\(([^)]+)\)`)
 	reHeading    = regexp.MustCompile(`^(#{1,6})\s+(.*)`)
 	reBullet     = regexp.MustCompile(`^[-*]\s+(.*)`)
@@ -29,7 +30,8 @@ func mdInline(s string) string {
 	s = escapeHTML(s)
 	s = reInlineCode.ReplaceAllString(s, "<code>$1</code>")
 	s = reBold.ReplaceAllString(s, "<strong>$1</strong>")
-	s = reLink.ReplaceAllString(s, "$1") // drop links, keep text
+	s = reItalic.ReplaceAllString(s, "<em>$1</em>") // after bold, so ** is already gone
+	s = reLink.ReplaceAllString(s, "$1")            // drop links, keep text
 	return s
 }
 

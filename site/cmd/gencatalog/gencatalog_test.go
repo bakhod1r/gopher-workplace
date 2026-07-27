@@ -13,6 +13,8 @@ func TestMdInline(t *testing.T) {
 		"plain":                   "plain",
 		"a `code` b":              "a <code>code</code> b",
 		"a **bold** b":            "a <strong>bold</strong> b",
+		"an *emphasis* here":      "an <em>emphasis</em> here",
+		"**bold** and *italic*":   "<strong>bold</strong> and <em>italic</em>",
 		"see [docs](http://x)":    "see docs",
 		"5 < 6 & 7 > 2":           "5 &lt; 6 &amp; 7 &gt; 2",
 		"`a<b>` stays escaped":    "<code>a&lt;b&gt;</code> stays escaped",
@@ -329,5 +331,41 @@ func TestCapitalizeEmpty(t *testing.T) {
 	}
 	if got := capitalize("jUNIOR"); got != "Junior" {
 		t.Errorf("capitalize = %q", got)
+	}
+}
+
+// EDUCATION.md is optional: no file (or a blank one) means no education tab.
+func TestEducationHTML(t *testing.T) {
+	if got := educationHTML(""); got != "" {
+		t.Errorf("educationHTML(\"\") = %q, want empty", got)
+	}
+	if got := educationHTML("\n\n  \n"); got != "" {
+		t.Errorf("educationHTML(whitespace) = %q, want empty", got)
+	}
+	got := educationHTML("# Scope\n\nA variable lives in its block.\n")
+	if !strings.Contains(got, "<h1>Scope</h1>") || !strings.Contains(got, "<p>A variable lives in its block.</p>") {
+		t.Errorf("educationHTML = %q", got)
+	}
+}
+
+// A puzzle shipping EDUCATION.md carries it into the catalog; one without it
+// gets an empty field.
+func TestBuildPicksUpEducation(t *testing.T) {
+	root := t.TempDir()
+	with := filepath.Join(root, "challenges", "junior", "01-a", "01-b", "taught")
+	writeFile(t, with, "go.mod", "module taught\n")
+	writeFile(t, with, "EDUCATION.md", "# Blank identifier\n\nIt discards a value.\n")
+	without := filepath.Join(root, "challenges", "junior", "01-a", "01-b", "bare")
+	writeFile(t, without, "go.mod", "module bare\n")
+
+	problems, _, err := build(root)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got := problems["junior/01-a/01-b/taught"].Education; !strings.Contains(got, "Blank identifier") {
+		t.Errorf("education = %q", got)
+	}
+	if got := problems["junior/01-a/01-b/bare"].Education; got != "" {
+		t.Errorf("education = %q, want empty for a puzzle without EDUCATION.md", got)
 	}
 }
