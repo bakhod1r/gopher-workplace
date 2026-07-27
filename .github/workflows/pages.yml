@@ -1,0 +1,59 @@
+name: Pages
+
+# Publishes site/web/ to GitHub Pages. What ships is browse-only: the puzzle
+# catalogue, descriptions and editor. Run/Submit need the local runner, which
+# executes the real Go toolchain on the visitor's own machine and only accepts
+# loopback connections — so it is never part of this deploy. The page detects
+# that and says so.
+#
+# problems.js is generated from the challenges/ tree, so the catalog is rebuilt
+# here rather than trusted from the commit.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race; queue instead, and let a newer commit win.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.26'
+
+      - name: Generate the problem catalog
+        run: make catalog
+
+      # Pages runs Jekyll by default, which drops files beginning with an
+      # underscore. Nothing here needs building.
+      - name: Disable Jekyll
+        run: touch site/web/.nojekyll
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/web
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

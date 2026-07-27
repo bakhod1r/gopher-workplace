@@ -221,12 +221,20 @@ says so in a banner, disables the two buttons, and points at the setup above.
 Start the runner locally and the same puzzle becomes runnable at
 <http://localhost:7070>.
 
+**Live:** <https://bakhod1r.github.io/gopher-workplace/>
+
+`.github/workflows/pages.yml` publishes it on every push to `main`: regenerate
+the catalog from `challenges/`, then upload `site/web/` to GitHub Pages. The
+catalog is rebuilt in CI rather than trusted from the commit, so the site cannot
+drift from the puzzles.
+
+Any static host works — there is nothing to run server-side:
+
 ```bash
 cd site && ./scripts/build.sh    # regenerates the catalog; publish web/
 ```
 
-`site/netlify.toml` does exactly this: build with `scripts/build.sh`, publish
-`web/`. Any static host works — there is nothing to run server-side.
+`site/netlify.toml` keeps a Netlify deploy working the same way.
 
 ## Updating to a new version
 
