@@ -1,15 +1,15 @@
 # Deploy the static site on Netlify.
-#   1. ./scripts/build.sh   (produces web/assets/wasm/gopher.wasm + .gz)
-#   2. push; Netlify publishes ./web
+#
+# NOTE: the published site is BROWSE-ONLY. Running code needs the local runner
+# (site/cmd/localrunner), which executes the real Go toolchain on the visitor's
+# own machine and only accepts loopback connections. A hosted deploy therefore
+# renders the catalogue, descriptions and editor, but Run/Submit stay disabled
+# until the visitor starts the runner locally.
+#
+# The build step regenerates web/assets/js/problems.js from the challenges/ tree.
 [build]
   publish = "web"
   command = "./scripts/build.sh"
 
 [build.environment]
   GO_VERSION = "1.26"
-
-[[headers]]
-  for = "/assets/wasm/*.wasm"
-  [headers.values]
-    Content-Type = "application/wasm"
-    Cache-Control = "public, max-age=3600"

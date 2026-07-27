@@ -6,6 +6,6 @@ set -euo pipefail
 cd "$(dirname "$0")/.."          # -> site/
 
 echo "==> generating problems.js from challenges/"
-python3 scripts/gen-problems.py
+( cd cmd/gencatalog && go run . -root ../../.. )
 
-echo "==> done (start the runner with: go run ./cmd/localrunner)"
+echo "==> done (start the runner with: cd site/cmd/localrunner && go run .)"

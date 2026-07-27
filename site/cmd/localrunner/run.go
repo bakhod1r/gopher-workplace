@@ -18,7 +18,9 @@ import (
 	"time"
 )
 
-const runTimeout = 20 * time.Second
+// runTimeout bounds a single toolchain invocation. A var, not a const, so
+// tests can shrink it instead of waiting out the real budget.
+var runTimeout = 20 * time.Second
 
 // runReq is the POST /run body. Either files (name->content) or src (single
 // candidate file) must be provided, plus the challengeId (path under
@@ -151,10 +153,21 @@ func (s *server) challengeDir(id string) (string, error) {
 	if rel == "" || strings.HasPrefix(rel, "..") {
 		return "", fmt.Errorf("invalid challengeId %q", id)
 	}
-	dir := filepath.Join(s.cfg.root, "challenges", rel)
-	// Defense in depth: ensure the resolved path stays under challenges/.
 	base := filepath.Join(s.cfg.root, "challenges")
-	if !strings.HasPrefix(dir, base+string(os.PathSeparator)) {
+	dir := filepath.Join(base, rel)
+
+	// The lexical check above stops `..` in the id, but a symlink *inside*
+	// challenges/ could still point anywhere on disk. Compare fully resolved
+	// paths so the real target has to live under challenges/ too.
+	realBase, err := filepath.EvalSymlinks(base)
+	if err != nil {
+		return "", fmt.Errorf("challenges/ not readable under %q", s.cfg.root)
+	}
+	realDir, err := filepath.EvalSymlinks(dir)
+	if err != nil {
+		return "", fmt.Errorf("no such challenge %q", id)
+	}
+	if !strings.HasPrefix(realDir, realBase+string(os.PathSeparator)) {
 		return "", fmt.Errorf("path escapes challenges/: %q", id)
 	}
 	if _, err := os.Stat(filepath.Join(dir, "go.mod")); err != nil {
@@ -321,7 +334,14 @@ type testEvent struct {
 
 var (
 	compileErrRe = regexp.MustCompile(`\.go:\d+:\d+:`)
-	gotWantRe    = regexp.MustCompile(`(?i)got[:= ]+(.+?)[,;]?\s+want[:= ]+(.+)`)
+
+	// Failure messages come in two idioms. Explicit "got X want Y" first, then
+	// the more common Go form "Call(args) = X, want Y" — most puzzle tests use
+	// the latter, so without it the UI's got/want columns stay empty.
+	gotWantREs = []*regexp.Regexp{
+		regexp.MustCompile(`(?i)got[:= ]+(.+?)[,;]?\s+want[:= ]+(.+)`),
+		regexp.MustCompile(`(?i)=\s*(.+?)[,;]\s*want[:= ]+(.+)`),
+	}
 )
 
 // parseTestJSON converts `go test -json` output into a report. Build failures
@@ -425,8 +445,10 @@ func parseTestJSON(stdout []byte, stderr string, runErr error) report {
 // none is found it returns a condensed failure message as got, empty want.
 func extractGotWant(out string) (got, want string) {
 	for _, ln := range strings.Split(out, "\n") {
-		if m := gotWantRe.FindStringSubmatch(ln); m != nil {
-			return strings.TrimSpace(m[1]), strings.TrimSpace(m[2])
+		for _, re := range gotWantREs {
+			if m := re.FindStringSubmatch(ln); m != nil {
+				return strings.TrimSpace(m[1]), strings.TrimSpace(m[2])
+			}
 		}
 	}
 	// Condense: first non-empty, non-framing line.

@@ -1,10 +1,4 @@
 # Netlify / Cloudflare Pages headers.
-# The wasm is served pre-gzipped as gopher.wasm.gz — most static hosts negotiate
-# this automatically when both files are deployed. These headers set MIME/cache.
-
-/assets/wasm/*.wasm
-  Content-Type: application/wasm
-  Cache-Control: public, max-age=3600
 
 /assets/*
   Cache-Control: public, max-age=3600

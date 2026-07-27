@@ -1,0 +1,15 @@
+// Package almostequal — Gopher Workplace challenge.
+//
+// DEBUG MODE: this version compiles and looks right, but ships one planted bug.
+// Find it between the CHANGE CODE markers and fix it so all tests pass.
+package almostequal
+
+import "math"
+
+func AlmostEqual(a, b float64) bool {
+	// CHANGE CODE BELOW THIS LINE
+
+	return math.Abs(a-b) < 1e-3
+
+	// CHANGE CODE ABOVE THIS LINE
+}

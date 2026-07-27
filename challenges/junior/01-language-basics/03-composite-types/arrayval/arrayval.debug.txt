@@ -1,0 +1,14 @@
+// Package arrayval — Gopher Workplace challenge.
+//
+// DEBUG MODE: this version compiles and looks right, but ships one planted bug.
+// Find it between the CHANGE CODE markers and fix it so all tests pass.
+package arrayval
+
+func SetFirst(a [3]int, v int) [3]int {
+	// CHANGE CODE BELOW THIS LINE
+
+	a[len(a)-1] = v
+
+	// CHANGE CODE ABOVE THIS LINE
+	return a
+}

@@ -1,0 +1,17 @@
+// Package wordfreq — Gopher Workplace challenge.
+//
+// DEBUG MODE: this version compiles and looks right, but ships one planted bug.
+// Find it between the CHANGE CODE markers and fix it so all tests pass.
+package wordfreq
+
+func Count(words []string) map[string]int {
+	// CHANGE CODE BELOW THIS LINE
+
+	var counts map[string]int
+
+	// CHANGE CODE ABOVE THIS LINE
+	for _, w := range words {
+		counts[w]++
+	}
+	return counts
+}

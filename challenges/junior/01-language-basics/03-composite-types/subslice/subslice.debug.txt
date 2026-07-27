@@ -1,0 +1,19 @@
+// Package subslice — Gopher Workplace challenge.
+//
+// DEBUG MODE: this version compiles and looks right, but ships one planted bug.
+// Find it between the CHANGE CODE markers and fix it so all tests pass.
+package subslice
+
+func Head(s []int, n int) []int {
+	if n > len(s) {
+		n = len(s)
+	}
+	if n < 0 {
+		n = 0
+	}
+	// CHANGE CODE BELOW THIS LINE
+
+	return s[:n]
+
+	// CHANGE CODE ABOVE THIS LINE
+}

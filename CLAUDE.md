@@ -21,9 +21,12 @@ challenges/<level>/<NN-topic>/<MM-subtopic>/<puzzle>/
 - Topics + subtopics **renumber from 01 within each level** in learning-path order.
 - Empty slots hold a `.keep`; authoring a puzzle deletes it.
 - `_template/` = the shape to copy.
-- 4 levels · 209 subtopic slots (35/62/75/37). 4 authored puzzles so far
-  (the `slices` exemplar under
-  `junior/01-language-basics/03-composite-types/{dedupe,chunk,leak,collect}`).
+- 4 levels · 209 subtopic slots (35/62/75/37). Authored so far, all under
+  `junior/01-language-basics`: `01-variables-and-constants` (swap, byteunits,
+  temperature, retries, plan-limits), `02-data-types` (average, checksum,
+  truncate, runecount, narrowing, almostequal), `03-composite-types` (dedupe,
+  wordfreq, reverse). Most ship a from-scratch stub plus a `<name>.debug.txt`
+  planted-bug variant (see GENERATION.md §5e–5f).
 
 ## The one law (scope, GENERATION.md §2)
 

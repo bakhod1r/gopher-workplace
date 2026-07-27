@@ -1,0 +1,19 @@
+// Package ifinit — Gopher Workplace challenge.
+//
+// DEBUG MODE: this version compiles and looks right, but ships one planted bug.
+// Find it between the CHANGE CODE markers and fix it so all tests pass.
+package ifinit
+
+func Bucket(n int) string {
+	// CHANGE CODE BELOW THIS LINE
+
+	if r := n % 2; r == 0 {
+
+		// CHANGE CODE ABOVE THIS LINE
+		return "zero"
+	} else if r == 1 {
+		return "one"
+	} else {
+		return "two"
+	}
+}

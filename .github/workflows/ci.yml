@@ -1,0 +1,80 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  tooling:
+    name: Tooling (runner + catalog generator)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.26'
+          cache-dependency-path: |
+            site/cmd/localrunner/go.sum
+
+      - name: gofmt
+        run: |
+          unformatted=$(gofmt -l site/cmd)
+          if [ -n "$unformatted" ]; then
+            echo "not gofmt-clean:"; echo "$unformatted"; exit 1
+          fi
+
+      # Both tooling modules are at 100% statement coverage; the gate keeps them
+      # there, so an untested branch fails the build instead of drifting in.
+      - name: vet + test + coverage gate (localrunner)
+        working-directory: site/cmd/localrunner
+        run: |
+          go vet ./...
+          go test -coverprofile=cover.out ./...
+          go tool cover -func=cover.out | tail -1
+          pct=$(go tool cover -func=cover.out | tail -1 | grep -oE '[0-9.]+%' | tr -d '%')
+          [ "$pct" = "100.0" ] || { echo "coverage $pct%, want 100.0%"; exit 1; }
+
+      - name: vet + test + coverage gate (gencatalog)
+        working-directory: site/cmd/gencatalog
+        run: |
+          go vet ./...
+          go test -coverprofile=cover.out ./...
+          go tool cover -func=cover.out | tail -1
+          pct=$(go tool cover -func=cover.out | tail -1 | grep -oE '[0-9.]+%' | tr -d '%')
+          [ "$pct" = "100.0" ] || { echo "coverage $pct%, want 100.0%"; exit 1; }
+
+      # The catalog is generated but committed, so a stale problems.js would
+      # ship puzzles the site cannot see. Regenerate and fail on any diff.
+      - name: catalog is up to date
+        run: |
+          make catalog
+          git diff --exit-code site/web/assets/js/problems.js
+
+  challenges:
+    name: Challenges build and are well-formed
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.26'
+
+      # Puzzles ship red on purpose, so a failing `go test` is the expected
+      # state, not a CI signal. Nor can we require the *tests* to compile: an
+      # implement-from-scratch puzzle is red precisely because the identifiers
+      # its test refers to do not exist yet. What must hold is that the starter
+      # package itself builds and is gofmt-clean — a puzzle that does not
+      # compile as shipped is an authoring mistake.
+      - name: build + gofmt every challenge
+        run: |
+          fail=0
+          for d in $(find challenges -name go.mod -exec dirname {} \;); do
+            echo "==> $d"
+            unformatted=$(gofmt -l "$d")
+            if [ -n "$unformatted" ]; then
+              echo "not gofmt-clean: $unformatted"; fail=1
+            fi
+            ( cd "$d" && go build ./... ) || fail=1
+          done
+          exit $fail

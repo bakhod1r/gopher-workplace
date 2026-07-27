@@ -28,6 +28,26 @@ const modeBtn = $('#btnMode');
 const hasDebug = p => !!(p && p.debug);
 const modeBase = () => (MODE === 'debug' && hasDebug(CUR)) ? CUR.debug : CUR.starter;
 
+// Per-puzzle, per-mode editor draft, persisted in localStorage so in-progress
+// typing survives a page refresh. This is the CURRENT draft, not past
+// submissions (those live in the Submissions tab).
+const draftKey = () => CUR ? 'gw-draft:' + CUR.id + ':' + MODE : '';
+function saveDraft(){
+  if(!CUR) return;
+  try{ localStorage.setItem(draftKey(), codeEl.value); }catch(e){}
+}
+function clearDraft(){
+  if(!CUR) return;
+  try{ localStorage.removeItem(draftKey()); }catch(e){}
+}
+// The saved draft for the current puzzle/mode, or the pristine stub if none.
+function baseOrDraft(){
+  const base = modeBase();
+  if(!CUR) return base;
+  try{ const d = localStorage.getItem(draftKey()); if(d != null) return d; }catch(e){}
+  return base;
+}
+
 function syncModeBtn(){
   if(!modeBtn) return;
   if(hasDebug(CUR)){
@@ -47,6 +67,21 @@ function syncSolvedBadge(){
   if(solvedBadge) solvedBadge.hidden = !isSolved(CUR && CUR.id);
 }
 
+// Put a ✓ on a sidebar row when its puzzle is solved.
+function markDrawerSolved(id){
+  if(!id) return;
+  const it = document.querySelector('#drawer .pitem[data-id="'+CSS.escape(id)+'"]');
+  if(!it) return;
+  it.classList.add('done');
+  const st = it.querySelector('.st'); if(st) st.textContent = '✓';
+}
+// Reflect all currently-solved puzzles in the sidebar (call after it is built).
+function refreshDrawerSolved(){
+  document.querySelectorAll('#drawer .pitem').forEach(it => {
+    if(isSolved(it.dataset.id)) markDrawerSolved(it.dataset.id);
+  });
+}
+
 function loadProblem(p){
   CUR = p;
   MODE = 'learn';                 // every problem opens in learn mode
@@ -55,7 +90,7 @@ function loadProblem(p){
     codeEl.value = ''; syncLines(); syncModeBtn(); syncSolvedBadge(); return;
   }
   descEl.innerHTML = p.description;
-  codeEl.value = modeBase();
+  codeEl.value = baseOrDraft();
   tcInput.value = p.customDefault || '';
   $('#edFile').textContent = p.file;
   pResult.innerHTML = isSolved(p.id)
@@ -64,31 +99,15 @@ function loadProblem(p){
   syncLines();
   syncModeBtn();
   syncSolvedBadge();
-  restoreSaved(p);
 }
-
-// Pull the last saved submission code from SQLite and restore it into the
-// editor, so reopening a puzzle brings back your in-progress / submitted work
-// instead of the blank stub. Async + guarded: only applies if we're still on
-// the same problem, in learn mode, and the editor still holds the pristine base.
-function restoreSaved(p){
-  if(!p || !(window.GW_LOCAL && window.GW_LOCAL.connected) || typeof gwLocalHistory !== 'function') return;
-  const base = codeEl.value;
-  gwLocalHistory(p.id).then(rows => {
-    if(!rows || !rows.length) return;
-    if(!CUR || CUR.id !== p.id) return;      // navigated away
-    if(MODE !== 'learn') return;             // debug view untouched
-    if(codeEl.value !== base) return;        // user already typed
-    const code = (typeof gwRowCode === 'function') ? gwRowCode(rows[0]) : '';
-    if(code && code !== codeEl.value){ codeEl.value = code; syncLines(); }
-  });
-}
+// Note: the editor always opens on the pristine stub (modeBase). Past
+// submissions are not auto-restored — view/load them from the Submissions tab.
 
 if(modeBtn){
   modeBtn.addEventListener('click', () => {
     if(!hasDebug(CUR)) return;
     MODE = MODE === 'debug' ? 'learn' : 'debug';
-    codeEl.value = modeBase();     // swap the editor to the chosen mode's base
+    codeEl.value = baseOrDraft();  // swap to the chosen mode's draft (or stub)
     syncLines(); syncModeBtn(); codeEl.focus();
   });
 }
@@ -138,6 +157,7 @@ function syncLines(){
   let s=''; for(let i=1;i<=n;i++) s+=i+'\n';
   linesEl.textContent = s;
   hlEl.innerHTML = highlight(codeEl.value);
+  saveDraft();   // persist current editor content so a refresh keeps it
 }
 function syncScroll(){
   hlEl.scrollTop = codeEl.scrollTop; hlEl.scrollLeft = codeEl.scrollLeft;
@@ -220,7 +240,7 @@ codeEl.addEventListener('keydown', e => {
   let fs = parseInt(localStorage.getItem('gw-font')||'13',10);
   const applyFont = () => { [codeEl,hlEl,linesEl].forEach(el=>el.style.fontSize=fs+'px'); localStorage.setItem('gw-font',fs); };
   applyFont();
-  $('#btnReset').addEventListener('click', () => { codeEl.value = modeBase(); syncLines(); codeEl.focus(); });
+  $('#btnReset').addEventListener('click', () => { clearDraft(); codeEl.value = modeBase(); syncLines(); codeEl.focus(); });
   $('#btnFormat').addEventListener('click', () => {
     const b=$('#btnFormat'), t=b.textContent;
     // Prefer the local runner's real gofmt when connected.
@@ -322,7 +342,8 @@ function loadSubmissions(){
    Local-runner-only build: no wasm. Run/Submit stay enabled and route through
    the localhost Go backend; run() shows a hint if the backend is not up yet. */
 function boot(){
-  runEl.disabled = false; subEl.disabled = false;
+  if (typeof gwRenderRunButtons === 'function') gwRenderRunButtons();
+  else { runEl.disabled = false; subEl.disabled = false; }
 }
 
 const esc = s => String(s).replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
@@ -350,6 +371,7 @@ function render(json, submit){
   if(submit && r.ok && !warned && CUR){
     try{ window.GWProgress && window.GWProgress.markSolved(CUR.id); }catch(e){}
     syncSolvedBadge();
+    markDrawerSolved(CUR.id);
   }
   let html = head;
   if(warned){
@@ -371,8 +393,7 @@ function run(submit){
   $$('.console .tab')[0].click();
   // Every problem runs against the real Go toolchain via the local backend.
   if(!local){
-    pResult.innerHTML = '<div class="verdict mut">🔌 local runner not connected.</div>'
-      + '<div class="cerr">start it with: go run ./site/cmd/localrunner</div>';
+    pResult.innerHTML = gwOfflineHTML(submit ? 'Submitting' : 'Running');
     return;
   }
   pResult.innerHTML = '<div class="verdict mut">'+(submit?'submitting':'running')+'<span class="blink">_</span></div>';
@@ -388,8 +409,9 @@ $('#tcRun').addEventListener('click', () => {
   if(!CUR) return;
   // The local backend runs the puzzle's own test suite (real `go test`); it has
   // no single-input eval endpoint, so custom input is not supported here.
-  tcOut.innerHTML = '<div class="cerr">Custom input runs on the wasm sandbox, which this build drops. '
-    + 'Use <b>Run</b> to execute the puzzle test suite on the local Go toolchain.</div>';
+  tcOut.innerHTML = '<div class="cerr">There is no single-input eval: the runner executes the '
+    + "puzzle's own test suite with the real <code>go test</code>. Use <b>Run</b> once the local "
+    + 'runner is up.</div>';
 });
 
 /* ---- sidebar from catalog ---- */
@@ -409,14 +431,19 @@ $('#tcRun').addEventListener('click', () => {
         + '<span class="pnum">'+num+'.</span>'
         + '<span class="st">'+(it.done?'✓':'▫')+'</span>'
         + '<span class="nm">'+esc(it.name)+(it.sub?'<span class="sub">'+esc(it.sub)+'</span>':'')+'</span>'
-        + (it.lv?'<span class="lv">'+esc(it.lv)+'</span>':'')
-        + (it.tag?'<span class="badge2">'+esc(it.tag)+'</span>':'')+'</li>';
+        + (it.lv?'<span class="lv">'+esc(it.lv)+'</span>':'')+'</li>';
     }
     html += '</ul></details>';
   }
   drawer.innerHTML = html;
 
-  const toggle = o => { drawer.classList.toggle('open',o); scrim.classList.toggle('open',o); };
+  const toggle = o => {
+    drawer.classList.toggle('open',o); scrim.classList.toggle('open',o);
+    if(o){ // bring the current problem into view
+      const cur = drawer.querySelector('.pitem.on');
+      if(cur) cur.scrollIntoView({block:'center'});
+    }
+  };
   btn.addEventListener('click', () => toggle(!drawer.classList.contains('open')));
   scrim.addEventListener('click', () => toggle(false));
   drawer.querySelectorAll('.pitem').forEach(it => it.addEventListener('click', () => {
@@ -433,8 +460,8 @@ $('#tcRun').addEventListener('click', () => {
       const isBackend = backend || (tag && tag.textContent==='backend');
       pResult.innerHTML = '<div class="verdict mut">🔒 '+esc(it.querySelector('.nm').textContent)+' — '
         + (isBackend
-            ? 'needs a backend runner (GC / -race unsupported in wasm).<br>start it with: <code>go run ./site/cmd/localrunner</code>'
-            : 'coming soon in this POC.')+'</div>';
+            ? 'needs the local runner (real <code>go test</code>).<br>start it with: <code>make dev</code>'
+            : 'coming soon.')+'</div>';
       toggle(false); return;
     }
     drawer.querySelectorAll('.pitem').forEach(x => x.classList.remove('on'));
@@ -444,6 +471,7 @@ $('#tcRun').addEventListener('click', () => {
     loadProblem(window.PROBLEMS[id]);
     toggle(false);
   }));
+  refreshDrawerSolved();   // mark already-solved puzzles from stored progress
 })();
 
 /* ---- init ---- */
@@ -456,7 +484,8 @@ loadProblem(CUR);
 // solved set from SQLite so the "submitted" state survives reloads / browsers.
 document.addEventListener('gw-runner', e => {
   if(!(e.detail && e.detail.connected)) return;
-  runEl.disabled = false; subEl.disabled = false;
+  if (typeof gwRenderRunButtons === 'function') gwRenderRunButtons();
+  else { runEl.disabled = false; subEl.disabled = false; }
   if(typeof gwLocalSolved === 'function'){
     gwLocalSolved().then(ids => {
       if(!ids || !ids.length){ syncSolvedBadge(); return; }
@@ -466,13 +495,9 @@ document.addEventListener('gw-runner', e => {
       if(CUR && isSolved(CUR.id) && /run your code/.test(pResult.innerHTML)){
         pResult.innerHTML = '<div class="verdict ok">✓ submitted — solved earlier. Run again anytime.</div>';
       }
-      document.querySelectorAll('#drawer .pitem').forEach(it => {
-        if(isSolved(it.dataset.id)){ it.classList.add('done'); const st=it.querySelector('.st'); if(st) st.textContent='✓'; }
-      });
+      refreshDrawerSolved();
     });
   }
-  // The initial loadProblem ran before the runner was up — restore saved code now.
-  restoreSaved(CUR);
 });
 boot();
 

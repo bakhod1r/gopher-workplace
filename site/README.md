@@ -1,116 +1,91 @@
 # Gopher Workplace — Site
 
-In-browser Go challenge runner. Pure static: Go code is interpreted client-side
-via [yaegi](https://github.com/traefik/yaegi) compiled to WebAssembly — no
-server, no backend.
+The web UI for the puzzles: pick one from the sidebar, edit in-page, run the
+real test suite. There is no in-browser interpreter — every Run and Submit is
+executed by [`cmd/localrunner`](cmd/localrunner), a small localhost server that
+drives the genuine Go toolchain. That is what makes `-race`, GC/finalizer
+timing, and benchmarks work at all.
+
+The runner also serves this directory, so the page and the API share one origin.
+From the repo root:
+
+```bash
+make dev          # http://localhost:7070
+```
 
 ## Structure
 
 ```
 site/
-├── runner/                     # Go — the wasm runner (its own module)
-│   ├── go.mod
-│   ├── runner.go               # yaegi interpret + suite/custom runners
-│   └── cmd/
-│       ├── wasm/main.go        # js/wasm bridge: gopherRunDedupe, ...Custom
-│       └── prove/main.go       # native sanity harness
-├── web/                        # static frontend (deploy this dir)
-│   ├── index.html
+├── cmd/
+│   ├── localrunner/            # Go — the backend (its own module)
+│   │   ├── main.go             # config, routes, CORS, static file serving
+│   │   ├── run.go              # materialize a puzzle, go test, parse -json
+│   │   ├── tools.go            # /vet, /fmt, /history
+│   │   ├── limit.go            # concurrency cap for toolchain work
+│   │   └── store.go            # SQLite: submissions, solved set, retention
+│   └── gencatalog/             # Go — generates web/assets/js/problems.js
+├── web/                        # the frontend (served by the runner)
+│   ├── index.html  playground.html  problemset.html  roadmap.html
 │   └── assets/
 │       ├── css/styles.css      # themes + layout
-│       ├── js/
-│       │   ├── problems.js     # problem catalog (data-driven)
-│       │   ├── app.js          # editor, run/submit, custom test, drawer
-│       │   └── wasm_exec.js    # Go wasm glue (copied from GOROOT)
-│       └── wasm/
-│           ├── gopher.wasm     # built runner (~38M, gz ~8M)
-│           └── gopher.wasm.gz
+│       └── js/
+│           ├── problems.js     # GENERATED catalog — do not edit by hand
+│           ├── app.js          # editor, run/submit, custom test, drawer
+│           └── localrunner.js  # backend bridge: /health probe, /run, /solved
+├── server/                     # optional standalone static file server
 └── scripts/
-    ├── build.sh                # build wasm + stage assets
-    └── serve.sh                # local static server
+    ├── build.sh                # regenerate problems.js (wraps gencatalog)
+    └── serve.sh                # static-only server, no backend (Python)
 ```
 
 ## Develop
 
 ```bash
-./scripts/build.sh            # rebuild wasm into web/assets/
-./scripts/serve.sh 8145       # quick python static server (no gzip)
-./scripts/serve-prod.sh 8080  # Go server: gzip-serves wasm (~8M on the wire)
+make dev                  # from the repo root: runner + UI on :7070
+make catalog              # regenerate problems.js after adding/editing a puzzle
+make site-test            # vet + test the runner and the generator
+
+./scripts/serve.sh 8145   # static files only, no backend (frontend work)
 ```
 
-## Deploy (real site)
+`problems.js` is generated from the `challenges/` tree — edit the puzzle's
+`README.md` and starter file, then re-run `make catalog`. CI fails if the
+committed catalog is stale.
 
-The site is fully static — deploy the `web/` directory anywhere. The wasm is
-large, so **serve it gzipped**.
+## Backend API
 
-- **Own box / container:** run `server/` (Go, stdlib only). It serves `web/`,
-  sets `application/wasm`, and streams `gopher.wasm.gz` with
-  `Content-Encoding: gzip` when the client accepts it (40M → ~8M).
-  ```bash
-  cd site && ./scripts/build.sh && ./scripts/serve-prod.sh 8080
-  ```
-- **Netlify / Cloudflare Pages:** `netlify.toml` builds via `scripts/build.sh`
-  and publishes `web/`; `web/_headers` sets wasm MIME + cache. These hosts
-  gzip/brotli automatically.
-- **GitHub Pages / plain CDN:** upload `web/`. Ensure the host sends
-  `Content-Type: application/wasm` and gzip; otherwise the 40M raw file is
-  downloaded uncompressed.
+All endpoints are on the runner's port; anything not matching is served from
+`web/`.
 
-## Local runner (full fidelity)
+| Endpoint | Purpose |
+|----------|---------|
+| `GET /health` | liveness probe; the nav badge is driven by this |
+| `POST /run` | `{challengeId, src \| files, submit}` → Report JSON |
+| `POST /vet` | same body, runs `go vet` |
+| `POST /fmt` | `{src}` → gofmt'd source |
+| `GET /solved` | challenge ids with at least one accepted Submit |
+| `GET /history?challengeId=` | recent submissions |
 
-The wasm interpreter can't do `go test -race`, GC/finalizer timing, or
-benchmarks, so senior/staff puzzles (e.g. `leak`, `collect`) are locked in the
-pure-static site. Start the **optional local runner** — a small stdlib HTTP
-server that drives the *real* Go toolchain — and the site unlocks every level.
+A Submit only counts as solved when it passes **and** is warning-free — guard
+tests emit `WARN:` lines for hardcoded answers, and non-gofmt-clean code is
+flagged the same way.
 
-```bash
-go run ./site/cmd/localrunner          # serves :7070, auto-finds challenges/
-go run ./site/cmd/localrunner -port 9090
-GW_RUNNER_PORT=9090 GW_ROOT=/path/to/repo go run ./site/cmd/localrunner
-```
+**Persistence:** SQLite at `~/.gopher-workplace/runner.db` (`-db`/`GW_DB`),
+30-day retention, swept on startup and hourly. The driver is
+`modernc.org/sqlite` (pure Go, no cgo) — the one dependency outside stdlib.
 
-Run it from the repo root (it walks up to find `challenges/`). The browser
-probes `GET /health` on load; when it answers, a `● local runner` badge appears
-in the nav and **every** Run/Submit routes to it (real `go test`, `-race` added
-automatically for concurrency puzzles). When it's absent, the site falls back to
-wasm (junior/middle) and shows a “start it with: `go run ./site/cmd/localrunner`”
-hint on locked puzzles. The Report JSON shape is unchanged, so results render
-identically either way.
+**Security:** the runner executes arbitrary Go code as you. It binds `127.0.0.1`,
+refuses cross-origin browser requests, caps concurrent runs, and kills a run's
+whole process group after 20s. It is **not** a sandbox — see the [security
+note](../README.md#security-note) in the root README.
 
-**What it unlocks:** senior/staff levels, `-race`, GC/finalizer/`SetFinalizer`
-tests, benchmarks — the real `make verify` per challenge.
+## Add a puzzle
 
-**Endpoints:** `GET /health`, `POST /run` (`{challengeId, src}` or
-`{challengeId, files}`), `POST /vet`, `POST /fmt`, `GET /history?challengeId=`.
-
-**Persistence:** submissions are stored in SQLite (`~/.gopher-workplace/runner.db`,
-override with `-db`/`GW_DB`) and kept **30 days** (swept on startup + hourly).
-The db driver is `modernc.org/sqlite` (pure Go, no cgo) — the one dependency
-outside stdlib, contained to this module.
-
-**Security — it runs arbitrary user Go code on your machine:**
-- **localhost only** — never expose the port to untrusted networks.
-- Each request runs in a throwaway `os.MkdirTemp` module, deleted after.
-- 20s context timeout; the whole process group is `SIGKILL`ed on expiry (an
-  infinite-loop submission is killed, not hung).
-- Network disabled (`GOPROXY=off`, `GOSUMDB=off`); isolated `GOCACHE`/`GOPATH`.
-- Paths are validated to stay inside `challenges/` (no traversal).
-
-## Add a puzzle (pure-Go only)
-
-1. Add suite/custom runner funcs in `runner/runner.go` and expose them in
-   `runner/cmd/wasm/main.go`.
-2. Add an entry to `window.PROBLEMS` and `window.CATALOG` in
-   `web/assets/js/problems.js` (title, starter, description, runner fn names).
-3. `./scripts/build.sh`.
-
-## Limits
-
-- yaegi interprets pure Go, no cgo. Junior/middle slice puzzles work.
-- Senior (`runtime.SetFinalizer`/GC timing) and staff (`-race`) are **not**
-  supported by the interpreter — start the [Local runner](#local-runner-full-fidelity)
-  to unlock them with the real toolchain.
-- `gopher.wasm` is large; host with `Content-Encoding: gzip` (serve the `.gz`).
+Author it under `challenges/` (see
+[challenges/GENERATION.md](../challenges/GENERATION.md)), then `make catalog`.
+Nothing in `site/` needs editing: the sidebar, description, starter code, and
+level all come from the puzzle's files.
 
 ## Themes
 

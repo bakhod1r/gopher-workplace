@@ -17,3 +17,4 @@ COVERED.txt
 # OS / editor cruft
 .DS_Store
 *.swp
+cover.out

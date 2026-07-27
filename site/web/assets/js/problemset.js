@@ -23,16 +23,16 @@
     empty: document.getElementById('psEmpty'),
     search: document.getElementById('psSearch'),
     level: document.getElementById('psLevel'),
-    topic: document.getElementById('psTopic'),
+    tag: document.getElementById('psTag'),
     status: document.getElementById('psStatus'),
     reset: document.getElementById('psReset'),
     stats: document.getElementById('psStats'),
   };
 
-  // topic filter options
-  [...new Set(ROWS.map(r => r.topic))].forEach(t => {
+  // tag filter options (the subtopic shown in the Tags column), sorted
+  [...new Set(ROWS.map(r => r.sub).filter(Boolean))].sort().forEach(t => {
     const o = document.createElement('option'); o.value = t; o.textContent = t;
-    els.topic.appendChild(o);
+    els.tag.appendChild(o);
   });
 
   function statusCell(s){
@@ -48,8 +48,7 @@
     const title = clickable
       ? '<a class="ti-link" href="'+esc(href)+'">'+r.num+'. '+esc(r.name)+'</a>'
       : '<span class="ti-link locked">'+r.num+'. '+esc(r.name)+'</span>';
-    const tags = (r.sub ? '<span class="tg">'+esc(r.sub)+'</span>' : '')
-               + (r.tag ? '<span class="tg soon">'+esc(r.tag)+'</span>' : '');
+    const tags = (r.sub ? '<span class="tg">'+esc(r.sub)+'</span>' : '');
     return '<tr class="'+s+'">'
       + '<td class="c-st">'+statusCell(s)+'</td>'
       + '<td class="c-ti">'+title+'</td>'
@@ -61,10 +60,10 @@
 
   function apply(){
     const q = els.search.value.trim().toLowerCase();
-    const lv = els.level.value, tp = els.topic.value, st = els.status.value;
+    const lv = els.level.value, st = els.status.value, tg = els.tag.value;
     const rows = ROWS.filter(r => {
       if(lv && r.lv !== lv) return false;
-      if(tp && r.topic !== tp) return false;
+      if(tg && r.sub !== tg) return false;
       if(st && statusOf(r) !== st) return false;
       if(q && !((r.name+' '+r.sub+' '+r.topic).toLowerCase().includes(q))) return false;
       return true;
@@ -84,9 +83,9 @@
   }
 
   els.search.addEventListener('input', apply);
-  [els.level, els.topic, els.status].forEach(e => e.addEventListener('change', apply));
+  [els.level, els.tag, els.status].forEach(e => e.addEventListener('change', apply));
   els.reset.addEventListener('click', () => {
-    els.search.value=''; els.level.value=''; els.topic.value=''; els.status.value=''; apply();
+    els.search.value=''; els.level.value=''; els.tag.value=''; els.status.value=''; apply();
   });
 
   renderStats();

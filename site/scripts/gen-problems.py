@@ -23,12 +23,7 @@ RUNNERS = {}
 LEVELS = ["junior", "middle", "senior", "staff"]
 
 # Puzzles hidden from the site (files kept on disk, just not published).
-EXCLUDE = {
-    os.path.join("junior", "01-language-basics", "03-composite-types", "dedupe"),
-    os.path.join("junior", "01-language-basics", "03-composite-types", "chunk"),
-    os.path.join("junior", "01-language-basics", "03-composite-types", "leak"),
-    os.path.join("junior", "01-language-basics", "03-composite-types", "collect"),
-}
+EXCLUDE = set()
 
 
 def find_puzzles():

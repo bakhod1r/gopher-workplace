@@ -1,0 +1,16 @@
+// Package reverse — Gopher Workplace challenge.
+//
+// DEBUG MODE: this version compiles and looks right, but ships one planted bug.
+// Find it between the CHANGE CODE markers and fix it so all tests pass.
+package reverse
+
+func Reverse(nums []int) {
+	// CHANGE CODE BELOW THIS LINE
+
+	for i := 0; i < len(nums); i++ {
+
+		// CHANGE CODE ABOVE THIS LINE
+		j := len(nums) - 1 - i
+		nums[i], nums[j] = nums[j], nums[i]
+	}
+}

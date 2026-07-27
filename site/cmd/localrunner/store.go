@@ -16,8 +16,12 @@ type store struct {
 	db *sql.DB
 }
 
+// sqlOpen is a seam: the sqlite driver opens lazily and never fails here, but
+// the error path is still handled, and tests exercise it through this var.
+var sqlOpen = sql.Open
+
 func openStore(path string) (*store, error) {
-	db, err := sql.Open("sqlite", path)
+	db, err := sqlOpen("sqlite", path)
 	if err != nil {
 		return nil, err
 	}
@@ -40,14 +44,19 @@ func openStore(path string) (*store, error) {
 		db.Close()
 		return nil, err
 	}
-	// Migrate older DBs that predate the submitted column (ignore "duplicate
-	// column" on already-migrated DBs).
+	migrateSubmitted(db)
+	return &store{db: db}, nil
+}
+
+// migrateSubmitted adds the submitted column to DBs that predate it. Already
+// migrated is the normal case and stays quiet; anything else is worth a line in
+// the log, but never fatal — the column only gates the solved set.
+func migrateSubmitted(db *sql.DB) {
 	if _, err := db.Exec(`ALTER TABLE submissions ADD COLUMN submitted INTEGER NOT NULL DEFAULT 0`); err != nil {
 		if !strings.Contains(err.Error(), "duplicate column") {
 			log.Printf("migrate submitted column: %v", err)
 		}
 	}
-	return &store{db: db}, nil
 }
 
 func (s *store) close() {
@@ -124,11 +133,15 @@ func (s *store) history(challengeID string, limit int) ([]historyRow, error) {
 	return out, rows.Err()
 }
 
+// sweepInterval is how often retention runs after the startup sweep. A var so
+// tests can drive the ticker without waiting an hour.
+var sweepInterval = time.Hour
+
 // startRetention sweeps rows older than window at startup and hourly thereafter.
 func (s *store) startRetention(window time.Duration) {
 	s.sweep(window)
 	go func() {
-		t := time.NewTicker(time.Hour)
+		t := time.NewTicker(sweepInterval)
 		defer t.Stop()
 		for range t.C {
 			s.sweep(window)

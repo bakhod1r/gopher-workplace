@@ -1,0 +1,22 @@
+// Package cascade — Gopher Workplace challenge.
+//
+// DEBUG MODE: this version compiles and looks right, but ships one planted bug.
+// Find it between the CHANGE CODE markers and fix it so all tests pass.
+package cascade
+
+func Access(level int) string {
+	perms := ""
+	switch level {
+	case 3:
+		perms += "admin,"
+		// CHANGE CODE BELOW THIS LINE
+
+		// CHANGE CODE ABOVE THIS LINE
+	case 2:
+		perms += "write,"
+		fallthrough
+	case 1:
+		perms += "read"
+	}
+	return perms
+}

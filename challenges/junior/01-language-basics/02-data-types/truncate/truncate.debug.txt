@@ -1,0 +1,13 @@
+// Package truncate — Gopher Workplace challenge.
+//
+// DEBUG MODE: this version compiles and looks right, but ships one planted bug.
+// Find it between the CHANGE CODE markers and fix it so all tests pass.
+package truncate
+
+func WholePart(amount float64) int {
+	// CHANGE CODE BELOW THIS LINE
+
+	return int(amount + 0.5)
+
+	// CHANGE CODE ABOVE THIS LINE
+}
