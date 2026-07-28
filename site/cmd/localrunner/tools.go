@@ -12,11 +12,14 @@ import (
 	"os/exec"
 	"strings"
 	"syscall"
+
+	"golang.org/x/tools/imports"
 )
 
-// handleFmt mirrors the UI Format button. It formats the submitted source with
-// go/format (gofmt) and returns {ok, source, error} — the same shape the wasm
-// window.gopherFormat returns.
+// handleFmt mirrors the UI Format button. It formats the submitted source the
+// way goimports does — gofmt plus import fixing, so writing fmt.Println and
+// hitting Format adds the "fmt" import (and drops unused ones) — and returns
+// {ok, source, error}.
 func (s *server) handleFmt(w http.ResponseWriter, r *http.Request) {
 	var body struct {
 		Src string `json:"src"`
@@ -25,8 +28,19 @@ func (s *server) handleFmt(w http.ResponseWriter, r *http.Request) {
 		writeJSON(w, map[string]any{"ok": false, "error": err.Error()})
 		return
 	}
-	out, err := format.Source([]byte(body.Src))
+	out, err := imports.Process("main.go", []byte(body.Src), &imports.Options{
+		Comments:   true,
+		TabIndent:  true,
+		TabWidth:   8,
+		FormatOnly: false,
+	})
 	if err != nil {
+		// Import resolution can fail on packages that are not in the module
+		// cache; plain gofmt still beats returning nothing.
+		if plain, ferr := format.Source([]byte(body.Src)); ferr == nil {
+			writeJSON(w, map[string]any{"ok": true, "source": string(plain)})
+			return
+		}
 		writeJSON(w, map[string]any{"ok": false, "error": err.Error()})
 		return
 	}

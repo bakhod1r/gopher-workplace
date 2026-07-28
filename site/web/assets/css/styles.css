@@ -96,11 +96,9 @@ body.ed-full .edwrap{flex:1;}
 .case.pass .t{color:var(--grn);} .case.fail .t{color:var(--red);}
 .case .n{flex:1;} .case .gw{color:var(--mut);}
 .cerr{color:var(--red);white-space:pre-wrap;font-size:12px;}
-.tcrow{display:flex;flex-direction:column;gap:6px;}
-.tclabel{color:var(--mut);font-size:11px;}
-#tcInput{background:var(--panel);border:1px solid var(--bd);border-radius:4px;color:var(--grn);padding:8px 10px;font:inherit;outline:none;caret-color:var(--grn);}
-#tcInput:focus{box-shadow:var(--glow);}
-.tcout{margin-top:12px;} .tcout .k{color:var(--mut);} .tcout .v{color:var(--grn);}
+/* program output is not an error: neutral colour, scrollable, monospace */
+.cerr.out{color:var(--fg,inherit);margin:0;max-height:100%;overflow:auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+.console .tab.has::after{content:"•";margin-left:.35em;color:var(--green,#16a34a);}
 table.subs{width:100%;border-collapse:collapse;font-size:12px;}
 table.subs th{text-align:left;color:var(--mut);font-weight:600;padding:6px 8px;border-bottom:1px solid var(--bd);}
 table.subs td{padding:6px 8px;border-bottom:1px solid var(--bd);}

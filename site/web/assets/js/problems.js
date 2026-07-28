@@ -1558,7 +1558,7 @@ window.PROBLEMS = {
   "01-language-basics/03-composite-types/junior/checkoutgrid": {
     "id": "01-language-basics/03-composite-types/junior/checkoutgrid",
     "title": "checkoutgrid \u2014 Seating Grid Marker",
-    "level": "01-language-basics",
+    "level": "junior",
     "tag": "backend",
     "description": "<div class=\"p-head\"><h1 class=\"p-title\">checkoutgrid \u2014 Seating Grid Marker</h1><div class=\"p-meta\"></div></div><h2>Context</h2>\n<p>You are building a simple seat-hold service for a small theater. The seating arrangement is fixed: 7 rows (0\u20136) by 10 columns (0\u20139). When customers hold seats, you record them as a list of <code>{row, column}</code> coordinates. Your task is to mark those seats on a grid so customers can see which seats are taken.</p>\n<h2>Task</h2>\n<p>Implement <code>func SeatMap(taken [][2]int) [7][10]bool</code> to return a seating grid where:</p>\n<ul>\n<li>Each <code>true</code> value marks a taken seat</li>\n<li>Each <code>false</code> value marks an empty seat</li>\n<li>Coordinates outside the valid range <code>[0,7)\u00d7[0,10)</code> are ignored</li>\n<li>Do not modify the function signature or tests</li>\n</ul>\n<h2>Examples</h2>\n<p><strong>Example 1: Single taken seat</strong></p>\n<pre class=\"md\"><code>\nSeatMap([][2]int{{0, 0}})\n// Returns a 7\u00d710 grid with only [0][0] = true\n</code></pre>\n<p><strong>Example 2: Multiple taken seats</strong></p>\n<pre class=\"md\"><code>\nSeatMap([][2]int{{1, 2}, {6, 9}})\n// Returns a 7\u00d710 grid with [1][2] = true and [6][9] = true\n</code></pre>\n<p><strong>Example 3: Out-of-range coordinates are ignored</strong></p>\n<pre class=\"md\"><code>\nSeatMap([][2]int{{7, 0}, {0, 10}, {-1, 0}})\n// Row 7 is out of range (rows are 0\u20136), column 10 is out of range (columns are 0\u20139),\n// and row -1 is negative. All are ignored; returns all-false grid.\n</code></pre>\n<p><strong>Example 4: Empty list</strong></p>\n<pre class=\"md\"><code>\nSeatMap(nil)\n// Returns a 7\u00d710 grid with all seats false\n</code></pre>\n<details class=\"topics-foot\"><summary class=\"topics-lbl\">Topics <span class=\"topics-n\">5</span></summary><div class=\"tchips\"><span class=\"tchip\">Array value types:</span><span class=\"tchip\">Fixed-size arrays vs. slices:</span><span class=\"tchip\">Zero value of arrays:</span><span class=\"tchip\">Bounds checking:</span><span class=\"tchip\">Indexing:</span></div></details>",
     "education": "<h1>2-D grids</h1>\n<h2>The idea</h2>\n<p>A 2-D structure is a slice of slices, <code>[][]T</code>, indexed <code>grid[row][col]</code> in</p>\n<p>row-major order. Rows can be independent (and even ragged):</p>\n<pre class=\"md\"><code>\nfor r := range grid { for c := range grid[r] { use(grid[r][c]) } }\n</code></pre>\n<h2>Why it matters</h2>\n<p>Boards, matrices, and tables are modeled this way. Each row is a separate slice,</p>\n<p>so constructing a grid means allocating each row (a shared row is a classic bug).</p>\n<h2>Watch out</h2>\n<ul>\n<li>Allocate each row with its own <code>make</code>; assigning one row to all aliases them.</li>\n<li><code>grid[row][col]</code> \u2014 outer is row, inner is column.</li>\n<li>Ragged rows are allowed; don't assume a fixed width.</li>\n</ul>",
@@ -3790,8 +3790,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/junior/byteunits",
         "name": "Byte Units",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -3799,8 +3799,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/junior/discard",
         "name": "Discarded Remainder",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -3808,8 +3808,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/junior/endpoint",
         "name": "Derived Endpoint",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -3817,8 +3817,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/junior/plan-limits",
         "name": "Plan Rate Limits",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -3826,8 +3826,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/junior/retries",
         "name": "Retry Budget",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -3835,8 +3835,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/junior/shadow",
         "name": "Shadowed Tally",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -3844,8 +3844,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/junior/swap",
         "name": "Value Swap",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -3853,8 +3853,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/junior/temperature",
         "name": "Temperature Convert",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -3862,8 +3862,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/junior/typedconst",
         "name": "Typed Batch Limit",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -3871,8 +3871,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/junior/zerovalues",
         "name": "Zero Value Config",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -3880,8 +3880,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/middle/byte-shift",
         "name": "Binary Byte Units",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -3889,8 +3889,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/middle/clamp",
         "name": "Clamp to Range",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -3898,8 +3898,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/middle/frame-budget",
         "name": "Frame Budget",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -3907,8 +3907,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/middle/int-limits",
         "name": "Integer Limits",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -3916,8 +3916,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/middle/iota-perms",
         "name": "Permission Bits",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -3925,8 +3925,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/middle/pi-precision",
         "name": "High-Precision Pi",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -3934,8 +3934,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/middle/revoke",
         "name": "Revoke Permissions",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -3943,8 +3943,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/middle/score-tiers",
         "name": "Score Tiers",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -3952,8 +3952,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/middle/temp-scale",
         "name": "Typed Temperature Constants",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -3961,8 +3961,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/middle/weekday-iota",
         "name": "Weekday Enum",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -3970,8 +3970,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/senior/iota-offset",
         "name": "Off-By-One iota Flags",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -3979,8 +3979,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/senior/kb-shift",
         "name": "Byte-Scale Shift",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -3988,8 +3988,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/senior/maxint-signbit",
         "name": "Max Int Sign Bit",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -3997,8 +3997,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/senior/percent-order",
         "name": "Integer Percent Order",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4006,8 +4006,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/senior/revoke-xor",
         "name": "XOR vs AND-NOT",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4015,8 +4015,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/senior/rgb-pack",
         "name": "RGB Bit Packing",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4024,8 +4024,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/senior/status-zero",
         "name": "Zero-Value Enum Trap",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4033,8 +4033,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/senior/sum-shadow",
         "name": "Shadowed Accumulator",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4042,8 +4042,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/senior/tier-threshold",
         "name": "Tier Threshold Off-By-One",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4051,8 +4051,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/senior/uint-underflow",
         "name": "Unsigned Underflow",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4060,8 +4060,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/staff/abs-minint",
         "name": "Abs of the Most-Negative",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4069,8 +4069,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/staff/fixed-cents",
         "name": "Fixed-Point Conversion Order",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4078,8 +4078,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/staff/float32-precision",
         "name": "Float Width & Precision",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4087,8 +4087,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/staff/hex-byte",
         "name": "Byte Extraction Stride",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4096,8 +4096,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/staff/iota-reset",
         "name": "iota Sequence Break",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4105,8 +4105,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/staff/kib-scale",
         "name": "Kibi vs Kilo",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4114,8 +4114,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/staff/minint-shift",
         "name": "MinInt Signed Shift",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4123,8 +4123,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/staff/overflow-mul",
         "name": "Widen Before Multiply",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4132,8 +4132,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/staff/signbit-mask",
         "name": "Sign Bit Mask",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4141,8 +4141,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/01-variables-and-constants/staff/untyped-ratio",
         "name": "Untyped Constant Division",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Variables And Constants",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4155,8 +4155,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/almostequal",
         "name": "Float Almost-Equal",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4164,8 +4164,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/average",
         "name": "Average",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4173,8 +4173,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/bytecat",
         "name": "Strings and Bytes",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4182,8 +4182,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/c2f",
         "name": "Celsius to Fahrenheit",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4191,8 +4191,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/checksum",
         "name": "Checksum",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4200,8 +4200,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/clockmod",
         "name": "24-Hour Clock",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4209,8 +4209,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/complexabs",
         "name": "Complex Magnitude",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4218,8 +4218,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/escapes",
         "name": "Escape Sequences",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4227,8 +4227,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/evenodd",
         "name": "Integer Parity",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4236,8 +4236,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/firstrune",
         "name": "First Rune",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4245,8 +4245,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/hexdigit",
         "name": "Hex Digit",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4254,8 +4254,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/majority",
         "name": "Boolean Majority",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4263,8 +4263,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/nancheck",
         "name": "Finite Float Check",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4272,8 +4272,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/narrowing",
         "name": "Narrowing Conversion",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4281,8 +4281,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/quote",
         "name": "Quote a String",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4290,8 +4290,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/rawpath",
         "name": "Raw String Path",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4299,8 +4299,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/round2",
         "name": "Round to Decimals",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4308,8 +4308,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/runecount",
         "name": "Rune Count",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4317,8 +4317,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/truncate",
         "name": "Truncate Float",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4326,8 +4326,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/junior/vowelcount",
         "name": "Vowel Count",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4335,8 +4335,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/atoi",
         "name": "Manual Atoi",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4344,8 +4344,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/baseconv",
         "name": "Base Conversion",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4353,8 +4353,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/caesar",
         "name": "Caesar Cipher",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4362,8 +4362,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/clamp01",
         "name": "Saturate to [0,1]",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4371,8 +4371,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/csvfield",
         "name": "CSV Field Quoting",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4380,8 +4380,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/epsiloneq",
         "name": "Float Tolerance Equality",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4389,8 +4389,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/gcd",
         "name": "Greatest Common Divisor",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4398,8 +4398,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/hexencode",
         "name": "Hex Encode",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4407,8 +4407,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/itoa",
         "name": "Manual Itoa",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4416,8 +4416,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/lerp",
         "name": "Linear Interpolation",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4425,8 +4425,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/luhn",
         "name": "Luhn Checksum",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4434,8 +4434,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/moneyparse",
         "name": "Parse Money to Cents",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4443,8 +4443,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/parsehex",
         "name": "Parse Hex",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4452,8 +4452,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/popcount",
         "name": "Population Count",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4461,8 +4461,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/reverserunes",
         "name": "Reverse by Runes",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4470,8 +4470,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/rotate",
         "name": "Circular Bit Rotation",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4479,8 +4479,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/semverparse",
         "name": "Semver Parse",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4488,8 +4488,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/slugify",
         "name": "URL Slug",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4497,8 +4497,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/titlecase",
         "name": "Title Case",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4506,8 +4506,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/middle/utf8truncate",
         "name": "Byte-Safe Truncate",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -4515,8 +4515,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/clampbyte",
         "name": "Saturating Pixel Clamp",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4524,8 +4524,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/countwords",
         "name": "Robust Word Count",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4533,8 +4533,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/csvsplit",
         "name": "Quoted CSV Split",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4542,8 +4542,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/durationparse",
         "name": "Duration Minutes",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4551,8 +4551,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/fletcher16",
         "name": "Fletcher-16 Modulus",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4560,8 +4560,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/hexdecode",
         "name": "Hex Nibble Order",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4569,8 +4569,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/ipv4parse",
         "name": "IPv4 Octet Range",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4578,8 +4578,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/jsonescape",
         "name": "JSON String Escaping",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4587,8 +4587,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/maskcard",
         "name": "Mask All But Last 4",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4596,8 +4596,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/normspaces",
         "name": "Normalize Whitespace",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4605,8 +4605,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/ordinal",
         "name": "English Ordinals",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4614,8 +4614,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/padleft",
         "name": "Left Pad",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4623,8 +4623,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/parsebool",
         "name": "Config Bool Parsing",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4632,8 +4632,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/runeat",
         "name": "Rune Index Bounds",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4641,8 +4641,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/runewidth",
         "name": "First Rune Byte Width",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4650,8 +4650,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/splitlines",
         "name": "CRLF-Safe Line Split",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4659,8 +4659,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/tolowerascii",
         "name": "ASCII Lowercase Range",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4668,8 +4668,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/senior/wordwrap",
         "name": "Word Wrap Width",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -4677,8 +4677,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/staff/bankround",
         "name": "Banker's Rounding",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4686,8 +4686,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/staff/base64val",
         "name": "Base64 Digit Offset",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4695,8 +4695,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/staff/checkedadd",
         "name": "Checked Int64 Addition",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4704,8 +4704,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/staff/endianswap",
         "name": "Byte-Order Swap",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4713,8 +4713,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/staff/floatbits",
         "name": "Float64 Exponent Bias",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4722,8 +4722,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/staff/fnv1a",
         "name": "FNV-1a Hash Order",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4731,8 +4731,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/staff/graycode",
         "name": "Gray Code Encoding",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4740,8 +4740,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/staff/parity",
         "name": "Parity Bit",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4749,8 +4749,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/staff/rune2decode",
         "name": "Decode 2-Byte UTF-8",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4758,8 +4758,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/staff/utf8count",
         "name": "Rune Count by Lead Bytes",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4767,8 +4767,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/staff/utf8valid",
         "name": "UTF-8 Lead Byte Mask",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4776,8 +4776,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/02-data-types/staff/varint",
         "name": "LEB128 Varint Shift",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Data Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -4790,8 +4790,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/arrayval",
         "name": "Array Value Semantics",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4799,17 +4799,17 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/checkoutgrid",
         "name": "checkoutgrid \u2014 Seating Grid Marker",
-        "sub": "Junior",
-        "lv": "0",
-        "level": "01-language-basics",
+        "sub": "Composite Types",
+        "lv": "J",
+        "level": "junior",
         "locked": false,
         "tag": "backend"
       },
       {
         "id": "01-language-basics/03-composite-types/junior/concat",
         "name": "Concatenate Slices",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4817,8 +4817,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/contains",
         "name": "Slice Contains",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4826,8 +4826,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/copyslice",
         "name": "Independent Slice Copy",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4835,8 +4835,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/counter",
         "name": "Frequency Counter",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4844,8 +4844,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/dedupe",
         "name": "Slice Dedupe",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4853,8 +4853,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/filterpos",
         "name": "Filter Positives",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4862,8 +4862,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/flatten",
         "name": "Flatten a Grid",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4871,8 +4871,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/getdefault",
         "name": "Map Get With Default",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4880,8 +4880,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/gradebook",
         "name": "Gradebook Averages",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4889,8 +4889,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/invert",
         "name": "Invert a Map",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4898,8 +4898,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/keys",
         "name": "Sorted Map Keys",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4907,8 +4907,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/lastn",
         "name": "Last N Elements",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4916,8 +4916,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/lookup",
         "name": "Map Comma-Ok",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4925,8 +4925,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/mapmerge",
         "name": "Merge Maps",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4934,8 +4934,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/minmax",
         "name": "Min and Max",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4943,8 +4943,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/point",
         "name": "Struct Point",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4952,8 +4952,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/rectarea",
         "name": "Rectangle Struct",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4961,8 +4961,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/removeindex",
         "name": "Remove by Index",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4970,8 +4970,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/reverse",
         "name": "Reverse In Place",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4979,8 +4979,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/rowsum",
         "name": "Row Sums",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4988,8 +4988,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/structsum",
         "name": "Order Total",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -4997,8 +4997,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/structupdate",
         "name": "Mutate via Pointer Receiver",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5006,8 +5006,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/subslice",
         "name": "Slice Copy Independence",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5015,8 +5015,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/sumints",
         "name": "Sum a Slice",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5024,8 +5024,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/uniquecount",
         "name": "Count Distinct",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5033,8 +5033,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/junior/wordfreq",
         "name": "Word Frequency",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5042,8 +5042,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/anagramgroup",
         "name": "Count Anagram Groups",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5051,8 +5051,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/chunk",
         "name": "Chunk a Slice",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5060,8 +5060,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/dedupesorted",
         "name": "Dedupe Consecutive",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5069,8 +5069,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/groupby",
         "name": "Group By First Letter",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5078,8 +5078,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/groupstructs",
         "name": "Total by Customer",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5087,8 +5087,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/histogram",
         "name": "Histogram Buckets",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5096,8 +5096,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/insertat",
         "name": "Insert at Index",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5105,8 +5105,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/joinmanual",
         "name": "Join with Separator",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5114,8 +5114,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/matmul",
         "name": "Matrix Multiply",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5123,8 +5123,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/mergesorted",
         "name": "Merge Sorted Slices",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5132,8 +5132,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/mostcommon",
         "name": "Mode (Most Common)",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5141,8 +5141,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/movezeros",
         "name": "Move Zeros",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5150,8 +5150,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/partition",
         "name": "Partition by Predicate",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5159,8 +5159,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/reverseinplace",
         "name": "Reverse In Place",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5168,8 +5168,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/rotate",
         "name": "Rotate a Slice",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5177,8 +5177,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/runlength",
         "name": "Run-Length Encode",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5186,8 +5186,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/setdiff",
         "name": "Set Difference",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5195,8 +5195,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/setintersect",
         "name": "Set Intersection",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5204,8 +5204,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/setunion",
         "name": "Set Union",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5213,8 +5213,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/sortstructs",
         "name": "Sort Structs by Field",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5222,8 +5222,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/splitmanual",
         "name": "Split by Byte",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5231,8 +5231,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/structfilter",
         "name": "Filter and Project",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5240,8 +5240,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/takewhile",
         "name": "Take While Positive",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5249,8 +5249,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/topk",
         "name": "Top K Frequent",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5258,8 +5258,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/transpose",
         "name": "Matrix Transpose",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5267,8 +5267,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/twosum",
         "name": "Two Sum",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5276,8 +5276,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/window",
         "name": "Sliding Window Sums",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5285,8 +5285,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/middle/zip",
         "name": "Zip to Map",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5294,8 +5294,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/appendcapshared",
         "name": "Append Clobbers via Shared Capacity",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5303,8 +5303,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/appendnotcaptured",
         "name": "append Result Ignored",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5312,8 +5312,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/arrayvalue",
         "name": "Arrays Are Values",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5321,8 +5321,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/commaokzero",
         "name": "Zero vs Missing",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5330,8 +5330,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/copyemptydst",
         "name": "copy Into a Length-0 Slice",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5339,8 +5339,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/deduporder",
         "name": "Dedupe Preserving Order",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5348,8 +5348,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/embeddingshadow",
         "name": "Embedded Field Shadowing",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5357,8 +5357,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/emptystructset",
         "name": "Set Membership Value",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5366,8 +5366,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/filterreuse",
         "name": "Filter Corrupts Input",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5375,8 +5375,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/grid2dalias",
         "name": "Shared Grid Rows",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5384,8 +5384,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/jsontag",
         "name": "JSON Tag Mismatch",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5393,8 +5393,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/mapstructupdate",
         "name": "Update Struct in Map",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5402,8 +5402,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/mergedirection",
         "name": "Merge Override Order",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5411,8 +5411,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/nestedmapinit",
         "name": "Initialize the Inner Map",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5420,8 +5420,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/nilmap",
         "name": "Nil Map Write",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5429,8 +5429,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/nilvsempty",
         "name": "Nil vs Empty Slice",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5438,8 +5438,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/preallocindex",
         "name": "Length vs Capacity for Indexing",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5447,8 +5447,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/rangecopymutate",
         "name": "Mutating the Range Copy",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5456,8 +5456,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/removeorder",
         "name": "Delete Off-By-One",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5465,8 +5465,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/shallowclone",
         "name": "Struct Copy Shares Slice",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5474,8 +5474,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/sliceequal",
         "name": "Slice Equality",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5483,8 +5483,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/sortmutates",
         "name": "Sort Mutates Caller",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5492,8 +5492,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/stackpop",
         "name": "Stack Pop Shrink",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5501,8 +5501,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/subsliceclamp",
         "name": "Clamp the Sub-slice End",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5510,8 +5510,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/twodshallow",
         "name": "Deep-Copy a Grid",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5519,8 +5519,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/senior/valuereceiver",
         "name": "Receiver Doesn't Mutate",
-        "sub": "Senior",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "S",
         "level": "senior",
         "locked": false,
         "tag": "backend"
@@ -5528,8 +5528,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/appendnilreturn",
         "name": "Append to Nil",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5537,8 +5537,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/appendtwobranch",
         "name": "Two Appends Share Capacity",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5546,8 +5546,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/bufconcat",
         "name": "Copy at the Right Offset",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5555,8 +5555,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/clipcap",
         "name": "Clip Capacity",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5564,8 +5564,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/copyshiftleft",
         "name": "copy Direction for Shift",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5573,8 +5573,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/gridcolsum",
         "name": "Column Sum Indexing",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5582,8 +5582,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/growthstale",
         "name": "Stale Pointer After Growth",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5591,8 +5591,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/insertshift",
         "name": "Insert Shift Direction",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5600,8 +5600,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/keyfromstruct",
         "name": "Struct Map Key Fields",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5609,8 +5609,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/maparraykey",
         "name": "Array Key Coordinate Order",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5618,8 +5618,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/mapclonesharedslice",
         "name": "Deep-Clone Map of Slices",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5627,8 +5627,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/mapniljson",
         "name": "Nil Map JSON",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5636,8 +5636,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/ringbuffer",
         "name": "Ring Buffer Wrap",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5645,8 +5645,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/rotate90",
         "name": "Rotate Matrix 90\u00b0",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5654,8 +5654,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/sliceleak",
         "name": "Sub-slice Memory Leak",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5663,8 +5663,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/slicetoarray",
         "name": "Slice-to-Array Length Check",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5672,8 +5672,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/stringimmutable",
         "name": "Strings Are Immutable",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5681,8 +5681,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/03-composite-types/staff/structpadding",
         "name": "Struct Field Padding",
-        "sub": "Staff",
-        "lv": "0",
+        "sub": "Composite Types",
+        "lv": "ST",
         "level": "staff",
         "locked": false,
         "tag": "backend"
@@ -5695,8 +5695,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/absif",
         "name": "Absolute Value",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5704,8 +5704,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/averagef",
         "name": "Variadic Average",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5713,8 +5713,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/cascade",
         "name": "Switch Fallthrough",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5722,8 +5722,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/clampf",
         "name": "Clamp to Range",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5731,8 +5731,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/clamploop",
         "name": "Clamp Each Element",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5740,8 +5740,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/countdown",
         "name": "Countdown Slice",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5749,8 +5749,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/countword",
         "name": "Count Matching",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5758,8 +5758,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/dayname",
         "name": "Day Name via Switch",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5767,8 +5767,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/divmod",
         "name": "Quotient and Remainder",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5776,8 +5776,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/doublecopy",
         "name": "Value Copy Doesn't Leak",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5785,8 +5785,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/firstlast",
         "name": "First, Last, OK",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5794,8 +5794,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/fizzbuzz",
         "name": "FizzBuzz Line",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5803,8 +5803,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/gcdloop",
         "name": "GCD via Euclid Loop",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5812,8 +5812,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/grade",
         "name": "Letter Grade",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5821,8 +5821,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/gradeif",
         "name": "Even/Odd Label",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5830,8 +5830,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/gridsum",
         "name": "2D Grid Sum",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5839,8 +5839,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/ifinit",
         "name": "If With Init",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5848,8 +5848,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/joinv",
         "name": "Variadic Join",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5857,8 +5857,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/leapyear",
         "name": "Leap Year",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5866,8 +5866,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/max3",
         "name": "Max of Three",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5875,8 +5875,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/minmax",
         "name": "Min and Max",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5884,8 +5884,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/nocopysliceval",
         "name": "Sum Without Mutating",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5893,8 +5893,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/reverseloop",
         "name": "Reverse via Index Loop",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5902,8 +5902,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/signswitch",
         "name": "Sign via Switch",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5911,8 +5911,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/sumrange",
         "name": "Sum with For-Range",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5920,8 +5920,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/sumv",
         "name": "Variadic Sum",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5929,8 +5929,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/swap2",
         "name": "Swap Two",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5938,8 +5938,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/tagless",
         "name": "Tagless Switch",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5947,8 +5947,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/tally",
         "name": "Count and Sum Evens",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5956,8 +5956,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/junior/weekday",
         "name": "Weekday Switch",
-        "sub": "Junior",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "J",
         "level": "junior",
         "locked": false,
         "tag": "backend"
@@ -5965,8 +5965,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/adder",
         "name": "Adder Factory",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5974,8 +5974,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/appendall",
         "name": "Forward Variadic to Append",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5983,8 +5983,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/bumpptr",
         "name": "Pointer Parameter Mutates",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -5992,8 +5992,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/compose",
         "name": "Compose Two Funcs",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6001,8 +6001,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/counter",
         "name": "Closure Counter",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6010,8 +6010,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/curry",
         "name": "Curried Add3",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6019,8 +6019,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/deferbump",
         "name": "Defer Adjusts Result",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6028,8 +6028,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/deferloop",
         "name": "Defer Inside Loop",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6037,8 +6037,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/deferorder",
         "name": "Defer LIFO Order",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6046,8 +6046,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/defersnapshot",
         "name": "Defer Argument Snapshot",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6055,8 +6055,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/dropwhile",
         "name": "Drop While",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6064,8 +6064,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/fallthru",
         "name": "Switch Fallthrough",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6073,8 +6073,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/filterints",
         "name": "Filter by Predicate",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6082,8 +6082,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/firstpair",
         "name": "Labeled Break Search",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6091,8 +6091,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/flatten",
         "name": "Flatten Slices",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6100,8 +6100,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/gotoretry",
         "name": "Retry with Goto",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6109,8 +6109,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/groupby",
         "name": "Group By Key",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6118,8 +6118,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/mapints",
         "name": "Map Over Slice",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6127,8 +6127,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/maxvar",
         "name": "Variadic Max with OK",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6136,8 +6136,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/memoize",
         "name": "Memoize a Function",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6145,8 +6145,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/namedret",
         "name": "Named Return Adjust",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6154,8 +6154,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/oncefn",
         "name": "Run Once",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6163,8 +6163,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/perindex",
         "name": "Closures Over Loop Variable",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6172,8 +6172,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/pipeline",
         "name": "Function Pipeline",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6181,8 +6181,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/reduceints",
         "name": "Reduce/Fold",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6190,8 +6190,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/repeatfn",
         "name": "Apply N Times",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6199,8 +6199,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/safecall",
         "name": "Recover From Panic",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6208,8 +6208,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/takewhile",
         "name": "Take While",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6217,8 +6217,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/tracker",
         "name": "Closure Sharing State",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"
@@ -6226,8 +6226,8 @@ window.CATALOG = [
       {
         "id": "01-language-basics/04-functions/middle/zipwith",
         "name": "Zip With",
-        "sub": "Middle",
-        "lv": "0",
+        "sub": "Functions",
+        "lv": "M",
         "level": "middle",
         "locked": false,
         "tag": "backend"

@@ -47,6 +47,10 @@ type report struct {
 	Error     string       `json:"error"`
 	Cases     []caseResult `json:"cases"`
 	Warnings  []string     `json:"warnings,omitempty"` // non-blocking: hardcode / clean-code hints
+	// Output is everything the run printed: fmt.Print* to stdout, log.Print* to
+	// stderr, plus the test framing lines. Shown verbatim in the console's
+	// output tab so print-debugging works.
+	Output string `json:"output,omitempty"`
 }
 
 func (s *server) handleRun(w http.ResponseWriter, r *http.Request) {
@@ -354,6 +358,7 @@ func parseTestJSON(stdout []byte, stderr string, runErr error) report {
 	tests := map[string]*acc{}
 	order := []string{}
 	var pkgOut strings.Builder
+	var stream strings.Builder // every printed line, in emission order
 	buildFailed := false
 
 	sc := bufio.NewScanner(bytes.NewReader(stdout))
@@ -368,7 +373,12 @@ func parseTestJSON(stdout []byte, stderr string, runErr error) report {
 			// Non-JSON: a raw build error emitted before test2json framing.
 			pkgOut.Write(line)
 			pkgOut.WriteByte('\n')
+			stream.Write(line)
+			stream.WriteByte('\n')
 			continue
+		}
+		if ev.Action == "output" {
+			stream.WriteString(ev.Output)
 		}
 		if ev.Test == "" {
 			if ev.Output != "" {
@@ -407,10 +417,10 @@ func parseTestJSON(stdout []byte, stderr string, runErr error) report {
 		if msg == "" && runErr != nil {
 			msg = runErr.Error()
 		}
-		return report{CompileOK: false, Error: msg}
+		return report{CompileOK: false, Error: msg, Output: printed(stream.String(), stderr)}
 	}
 
-	rep := report{CompileOK: true, OK: true}
+	rep := report{CompileOK: true, OK: true, Output: printed(stream.String(), stderr)}
 	for _, name := range order {
 		a := tests[name]
 		// Collect WARN: lines from any test's output (guard checks log these to
@@ -439,6 +449,35 @@ func parseTestJSON(stdout []byte, stderr string, runErr error) report {
 		rep.Error = strings.TrimSpace(pkg)
 	}
 	return rep
+}
+
+// testFraming matches the lines `go test` prints about itself — the run/pass/
+// fail scaffolding and the final package verdict. They belong in the test-result
+// panel, not in the output tab, which is for what the candidate's own code
+// printed with fmt and log.
+var testFraming = regexp.MustCompile(`^\s*(=== (RUN|PAUSE|CONT|NAME)\b|--- (PASS|FAIL|SKIP|BENCH)\b|(PASS|FAIL|ok|\?)\s*$|(ok|FAIL|\?)\s+\S+\s)`)
+
+// printed joins what the run wrote — the test2json output stream minus the test
+// framing, plus anything the toolchain sent to stderr — and caps it so one
+// runaway loop cannot ship a megabyte of text to the browser.
+func printed(stream, stderr string) string {
+	var b strings.Builder
+	for _, ln := range strings.Split(stream, "\n") {
+		if testFraming.MatchString(ln) {
+			continue
+		}
+		b.WriteString(ln)
+		b.WriteByte('\n')
+	}
+	out := b.String()
+	if s := strings.TrimSpace(stderr); s != "" {
+		out += s + "\n"
+	}
+	const max = 256 * 1024
+	if len(out) > max {
+		out = out[:max] + "\n… output truncated\n"
+	}
+	return strings.TrimRight(out, "\n")
 }
 
 // extractGotWant pulls a "got X want Y" pair from a test's failure output; if

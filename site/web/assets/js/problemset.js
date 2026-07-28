@@ -104,4 +104,6 @@
 
   renderStats();
   apply();
+  // Solved state is authoritative in the runner's SQLite and lands after load.
+  document.addEventListener('gw-solved', () => { renderStats(); apply(); });
 })();

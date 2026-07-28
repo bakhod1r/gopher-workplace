@@ -10,8 +10,9 @@ import (
 	_ "modernc.org/sqlite"
 )
 
-// store persists submissions to SQLite. Rows are kept for a retention window
-// (30 days) and swept periodically.
+// store persists submissions to SQLite. Rows are kept forever unless a
+// retention window is configured, in which case older rows are swept
+// periodically.
 type store struct {
 	db *sql.DB
 }
@@ -45,7 +46,60 @@ func openStore(path string) (*store, error) {
 		return nil, err
 	}
 	migrateSubmitted(db)
+	migrateIDs(db)
 	return &store{db: db}, nil
+}
+
+// migrateIDs rewrites challenge ids stored under the old level-first layout
+// (<level>/<topic>/<subtopic>/<name>) to the current topic-first one
+// (<topic>/<subtopic>/<level>/<name>). Without it a tree reshuffle silently
+// orphans every past solve: the ids no longer match anything in the catalog, so
+// /solved returns puzzles the site cannot recognise.
+func migrateIDs(db *sql.DB) {
+	rows, err := db.Query(`SELECT DISTINCT challenge_id FROM submissions`)
+	if err != nil {
+		log.Printf("migrate ids: %v", err)
+		return
+	}
+	var olds []string
+	for rows.Next() {
+		var id string
+		if err := rows.Scan(&id); err != nil {
+			break
+		}
+		olds = append(olds, id)
+	}
+	rows.Close()
+
+	n := 0
+	for _, old := range olds {
+		neu := modernID(old)
+		if neu == old {
+			continue
+		}
+		if _, err := db.Exec(
+			`UPDATE submissions SET challenge_id = ? WHERE challenge_id = ?`, neu, old); err != nil {
+			log.Printf("migrate id %s: %v", old, err)
+			continue
+		}
+		n++
+	}
+	if n > 0 {
+		log.Printf("migrated %d challenge id(s) to the topic-first layout", n)
+	}
+}
+
+// levels are the level dir names, in learning-path order.
+var levels = map[string]bool{"junior": true, "middle": true, "senior": true, "staff": true}
+
+// modernID moves a leading level segment into third position; anything already
+// in the current layout is returned unchanged.
+func modernID(id string) string {
+	p := strings.Split(id, "/")
+	if len(p) != 4 || !levels[strings.ToLower(p[0])] {
+		return id
+	}
+	return strings.Join([]string{p[1], p[2], p[0], p[3]}, "/")
 }
 
 // migrateSubmitted adds the submitted column to DBs that predate it. Already
@@ -137,8 +191,13 @@ func (s *store) history(challengeID string, limit int) ([]historyRow, error) {
 // tests can drive the ticker without waiting an hour.
 var sweepInterval = time.Hour
 
-// startRetention sweeps rows older than window at startup and hourly thereafter.
+// startRetention sweeps rows older than window at startup and hourly
+// thereafter. window <= 0 disables pruning entirely — rows are kept forever,
+// which is the default, because the solved set is derived from this table.
 func (s *store) startRetention(window time.Duration) {
+	if window <= 0 {
+		return
+	}
 	s.sweep(window)
 	go func() {
 		t := time.NewTicker(sweepInterval)

@@ -165,7 +165,8 @@ go run . -port 9090 -root /path/to/gopher-workplace -db /tmp/gw.db
 | `-host` | `GW_HOST` | `127.0.0.1` | listen address; leave it on loopback |
 | `-port` | `GW_RUNNER_PORT` | `7070` | listen port |
 | `-root` | `GW_ROOT` | auto-detect | dir containing `challenges/` (walks up) |
-| `-db` | `GW_DB` | `~/.gopher-workplace/runner.db` | solve history; kept 30 days |
+| `-db` | `GW_DB` | `~/.gopher-workplace/runner.db` | solve history; kept forever |
+| `-retention` | `GW_RETENTION` | `0` (forever) | prune submissions older than this, e.g. `720h` |
 
 Delete the db file to reset your progress — it lives outside the repo, so it
 survives `git pull` and `make clean`.
@@ -203,7 +204,7 @@ What it does do:
 | `address already in use` | `RUNNER_PORT=9090 make dev` |
 | New puzzle missing from the sidebar | `make catalog` — the UI reads a generated file |
 | Puzzle fails with an import error | you're editing the wrong module; `cd` into the puzzle dir first |
-| Progress vanished | history is in `~/.gopher-workplace/runner.db` and swept after 30 days |
+| Progress vanished | history is in `~/.gopher-workplace/runner.db`, kept forever unless you set `-retention`; the runner also re-points old-layout challenge ids at startup |
 | `cross-origin request refused` | the page came from a non-loopback origin; open the runner's own URL |
 | `runner busy: too many runs in flight` | the concurrency cap kicked in — retry in a moment |
 

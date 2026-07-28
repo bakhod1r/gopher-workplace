@@ -82,6 +82,26 @@
     return { total, done, open, pct: total ? Math.round(done/total*100) : 0 };
   }
 
+  // SQLite is the source of truth for solved puzzles; localStorage is only a
+  // cache (and is per-browser-profile, so it silently looks empty in a new one).
+  // Every page — dashboard, problemset, roadmap, playground — merges the
+  // backend set as soon as the runner connects, then fires gw-solved so
+  // whatever is already rendered can refresh itself.
+  function hydrate(){
+    if(typeof gwLocalSolved !== 'function') return;
+    gwLocalSolved().then(ids => {
+      if(!ids || !ids.length) return;
+      const before = solvedSet();
+      const merged = new Set([...before, ...ids]);
+      if(merged.size !== before.size)
+        localStorage.setItem(KEY, JSON.stringify([...merged]));
+      document.dispatchEvent(new CustomEvent('gw-solved', { detail: [...merged] }));
+    });
+  }
+  document.addEventListener('gw-runner', e => {
+    if(e.detail && e.detail.connected) hydrate();
+  });
+
   window.GWProgress = { markSolved, isSolved, solvedSet, topics, overall,
-                        streak, byLevel, all };
+                        streak, byLevel, all, hydrate };
 })();

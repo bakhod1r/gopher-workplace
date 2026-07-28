@@ -215,9 +215,12 @@ func build(repo string) (map[string]problem, []catGroup, error) {
 
 		md := readFile(dir, "README.md")
 		title := titleOf(md, slug)
-		level := strings.ToLower(field(md, "Level"))
+		// The level is whichever path segment names one, wherever it sits: the
+		// tree is topic-first (<topic>/<subtopic>/<level>/<name>) but the older
+		// level-first layout still parses. README's Level: field is the fallback.
+		level, subPart := splitSlug(parts)
 		if level == "" {
-			level = strings.ToLower(parts[0])
+			level = strings.ToLower(field(md, "Level"))
 		}
 		// A puzzle with tests runs on the backend; that is all of them today.
 		tag := ""
@@ -246,8 +249,8 @@ func build(repo string) (map[string]problem, []catGroup, error) {
 		groups[grp] = append(groups[grp], catItem{
 			ID:    slug,
 			Name:  cleanTitle(title, slug),
-			Sub:   cleanDirName(parts[2]),
-			Lv:    strings.ToUpper(parts[0][:1]),
+			Sub:   cleanDirName(subPart),
+			Lv:    lvCode(level),
 			Level: level,
 			// Never locked: the local runner serves every puzzle. Playability is
 			// gated at run time by whether the backend is connected.
@@ -263,11 +266,17 @@ func build(repo string) (map[string]problem, []catGroup, error) {
 	sort.Slice(names, func(i, j int) bool {
 		a, b := groups[names[i]][0].ID, groups[names[j]][0].ID
 		ap, bp := strings.Split(a, "/"), strings.Split(b, "/")
-		ao, bo := levelRank(ap[0]), levelRank(bp[0])
-		if ao != bo {
-			return ao < bo
+		// Level-first trees group by level; topic-first trees mix levels inside a
+		// group, where the leading dirs decide the order anyway.
+		al, _ := splitSlug(ap)
+		bl, _ := splitSlug(bp)
+		if ap[0] == al && bp[0] == bl && al != bl {
+			return levelRank(al) < levelRank(bl)
 		}
-		return ap[1] < bp[1]
+		if ap[0] != bp[0] {
+			return ap[0] < bp[0] // topic order (numeric prefixes sort right)
+		}
+		return ap[1] < bp[1] // then subtopic
 	})
 
 	list := make([]catGroup, 0, len(names))
@@ -277,6 +286,42 @@ func build(repo string) (map[string]problem, []catGroup, error) {
 		list = append(list, catGroup{Topic: g, Items: items})
 	}
 	return problems, list, nil
+}
+
+// splitSlug finds the level segment of a puzzle slug and the subtopic dir that
+// belongs with it. Both layouts occur: <level>/<topic>/<subtopic>/<name> and
+// <topic>/<subtopic>/<level>/<name>. The level is the segment naming a known
+// level; the subtopic is the last non-level segment before the puzzle name.
+// An unrecognised layout yields an empty level and parts[1] as the subtopic.
+func splitSlug(parts []string) (level, sub string) {
+	sub = parts[1]
+	for i, p := range parts {
+		if _, ok := levelOrder[strings.ToLower(p)]; !ok {
+			continue
+		}
+		level = strings.ToLower(p)
+		if i == 0 { // level-first: <level>/<topic>/<subtopic>/<name>
+			sub = parts[2]
+		} else { // topic-first: <topic>/<subtopic>/<level>/<name>
+			sub = parts[i-1]
+		}
+		break
+	}
+	return level, sub
+}
+
+// lvCode is the short level code the frontend filters on (J/M/S/ST).
+func lvCode(level string) string {
+	switch strings.ToLower(level) {
+	case "middle":
+		return "M"
+	case "senior":
+		return "S"
+	case "staff":
+		return "ST"
+	default:
+		return "J"
+	}
 }
 
 func levelRank(level string) int {

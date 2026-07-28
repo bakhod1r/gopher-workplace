@@ -71,6 +71,7 @@ func run(args []string, hooks ...serveHook) error {
 		hostFlag = fs.String("host", envOr("GW_HOST", "127.0.0.1"), "listen address; loopback only unless you know what you are doing")
 		rootFlag = fs.String("root", os.Getenv("GW_ROOT"), "repo root (dir containing challenges/); auto-detected if empty")
 		dbFlag   = fs.String("db", os.Getenv("GW_DB"), "sqlite db path (default ~/.gopher-workplace/runner.db)")
+		retFlag  = fs.Duration("retention", envDur("GW_RETENTION", 0), "delete submissions older than this; 0 = keep forever")
 	)
 	if err := fs.Parse(args); err != nil {
 		return err
@@ -97,7 +98,10 @@ func run(args []string, hooks ...serveHook) error {
 		return fmt.Errorf("open db: %w", err)
 	}
 	defer store.close()
-	store.startRetention(30 * 24 * time.Hour) // keep submissions 30 days
+	// Submissions are kept forever by default: the solved set lives in this
+	// table, so pruning it silently loses progress. Opt into pruning with
+	// -retention (or GW_RETENTION), e.g. -retention 720h.
+	store.startRetention(*retFlag)
 
 	srv := &server{cfg: cfg, store: store, limiter: newLimiter(maxConcurrentRuns)}
 
@@ -108,7 +112,11 @@ func run(args []string, hooks ...serveHook) error {
 
 	log.Printf("gopher-workplace local runner %s", version)
 	log.Printf("  root:  %s", root)
-	log.Printf("  db:    %s (30-day retention)", dbPath)
+	if *retFlag > 0 {
+		log.Printf("  db:    %s (retention %s)", dbPath, *retFlag)
+	} else {
+		log.Printf("  db:    %s (kept forever)", dbPath)
+	}
 	log.Printf("  limit: %d concurrent runs", maxConcurrentRuns)
 	log.Printf("  listening on http://%s", ln.Addr())
 	if !cfg.loopback() {
@@ -250,6 +258,16 @@ func (s *server) handleSolved(w http.ResponseWriter, r *http.Request) {
 		ids = got
 	}
 	writeJSON(w, map[string]any{"solved": ids})
+}
+
+// envDur reads a duration env var (e.g. "720h"); unset or unparsable means def.
+func envDur(k string, def time.Duration) time.Duration {
+	if v := os.Getenv(k); v != "" {
+		if d, err := time.ParseDuration(v); err == nil {
+			return d
+		}
+	}
+	return def
 }
 
 func envOr(k, def string) string {

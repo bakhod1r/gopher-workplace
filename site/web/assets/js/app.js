@@ -19,7 +19,7 @@ const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s)
 let CUR = window.PROBLEMS[Object.keys(window.PROBLEMS)[0]] || null;
 
 const codeEl = $('#code'), linesEl = $('#lines'), hlEl = $('#hl'), runEl = $('#run'), subEl = $('#submit');
-const pResult = $('#p-result'), tcOut = $('#tcOut'), tcInput = $('#tcInput'), descEl = $('#desc');
+const pResult = $('#p-result'), descEl = $('#desc');
 const eduEl = $('#edu');
 
 // The editor always starts from the puzzle's stub: every puzzle is built from
@@ -77,8 +77,8 @@ function loadProblem(p){
   descEl.innerHTML = p.description;
   setEducation(p);
   codeEl.value = baseOrDraft();
-  tcInput.value = p.customDefault || '';
   $('#edFile').textContent = p.file;
+  renderOutput('');
   pResult.innerHTML = isSolved(p.id)
     ? '<div class="verdict ok">✓ submitted — solved earlier. Run again anytime.</div>'
     : '<div class="verdict mut">run your code<span class="blink">_</span></div>';
@@ -348,8 +348,23 @@ function boot(){
 const esc = s => String(s).replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
 
 /* ---- run suite ---- */
+/* Everything the run printed — fmt.Print* and log.Print* included — verbatim in
+   the output tab, so print-debugging is visible instead of swallowed. */
+function renderOutput(text){
+  const el = $('#p-output');
+  if(!el) return;
+  const t = (text || '').replace(/\s+$/,'');
+  el.innerHTML = t
+    ? '<pre class="cerr out">'+esc(t)+'</pre>'
+    : '<div class="verdict mut">no output — nothing was printed by this run.</div>';
+  // Nudge the tab when something was printed and the user is not looking at it.
+  const tab = document.querySelector('.console .tab[data-panel="output"]');
+  if(tab) tab.classList.toggle('has', !!t);
+}
+
 function render(json, submit){
   let r; try{ r=JSON.parse(json); }catch(e){ pResult.innerHTML='<div class="verdict bad">runtime error</div>'; return; }
+  renderOutput(r.output);
   if(!r.compileOk){ pResult.innerHTML='<div class="verdict bad">compile error</div><div class="cerr">'+esc(r.error||'')+'</div>'; return; }
   const pass = r.cases.filter(c=>c.pass).length, total = r.cases.length;
   const warns = (r.warnings || []);
@@ -396,6 +411,7 @@ function run(submit){
     return;
   }
   pResult.innerHTML = '<div class="verdict mut">'+(submit?'submitting':'running')+'<span class="blink">_</span></div>';
+  renderOutput('');
   gwLocalRun(CUR.id, codeEl.value, submit)
     .then(txt => render(txt, submit))
     .catch(e => { pResult.innerHTML = '<div class="verdict bad">local runner error</div><div class="cerr">'+esc(e)+'</div>'; });
@@ -403,15 +419,6 @@ function run(submit){
 runEl.addEventListener('click', () => run(false));
 subEl.addEventListener('click', () => run(true));
 
-/* ---- custom testcase (input only) ---- */
-$('#tcRun').addEventListener('click', () => {
-  if(!CUR) return;
-  // The local backend runs the puzzle's own test suite (real `go test`); it has
-  // no single-input eval endpoint, so custom input is not supported here.
-  tcOut.innerHTML = '<div class="cerr">There is no single-input eval: the runner executes the '
-    + "puzzle's own test suite with the real <code>go test</code>. Use <b>Run</b> once the local "
-    + 'runner is up.</div>';
-});
 
 /* ---- sidebar from catalog ---- */
 (function buildDrawer(){

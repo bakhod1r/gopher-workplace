@@ -1,6 +1,7 @@
 /* Gopher Workplace — LeetCode-style home dashboard. Everything below is
    derived from real data: window.CATALOG + solved/streak state (GWProgress). */
 (function(){
+function render(){
   const esc = s => String(s==null?'':s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
   const P = window.GWProgress;
   if(!window.CATALOG || !P) return;
@@ -98,7 +99,13 @@
       + '</tr>';
   }).join('');
 
-  /* paint icons */
-  document.querySelectorAll('[data-ico]').forEach(e=>
-    e.insertAdjacentHTML('afterbegin', window.iconHTML(e.dataset.ico,'cover-ico')));
+  /* paint icons (once per element — render() runs again on a solved-set sync) */
+  document.querySelectorAll('[data-ico]').forEach(e=>{
+    if(e.querySelector('svg')) return;
+    e.insertAdjacentHTML('afterbegin', window.iconHTML(e.dataset.ico,'cover-ico'));
+  });
+}
+render();
+// The runner's solved set arrives after load; repaint with the real numbers.
+document.addEventListener('gw-solved', render);
 })();

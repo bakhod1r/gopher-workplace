@@ -72,7 +72,9 @@ tests emit `WARN:` lines for hardcoded answers, and non-gofmt-clean code is
 flagged the same way.
 
 **Persistence:** SQLite at `~/.gopher-workplace/runner.db` (`-db`/`GW_DB`),
-30-day retention, swept on startup and hourly. The driver is
+kept forever by default (`-retention 720h` opts into pruning, swept on startup
+and hourly). Old level-first challenge ids are rewritten to the current
+topic-first layout at startup, so a tree reshuffle never loses solves. The driver is
 `modernc.org/sqlite` (pure Go, no cgo) — the one dependency outside stdlib.
 
 **Security:** the runner executes arbitrary Go code as you. It binds `127.0.0.1`,
