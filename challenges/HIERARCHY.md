@@ -17,7 +17,7 @@ challenges/<NN-topic>/…/<leaf>/<level>/<puzzle>/
 ---
 
 ## 01-language-basics
-*298 dirs · 278 leaves*
+*475 dirs · 450 leaves*
 
 - 01-variables-and-constants
   - junior
@@ -307,16 +307,193 @@ challenges/<NN-topic>/…/<leaf>/<level>/<puzzle>/
     - takewhile  ·leaf
     - tracker  ·leaf
     - zipwith  ·leaf
-  - senior  ·leaf
-  - staff  ·leaf
+  - senior
+    - aliasbug  ·leaf
+    - allpositive  ·leaf
+    - appendclobber  ·leaf
+    - appendignored  ·leaf
+    - bsearchbug  ·leaf
+    - classifybug  ·leaf
+    - cleanupcount  ·leaf
+    - copyshort  ·leaf
+    - counternilmap  ·leaf
+    - deferargbug  ·leaf
+    - deferwipe  ·leaf
+    - deletebug  ·leaf
+    - factbug  ·leaf
+    - handlerbug  ·leaf
+    - insertbug  ·leaf
+    - nestedmap  ·leaf
+    - oddbug  ·leaf
+    - pairbug  ·leaf
+    - prefixbug  ·leaf
+    - rangemutate  ·leaf
+    - recoverdirect  ·leaf
+    - reversebug  ·leaf
+    - runecount  ·leaf
+    - shadowerr  ·leaf
+    - skipbug  ·leaf
+    - spreadmissing  ·leaf
+    - stalecap  ·leaf
+    - thresholdbug  ·leaf
+    - tierbug  ·leaf
+    - windowmax  ·leaf
+  - staff
+    - accreset  ·leaf
+    - appendwhilerange  ·leaf
+    - bareoverwrite  ·leaf
+    - bytesum  ·leaf
+    - capretain  ·leaf
+    - commaok  ·leaf
+    - compactcopy  ·leaf
+    - deferbeforeacq  ·leaf
+    - deferslicearg  ·leaf
+    - elemptr  ·leaf
+    - iifeinit  ·leaf
+    - labeledcont  ·leaf
+    - maskpanic  ·leaf
+    - methodval  ·leaf
+    - nilappend  ·leaf
+    - nilcallback  ·leaf
+    - prealloc  ·leaf
+    - recoverlost  ·leaf
+    - recovertype  ·leaf
+    - repanic  ·leaf
+    - reusedbuffer  ·leaf
+    - rotate3  ·leaf
+    - runeindex  ·leaf
+    - sharedcell  ·leaf
+    - shortcircuit  ·leaf
+    - stackpush  ·leaf
+    - switchinit  ·leaf
+    - tracescope  ·leaf
+    - twoappend  ·leaf
+    - wraperr  ·leaf
 - 05-pointers
-  - 01-pointers-basics  ·leaf
-  - 02-pointers-with-structs  ·leaf
-  - 03-with-maps-and-slices  ·leaf
-  - 04-memory-management
-    - 01-garbage-collection  ·leaf
-  - 05-unsafe-pointer  ·leaf
-  - 06-nil-pointer-dereference  ·leaf
+  - junior
+    - addvia  ·leaf
+    - applyptr  ·leaf
+    - bumpfield  ·leaf
+    - clampptr  ·leaf
+    - clearref  ·leaf
+    - copyval  ·leaf
+    - countnil  ·leaf
+    - deposit  ·leaf
+    - doubleidx  ·leaf
+    - fillptr  ·leaf
+    - incptr  ·leaf
+    - isempty  ·leaf
+    - listlen  ·leaf
+    - mapbump  ·leaf
+    - maxptr  ·leaf
+    - negate  ·leaf
+    - newint  ·leaf
+    - orzero  ·leaf
+    - pushslice  ·leaf
+    - reseat  ·leaf
+    - resetnode  ·leaf
+    - samecart  ·leaf
+    - sameptr  ·leaf
+    - scaleall  ·leaf
+    - setzero  ·leaf
+    - sumptrs  ·leaf
+    - swapcounts  ·leaf
+    - swapptr  ·leaf
+    - toggle  ·leaf
+    - valueor  ·leaf
+  - middle
+    - appendtail  ·leaf
+    - boundmethod  ·leaf
+    - bstcontains  ·leaf
+    - bstinsert  ·leaf
+    - bucketadd  ·leaf
+    - concatlist  ·leaf
+    - copylist  ·leaf
+    - counterinc  ·leaf
+    - countif  ·leaf
+    - countleaves  ·leaf
+    - deduplist  ·leaf
+    - dellist  ·leaf
+    - elemptrs  ·leaf
+    - hascycle  ·leaf
+    - listslice  ·leaf
+    - makeuser  ·leaf
+    - mergelists  ·leaf
+    - midnode  ·leaf
+    - mirrortree  ·leaf
+    - nthfromend  ·leaf
+    - ptrstack  ·leaf
+    - pushfront  ·leaf
+    - revlist  ·leaf
+    - rotatelist  ·leaf
+    - setfield  ·leaf
+    - sumlist  ·leaf
+    - sumtree  ·leaf
+    - swappairs  ·leaf
+    - treeheight  ·leaf
+    - vscale  ·leaf
+  - senior
+    - applyinplace  ·leaf
+    - clonesharetail  ·leaf
+    - cyclenoguard  ·leaf
+    - dblappend  ·leaf
+    - delhead  ·leaf
+    - derefearly  ·leaf
+    - elemstale  ·leaf
+    - eqconfuse  ·leaf
+    - hoistedaddr  ·leaf
+    - insertnoreattach  ·leaf
+    - insertoverwrite  ·leaf
+    - lenoffbyone  ·leaf
+    - mapptrupdate  ·leaf
+    - mergelost  ·leaf
+    - methodcopy  ·leaf
+    - minseed  ·leaf
+    - nestptr  ·leaf
+    - nthoff  ·leaf
+    - popnoguard  ·leaf
+    - pushnoassign  ·leaf
+    - removeatlist  ·leaf
+    - reseatlocal  ·leaf
+    - reverselose  ·leaf
+    - revreturnhead  ·leaf
+    - shallowclone  ·leaf
+    - shallowcopy  ·leaf
+    - sumtreebug  ·leaf
+    - swapwrong  ·leaf
+    - tailnoupdate  ·leaf
+    - valuerecv  ·leaf
+  - staff
+    - alignof  ·leaf
+    - arraysharing  ·leaf
+    - arrtoslice  ·leaf
+    - clearptrs  ·leaf
+    - deepptrfield  ·leaf
+    - escapereturn  ·leaf
+    - escapeslice  ·leaf
+    - fieldoffset  ·leaf
+    - floatbits  ·leaf
+    - mapdelnil  ·leaf
+    - mapstructptr  ·leaf
+    - methodexpr  ·leaf
+    - nilslicedata  ·leaf
+    - nilunsafe  ·leaf
+    - offsetpad  ·leaf
+    - poolreset  ·leaf
+    - ptrfieldsize  ·leaf
+    - retainbacking  ·leaf
+    - shrinkretain  ·leaf
+    - sizeofarray  ·leaf
+    - sizeofptr  ·leaf
+    - sizeorder  ·leaf
+    - slicedata  ·leaf
+    - strbytes  ·leaf
+    - stringbyte  ·leaf
+    - structasarray  ·leaf
+    - structconv  ·leaf
+    - unsafeslice  ·leaf
+    - unsafestride  ·leaf
+    - widthmismatch  ·leaf
 
 ## 02-methods-and-interfaces
 *19 dirs · 19 leaves*

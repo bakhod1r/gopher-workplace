@@ -2,15 +2,56 @@
 
 All notable changes to this project are documented here. Dates are ISO 8601.
 
-## [0.4.0] — 2026-07-28
+## [0.5.0] — 2026-07-28
 
-The `04-functions` topic lands with its first 60 puzzles, and the topic adopts a
-flat level-only layout.
+The `05-pointers` topic lands complete — **120 puzzles**, 30 per level — in the
+same flat, level-only layout as `04-functions`.
 
 ### Added
 
-- **`01-language-basics/04-functions` — 60 new puzzles** across two levels
-  (junior 30, middle 30), covering functions, closures/defer, and control flow
+- **`01-language-basics/05-pointers` — 120 new puzzles** (junior 30, middle 30,
+  senior 30, staff 30) spanning pointer basics, pointers with structs, pointers
+  with maps and slices, memory management, `unsafe.Pointer`, and nil-pointer
+  dereference:
+  - **junior (30)** — deref/address-of, increment/negate/toggle/clamp through a
+    pointer, swap via pointers, allocation, nil-safe deref, slice/map of pointers,
+    struct field mutation, double pointers, linked-list length, pointer identity.
+  - **middle (30)** — pointer vs value receivers, linked-list ops (prepend,
+    reverse, append via `**Node`, delete, middle via slow/fast, dedup, concat,
+    nth-from-end, cycle detection, merge, rotate), BST insert/search/height/leaves/
+    sum/mirror, method values, deep copy, slice-pointer growth, `new` vs `&T{}`.
+  - **senior (30, planted-bug)** — value-receiver mutation loss, delete-head
+    ignoring the new head, swapping pointers not values, discarded recursive
+    returns, missing slow/fast nil guard, deref-before-nil-check, reversal order,
+    double-pointer reassignment, shallow struct/list/tree copies, gap off-by-one,
+    merge remainder, hoisted-variable address, stale element pointer, identity vs
+    value confusion, nested-map init, nil-out-on-shrink, and more.
+  - **staff (30, planted-bug, internals)** — struct field-order padding
+    (`unsafe.Sizeof`), `unsafe.Add` stride, sub-slice/`s[:k:k]` retention, pointer
+    vs pointee size, slice/string/array data pointers, `Offsetof` vs `Sizeof`,
+    `Alignof`, `unsafe.Slice` length, reinterpret width/layout, method
+    expressions, per-iteration allocation, deep pointer-field copy, `delete` vs
+    nil, `clear`, pool reset, and nil `unsafe.Pointer`/`SliceData` guards.
+  - Each ships an `EDUCATION.md`. Junior/middle are implement-from-scratch stubs
+    (red → green); senior/staff are single-planted-bug puzzles between
+    `// CHANGE CODE …` markers.
+- Every puzzle verified: `gofmt` clean, `go vet` passes (0 issues); stubs and
+  planted bugs each go red → green with the documented fix.
+
+### Changed
+
+- Regenerated `challenges/HIERARCHY.md` and `site/web/assets/js/problems.js`
+  (now 453 puzzles). Version bumped to 0.5.0; asset cache-buster to `?v=24`.
+
+## [0.4.0] — 2026-07-28
+
+The `04-functions` topic lands complete — **120 puzzles**, 30 per level — and the
+topic adopts a flat level-only layout.
+
+### Added
+
+- **`01-language-basics/04-functions` — 120 new puzzles** (junior 30, middle 30,
+  senior 30, staff 30), covering functions, closures/defer, and control flow
   together:
   - **junior (30)** — multiple return, variadic sum/join/average, div-mod,
     clamp, min/max, for-range sums, countdown, FizzBuzz, 2D grid sum, reverse,
@@ -22,10 +63,33 @@ flat level-only layout.
     argument-snapshot timing, defer-mutates-named-return, defer-in-loop,
     `recover`, named returns, variadic forwarding to `append`, labeled break,
     `goto`, and `fallthrough`.
+  - **senior (30, planted-bug)** — shadowed named-return error, recover outside
+    defer, defer argument timing, sliding-window/look-ahead/binary-search bounds,
+    accidental `fallthrough`, nil-map write, recursion base case, stale element
+    pointer after realloc, append clobbering shared capacity, missing `default`,
+    inverted `continue` guard, shared-loop-variable capture, defer overwriting a
+    result, boundary comparison, all/any early return, range-copy no-op mutation,
+    ordered delete off-by-one, rune vs byte length, `copy` bounded by length,
+    discarded `append` result, missing spread, slice-alias mutation, signed-modulo
+    parity, nested-map init, two-pointer index bound, defer-fires-at-exit, prefix
+    sum, insert shift direction.
+  - **staff (30, planted-bug, internals)** — selective recover/re-panic,
+    defer-wraps-the-snapshot error idiom, panic-during-unwind masking, shared
+    closure cell, accumulator reset in recursion, method-value receiver binding,
+    recovered error lost to a local, two-append shared capacity, stale element
+    pointer, `s[:k:k]` capacity retention, deferred LIFO push, uint8 accumulator
+    overflow, self-referential loop bound, bare-return with deferred adjust,
+    defer-before-acquisition, short-circuit nil guard, labeled break vs continue,
+    switch init statement, nil callback guard, comma-ok, deferred slice-header
+    snapshot, append-to-nil, overlapping copy direction, typed recover assertion,
+    reused-buffer aliasing, simultaneous assignment, make length vs capacity,
+    rune indexing, per-iteration defer scope, immediately-invoked init.
   - Each ships an `EDUCATION.md`. Junior/middle are implement-from-scratch stubs
-    (red → green); senior/staff (planted-bug) land in a later release.
-- Every puzzle verified: `gofmt` clean, `go vet` passes, tests fail red on the
-  stub and pass green on the reference implementation.
+    (red → green); senior/staff are single-planted-bug puzzles between
+    `// CHANGE CODE …` markers.
+- Every puzzle verified: `gofmt` clean, `go vet` passes; stubs fail red and pass
+  green on the reference implementation; each planted bug fails red and passes
+  green once the documented one-line fix is applied.
 
 ### Changed
 
@@ -34,7 +98,7 @@ flat level-only layout.
   level from the slug and the subtopic from the README, so grouping is unchanged.
 - The five pre-existing `conditionals` puzzles moved under `04-functions/junior/`.
 - Regenerated `challenges/HIERARCHY.md` and `site/web/assets/js/problems.js`
-  (now 270 puzzles). Asset cache-buster bumped to `?v=23`.
+  (now 333 puzzles). Asset cache-buster bumped to `?v=23`.
 
 ## [0.3.0] — 2026-07-27
 
