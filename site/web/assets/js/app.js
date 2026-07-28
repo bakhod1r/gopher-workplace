@@ -416,6 +416,9 @@ $('#tcRun').addEventListener('click', () => {
 /* ---- sidebar from catalog ---- */
 (function buildDrawer(){
   const drawer = $('#drawer'), scrim = $('#scrim'), btn = $('#probsBtn');
+  const FLAG = { junior:'🟢', middle:'🔵', senior:'🟠', staff:'🔴' };
+  const flagOf = it => FLAG[(it.level||'').toLowerCase()]
+    || FLAG[{J:'junior',M:'middle',S:'senior',T:'staff'}[it.lv]] || '';
   let html = '';
   let num = 0;
   for(const grp of window.CATALOG){
@@ -430,7 +433,7 @@ $('#tcRun').addEventListener('click', () => {
         + '<span class="pnum">'+num+'.</span>'
         + '<span class="st">'+(it.done?'✓':'▫')+'</span>'
         + '<span class="nm">'+esc(it.name)+(it.sub?'<span class="sub">'+esc(it.sub)+'</span>':'')+'</span>'
-        + (it.lv?'<span class="lv">'+esc(it.lv)+'</span>':'')+'</li>';
+        + (flagOf(it)?'<span class="lv" title="'+esc(it.level||'')+'">'+flagOf(it)+'</span>':'')+'</li>';
     }
     html += '</ul></details>';
   }

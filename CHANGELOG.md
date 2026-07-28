@@ -2,6 +2,40 @@
 
 All notable changes to this project are documented here. Dates are ISO 8601.
 
+## [0.4.0] — 2026-07-28
+
+The `04-functions` topic lands with its first 60 puzzles, and the topic adopts a
+flat level-only layout.
+
+### Added
+
+- **`01-language-basics/04-functions` — 60 new puzzles** across two levels
+  (junior 30, middle 30), covering functions, closures/defer, and control flow
+  together:
+  - **junior (30)** — multiple return, variadic sum/join/average, div-mod,
+    clamp, min/max, for-range sums, countdown, FizzBuzz, 2D grid sum, reverse,
+    GCD, sign/day/parity switches, leap year, abs, call-by-value and pointer
+    basics.
+  - **middle (30)** — closures (counter, adder, memoize, once, compose, curry,
+    pipeline, group-by, take/drop-while, zip-with, shared-state tracker,
+    per-iteration capture), higher-order map/filter/reduce, `defer` ordering,
+    argument-snapshot timing, defer-mutates-named-return, defer-in-loop,
+    `recover`, named returns, variadic forwarding to `append`, labeled break,
+    `goto`, and `fallthrough`.
+  - Each ships an `EDUCATION.md`. Junior/middle are implement-from-scratch stubs
+    (red → green); senior/staff (planted-bug) land in a later release.
+- Every puzzle verified: `gofmt` clean, `go vet` passes, tests fail red on the
+  stub and pass green on the reference implementation.
+
+### Changed
+
+- **`04-functions` uses a flat, level-only layout** — `04-functions/<level>/<name>`
+  — instead of per-subtopic nesting. The catalog generator already derives the
+  level from the slug and the subtopic from the README, so grouping is unchanged.
+- The five pre-existing `conditionals` puzzles moved under `04-functions/junior/`.
+- Regenerated `challenges/HIERARCHY.md` and `site/web/assets/js/problems.js`
+  (now 270 puzzles). Asset cache-buster bumped to `?v=23`.
+
 ## [0.3.0] — 2026-07-27
 
 Teaching material next to every puzzle, three new constants puzzles, and one

@@ -1,0 +1,37 @@
+# Copy at the Right Offset
+
+**Level:** staff
+**Topic:** 01-language-basics → 03-composite-types
+
+## Context
+
+The second `copy` writes `b` at offset 0, overwriting `a`. It must write at offset
+`len(a)` so `b` lands after `a`.
+
+## Task
+
+Fix the second copy between the markers in [bufconcat.go](bufconcat.go).
+
+## Examples
+
+```go
+Concat([]byte("foo"), []byte("bar")) // => "foobar"
+```
+
+## Topics to Master
+
+| # | Topic | What to understand |
+|---|-------|--------------------|
+| 1 | **Copy destination** | `out[len(a):]` targets the tail. |
+| 2 | **Preallocated buffer** | Size = len(a)+len(b). |
+| 3 | **Offset math** | b starts where a ends. |
+
+## Hint
+
+`copy(out[len(a):], b)`.
+
+## Validate
+
+```bash
+make verify
+```

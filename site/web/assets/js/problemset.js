@@ -26,8 +26,11 @@
     tag: document.getElementById('psTag'),
     status: document.getElementById('psStatus'),
     reset: document.getElementById('psReset'),
+    random: document.getElementById('psRandom'),
     stats: document.getElementById('psStats'),
   };
+
+  let SHOWN = ROWS;  // rows currently passing the filters
 
   // tag filter options (the subtopic shown in the Tags column), sorted
   [...new Set(ROWS.map(r => r.sub).filter(Boolean))].sort().forEach(t => {
@@ -68,8 +71,18 @@
       if(q && !((r.name+' '+r.sub+' '+r.topic).toLowerCase().includes(q))) return false;
       return true;
     });
+    SHOWN = rows;
     els.body.innerHTML = rows.map(rowHTML).join('');
     els.empty.hidden = rows.length > 0;
+    const anyTodo = rows.some(r => statusOf(r) === 'todo');
+    els.random.disabled = !anyTodo;
+  }
+
+  function pickRandom(){
+    const pool = SHOWN.filter(r => statusOf(r) === 'todo');
+    if(!pool.length) return;
+    const r = pool[Math.floor(Math.random() * pool.length)];
+    location.href = 'playground.html?p=' + encodeURIComponent(r.id);
   }
 
   function renderStats(){
@@ -84,6 +97,7 @@
 
   els.search.addEventListener('input', apply);
   [els.level, els.tag, els.status].forEach(e => e.addEventListener('change', apply));
+  els.random.addEventListener('click', pickRandom);
   els.reset.addEventListener('click', () => {
     els.search.value=''; els.level.value=''; els.tag.value=''; els.status.value=''; apply();
   });

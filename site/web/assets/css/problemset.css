@@ -14,6 +14,10 @@
 .ps-reset{background:transparent;border:1px solid var(--bd);border-radius:8px;color:var(--mut);
   padding:9px 14px;font:inherit;cursor:pointer;}
 .ps-reset:hover{color:var(--fg);border-color:var(--grn2);}
+.ps-random{background:transparent;border:1px solid var(--bd);border-radius:8px;color:var(--fg);
+  padding:9px 14px;font:inherit;cursor:pointer;}
+.ps-random:hover:not(:disabled){border-color:var(--grn2);}
+.ps-random:disabled{opacity:.45;cursor:not-allowed;}
 
 .ps-tablewrap{border:1px solid var(--bd);border-radius:12px;overflow:hidden;background:var(--panel);}
 .ps-table{width:100%;border-collapse:collapse;font-size:13.5px;}

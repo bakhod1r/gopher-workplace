@@ -243,28 +243,56 @@ def field(md, name):
 
 
 def topic_label(md, slug):
-    """Group label from README **Level** + **Topic** (not the path)."""
+    """Group label from README **Level** + **Topic** (not the path).
+
+    New layout slug: <NN-topic>/<MM-subtopic>/<level>/<name>.
+    """
     level = field(md, "Level")
     tags = topic_tags(md)
     topic = tags[0] if tags else ""
-    if not topic:  # fallback: derive from path
-        topic = re.sub(r"^\d+-", "", slug.split("/")[1]).replace("-", " ").title()
+    parts = slug.split("/")
+    if not topic:  # fallback: derive from the topic dir
+        topic = clean_dir_name(parts[0])
     if not level:
-        level = slug.split("/")[0].capitalize()
+        level = parts[2].capitalize()
     return "%s · %s" % (level, topic)
 
 
 LV_ORDER = {"junior": 0, "middle": 1, "senior": 2, "staff": 3}
+LV_SET = set(LEVELS)
 
 
 def clean_dir_name(part):
     return re.sub(r"^\d+-", "", part).replace("-", " ").title()
 
 
-def group_key(slug):
-    """Stable sidebar group from the path: '<Level> · <Topic dir>'."""
+def level_index(slug):
+    """Index of the level segment in the slug, whatever the nesting depth.
+
+    Most puzzles are <NN-topic>/<MM-subtopic>/<level>/<name> (level at parts[2]),
+    but some subtopics nest one deeper (…/<subtopic>/<level>/<name>). Scan for
+    the segment that names a level instead of hardcoding an index.
+    """
     parts = slug.split("/")
-    return "%s · %s" % (parts[0].capitalize(), clean_dir_name(parts[1]))
+    for i, p in enumerate(parts):
+        if p in LV_SET:
+            return i
+    return 2  # fallback to the flat layout
+
+
+def level_of(slug):
+    parts = slug.split("/")
+    i = level_index(slug)
+    return parts[i] if i < len(parts) else "junior"
+
+
+def group_key(slug):
+    """Sidebar group = the topic dir only, so a topic is ONE collapsible group.
+
+    Level is shown per-item (as a flag), not by splitting the topic into a group
+    per level.
+    """
+    return clean_dir_name(slug.split("/")[0])
 
 
 def clean_title(title, slug):
@@ -293,7 +321,7 @@ def main():
                 gofile = f
                 break
         runner = RUNNERS.get(slug)
-        level = (field(md, "Level") or slug.split("/")[0]).lower()
+        level = (field(md, "Level") or level_of(slug)).lower()
         # Every runnable puzzle now goes through the local Go toolchain backend.
         has_tests = any(f.endswith("_test.go") for f in os.listdir(pdir))
         is_backend = has_tests
@@ -316,11 +344,13 @@ def main():
         grp = group_key(slug)
         catalog.setdefault(grp, [])
         parts = slug.split("/")
+        li = level_index(slug)
         catalog[grp].append({
             "id": slug,
             "name": clean_title(title, slug),
-            "sub": clean_dir_name(parts[2]),
-            "lv": parts[0][:1].upper(),
+            "sub": clean_dir_name(parts[li - 1]) if li >= 1 else "",
+            "lv": {"junior": "J", "middle": "M", "senior": "S",
+                   "staff": "T"}.get(level_of(slug), "J"),
             "level": level,
             # Not locked: the local runner serves every puzzle. Playability is
             # gated at run time by whether the backend is connected.
@@ -330,13 +360,13 @@ def main():
         })
 
     def group_order(g):
-        slug0 = catalog[g][0]["id"]  # any member: same level+topic dir
-        p = slug0.split("/")
-        return (LV_ORDER.get(p[0], 9), p[1])
+        slug0 = catalog[g][0]["id"]  # any member shares the topic dir
+        return slug0.split("/")[0]   # NN-topic prefix orders the topics
 
     order = sorted(catalog, key=group_order)
     for g in catalog:
-        catalog[g].sort(key=lambda it: it["_sort"])
+        # Within a topic group: cluster by level (junior→staff), then path.
+        catalog[g].sort(key=lambda it: (LV_ORDER.get(it["level"], 9), it["_sort"]))
         for it in catalog[g]:
             del it["_sort"]
     cat_list = [{"topic": g, "items": catalog[g]} for g in order]
