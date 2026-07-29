@@ -1,6 +1,6 @@
 # The blank identifier
 
-## The idea
+## Intuition
 
 `_` is a name you are allowed to assign to and never allowed to read. It exists
 because Go requires you to account for every value — and sometimes the honest
@@ -59,7 +59,38 @@ This compiles and is almost always a bug — `data` is nil and nothing said why.
 Discard a value when it is genuinely irrelevant, not when handling it is
 inconvenient. Linters flag `_` on error returns for good reason.
 
-## Watch out
+## Approach
+
+1. `Split` returns two values; you must receive both.
+2. Keep the one you want and assign the other to `_`.
+3. `Pages` keeps the first, `Leftover` the second.
+
+## Solution
+
+```go
+func Split(n, size int) (pages, rest int) {
+	if size <= 0 {
+		return 0, n
+	}
+	return n / size, n % size
+}
+
+func Pages(n, size int) int {
+	p, _ := Split(n, size)
+	return p
+}
+
+func Leftover(n, size int) int {
+	_, r := Split(n, size)
+	return r
+}
+```
+
+## Walkthrough
+
+`Pages(10, 3)` calls `Split` which returns `3, 1`; binding `p, _` keeps 3 and discards the remainder.
+
+## Pitfalls
 
 - `_` cannot be read: `x := _` does not compile.
 - `_ = someExpr` is a legal statement, occasionally used to silence "declared
@@ -68,15 +99,3 @@ inconvenient. Linters flag `_` on error returns for good reason.
   new on the left, use `f()` alone if it is called for effect.
 - `_` in a `range` is only needed for the *value*: `for i := range xs` already
   drops it.
-
-## Try it yourself
-
-```go
-pages, _ := Split(10, 3)
-_, rest := Split(10, 3)
-fmt.Println(pages, rest)      // 3 1
-
-for _, v := range []string{"a", "b"} {
-	fmt.Println(v)            // a b — index discarded
-}
-```

@@ -13,15 +13,34 @@ maximum. The largest signed value needs the sign bit cleared with `>> 1`.
 Fix the single line between the markers in [limits.go](limits.go) so `MaxInt`
 is the largest positive int.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-MaxInt        // => 9223372036854775807 (64-bit)
-MaxInt > 0    // => true
-MaxInt+1 < MaxInt // => true (wraps)
+**Example 1:**
+
+```
+Input:  MaxInt
+Output: largest positive int
+```
+
+**Example 2:**
+
+```
+Input:  Overflows()
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  MaxInt+1
+Output: wraps negative
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

@@ -1,6 +1,6 @@
 # Row-major flattening
 
-## The idea
+## Intuition
 
 Flattening a slice of slices concatenates the rows in order:
 
@@ -9,12 +9,30 @@ out := []int{}
 for _, row := range grid { out = append(out, row...) }
 ```
 
-## Why it matters
+## Approach
 
-Converting between nested and flat representations is common (image buffers,
-serialization). Row-major order is the default for Go's nested slices.
+1. Start with an empty result slice.
+2. Range the rows in order (row-major).
+3. append(result, row...) spreads each row's elements.
+4. Return result.
 
-## Watch out
+## Solution
+
+```go
+func Flatten(grid [][]int) []int {
+	result := []int{}
+	for _, row := range grid {
+		result = append(result, row...)
+	}
+	return result
+}
+```
+
+## Walkthrough
+
+Flatten({{1,2},{3},{},{4,5}}): [1,2] -> +3 -> +nothing -> +4,5 = [1,2,3,4,5].
+
+## Pitfalls
 
 - `append(out, row...)` spreads the row; without `...` it's a type error.
 - Empty and nil rows contribute nothing.

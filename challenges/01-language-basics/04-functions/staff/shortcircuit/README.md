@@ -17,10 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-ValueOr(nil, 5)  // => 5
-ValueOr(&7, 5)   // => 7
-ValueOr(&-1, 5)  // => 5
+**Example 1:**
+
+```
+Input:  ValueOr(nil, 5)
+Output: 5
+```
+
+**Example 2:**
+
+```
+Input:  n := 7; ValueOr(&n, 5)
+Output: 7
+```
+
+**Example 3:**
+
+```
+Input:  n := -1; ValueOr(&n, 5)
+Output: 5
 ```
 
 ## Topics to Master

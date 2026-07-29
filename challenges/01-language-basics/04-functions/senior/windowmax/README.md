@@ -17,9 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-MaxWindow([]int{1,2,3,4,5}, 2)     // => 9
-MaxWindow([]int{2,1,5,1,3,2}, 3)   // => 9
+**Example 1:**
+
+```
+Input:  MaxWindow([1 2 3 4 5], 2)
+Output: 9
+```
+
+**Example 2:**
+
+```
+Input:  MaxWindow([2 1 5 1 3 2], 3)
+Output: 9
+```
+
+**Example 3:**
+
+```
+Input:  MaxWindow([5], 1)
+Output: 5
 ```
 
 ## Topics to Master

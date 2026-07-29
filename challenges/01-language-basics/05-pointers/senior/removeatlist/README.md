@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-RemoveAt(10->20->30->40, 2) // => 10->20->40
+**Example 1:**
+
+```
+Input:  RemoveAt(10->20->30->40, 2)
+Output: 10->20->40
+```
+
+**Example 2:**
+
+```
+Input:  RemoveAt(10->20->30, 0)
+Output: 20->30
+```
+
+**Example 3:**
+
+```
+Input:  RemoveAt(10->20->30, 1)
+Output: 10->30
 ```
 
 ## Topics to Master

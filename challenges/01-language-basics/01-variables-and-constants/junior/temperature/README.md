@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 01-variables-and-constants
-**Estimated time:** 10 min
 
 ## Context
 
@@ -16,13 +15,29 @@ Implement `CToF` in [temperature.go](temperature.go) so it computes
 `F = C*(9/5) + 32` correctly. The `freezingF` constant is already provided — do
 not change the signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-CToF(0)   // => 32
-CToF(100) // => 212
-CToF(-40) // => -40
-CToF(37)  // => 98.6
+**Example 1:**
+
+```
+Input:  CToF(0)
+Output: 32
+```
+
+**Example 2:**
+
+```
+Input:  CToF(100)
+Output: 212
+```
+
+**Example 3:**
+
+```
+Input:  CToF(-40)
+Output: -40
 ```
 
 ## Topics to Master
@@ -44,7 +59,5 @@ division a floating-point kind (`9.0 / 5.0`, or just `1.8`).
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

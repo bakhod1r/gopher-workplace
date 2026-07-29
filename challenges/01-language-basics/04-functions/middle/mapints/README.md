@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-MapInts([]int{1,2,3}, square) // => [1 4 9]
-MapInts(nil, f)               // => []
-MapInts([]int{2}, inc)        // => [3]
+**Example 1:**
+
+```
+Input:  MapInts([1 2 3], square)
+Output: [1 4 9]
+```
+
+**Example 2:**
+
+```
+Input:  MapInts(nil, square)
+Output: []
+```
+
+**Example 3:**
+
+```
+Input:  MapInts([2], inc)
+Output: [3]
 ```
 
 ## Topics to Master

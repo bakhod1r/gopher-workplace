@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Sign(-4) // => "negative"
-Sign(0)  // => "zero"
-Sign(7)  // => "positive"
+**Example 1:**
+
+```
+Input:  Sign(-4)
+Output: "negative"
+```
+
+**Example 2:**
+
+```
+Input:  Sign(0)
+Output: "zero"
+```
+
+**Example 3:**
+
+```
+Input:  Sign(7)
+Output: "positive"
 ```
 
 ## Topics to Master

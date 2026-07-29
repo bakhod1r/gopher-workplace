@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 01-variables-and-constants
-**Estimated time:** 15 min
 
 ## Context
 
@@ -30,13 +29,34 @@ Do **not** change the function signature or the tests.
 > `Config{Port: DefaultPort}`. The tests only grade the returned values, so this
 > is style guidance, not a hard gate; get into the habit anyway.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-DefaultConfig().Port // => 8080
-DefaultConfig().Host // => ""
-DefaultConfig().Tags // => nil
+**Example 1:**
+
 ```
+Input:  DefaultConfig().Port
+Output: 8080
+```
+
+**Example 2:**
+
+```
+Input:  DefaultConfig().Host
+Output: ""
+```
+
+_Explanation:_ Unset string field keeps its zero value.
+
+**Example 3:**
+
+```
+Input:  DefaultConfig().Tags
+Output: nil
+```
+
+_Explanation:_ A nil slice, not an empty non-nil one.
 
 ## Topics to Master
 
@@ -57,7 +77,5 @@ exactly the mistake: that makes it a non-nil empty slice.
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

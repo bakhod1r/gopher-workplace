@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-CountOdd([1 2 3 -3 -4 -5]) // => 4
+**Example 1:**
+
+```
+Input:  CountOdd([1 2 3 -3 -4 -5])
+Output: 4
+```
+
+**Example 2:**
+
+```
+Input:  CountOdd([2 4 6])
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  CountOdd([-1])
+Output: 1
 ```
 
 ## Topics to Master

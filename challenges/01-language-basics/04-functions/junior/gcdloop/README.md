@@ -1,12 +1,11 @@
-# GCD via Euclid Loop
+# Euclidean GCD
 
 **Level:** junior
-**Topic:** 01-language-basics → 04-functions · _loops_
+**Topic:** 01-language-basics → 04-functions · _control-flow_
 
 ## Context
 
-Euclid's algorithm repeatedly replaces the pair (a, b) with (b, a mod b) until
-b is zero; a is then the GCD. A `for` loop with a swap expresses it cleanly.
+The Euclidean algorithm repeatedly replaces `(a, b)` with `(b, a % b)` until `b` is zero; then `a` is the greatest common divisor.
 
 ## Task
 
@@ -16,10 +15,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-GCD(12, 8)  // => 4
-GCD(17, 5)  // => 1
-GCD(0, 9)   // => 9
+**Example 1:**
+
+```
+Input:  GCD(12, 8)
+Output: 4
+```
+
+**Example 2:**
+
+```
+Input:  GCD(17, 5)
+Output: 1
+```
+
+**Example 3:**
+
+```
+Input:  GCD(0, 9)
+Output: 9
 ```
 
 ## Topics to Master
@@ -28,9 +42,9 @@ Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|
-| 1 | **Loop with reassignment** | `a, b = b, a%b` each step. |
-| 2 | **Termination** | Stop when `b == 0`. |
-| 3 | **Parallel assignment** | Swap without a temp. |
+| 1 | **for loop** | Iterate until `b == 0`. |
+| 2 | **parallel assignment** | `a, b = b, a%b`. |
+| 3 | **modulo** | `a % b` drives the reduction. |
 
 ## Hint
 

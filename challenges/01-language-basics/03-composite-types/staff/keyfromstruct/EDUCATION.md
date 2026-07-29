@@ -1,6 +1,6 @@
 # Structs as map keys
 
-## The idea
+## Intuition
 
 A struct whose fields are all comparable is itself comparable and can be a map
 key. Its identity is the tuple of field values, so order/assignment matters:
@@ -9,13 +9,32 @@ key. Its identity is the tuple of field values, so order/assignment matters:
 m[Point{p.X, p.Y}]++ // or simply m[p]++
 ```
 
-## Why it matters
+## Approach
 
-Composite keys (coordinates, versioned IDs, small records) are cleanly expressed
-as structs — no string concatenation, no ambiguity. Building the key with swapped
-or wrong fields silently merges distinct keys.
+1. Bug: `Point{p.Y, p.X}` swaps fields, so (1,2) is tallied under key (2,1).
+2. Fix: `Point{p.X, p.Y}` preserves the coordinate order.
 
-## Watch out
+## Solution
+
+```go
+type Point struct {
+	X, Y int
+}
+
+func Count(pts []Point) map[Point]int {
+	m := make(map[Point]int)
+	for _, p := range pts {
+		m[Point{p.X, p.Y}]++
+	}
+	return m
+}
+```
+
+## Walkthrough
+
+For p={1,2}: buggy key {2,1}, correct key {1,2}. Two identical {1,2} inputs both map to {1,2} -> count 2; {3,4} -> count 1.
+
+## Pitfalls
 
 - A struct with a slice/map/func field is **not** comparable — compile error as a
   key.

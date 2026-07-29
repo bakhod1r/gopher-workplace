@@ -14,13 +14,36 @@ backing arrays with the original. Mutating a cloned slice corrupts the source.
 Fix the assignment between the markers in
 [mapclonesharedslice.go](mapclonesharedslice.go) to copy each slice.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-c := Clone(m); c["a"][0]=99 // m["a"][0] stays 1
+**Example 1:**
+
+```
+Input:  m={a:[1 2], b:[3]}, then c[a][0]=99
+Output: m[a][0] stays 1
 ```
 
+**Example 2:**
+
+```
+Input:  len(clone)
+Output: 2
+```
+
+**Example 3:**
+
+```
+Input:  clone[b][0]
+Output: 3
+```
+
+_Explanation:_ values are independent copies.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

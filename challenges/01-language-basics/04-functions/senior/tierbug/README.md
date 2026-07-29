@@ -17,10 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Label(1) // => "low"
-Label(2) // => "mid"
-Label(9) // => "?"
+**Example 1:**
+
+```
+Input:  Label(1)
+Output: low
+```
+
+**Example 2:**
+
+```
+Input:  Label(2)
+Output: mid
+```
+
+**Example 3:**
+
+```
+Input:  Label(9)
+Output: ?
 ```
 
 ## Topics to Master

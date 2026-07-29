@@ -13,13 +13,34 @@ the same backing array — writing `g[0][0]` changes every row.
 Fix the loop between the markers in [grid2dalias.go](grid2dalias.go) to allocate
 a fresh row per line.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-g := New(3,2); g[0][0]=9 // g[1][0] must stay 0
+**Example 1:**
+
+```
+Input:  rows=2, cols=2
+Output: [[0,0],[0,0]] with independent rows
+```
+
+**Example 2:**
+
+```
+Input:  rows=3, cols=1
+Output: [[0],[0],[0]]
+```
+
+**Example 3:**
+
+```
+Input:  rows=1, cols=3
+Output: [[0,0,0]]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

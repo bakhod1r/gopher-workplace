@@ -11,13 +11,38 @@ Sorting records by a field with a stable tie-break — the everyday table sort.
 
 Implement `ByAge(people)` — sorted by Age, then Name; input untouched.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-ByAge([{bob,30},{amy,25},{cid,30}]) // => [{amy 25} {bob 30} {cid 30}]
+**Example 1:**
+
+```
+Input:  [{bob,30},{amy,25},{cid,30}]
+Output: [{amy,25},{bob,30},{cid,30}]
 ```
 
+_Explanation:_ Age asc, Name asc on tie
+
+**Example 2:**
+
+```
+Input:  [{x,1}]
+Output: [{x,1}]
+```
+
+**Example 3:**
+
+```
+Input:  [{b,5},{a,5}]
+Output: [{a,5},{b,5}]
+```
+
+_Explanation:_ tie broken by Name
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

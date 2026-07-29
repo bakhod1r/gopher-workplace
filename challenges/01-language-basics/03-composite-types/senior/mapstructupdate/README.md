@@ -14,13 +14,34 @@ without writing it back, the map keeps the old value. (Go even forbids
 Fix the line between the markers in
 [mapstructupdate.go](mapstructupdate.go) to store the updated struct.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Record(m,"a"); Record(m,"a") // m["a"].Hits == 2
+**Example 1:**
+
+```
+Input:  Record(m,'a') once
+Output: m['a'].Hits==1
+```
+
+**Example 2:**
+
+```
+Input:  Record(m,'a') twice
+Output: m['a'].Hits==2
+```
+
+**Example 3:**
+
+```
+Input:  Record(m,'b') on empty m
+Output: m['b'].Hits==1
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

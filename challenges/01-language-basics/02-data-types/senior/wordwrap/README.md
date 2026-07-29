@@ -14,14 +14,36 @@ width 5.
 Fix the fit test between the markers in [wordwrap.go](wordwrap.go) so a line may
 use the full width.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Wrap("aa bb cc", 5)        // => ["aa bb", "cc"]
-Wrap("the quick brown fox",10) // => ["the quick","brown fox"]
+**Example 1:**
+
+```
+Input:  "the quick brown fox",10
+Output: ["the quick" "brown fox"]
 ```
 
+**Example 2:**
+
+```
+Input:  "aa bb cc",5
+Output: ["aa bb" "cc"]
+```
+
+**Example 3:**
+
+```
+Input:  "a b",3
+Output: ["a b"]
+```
+
+_Explanation:_ length 3 == width fits
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

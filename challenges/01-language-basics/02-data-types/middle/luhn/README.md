@@ -13,15 +13,40 @@ gateway — cheap client-side rejection of typos.
 Implement `Valid(s)`: double every second digit from the right (subtract 9 if
 >9), sum all, and require the total `% 10 == 0`. Non-digits/empty → false.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Valid("4539148803436467") // => true
-Valid("79927398713")      // => true
-Valid("79927398710")      // => false
+**Example 1:**
+
+```
+Input:  Valid("79927398713")
+Output: true
 ```
 
+_Explanation:_ classic valid Luhn number
+
+**Example 2:**
+
+```
+Input:  Valid("79927398710")
+Output: false
+```
+
+_Explanation:_ checksum not divisible by 10
+
+**Example 3:**
+
+```
+Input:  Valid("1234a")
+Output: false
+```
+
+_Explanation:_ non-digit -> invalid
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

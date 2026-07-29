@@ -1,31 +1,42 @@
-# Switch Fallthrough
+# Cascading Permissions
 
 **Level:** junior
-**Topic:** 01-language-basics → 04-conditionals
-**Estimated time:** 12 min
+**Topic:** 01-language-basics → 04-functions · _control-flow_
 
 ## Context
 
-An authorization tier is cumulative: an admin also has writer and reader
-rights, a writer also has reader rights. Go switches do **not** fall through by
-default, so higher tiers must opt in with an explicit `fallthrough`.
+A `switch` with `fallthrough` lets a matched case continue into the next, so higher access levels accumulate the permissions of lower ones.
 
 ## Task
 
-Implement `Access` in [cascade.go](cascade.go) so each level accumulates the
-lower permissions via `fallthrough`: 3→"admin,write,read", 2→"write,read",
-1→"read", anything else → "".
+Implement `Access` in [cascade.go](cascade.go) so each level adds the permissions below it, comma-joined highest-first.
 
 Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Access(3) // => "admin,write,read"
-Access(2) // => "write,read"
-Access(1) // => "read"
-Access(0) // => ""
+**Example 1:**
+
 ```
+Input:  Access(3)
+Output: "admin,write,read"
+```
+
+**Example 2:**
+
+```
+Input:  Access(2)
+Output: "write,read"
+```
+
+**Example 3:**
+
+```
+Input:  Access(9)
+Output: ""
+```
+
+_Explanation:_ No exact case matches, so nothing accumulates.
 
 ## Topics to Master
 
@@ -33,20 +44,16 @@ Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|
-| 1 | **No auto fallthrough** | Unlike C, Go stops at the end of a matched case unless you say otherwise. |
-| 2 | **`fallthrough`** | An explicit `fallthrough` continues into the next case's body (without re-testing it). |
-| 3 | **Accumulating cases** | Placing `fallthrough` at the end of each case chains them from high to low. |
+| 1 | **switch fallthrough** | A matched case continues into the next. |
+| 2 | **accumulation** | Build the string across cascading cases. |
+| 3 | **default/empty** | Out-of-range levels yield "". |
 
 ## Hint
 
-Build up a result string. In `case 3` append `"admin,"` then `fallthrough`;
-`case 2` append `"write,"` then `fallthrough`; `case 1` append `"read"`.
-Missing a `fallthrough` stops the chain early.
+Use `fallthrough` from level 3 down; join with commas.
 
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

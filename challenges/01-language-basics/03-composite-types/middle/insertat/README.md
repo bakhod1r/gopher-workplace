@@ -11,14 +11,36 @@ Inserting into an ordered slice: split at the index and stitch the value in.
 
 Implement `InsertAt(xs, i, v)`, clamping `i` to `[0, len]`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-InsertAt([]int{1,2,3}, 1, 9) // => [1 9 2 3]
-InsertAt([]int{1,2,3}, 10,9) // => [1 2 3 9]
+**Example 1:**
+
+```
+Input:  [1,2,3], i=1, v=9
+Output: [1,9,2,3]
+```
+
+**Example 2:**
+
+```
+Input:  [1,2,3], i=10, v=9
+Output: [1,2,3,9]
+```
+
+_Explanation:_ i clamps to len
+
+**Example 3:**
+
+```
+Input:  [], i=0, v=9
+Output: [9]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

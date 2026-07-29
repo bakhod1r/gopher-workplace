@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 03-composite-types
-**Estimated time:** 10 min
 
 ## Context
 
@@ -18,13 +17,32 @@ unchanged.
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-s := []int{1, 2, 3}; Reverse(s) // s == []int{3, 2, 1}
-s := []int{1, 2};    Reverse(s) // s == []int{2, 1}
-s := []int{9};       Reverse(s) // s == []int{9}
+**Example 1:**
+
 ```
+Input:  []int{1,2,3}
+Output: []int{3,2,1} (in place)
+```
+
+**Example 2:**
+
+```
+Input:  []int{1,2}
+Output: []int{2,1}
+```
+
+**Example 3:**
+
+```
+Input:  []int{9}
+Output: []int{9}
+```
+
+_Explanation:_ Single element: loop never runs.
 
 ## Topics to Master
 
@@ -46,7 +64,5 @@ slice comes back unchanged.
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

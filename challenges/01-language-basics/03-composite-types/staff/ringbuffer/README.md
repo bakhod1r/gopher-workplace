@@ -13,13 +13,36 @@ never wraps).
 
 Fix the index between the markers in [ringbuffer.go](ringbuffer.go) to wrap.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-At([]int{10,20,30,40}, 2, 2) // => 10 (wraps)
+**Example 1:**
+
+```
+Input:  buf=[10 20 30], head=1, i=0
+Output: 20
+```
+
+**Example 2:**
+
+```
+Input:  buf=[10 20 30], head=1, i=2
+Output: 10
+```
+
+_Explanation:_ (1+2)%3=0 wraps around.
+
+**Example 3:**
+
+```
+Input:  buf=[10 20 30], head=0, i=4
+Output: 20
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

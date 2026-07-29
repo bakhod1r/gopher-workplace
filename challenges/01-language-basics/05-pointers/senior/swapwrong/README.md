@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-x,y := 1,2; Swap(&x,&y) // x=2, y=1
+**Example 1:**
+
+```
+Input:  x, y := 1, 2; Swap(&x, &y)
+Output: x == 2, y == 1
+```
+
+**Example 2:**
+
+```
+Input:  x, y := 5, 5; Swap(&x, &y)
+Output: x == 5, y == 5
+```
+
+**Example 3:**
+
+```
+Input:  x, y := -1, 9; Swap(&x, &y)
+Output: x == 9, y == -1
 ```
 
 ## Topics to Master

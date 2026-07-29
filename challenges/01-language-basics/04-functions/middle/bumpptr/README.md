@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-x := 41; Bump(&x) // x becomes 42
+**Example 1:**
+
+```
+Input:  x := 5; Bump(&x)
+Output: x == 6
+```
+
+**Example 2:**
+
+```
+Input:  x := 0; Bump(&x)
+Output: x == 1
+```
+
+**Example 3:**
+
+```
+Input:  x := -1; Bump(&x)
+Output: x == 0
 ```
 
 ## Topics to Master

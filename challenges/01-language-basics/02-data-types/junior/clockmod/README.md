@@ -13,15 +13,49 @@ backward needs an extra step to stay in `0..23`.
 Implement `AddHours(h, add)` returning the resulting hour in `0..23`. `add` may
 be negative or larger than 24.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-AddHours(23, 1)  // => 0
-AddHours(0, -1)  // => 23
-AddHours(6, -30) // => 0
+**Example 1:**
+
+```
+Input:  AddHours(10, 5)
+Output: 15
 ```
 
+_Explanation:_ No wrap needed.
+
+**Example 2:**
+
+```
+Input:  AddHours(23, 1)
+Output: 0
+```
+
+_Explanation:_ Past midnight wraps to 0.
+
+**Example 3:**
+
+```
+Input:  AddHours(0, -1)
+Output: 23
+```
+
+_Explanation:_ Going back an hour from 0 wraps to 23.
+
+**Example 4:**
+
+```
+Input:  AddHours(6, -30)
+Output: 0
+```
+
+_Explanation:_ 6-30=-24; normalized to 0.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

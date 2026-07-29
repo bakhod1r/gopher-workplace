@@ -13,13 +13,34 @@
 Fix the return between the markers in
 [embeddingshadow.go](embeddingshadow.go) to read the embedded `Base.ID`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-BaseID(Entity{Base{42}, 7}) // => 42
+**Example 1:**
+
+```
+Input:  Entity{Base:{ID:7}, ID:99}
+Output: 7
+```
+
+**Example 2:**
+
+```
+Input:  Entity{Base:{ID:1}, ID:0}
+Output: 1
+```
+
+**Example 3:**
+
+```
+Input:  Entity{Base:{ID:-3}, ID:5}
+Output: -3
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

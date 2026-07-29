@@ -1,14 +1,26 @@
 # Returning a tuple
 
-## The idea
+## Intuition
 
 A function returning `(int, int)` lets callers do `x, y = Swap(x, y)` — Go evaluates the right side fully before assigning.
 
-## Why it matters
+## Approach
 
-Parallel assignment and multi-return remove the classic temp-variable swap boilerplate.
+1. Return the arguments in reverse order: `return b, a`.
 
-## Watch out
+## Solution
+
+```go
+func Swap(a, b int) (int, int) {
+	return b, a
+}
+```
+
+## Walkthrough
+
+`Swap(1, 2)` hands back `2, 1` — multiple return values make this a one-liner.
+
+## Pitfalls
 
 - The function copies its arguments; it cannot mutate the caller's variables.
 - Order in the `return` must match the signature.

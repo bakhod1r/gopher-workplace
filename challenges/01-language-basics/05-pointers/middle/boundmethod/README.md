@@ -16,8 +16,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-inc := Bind(c); inc(); inc() // c.N = 2
+**Example 1:**
+
+```
+Input:  inc := Bind(c); inc(); inc()
+Output: c.N == 2
+```
+
+_Explanation:_ The method value captures the pointer receiver.
+
+**Example 2:**
+
+```
+Input:  inc := Bind(c); inc()
+Output: c.N == 1
+```
+
+**Example 3:**
+
+```
+Input:  c := &Counter{N:5}; Bind(c)()
+Output: c.N == 6
 ```
 
 ## Topics to Master

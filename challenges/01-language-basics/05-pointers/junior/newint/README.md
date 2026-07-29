@@ -16,9 +16,30 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-p := Alloc(7); *p // => 7
+**Example 1:**
+
 ```
+Input:  p := Alloc(7)
+Output: *p == 7
+```
+
+_Explanation:_ A fresh int holding 7 is allocated and its address returned.
+
+**Example 2:**
+
+```
+Input:  p := Alloc(0)
+Output: p != nil, *p == 0
+```
+
+**Example 3:**
+
+```
+Input:  p, q := Alloc(7), Alloc(7)
+Output: p != q
+```
+
+_Explanation:_ Each call allocates a distinct int — same value, different address.
 
 ## Topics to Master
 

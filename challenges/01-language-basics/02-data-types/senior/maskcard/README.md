@@ -13,14 +13,36 @@ masks the last four and reveals the rest, leaking the sensitive part.
 Fix the condition between the markers in [maskcard.go](maskcard.go) so only the
 last four are visible.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Mask("1234567890123456") // => "************3456"
-Mask("12345")            // => "*2345"
+**Example 1:**
+
+```
+Input:  "1234567890123456"
+Output: "************3456"
+```
+
+**Example 2:**
+
+```
+Input:  "4242"
+Output: "4242"
+```
+
+_Explanation:_ <=4 chars unchanged
+
+**Example 3:**
+
+```
+Input:  "12345"
+Output: "*2345"
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

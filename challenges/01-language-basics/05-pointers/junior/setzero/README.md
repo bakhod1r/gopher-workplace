@@ -15,8 +15,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-x := 99; Zero(&x) // x becomes 0
+**Example 1:**
+
+```
+Input:  x := 99; Zero(&x)
+Output: x == 0
+```
+
+_Explanation:_ Assigning through the pointer clears the caller's variable.
+
+**Example 2:**
+
+```
+Input:  x := 0; Zero(&x)
+Output: x == 0
+```
+
+**Example 3:**
+
+```
+Input:  x := -7; Zero(&x)
+Output: x == 0
 ```
 
 ## Topics to Master

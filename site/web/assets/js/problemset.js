@@ -22,9 +22,6 @@
     body: document.getElementById('psBody'),
     empty: document.getElementById('psEmpty'),
     search: document.getElementById('psSearch'),
-    level: document.getElementById('psLevel'),
-    tag: document.getElementById('psTag'),
-    status: document.getElementById('psStatus'),
     reset: document.getElementById('psReset'),
     random: document.getElementById('psRandom'),
     stats: document.getElementById('psStats'),
@@ -32,11 +29,56 @@
 
   let SHOWN = ROWS;  // rows currently passing the filters
 
-  // tag filter options (the subtopic shown in the Tags column), sorted
+  // populate the tag multi-select with the subtopics, sorted
+  const tagMenu = document.querySelector('#psTag .ps-ms-menu');
   [...new Set(ROWS.map(r => r.sub).filter(Boolean))].sort().forEach(t => {
-    const o = document.createElement('option'); o.value = t; o.textContent = t;
-    els.tag.appendChild(o);
+    const l = document.createElement('label');
+    l.innerHTML = '<input type="checkbox"><span></span>';
+    l.querySelector('input').value = t;
+    l.querySelector('span').textContent = t;
+    tagMenu.appendChild(l);
   });
+
+  // Multi-select dropdown: each returns a live Set of checked values and calls
+  // onChange whenever the selection changes. Menu closes on outside click.
+  function multiSelect(id, onChange){
+    const root = document.getElementById(id);
+    const btn = root.querySelector('.ps-ms-btn');
+    const menu = root.querySelector('.ps-ms-menu');
+    const allLabel = root.dataset.all;
+    const selected = new Set();
+    function label(){
+      const boxes = [...menu.querySelectorAll('input:checked')];
+      if(!boxes.length){ btn.textContent = allLabel + ' ▾'; root.classList.remove('on'); return; }
+      const txt = boxes.length === 1
+        ? boxes[0].parentNode.textContent.trim()
+        : boxes.length + ' selected';
+      btn.textContent = txt + ' ▾'; root.classList.add('on');
+    }
+    function sync(){
+      selected.clear();
+      menu.querySelectorAll('input:checked').forEach(b => selected.add(b.value));
+      label(); onChange();
+    }
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const open = menu.hidden;
+      document.querySelectorAll('.ps-ms-menu').forEach(m => { m.hidden = true; });
+      menu.hidden = !open; btn.setAttribute('aria-expanded', String(open));
+    });
+    menu.addEventListener('click', e => e.stopPropagation());
+    menu.addEventListener('change', sync);
+    root._clear = () => { menu.querySelectorAll('input:checked').forEach(b => b.checked = false); sync(); };
+    return selected;
+  }
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.ps-ms-menu').forEach(m => { m.hidden = true; });
+    document.querySelectorAll('.ps-ms-btn').forEach(b => b.setAttribute('aria-expanded','false'));
+  });
+
+  const selLevel = multiSelect('psLevel', apply);
+  const selTag   = multiSelect('psTag', apply);
+  const selStatus= multiSelect('psStatus', apply);
 
   function statusCell(s){
     if(s==='solved') return '<span class="st-ico ok" title="Solved">✓</span>';
@@ -63,11 +105,10 @@
 
   function apply(){
     const q = els.search.value.trim().toLowerCase();
-    const lv = els.level.value, st = els.status.value, tg = els.tag.value;
     const rows = ROWS.filter(r => {
-      if(lv && r.lv !== lv) return false;
-      if(tg && r.sub !== tg) return false;
-      if(st && statusOf(r) !== st) return false;
+      if(selLevel.size && !selLevel.has(r.lv)) return false;
+      if(selTag.size && !selTag.has(r.sub)) return false;
+      if(selStatus.size && !selStatus.has(statusOf(r))) return false;
       if(q && !((r.name+' '+r.sub+' '+r.topic).toLowerCase().includes(q))) return false;
       return true;
     });
@@ -96,10 +137,11 @@
   }
 
   els.search.addEventListener('input', apply);
-  [els.level, els.tag, els.status].forEach(e => e.addEventListener('change', apply));
   els.random.addEventListener('click', pickRandom);
   els.reset.addEventListener('click', () => {
-    els.search.value=''; els.level.value=''; els.tag.value=''; els.status.value=''; apply();
+    els.search.value='';
+    ['psLevel','psTag','psStatus'].forEach(id => document.getElementById(id)._clear());
+    apply();
   });
 
   renderStats();

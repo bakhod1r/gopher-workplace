@@ -17,10 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-AllPositive([]int{1,2,3})  // => true
-AllPositive([]int{1,-2,3}) // => false
-AllPositive(nil)           // => true
+**Example 1:**
+
+```
+Input:  AllPositive([1 2 3])
+Output: true
+```
+
+**Example 2:**
+
+```
+Input:  AllPositive([1 -2 3])
+Output: false
+```
+
+**Example 3:**
+
+```
+Input:  AllPositive(nil)
+Output: true
 ```
 
 ## Topics to Master

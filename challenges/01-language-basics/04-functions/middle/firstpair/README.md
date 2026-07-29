@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-FindPairSum([]int{1,2,3,4}, 6) // => 1, 3, true
-FindPairSum([]int{1,2}, 100)   // => 0, 0, false
+**Example 1:**
+
+```
+Input:  FindPairSum([1 2 3 4], 7)
+Output: 2, 3, true (xs[2]+xs[3])
+```
+
+**Example 2:**
+
+```
+Input:  FindPairSum([1 2], 9)
+Output: 0, 0, false
+```
+
+**Example 3:**
+
+```
+Input:  FindPairSum([3 4], 7)
+Output: 0, 1, true
 ```
 
 ## Topics to Master

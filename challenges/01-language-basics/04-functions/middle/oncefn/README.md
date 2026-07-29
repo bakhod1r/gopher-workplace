@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-do := Once(f); do() // runs f
-do()                // no-op
-do()                // no-op
+**Example 1:**
+
+```
+Input:  o := Once(f); o(); o()
+Output: f runs only the first time
+```
+
+**Example 2:**
+
+```
+Input:  second call is a no-op
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  guarded by a captured flag
+Output: true
 ```
 
 ## Topics to Master

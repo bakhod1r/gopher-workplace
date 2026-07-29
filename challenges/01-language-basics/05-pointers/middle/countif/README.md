@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-CountIf(1->2->3->4, even) // => 2
+**Example 1:**
+
+```
+Input:  CountIf(1->2->3->4, even)
+Output: 2
+```
+
+**Example 2:**
+
+```
+Input:  CountIf(nil, even)
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  CountIf(1->3->5, even)
+Output: 0
 ```
 
 ## Topics to Master

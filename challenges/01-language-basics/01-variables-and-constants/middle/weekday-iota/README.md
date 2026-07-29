@@ -15,16 +15,34 @@ In [weekday.go](weekday.go):
 1. Define `Sunday..Saturday` in one const block (`Sunday=0`, `Saturday=6`).
 2. Implement `IsWeekend` returning true for Saturday and Sunday.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Monday        // => 1
-Saturday      // => 6
-IsWeekend(Sunday)   // => true
-IsWeekend(Wednesday)// => false
+**Example 1:**
+
+```
+Input:  Sunday, Saturday
+Output: 0, 6
+```
+
+**Example 2:**
+
+```
+Input:  IsWeekend(Saturday)
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  IsWeekend(Monday)
+Output: false
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-AddTax(200, 10) // => 220
-AddTax(100, 0)  // => 100
-AddTax(99, 50)  // => 148
+**Example 1:**
+
+```
+Input:  AddTax(100, 20)
+Output: 120
+```
+
+**Example 2:**
+
+```
+Input:  AddTax(50, 0)
+Output: 50
+```
+
+**Example 3:**
+
+```
+Input:  AddTax(200, 10)
+Output: 220
 ```
 
 ## Topics to Master

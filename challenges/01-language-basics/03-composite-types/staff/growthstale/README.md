@@ -14,13 +14,36 @@ freed-from-view memory, not `s[0]`.
 Fix the write between the markers in [growthstale.go](growthstale.go) to update
 the current slice.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-BumpFirst(20) // => 99, [99 20]
+**Example 1:**
+
+```
+Input:  val=7
+Output: first=99, slice=[99 7]
 ```
 
+**Example 2:**
+
+```
+Input:  val=0
+Output: first=99, slice=[99 0]
+```
+
+**Example 3:**
+
+```
+Input:  val=-1
+Output: first=99, slice=[99 -1]
+```
+
+_Explanation:_ write must target the new backing array, not the stale pointer.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

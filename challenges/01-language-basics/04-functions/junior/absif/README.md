@@ -15,10 +15,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Abs(-5) // => 5
-Abs(5)  // => 5
-Abs(0)  // => 0
+**Example 1:**
+
+```
+Input:  Abs(-5)
+Output: 5
+```
+
+**Example 2:**
+
+```
+Input:  Abs(5)
+Output: 5
+```
+
+**Example 3:**
+
+```
+Input:  Abs(0)
+Output: 0
 ```
 
 ## Topics to Master

@@ -14,13 +14,34 @@ length compare "equal".
 Fix the body between the markers in [sliceequal.go](sliceequal.go) to compare
 elements.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Equal([]int{1,2,3}, []int{1,9,3}) // => false
+**Example 1:**
+
+```
+Input:  a=[1,2,3], b=[1,2,3]
+Output: true
+```
+
+**Example 2:**
+
+```
+Input:  a=[1,2,3], b=[1,9,3]
+Output: false
+```
+
+**Example 3:**
+
+```
+Input:  a=[], b=[]
+Output: true
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

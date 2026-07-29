@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-SumKeep([]int{3,1,2}) // => 6
-SumKeep(nil)          // => 0
-SumKeep([]int{-1,1})  // => 0
+**Example 1:**
+
+```
+Input:  SumKeep([1 2 3])
+Output: 6
+```
+
+**Example 2:**
+
+```
+Input:  SumKeep(nil)
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  SumKeep([-2 2])
+Output: 0
 ```
 
 ## Topics to Master

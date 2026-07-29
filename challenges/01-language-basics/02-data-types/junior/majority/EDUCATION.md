@@ -1,6 +1,6 @@
 # Boolean logic
 
-## The idea
+## Intuition
 
 `bool` has two values, `true` and `false`. The operators combine them: `&&`
 (and) is true only when both sides are, `||` (or) is true when either is, `!`
@@ -10,13 +10,24 @@ negates. A "majority of three" is just every pair OR'd together:
 (a && b) || (a && c) || (b && c)
 ```
 
-## Why it matters
+## Approach
 
-Expressing a rule directly in boolean algebra is clearer and cheaper than
-converting to integers and counting. It also composes: conditions become
-readable expressions instead of nested `if`s.
+1. A majority of three exists iff some pair is both true.
+2. Return (a&&b) || (a&&c) || (b&&c).
 
-## Watch out
+## Solution
+
+```go
+func Majority(a, b, c bool) bool {
+	return (a && b) || (a && c) || (b && c)
+}
+```
+
+## Walkthrough
+
+Majority(false,true,true): a&&b=false, a&&c=false, b&&c=true -> true.
+
+## Pitfalls
 
 - `&&` and `||` **short-circuit**: the right side is not evaluated if the left
   already decides the result. That matters when the right side has side effects
@@ -25,10 +36,3 @@ readable expressions instead of nested `if`s.
   in doubt.
 - Go has no implicit truthiness: only a `bool` fits where a condition is
   expected, never an int or pointer.
-
-## Try it yourself
-
-```go
-!(a && b) == (!a || !b) // De Morgan's law: always true
-true || panic("x")       // won't panic — short-circuit
-```

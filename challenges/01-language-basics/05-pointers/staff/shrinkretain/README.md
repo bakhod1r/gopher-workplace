@@ -16,8 +16,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Pop(&s) // backing slot nilled so the object can be freed
+**Example 1:**
+
+```
+Input:  s := []*T{a, b}; Pop(&s)
+Output: backing slot nilled, len 1
+```
+
+_Explanation:_ Nil the dropped slot so the object can be GC'd.
+
+**Example 2:**
+
+```
+Input:  len after Pop
+Output: len-1
+```
+
+**Example 3:**
+
+```
+Input:  s[last] before reslice
+Output: nil
 ```
 
 ## Topics to Master

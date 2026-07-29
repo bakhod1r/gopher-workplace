@@ -16,10 +16,30 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-NthFromEnd(1->2->3->4->5, 1) // => node 5
-NthFromEnd(list, 3)           // => node 3
+**Example 1:**
+
 ```
+Input:  NthFromEnd(1->2->3->4->5, 1)
+Output: node 5
+```
+
+_Explanation:_ 1st from the end is the last node.
+
+**Example 2:**
+
+```
+Input:  NthFromEnd(1->2->3->4->5, 3)
+Output: node 3
+```
+
+**Example 3:**
+
+```
+Input:  NthFromEnd(1->2, 5)
+Output: nil
+```
+
+_Explanation:_ n larger than the length → nil.
 
 ## Topics to Master
 

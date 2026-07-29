@@ -13,14 +13,43 @@ decodes as 556).
 
 Fix the shift step between the markers in [varint.go](varint.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Decode([]byte{0xAC, 0x02}) // => 300, 2
-Decode([]byte{0x80, 0x01}) // => 128, 2
+**Example 1:**
+
+```
+Input:  [0xAC, 0x02]
+Output: 300, 2
 ```
 
+**Example 2:**
+
+```
+Input:  [0x80, 0x01]
+Output: 128, 2
+```
+
+**Example 3:**
+
+```
+Input:  [0xFF, 0xFF, 0x03]
+Output: 65535, 3
+```
+
+**Example 4:**
+
+```
+Input:  [0x80]
+Output: 0, 0
+```
+
+_Explanation:_ Truncated mid-varint.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

@@ -12,16 +12,49 @@ byte arithmetic on character literals.
 
 Implement `Digit(n)` returning the lowercase hex char for `0..15`, else `'?'`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Digit(0)  // => '0'
-Digit(10) // => 'a'
-Digit(15) // => 'f'
-Digit(16) // => '?'
+**Example 1:**
+
+```
+Input:  Digit(0)
+Output: '0'
 ```
 
+_Explanation:_ '0'+0.
+
+**Example 2:**
+
+```
+Input:  Digit(10)
+Output: 'a'
+```
+
+_Explanation:_ 'a'+(10-10).
+
+**Example 3:**
+
+```
+Input:  Digit(15)
+Output: 'f'
+```
+
+_Explanation:_ 'a'+5.
+
+**Example 4:**
+
+```
+Input:  Digit(16)
+Output: '?'
+```
+
+_Explanation:_ Out of 0..15 range.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

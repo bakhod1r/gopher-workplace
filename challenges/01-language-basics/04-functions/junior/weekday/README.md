@@ -1,28 +1,39 @@
-# Weekday Switch
+# Weekday Name
 
 **Level:** junior
-**Topic:** 01-language-basics → 04-conditionals
-**Estimated time:** 10 min
+**Topic:** 01-language-basics → 04-functions · _control-flow_
 
 ## Context
 
-A scheduler prints a day name from its number. A `switch` is cleaner than a
-long if-ladder here — but an out-of-range number still needs a sensible answer.
+A `switch` on a value maps each case to a result, with `default` handling everything out of range.
 
 ## Task
 
-Implement `Weekday` in [weekday.go](weekday.go) using a `switch`: 1→"Monday" …
-7→"Sunday", anything else → "Unknown".
+Implement `Weekday` in [weekday.go](weekday.go) mapping 1–7 to day names.
 
 Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Weekday(1) // => "Monday"
-Weekday(7) // => "Sunday"
-Weekday(0) // => "Unknown"
-Weekday(8) // => "Unknown"
+**Example 1:**
+
+```
+Input:  Weekday(1)
+Output: "Monday"
+```
+
+**Example 2:**
+
+```
+Input:  Weekday(7)
+Output: "Sunday"
+```
+
+**Example 3:**
+
+```
+Input:  Weekday(8)
+Output: "Unknown"
 ```
 
 ## Topics to Master
@@ -31,19 +42,16 @@ Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|
-| 1 | **Expression switch** | `switch d { case 1: … }` compares `d` against each case value. |
-| 2 | **No auto fallthrough** | Go stops after a matching case — no `break` needed, cases don't leak into each other. |
-| 3 | **default** | The `default` case handles every value no `case` matched — use it for "Unknown". |
+| 1 | **expression switch** | `switch d { case 1: }`. |
+| 2 | **default case** | Out-of-range → "Unknown". |
+| 3 | **value mapping** | Each day number to a name. |
 
 ## Hint
 
-`switch d { case 1: return "Monday"; …; case 7: return "Sunday"; default:
-return "Unknown" }`. Each case returns on its own; there is no fallthrough.
+`switch d { case 1: return "Monday"; ...; default: return "Unknown" }`.
 
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

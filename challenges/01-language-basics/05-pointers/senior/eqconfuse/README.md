@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Same(&x, &x) // => true
-Same(&x, &y) // => false even if *x == *y
+**Example 1:**
+
+```
+Input:  x := 1; Same(&x, &x)
+Output: true
+```
+
+**Example 2:**
+
+```
+Input:  x, y := 1, 1; Same(&x, &y)
+Output: false
+```
+
+**Example 3:**
+
+```
+Input:  p := &x; Same(p, &x)
+Output: true
 ```
 
 ## Topics to Master

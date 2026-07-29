@@ -15,8 +15,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-x := 5; Negate(&x) // x=-5
+**Example 1:**
+
+```
+Input:  x := 5; Negate(&x)
+Output: x == -5
+```
+
+**Example 2:**
+
+```
+Input:  x := -3; Negate(&x)
+Output: x == 3
+```
+
+**Example 3:**
+
+```
+Input:  x := 0; Negate(&x)
+Output: x == 0
 ```
 
 ## Topics to Master

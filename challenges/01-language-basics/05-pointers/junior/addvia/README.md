@@ -16,8 +16,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-x := 10; Add(&x, 5) // x=15
+**Example 1:**
+
+```
+Input:  x := 10; Add(&x, 5)
+Output: x == 15
+```
+
+**Example 2:**
+
+```
+Input:  x := 10; Add(&x, -3)
+Output: x == 7
+```
+
+_Explanation:_ Delta can be negative.
+
+**Example 3:**
+
+```
+Input:  x := 0; Add(&x, 0)
+Output: x == 0
 ```
 
 ## Topics to Master

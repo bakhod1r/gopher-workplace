@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Clone(b); *c.P = 99 // *b.P unchanged
+**Example 1:**
+
+```
+Input:  c := Clone(b); *c.P = 99
+Output: *b.P unchanged
+```
+
+**Example 2:**
+
+```
+Input:  Clone(&Box{P: &x})
+Output: independent pointee
+```
+
+**Example 3:**
+
+```
+Input:  c.P != b.P
+Output: true
 ```
 
 ## Topics to Master

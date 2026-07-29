@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-BoundEarly(7)() // => 7
+**Example 1:**
+
+```
+Input:  BoundEarly(7)()
+Output: 7
+```
+
+**Example 2:**
+
+```
+Input:  method value binds receiver at creation
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  later receiver change ignored
+Output: true
 ```
 
 ## Topics to Master

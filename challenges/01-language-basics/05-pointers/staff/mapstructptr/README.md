@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-BumpVia(m, 1) // *m[1].P += 1
+**Example 1:**
+
+```
+Input:  BumpVia(m, 1)
+Output: *m[1].P += 1
+```
+
+**Example 2:**
+
+```
+Input:  *m[1].P == 10; BumpVia(m, 1)
+Output: 11
+```
+
+**Example 3:**
+
+```
+Input:  BumpVia on missing key
+Output: no write
 ```
 
 ## Topics to Master

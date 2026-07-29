@@ -15,15 +15,36 @@ to let `Redirect` follow the run.
 Fix the single line between the markers in [codes.go](codes.go) so the classes
 are 0,1,2,3,4 in order.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Info        // => 0
-Redirect    // => 2
-ServerError // => 4
+**Example 1:**
+
+```
+Input:  Info, Success
+Output: 0, 1
 ```
 
+**Example 2:**
+
+```
+Input:  ClientError
+Output: 3
+```
+
+**Example 3:**
+
+```
+Input:  ServerError
+Output: 4
+```
+
+_Explanation:_ The explicit 7 broke the sequence.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

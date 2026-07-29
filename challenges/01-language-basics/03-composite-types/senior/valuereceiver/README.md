@@ -13,13 +13,34 @@ discarded — the wallet never changes.
 Fix the receiver between the markers in
 [valuereceiver.go](valuereceiver.go) to a pointer.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-w := &Wallet{100}; w.Credit(50) // Balance must become 150
+**Example 1:**
+
+```
+Input:  w={0}; Credit(100)
+Output: w.Balance==100
+```
+
+**Example 2:**
+
+```
+Input:  w={50}; Credit(25)
+Output: w.Balance==75
+```
+
+**Example 3:**
+
+```
+Input:  w={10}; Credit(0)
+Output: w.Balance==10
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

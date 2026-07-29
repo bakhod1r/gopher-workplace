@@ -15,9 +15,28 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-b := false; Toggle(&b) // b=true
+**Example 1:**
+
 ```
+Input:  b := false; Toggle(&b)
+Output: b == true
+```
+
+**Example 2:**
+
+```
+Input:  b := true; Toggle(&b)
+Output: b == false
+```
+
+**Example 3:**
+
+```
+Input:  b := false; Toggle(&b); Toggle(&b)
+Output: b == false
+```
+
+_Explanation:_ Two toggles return to the start.
 
 ## Topics to Master
 

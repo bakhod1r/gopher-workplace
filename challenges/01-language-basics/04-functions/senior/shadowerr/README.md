@@ -17,9 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Parse("42")   // => 42, nil
-Parse("nope") // => 0, non-nil error
+**Example 1:**
+
+```
+Input:  Parse("42")
+Output: 42, nil
+```
+
+**Example 2:**
+
+```
+Input:  Parse("nope")
+Output: 0, non-nil error
+```
+
+**Example 3:**
+
+```
+Input:  Parse("-7")
+Output: -7, nil
 ```
 
 ## Topics to Master

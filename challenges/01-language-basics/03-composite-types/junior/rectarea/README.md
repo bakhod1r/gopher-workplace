@@ -12,14 +12,36 @@ mutating the receiver.
 
 Implement `Area()` and `Scale(factor)` on `Rect`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Rect{3,4}.Area()   // => 12
-Rect{2,3}.Scale(2) // => {4 6}
+**Example 1:**
+
+```
+Input:  Rect{3,4}.Area()
+Output: 12
 ```
 
+**Example 2:**
+
+```
+Input:  Rect{2,3}.Scale(2)
+Output: Rect{4,6}
+```
+
+**Example 3:**
+
+```
+Input:  original after Scale
+Output: Rect{2,3}
+```
+
+_Explanation:_ Value receiver returns a new Rect; original untouched.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

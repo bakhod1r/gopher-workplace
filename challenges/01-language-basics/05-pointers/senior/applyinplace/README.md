@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Apply(&x, square) // *p = square(*p)
+**Example 1:**
+
+```
+Input:  x := 3; Apply(&x, square)
+Output: x == 9
+```
+
+**Example 2:**
+
+```
+Input:  x := 5; Apply(&x, inc)
+Output: x == 6
+```
+
+**Example 3:**
+
+```
+Input:  x := 4; Apply(&x, identity)
+Output: x == 4
 ```
 
 ## Topics to Master

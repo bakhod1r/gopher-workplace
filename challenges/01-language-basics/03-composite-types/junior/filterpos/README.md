@@ -13,14 +13,36 @@ test.
 Implement `Positives(xs)` returning a new slice of the positive elements. Empty
 result must be non-nil.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Positives([]int{1,-2,3,0,4}) // => [1 3 4]
-Positives([]int{-1,-2})      // => []
+**Example 1:**
+
+```
+Input:  []int{1,-2,3,0,4}
+Output: []int{1,3,4}
+```
+
+_Explanation:_ 0 is not positive.
+
+**Example 2:**
+
+```
+Input:  []int{-1,-2}
+Output: []int{}
+```
+
+**Example 3:**
+
+```
+Input:  []int{}
+Output: []int{}
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

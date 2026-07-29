@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Run(func(){})                     // => true
-Run(func(){ panic(ErrSentinel) }) // => false
-Run(func(){ panic("x") })         // re-panics "x"
+**Example 1:**
+
+```
+Input:  Run(func(){})
+Output: true
+```
+
+**Example 2:**
+
+```
+Input:  Run(func(){ panic(ErrSentinel) })
+Output: false
+```
+
+**Example 3:**
+
+```
+Input:  Run(func(){ panic("x") })
+Output: re-panics "x"
 ```
 
 ## Topics to Master

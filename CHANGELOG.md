@@ -2,6 +2,43 @@
 
 All notable changes to this project are documented here. Dates are ISO 8601.
 
+## [0.6.0] — 2026-07-29
+
+Every puzzle in `01-language-basics` now teaches like LeetCode — a full worked
+solution beside three-plus examples — and the problemset filters by multiple
+values at once.
+
+### Changed
+
+- **All 450 `01-language-basics` puzzles rewritten to a LeetCode-style
+  `EDUCATION.md`**: five fixed sections — **Intuition / Approach / Solution /
+  Walkthrough / Pitfalls** — where **Solution** is the complete, verified-green
+  code (the stub implemented, or the one planted bug fixed), with the
+  `// CHANGE CODE` markers and bug-narration comments stripped. The retired shape
+  (The idea / Why it matters / Watch out / Try it yourself) is gone.
+- **Every README now carries ≥3 LeetCode-style examples** (`Input:` / `Output:` /
+  optional `_Explanation:_`), covering the interesting edges. Covers
+  `01-variables-and-constants` (40), `02-data-types` (70), `03-composite-types`
+  (100), `04-functions` (120), `05-pointers` (120).
+- Each puzzle's Solution was re-derived and **verified red→green + gofmt-clean**;
+  puzzles still ship RED (the stub/planted bug is untouched).
+- **Multi-select problemset filters.** Level, Tag, and Status are now checkbox
+  dropdowns — filter by several values at once — replacing the single-choice
+  selects.
+- `GENERATION.md` §5g documents the required README-examples and EDUCATION shape.
+
+### Fixed
+
+- `02-data-types/junior/vowelcount` test asserted `Vowels("café") == 2`, but `é`
+  is not an ASCII vowel (the test's own comment said so) — corrected to `1`.
+- `03-composite-types/junior/checkoutgrid` module path carried a stale
+  `01-arrays/` segment; flattened to match its location.
+
+### Notes
+
+- Version bumped to 0.6.0; asset cache-buster to `?v=27`; `problems.js`
+  regenerated (450 puzzles).
+
 ## [0.5.0] — 2026-07-28
 
 The `05-pointers` topic lands complete — **120 puzzles**, 30 per level — in the

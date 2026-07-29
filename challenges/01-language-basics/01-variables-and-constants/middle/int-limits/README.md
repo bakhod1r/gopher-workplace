@@ -15,16 +15,34 @@ In [limits.go](limits.go):
 1. Define `MaxUint = ^uint(0)`, `MaxInt` (all bits but the sign), `MinInt`.
 2. Implement `FitsInInt(v)` reporting whether `v <= MaxInt`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-MaxUint            // => 18446744073709551615 (64-bit)
-MaxInt             // => 9223372036854775807
-FitsInInt(0)       // => true
-FitsInInt(MaxUint) // => false
+**Example 1:**
+
+```
+Input:  MaxUint
+Output: all bits set (^uint(0))
+```
+
+**Example 2:**
+
+```
+Input:  FitsInInt(uint(MaxInt))
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  FitsInInt(MaxUint)
+Output: false
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

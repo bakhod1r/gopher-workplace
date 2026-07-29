@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Flatten([]int{1,2}, []int{3}) // => [1 2 3]
-Flatten()                     // => []
-Flatten(nil, []int{9})        // => [9]
+**Example 1:**
+
+```
+Input:  Flatten([1 2], [3], [4 5])
+Output: [1 2 3 4 5]
+```
+
+**Example 2:**
+
+```
+Input:  Flatten()
+Output: []
+```
+
+**Example 3:**
+
+```
+Input:  Flatten(nil, [9])
+Output: [9]
 ```
 
 ## Topics to Master

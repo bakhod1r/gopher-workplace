@@ -16,8 +16,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-ps := Pointers(xs); *ps[1] = 99 // xs[1] becomes 99
+**Example 1:**
+
+```
+Input:  xs := []int{1,2,3}; ps := Pointers(xs); *ps[1] = 99
+Output: xs[1] == 99
+```
+
+_Explanation:_ Each pointer aliases a real slice element.
+
+**Example 2:**
+
+```
+Input:  Pointers([]int{})
+Output: [] (empty)
+```
+
+**Example 3:**
+
+```
+Input:  ps := Pointers(xs); *ps[0]
+Output: xs[0]
 ```
 
 ## Topics to Master

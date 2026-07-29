@@ -16,10 +16,30 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Delete(1->2->3, 2) // => 1->3
-Delete(1->2->3, 1) // => 2->3
+**Example 1:**
+
 ```
+Input:  Delete(1->2->3, 2)
+Output: 1->3
+```
+
+**Example 2:**
+
+```
+Input:  Delete(1->2->3, 1)
+Output: 2->3
+```
+
+_Explanation:_ Deleting the head returns `head.Next`.
+
+**Example 3:**
+
+```
+Input:  Delete(1->2->3, 9)
+Output: 1->2->3
+```
+
+_Explanation:_ Missing value leaves the list unchanged.
 
 ## Topics to Master
 

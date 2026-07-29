@@ -12,13 +12,34 @@ backing array, this mutates the caller's data.
 
 Implement `Reverse(xs)` in place (also return it).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Reverse([]int{1,2,3,4}) // => [4 3 2 1] (xs itself changed)
+**Example 1:**
+
+```
+Input:  [1,2,3,4]
+Output: [4,3,2,1]
+```
+
+**Example 2:**
+
+```
+Input:  [1,2,3]
+Output: [3,2,1]
+```
+
+**Example 3:**
+
+```
+Input:  nil
+Output: []
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

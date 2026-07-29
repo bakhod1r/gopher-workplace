@@ -17,8 +17,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-p := MaxPtr(xs); *p = 0 // xs's max element becomes 0
+**Example 1:**
+
+```
+Input:  p := MaxPtr(xs); *p = 0
+Output: xs's max element becomes 0
+```
+
+_Explanation:_ The returned pointer must alias the slice element.
+
+**Example 2:**
+
+```
+Input:  MaxPtr([3 9 1])
+Output: &xs[1]
+```
+
+**Example 3:**
+
+```
+Input:  MaxPtr([5])
+Output: &xs[0]
 ```
 
 ## Topics to Master

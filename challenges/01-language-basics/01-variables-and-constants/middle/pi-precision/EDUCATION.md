@@ -1,6 +1,6 @@
 # Untyped constants and precision
 
-## The idea
+## Intuition
 
 An untyped constant has no type and carries **arbitrary precision** until it is
 assigned to a typed value. Only at that point is it rounded to fit.
@@ -14,28 +14,29 @@ area := Pi * r * r                 // Pi rounds to float64 here
 Writing extra digits is free: they cost nothing and only round at the point of
 use, to whatever float type the expression needs.
 
-## Why it matters
+## Approach
 
-A **typed** constant rounds immediately and permanently:
+1. Declare `Pi` as an untyped constant with 20+ digits.
+2. The compiler rounds it to float64 at the point of use.
+3. `Area` is `Pi*r*r`.
+
+## Solution
 
 ```go
-const P32 float32 = 3.14159265358979 // already truncated to float32 precision
+const Pi = 3.14159265358979323846264338327950288
+
+func Area(r float64) float64 {
+	return Pi * r * r
+}
 ```
 
-Later using `P32` in a `float64` expression cannot recover the lost digits.
-Leaving constants untyped keeps the maximum precision available to every caller.
+## Walkthrough
 
-## Watch out
+`Area(1)` returns Pi rounded to float64; the extra precision avoids compounding rounding error.
+
+## Pitfalls
 
 - No type on the left (`const Pi = ...`) keeps it untyped.
 - Untyped constants still have a *default* type (float for a float literal) used
   when the context does not force one, e.g. `x := Pi`.
 - Precision only matters at conversion time; `Pi * Pi` stays exact until stored.
-
-## Try it yourself
-
-```go
-const Third = 1.0 / 3.0 // untyped, high precision
-var a float64 = Third   // rounds to float64 here
-var b float32 = Third   // rounds to float32 here
-```

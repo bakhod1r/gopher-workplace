@@ -12,15 +12,49 @@ everything else collapsed to single dashes, edges trimmed.
 
 Implement `Slug(s)` per the rules above.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Slug("Hello, World!") // => "hello-world"
-Slug("  Go 1.26  ")   // => "go-1-26"
-Slug("a---b")         // => "a-b"
+**Example 1:**
+
+```
+Input:  Slug("Hello, World!")
+Output: "hello-world"
 ```
 
+_Explanation:_ lowercased, punctuation run -> single dash, trailing '!' trimmed
+
+**Example 2:**
+
+```
+Input:  Slug("  Go 1.26  ")
+Output: "go-1-26"
+```
+
+_Explanation:_ leading/trailing spaces trimmed, '.' becomes dash
+
+**Example 3:**
+
+```
+Input:  Slug("a---b")
+Output: "a-b"
+```
+
+_Explanation:_ run of non-alnum collapses to one dash
+
+**Example 4:**
+
+```
+Input:  Slug("!!!")
+Output: ""
+```
+
+_Explanation:_ nothing alphanumeric -> empty
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

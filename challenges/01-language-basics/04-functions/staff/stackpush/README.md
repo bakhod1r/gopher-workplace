@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-ReverseInts([1 2 3]) // => [3 2 1]
+**Example 1:**
+
+```
+Input:  ReverseInts([1 2 3])
+Output: [3 2 1]
+```
+
+**Example 2:**
+
+```
+Input:  ReverseInts([1])
+Output: [1]
+```
+
+**Example 3:**
+
+```
+Input:  ReverseInts(nil)
+Output: []
 ```
 
 ## Topics to Master

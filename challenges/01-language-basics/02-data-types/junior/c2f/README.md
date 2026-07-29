@@ -12,15 +12,49 @@ so `37°C` gives `98.6`, not `98`.
 
 Implement `ToF(c)` returning `c*9/5 + 32` as a `float64`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-ToF(0)   // => 32
-ToF(100) // => 212
-ToF(37)  // => 98.6
+**Example 1:**
+
+```
+Input:  ToF(0)
+Output: 32
 ```
 
+_Explanation:_ Freezing point.
+
+**Example 2:**
+
+```
+Input:  ToF(100)
+Output: 212
+```
+
+_Explanation:_ Boiling point.
+
+**Example 3:**
+
+```
+Input:  ToF(37)
+Output: 98.6
+```
+
+_Explanation:_ float64(37)*9/5+32 keeps the .6; integer math would give 98.
+
+**Example 4:**
+
+```
+Input:  ToF(-40)
+Output: -40
+```
+
+_Explanation:_ The scales cross at -40.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

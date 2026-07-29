@@ -11,13 +11,34 @@ Selecting records by a condition and pulling one field — filter + map.
 
 Implement `ActiveNames(users)` returning names of active users.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-ActiveNames([{ann,true},{bob,false},{cid,true}]) // => [ann cid]
+**Example 1:**
+
+```
+Input:  [{ann,true},{bob,false},{cid,true}]
+Output: ["ann","cid"]
+```
+
+**Example 2:**
+
+```
+Input:  nil
+Output: []
+```
+
+**Example 3:**
+
+```
+Input:  [{x,false}]
+Output: []
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

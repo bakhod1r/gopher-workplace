@@ -13,13 +13,34 @@ nil map is fine, but the first `m[x]++` (a write) panics.
 Fix the declaration between the markers in [nilmap.go](nilmap.go) to allocate the
 map.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Count([]int{1,2,2}) // => {1:1, 2:2}
+**Example 1:**
+
+```
+Input:  [1,1,2]
+Output: {1:2, 2:1}
+```
+
+**Example 2:**
+
+```
+Input:  []
+Output: {}
+```
+
+**Example 3:**
+
+```
+Input:  [5,5,5]
+Output: {5:3}
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

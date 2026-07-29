@@ -13,13 +13,34 @@ base overwrites the override on collisions.
 Fix the copy order between the markers in
 [mergedirection.go](mergedirection.go) so `over` wins.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Merge({a:1,b:2}, {b:20,c:3}) // => {a:1, b:20, c:3}
+**Example 1:**
+
+```
+Input:  base={a:1,b:2}, over={b:9}
+Output: {a:1,b:9}
+```
+
+**Example 2:**
+
+```
+Input:  base={x:1}, over={y:2}
+Output: {x:1,y:2}
+```
+
+**Example 3:**
+
+```
+Input:  base={k:1}, over={k:1}
+Output: {k:1}
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

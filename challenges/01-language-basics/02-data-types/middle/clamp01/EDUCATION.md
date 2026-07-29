@@ -1,6 +1,6 @@
 # Saturating floats, and NaN
 
-## The idea
+## Intuition
 
 Clamp with two comparisons — but NaN breaks the naive version, because every
 comparison with NaN is false, so a `NaN` would slip through unchanged:
@@ -12,18 +12,34 @@ if x > 1 { return 1 }
 return x
 ```
 
-## Why it matters
+## Approach
 
-Saturation guards colour channels, alpha, and probabilities. A leaked NaN
-poisons downstream math, so mapping it to a safe default is essential.
+1. If x is NaN (math.IsNaN) return 0. 2. If x<0 return 0. 3. If x>1 return 1. 4. Otherwise return x.
 
-## Why NaN slips through
+## Solution
 
-`NaN < 0` and `NaN > 1` are both false, so a comparison-only clamp returns the
-NaN untouched. You must test `math.IsNaN` (or order the checks so NaN can't
-escape).
+```go
+import "math"
 
-## Watch out
+func Saturate(x float64) float64 {
+	if math.IsNaN(x) {
+		return 0
+	}
+	if x < 0 {
+		return 0
+	}
+	if x > 1 {
+		return 1
+	}
+	return x
+}
+```
+
+## Walkthrough
+
+Saturate(2): not NaN, not <0, but 2>1 -> return 1.
+
+## Pitfalls
 
 - Order matters: test NaN before the range checks.
 - `min`/`max` builtins (Go 1.21+) also propagate NaN, so they don't fix this.

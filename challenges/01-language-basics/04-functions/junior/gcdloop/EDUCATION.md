@@ -1,14 +1,31 @@
-# Euclidean algorithm as a while-loop
+# Euclidean algorithm
 
-## The idea
+## Intuition
 
-Go's `for cond {}` is the while loop; parallel assignment `a, b = b, a%b` advances both values without a temporary.
+gcd(a,b) equals gcd(b, a mod b); iterating shrinks the pair until the remainder is 0.
 
-## Why it matters
+## Approach
 
-It's a compact example of loop-until-condition with simultaneous update, common in numeric routines.
+1. Loop while `b != 0`.
+2. Replace `(a, b)` with `(b, a % b)`.
+3. Return `a` when `b` reaches 0.
 
-## Watch out
+## Solution
 
-- `GCD(0, n)` should return n; the loop handles it since b!=0 runs once.
-- Parallel assignment evaluates the whole right side before assigning.
+```go
+func GCD(a, b int) int {
+	for b != 0 {
+		a, b = b, a%b
+	}
+	return a
+}
+```
+
+## Walkthrough
+
+`GCD(12, 8)`: (12,8)→(8,4)→(4,0), so the answer is 4.
+
+## Pitfalls
+
+- gcd(0, n) is n — the loop handles it since b becomes 0 immediately.
+- Parallel assignment avoids a temporary.

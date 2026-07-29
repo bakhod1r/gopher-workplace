@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Add(m, "g", "a") twice // m["g"]["a"] == 2
+**Example 1:**
+
+```
+Input:  Add(m, "g", "a"); Add(m, "g", "a")
+Output: m["g"]["a"] == 2
+```
+
+**Example 2:**
+
+```
+Input:  Add(m, "g", "b")
+Output: m["g"]["b"] == 1
+```
+
+**Example 3:**
+
+```
+Input:  first Add on empty map
+Output: no panic
 ```
 
 ## Topics to Master

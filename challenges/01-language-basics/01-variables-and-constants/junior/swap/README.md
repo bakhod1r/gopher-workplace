@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 01-variables-and-constants
-**Estimated time:** 5 min
 
 ## Context
 
@@ -19,13 +18,29 @@ Implement `Swap` in [swap.go](swap.go) so that it:
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Swap(1, 2)  // => 2, 1
-Swap(9, 9)  // => 9, 9
-Swap(-3, 7) // => 7, -3
-Swap(0, 5)  // => 5, 0
+**Example 1:**
+
+```
+Input:  Swap(1, 2)
+Output: 2, 1
+```
+
+**Example 2:**
+
+```
+Input:  Swap(9, 9)
+Output: 9, 9
+```
+
+**Example 3:**
+
+```
+Input:  Swap(-3, 7)
+Output: 7, -3
 ```
 
 ## Topics to Master
@@ -47,7 +62,5 @@ reassigns each variable to itself and changes nothing.
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

@@ -13,15 +13,34 @@
 Fix the single line between the markers in [units.go](units.go) so
 `KB=1024, MB=1048576, GB=1073741824`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-KB // => 1024
-MB // => 1048576
-GB // => 1073741824
+**Example 1:**
+
+```
+Input:  KB
+Output: 1024
+```
+
+**Example 2:**
+
+```
+Input:  MB
+Output: 1048576
+```
+
+**Example 3:**
+
+```
+Input:  GB
+Output: 1073741824
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

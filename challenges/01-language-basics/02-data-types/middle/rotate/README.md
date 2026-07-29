@@ -12,19 +12,44 @@ a byte, rotating by `n` is really rotating by `n % 8`.
 
 Implement `Left(b, n)` rotating the 8 bits of `b` left by `n` (n may be ≥ 8).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Left(0b1000_0000, 1) // => 0b0000_0001
-Left(0b1010_0000, 4) // => 0b0000_1010
-Left(0x01, 9)        // => 0x02
+**Example 1:**
+
 ```
+Input:  Left(0b1000_0000, 1)
+Output: 0b0000_0001
+```
+
+_Explanation:_ top bit wraps to bottom
+
+**Example 2:**
+
+```
+Input:  Left(0b1010_0000, 4)
+Output: 0b0000_1010
+```
+
+_Explanation:_ nibbles swapped
+
+**Example 3:**
+
+```
+Input:  Left(0b0000_0001, 9)
+Output: 0b0000_0010
+```
+
+_Explanation:_ n masked to 9&7=1
 
 ## Topics to Master
 
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
+
 | # | Topic | What to understand |
 |---|-------|--------------------|
-| 1 | **Shift + OR** | `(b<<n) | (b>>(8-n))` merges the wrapped bits. |
+| 1 | **Shift + OR** | `(b<<n) |
 | 2 | **Modulo width** | Reduce `n` mod 8 first. |
 | 3 | **byte width** | Mask/rely on `byte` truncation to 8 bits. |
 

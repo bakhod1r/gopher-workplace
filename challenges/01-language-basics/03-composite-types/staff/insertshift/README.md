@@ -12,13 +12,36 @@ code does `copy(xs[i:], xs[i+1:])`, which shifts left, dropping the tail.
 
 Fix the copy between the markers in [insertshift.go](insertshift.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-InsertAt([]int{1,2,3,4}, 1, 9) // => [1 9 2 3 4]
+**Example 1:**
+
+```
+Input:  xs=[1 2 3], i=1, v=9
+Output: [1 9 2 3]
 ```
 
+**Example 2:**
+
+```
+Input:  xs=[1 2 3], i=0, v=0
+Output: [0 1 2 3]
+```
+
+**Example 3:**
+
+```
+Input:  xs=[1 2 3], i=3, v=4
+Output: [1 2 3 4]
+```
+
+_Explanation:_ insert at end.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

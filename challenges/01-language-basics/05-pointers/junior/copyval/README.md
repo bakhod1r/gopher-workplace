@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-a,b := 1,9; CopyInto(&a,&b) // a=9, b=9
+**Example 1:**
+
+```
+Input:  a, b := 1, 9; CopyInto(&a, &b)
+Output: a == 9, b == 9
+```
+
+**Example 2:**
+
+```
+Input:  a, b := 5, 5; CopyInto(&a, &b)
+Output: a == 5, b == 5
+```
+
+**Example 3:**
+
+```
+Input:  a, b := 0, -2; CopyInto(&a, &b)
+Output: a == -2, b == -2
 ```
 
 ## Topics to Master

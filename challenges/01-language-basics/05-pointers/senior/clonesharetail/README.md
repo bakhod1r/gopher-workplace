@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Copy(1->2->3) // independent 1->2->3
+**Example 1:**
+
+```
+Input:  c := Copy(1->2->3); mutate c
+Output: original unchanged
+```
+
+**Example 2:**
+
+```
+Input:  Copy(nil)
+Output: nil
+```
+
+**Example 3:**
+
+```
+Input:  Copy(5)
+Output: independent 5
 ```
 
 ## Topics to Master

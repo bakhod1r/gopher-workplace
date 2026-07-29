@@ -15,9 +15,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Height(nil) // => 0
-Height(balanced-3-levels) // => 3
+**Example 1:**
+
+```
+Input:  Height(nil)
+Output: 0
+```
+
+**Example 2:**
+
+```
+Input:  Height(single node)
+Output: 1
+```
+
+**Example 3:**
+
+```
+Input:  Height(balanced 3 levels)
+Output: 3
 ```
 
 ## Topics to Master

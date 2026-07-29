@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Sum([]byte{200,100,50}) // => 350
+**Example 1:**
+
+```
+Input:  Sum([]byte{200, 100, 50})
+Output: 350
+```
+
+**Example 2:**
+
+```
+Input:  Sum([]byte{255, 1})
+Output: 256
+```
+
+**Example 3:**
+
+```
+Input:  Sum(nil)
+Output: 0
 ```
 
 ## Topics to Master

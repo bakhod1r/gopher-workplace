@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-add, total := NewTracker(); total() // => 0
-add(5); add(3); total()             // => 8
+**Example 1:**
+
+```
+Input:  add, total := NewTracker(); add(3); add(4); total()
+Output: 7
+```
+
+**Example 2:**
+
+```
+Input:  both closures share sum
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  total() before any add
+Output: 0
 ```
 
 ## Topics to Master

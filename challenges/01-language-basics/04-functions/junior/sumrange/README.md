@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-SumRange(nil)             // => 0
-SumRange([]int{1,2,3,4})  // => 10
-SumRange([]int{-1, 1})    // => 0
+**Example 1:**
+
+```
+Input:  SumRange([1 2 3 4])
+Output: 10
+```
+
+**Example 2:**
+
+```
+Input:  SumRange(nil)
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  SumRange([-1 1])
+Output: 0
 ```
 
 ## Topics to Master

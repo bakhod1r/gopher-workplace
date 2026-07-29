@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Reset(&Buf{Data: [5]byte, Len: 5}) // Len 0, Data len 0
+**Example 1:**
+
+```
+Input:  Reset(&Buf{Data: [5]byte, Len: 5})
+Output: Len 0 and Data length 0
+```
+
+**Example 2:**
+
+```
+Input:  after Reset, b.Len
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  after Reset, len(b.Data slice)
+Output: 0
 ```
 
 ## Topics to Master

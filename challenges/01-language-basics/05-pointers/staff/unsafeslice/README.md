@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-View(&[4]int32{...}) // len 4
+**Example 1:**
+
+```
+Input:  View(&[4]int32{...})
+Output: len 4
+```
+
+**Example 2:**
+
+```
+Input:  View(&[1]int32{9})
+Output: len 1
+```
+
+**Example 3:**
+
+```
+Input:  View(&[4]int32{})[0] = 1
+Output: aliases the array
 ```
 
 ## Topics to Master

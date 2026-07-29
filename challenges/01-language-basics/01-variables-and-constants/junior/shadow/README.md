@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 01-variables-and-constants
-**Estimated time:** 15 min
 
 ## Context
 
@@ -21,12 +20,29 @@ Implement `Tally` in [shadow.go](shadow.go) so that it:
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Tally([]int{1, -2, 3}) // => 4
-Tally(nil)             // => 0
-Tally([]int{0, 0, 7})  // => 7
+**Example 1:**
+
+```
+Input:  Tally([1 -2 3])
+Output: 4
+```
+
+**Example 2:**
+
+```
+Input:  Tally(nil)
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  Tally([-1 -5])
+Output: 0
 ```
 
 ## Topics to Master
@@ -49,7 +65,5 @@ closes.
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

@@ -1,6 +1,6 @@
 # Slices of structs
 
-## The idea
+## Intuition
 
 A struct groups named fields; a slice of structs is a table of records. Range and
 read fields with dot notation:
@@ -9,12 +9,35 @@ read fields with dot notation:
 for _, o := range orders { total += o.Price * o.Qty }
 ```
 
-## Why it matters
+## Approach
 
-Line items, rows, and records are modeled as structs. Summing a derived field
-across them is the essence of reporting and aggregation.
+1. Initialize total to 0.
+2. Range the orders, adding o.Price*o.Qty each iteration.
+3. Return total (0 for nil/empty).
 
-## Watch out
+## Solution
+
+```go
+type Order struct {
+	Item  string
+	Price int // cents
+	Qty   int
+}
+
+func Total(orders []Order) int {
+	total := 0
+	for _, o := range orders {
+		total += o.Price * o.Qty
+	}
+	return total
+}
+```
+
+## Walkthrough
+
+Total(orders): pen 150*2=300; pad 300*1=300; ink 500*3=1500; total 2100.
+
+## Pitfalls
 
 - The range variable is a **copy** of the struct; mutating `o` doesn't change the
   slice. Use `orders[i].Field = ...` to mutate in place.

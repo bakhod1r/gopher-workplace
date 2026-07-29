@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-SafeDiv(10, 2) // => 5, true
-SafeDiv(1, 0)  // => 0, false
-SafeDiv(9, 3)  // => 3, true
+**Example 1:**
+
+```
+Input:  SafeDiv(10, 2)
+Output: 5, true
+```
+
+**Example 2:**
+
+```
+Input:  SafeDiv(1, 0)
+Output: 0, false
+```
+
+**Example 3:**
+
+```
+Input:  SafeDiv(9, 3)
+Output: 3, true
 ```
 
 ## Topics to Master

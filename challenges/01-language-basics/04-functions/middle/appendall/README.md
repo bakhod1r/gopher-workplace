@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Concat([]int{1,2}, 3,4,5) // => [1 2 3 4 5]
-Concat(nil, 1)            // => [1]
-Concat([]int{9})          // => [9]
+**Example 1:**
+
+```
+Input:  Concat([1 2], 3, 4)
+Output: [1 2 3 4]; input [1 2] unchanged
+```
+
+**Example 2:**
+
+```
+Input:  Concat(nil, 1)
+Output: [1]
+```
+
+**Example 3:**
+
+```
+Input:  Concat([9])
+Output: [9]
 ```
 
 ## Topics to Master

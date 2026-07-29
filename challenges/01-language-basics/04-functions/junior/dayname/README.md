@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-DayName(0) // => "Sun"
-DayName(6) // => "Sat"
-DayName(9) // => "?"
+**Example 1:**
+
+```
+Input:  DayName(0)
+Output: "Sun"
+```
+
+**Example 2:**
+
+```
+Input:  DayName(6)
+Output: "Sat"
+```
+
+**Example 3:**
+
+```
+Input:  DayName(9)
+Output: "?"
 ```
 
 ## Topics to Master

@@ -1,6 +1,6 @@
 # Advancing by rune width
 
-## The idea
+## Intuition
 
 `utf8.DecodeRuneInString(s)` returns the first rune and the number of bytes it
 occupies. A decoder advances by that `size`, not by the whole string length:
@@ -10,13 +10,32 @@ _, size := utf8.DecodeRuneInString(s)
 return size
 ```
 
-## Why it matters
+## Approach
 
-Manual UTF-8 iteration (parsers, tokenizers, streaming decoders) steps one rune
-at a time. Returning `len(s)` collapses the loop to a single step and skips the
-rest of the input — a real bug in hand-written decoders.
+1. Bug: returned `len(s)`, the whole string's byte length.
+2. Fix: return `size` from utf8.DecodeRuneInString, the first rune's byte width.
+3. Empty string returns 0 early.
 
-## Watch out
+## Solution
+
+```go
+import "unicode/utf8"
+
+func FirstWidth(s string) int {
+	if s == "" {
+		return 0
+	}
+	_, size := utf8.DecodeRuneInString(s)
+	_ = size
+	return size
+}
+```
+
+## Walkthrough
+
+FirstWidth("日本"): DecodeRuneInString gives size=3 for 日 -> return 3.
+
+## Pitfalls
 
 - `DecodeRuneInString` returns `(RuneError, 1)` for invalid bytes, so decoders
   still make progress.

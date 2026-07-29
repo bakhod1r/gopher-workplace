@@ -1,19 +1,39 @@
 # Recognized vs default
 
-## The idea
+## Intuition
 
 Return two bools: the parsed value and whether the input was recognized. That
 lets the caller distinguish an explicit `false` from an unknown string that
 should keep a default. Missing an accepted form (`off`) silently turns it into
 "unknown".
 
-## Why it matters
+## Approach
 
-Config and env parsing must recognize every documented form. An omitted case
-means a valid setting is treated as absent, and the default silently wins — a
-subtle production misconfiguration.
+1. Bug: the false case omitted "off", so "off" fell through to unrecognized.
+2. Fix: add "off" to the false case list.
+3. Input is lowercased and trimmed first.
 
-## Watch out
+## Solution
+
+```go
+import "strings"
+
+func Parse(s string) (bool, bool) {
+	switch strings.ToLower(strings.TrimSpace(s)) {
+	case "true", "1", "yes", "on":
+		return true, true
+	case "false", "0", "no", "off":
+		return false, true
+	}
+	return false, false
+}
+```
+
+## Walkthrough
+
+"off": ToLower/Trim -> "off" matches false case -> (false,true).
+
+## Pitfalls
 
 - Normalize (`ToLower` + `TrimSpace`) before matching.
 - Keep truthy and falsey sets symmetric (`on`/`off`, `yes`/`no`).

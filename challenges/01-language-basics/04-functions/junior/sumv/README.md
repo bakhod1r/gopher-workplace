@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Sum()          // => 0
-Sum(1, 2, 3)   // => 6
-Sum(xs...)     // spread a slice
+**Example 1:**
+
+```
+Input:  Sum(1, 2, 3, 4)
+Output: 10
+```
+
+**Example 2:**
+
+```
+Input:  Sum()
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  Sum(-1, 1)
+Output: 0
 ```
 
 ## Topics to Master

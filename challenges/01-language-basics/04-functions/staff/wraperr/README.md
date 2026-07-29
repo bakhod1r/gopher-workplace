@@ -17,9 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Do(true)  // => "do: boom"
-Do(false) // => nil
+**Example 1:**
+
+```
+Input:  Do(true)
+Output: error "do: boom"
+```
+
+**Example 2:**
+
+```
+Input:  Do(false)
+Output: nil
+```
+
+**Example 3:**
+
+```
+Input:  wrapped error unwraps to boom
+Output: true
 ```
 
 ## Topics to Master

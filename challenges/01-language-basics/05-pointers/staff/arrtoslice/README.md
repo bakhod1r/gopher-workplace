@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-AsSlice(&[4]int{1,2,3,4}) // len 4, aliases the array
+**Example 1:**
+
+```
+Input:  AsSlice(&[4]int{1,2,3,4})
+Output: len 4, aliases the array
+```
+
+**Example 2:**
+
+```
+Input:  len(AsSlice(&[4]int{}))
+Output: 4
+```
+
+**Example 3:**
+
+```
+Input:  AsSlice(&a)[0] = 9
+Output: a[0] == 9
 ```
 
 ## Topics to Master

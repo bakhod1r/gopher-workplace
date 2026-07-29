@@ -17,8 +17,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-MinPtr([3 1 4 1 5]) // => &xs[1]
+**Example 1:**
+
+```
+Input:  MinPtr([3 1 4 1 5])
+Output: &xs[1]
+```
+
+_Explanation:_ First index of the minimum.
+
+**Example 2:**
+
+```
+Input:  MinPtr([5])
+Output: &xs[0]
+```
+
+**Example 3:**
+
+```
+Input:  MinPtr([2 2 2])
+Output: &xs[0]
 ```
 
 ## Topics to Master

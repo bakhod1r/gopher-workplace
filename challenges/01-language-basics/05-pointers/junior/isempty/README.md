@@ -16,10 +16,28 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-IsEmpty(nil)      // => true
-IsEmpty(&Node{})  // => false
+**Example 1:**
+
 ```
+Input:  IsEmpty(nil)
+Output: true
+```
+
+**Example 2:**
+
+```
+Input:  IsEmpty(&Node{})
+Output: false
+```
+
+**Example 3:**
+
+```
+Input:  IsEmpty(&Node{Value: 0})
+Output: false
+```
+
+_Explanation:_ A zero-value node is still a real node.
 
 ## Topics to Master
 

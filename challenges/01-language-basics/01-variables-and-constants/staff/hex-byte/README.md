@@ -14,15 +14,34 @@ it for n=0 only.
 Fix the single line between the markers in [extract.go](extract.go) so `ByteAt`
 uses the correct 8-bit stride.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-ByteAt(0x1122334455667788, 0) // => 0x88
-ByteAt(0x1122334455667788, 1) // => 0x77
-ByteAt(0x1122334455667788, 7) // => 0x11
+**Example 1:**
+
+```
+Input:  ByteAt(0x1122334455667788, 0)
+Output: 0x88
+```
+
+**Example 2:**
+
+```
+Input:  ByteAt(0x1122334455667788, 1)
+Output: 0x77
+```
+
+**Example 3:**
+
+```
+Input:  ByteAt(0x1122334455667788, 7)
+Output: 0x11
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

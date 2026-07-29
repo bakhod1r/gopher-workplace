@@ -1,6 +1,6 @@
 # Deterministic order from a map
 
-## The idea
+## Intuition
 
 Go randomizes map iteration order on purpose. To get a stable order, collect the
 keys into a slice and sort:
@@ -11,13 +11,33 @@ for k := range m { out = append(out, k) }
 sort.Strings(out)
 ```
 
-## Why it matters
+## Approach
 
-Any output that must be reproducible — logs, JSON, tests, hashing — needs an
-explicit sort, because relying on map order gives flaky, non-deterministic
-results.
+1. Allocate a slice with capacity len(m).
+2. Range the map, appending each key (map order is random).
+3. sort.Strings on the collected keys.
+4. Return the sorted slice.
 
-## Watch out
+## Solution
+
+```go
+import "sort"
+
+func Sorted(m map[string]int) []string {
+	result := make([]string, 0, len(m))
+	for k := range m {
+		result = append(result, k)
+	}
+	sort.Strings(result)
+	return result
+}
+```
+
+## Walkthrough
+
+Sorted({"banana","apple","cherry"}): collect in random order, sort.Strings -> ["apple","banana","cherry"].
+
+## Pitfalls
 
 - Pre-size with `make(..., 0, len(m))` to avoid regrowth.
 - Ranging a map with only `k` iterates keys.

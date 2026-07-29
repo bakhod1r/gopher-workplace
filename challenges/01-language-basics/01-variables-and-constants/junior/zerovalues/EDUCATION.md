@@ -1,6 +1,6 @@
 # Zero values
 
-## The idea
+## Intuition
 
 Go has no uninitialised memory. Every declaration without an explicit value gets
 its type's **zero value**, and that value is always usable:
@@ -66,7 +66,31 @@ c := Config{Port: 8080}   // named field set; Host and Tags stay zero
 A composite literal fills the fields you name and zeroes the rest, so partially
 configured structs need no boilerplate.
 
-## Watch out
+## Approach
+
+1. Return a `Config` literal setting only `Port: 8080`.
+2. Every unnamed field takes its type's zero value automatically.
+
+## Solution
+
+```go
+type Config struct {
+	Host  string
+	Port  int
+	Debug bool
+	Tags  []string
+}
+
+func DefaultConfig() Config {
+	return Config{Port: 8080}
+}
+```
+
+## Walkthrough
+
+`Config{Port: 8080}` leaves Host "", Debug false, and Tags nil — Go zeroes them without explicit assignment.
+
+## Pitfalls
 
 - A `nil` map is readable but **not writable**: `m["k"]` returns the zero value,
   `m["k"] = 1` panics. Maps need `make` before writing; slices do not need it
@@ -75,19 +99,3 @@ configured structs need no boilerplate.
   struct* is not.
 - `var s []string` and `s := []string(nil)` are the same thing written twice.
 - Zero values are set for you — writing `var n int = 0` adds nothing.
-
-## Try it yourself
-
-```go
-var (
-	n int
-	s string
-	b bool
-	sl []int
-	m map[string]int
-)
-fmt.Println(n, len(s), b, sl == nil, m == nil)   // 0 0 false true true
-fmt.Println(len(sl), len(m), m["missing"])       // 0 0 0
-sl = append(sl, 1)                               // fine on a nil slice
-// m["k"] = 1                                    // panic: assignment to entry in nil map
-```

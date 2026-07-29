@@ -1,6 +1,6 @@
 # Struct tags and JSON
 
-## The idea
+## Intuition
 
 A struct tag is metadata read by libraries via reflection. `encoding/json` uses
 the `json:"..."` tag as the exact output key:
@@ -9,13 +9,31 @@ the `json:"..."` tag as the exact output key:
 LastName string `json:"last_name"`
 ```
 
-## Why it matters
+## Approach
 
-Tags define your serialization contract. A typo (`lastName` vs `last_name`)
-silently ships the wrong key — the code compiles and marshals fine, but consumers
-can't find the field. Tag correctness is an API concern.
+1. Bug: the struct tag json:"lastName" emits camelCase, but the required key is snake_case last_name. 2. json.Marshal reads the tag verbatim for the output key. 3. Fix: change the tag to json:"last_name".
 
-## Watch out
+## Solution
+
+```go
+import "encoding/json"
+
+type User struct {
+	FirstName string `json:"first_name"`
+	LastName string `json:"last_name"`
+}
+
+func Marshal(u User) (string, error) {
+	b, err := json.Marshal(u)
+	return string(b), err
+}
+```
+
+## Walkthrough
+
+Marshaling produces "lastName":... with the buggy tag, failing the expected snake_case output. Correcting the tag yields "last_name":....
+
+## Pitfalls
 
 - The tag string is literal; casing and spelling matter.
 - Only **exported** (capitalized) fields are marshaled.

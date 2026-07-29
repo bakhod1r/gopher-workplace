@@ -17,8 +17,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-f := AdderExpr(); f(c, 5) // c.N += 5
+**Example 1:**
+
+```
+Input:  f := AdderExpr(); f(c, 5)
+Output: c.N += 5
+```
+
+_Explanation:_ A method expression takes the receiver as its first argument.
+
+**Example 2:**
+
+```
+Input:  f(&Counter{N:1}, 4)
+Output: N == 5
+```
+
+**Example 3:**
+
+```
+Input:  f(c, 0)
+Output: c.N unchanged
 ```
 
 ## Topics to Master

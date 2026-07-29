@@ -1,6 +1,6 @@
 # Intersection with a lookup set
 
-## The idea
+## Intuition
 
 Put one side in a set, then filter the other by membership, de-duplicating the
 result:
@@ -17,12 +17,43 @@ for _, x := range b {
 sort.Ints(out)
 ```
 
-## Why it matters
+## Approach
 
-Intersection is a core set op (common tags, shared access). The lookup set turns
-an O(n·m) nested scan into O(n+m).
+1. Build set inA from a.
+2. For each b-value in inA, add to result set (dedupe).
+3. Collect keys, sort ascending.
+4. Return slice.
 
-## Watch out
+## Solution
+
+```go
+import "sort"
+
+func Intersect(a, b []int) []int {
+	inA := map[int]bool{}
+	for _, v := range a {
+		inA[v] = true
+	}
+	set := map[int]bool{}
+	for _, v := range b {
+		if inA[v] {
+			set[v] = true
+		}
+	}
+	out := make([]int, 0, len(set))
+	for v := range set {
+		out = append(out, v)
+	}
+	sort.Ints(out)
+	return out
+}
+```
+
+## Walkthrough
+
+inA={1,2,3,4}. b: 2 in ->set{2}; 4 in ->{2,4}; 6 no; 2 dup. sort -> [2,4].
+
+## Pitfalls
 
 - De-dup the output: `b` may repeat a common value.
 - Membership is `_, ok := set[x]`.

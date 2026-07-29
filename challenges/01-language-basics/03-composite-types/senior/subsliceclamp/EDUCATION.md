@@ -1,6 +1,6 @@
 # Slice bounds and clamping
 
-## The idea
+## Intuition
 
 `xs[:n]` requires `n <= len(xs)`; otherwise it panics at runtime. A "take up to n"
 operation clamps the end:
@@ -10,13 +10,29 @@ if n > len(xs) { n = len(xs) }
 return xs[:n]
 ```
 
-## Why it matters
+## Approach
 
-Pagination, previews, and "first N" helpers routinely get an N larger than the
-data. Clamping turns a crash into graceful truncation — defensive slicing at
-trust boundaries.
+1. Bug: return xs[:n] panics when n > len(xs) (slice bound out of range). 2. Fix: clamp n to len(xs) before slicing: if n > len(xs) { n = len(xs) }. 3. Then xs[:n] is always in range.
 
-## Watch out
+## Solution
+
+```go
+func Take(xs []int, n int) []int {
+	if n <= 0 {
+		return xs[:0]
+	}
+	if n > len(xs) {
+		n = len(xs)
+	}
+	return xs[:n]
+}
+```
+
+## Walkthrough
+
+xs=[1,2,3], n=10: xs[:10] panics. After clamping n=3, xs[:3]=[1,2,3].
+
+## Pitfalls
 
 - Slicing bounds are checked at runtime; out-of-range panics.
 - `min(n, len(xs))` (Go 1.21+) expresses the clamp.

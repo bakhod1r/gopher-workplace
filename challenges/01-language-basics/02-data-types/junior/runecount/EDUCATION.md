@@ -1,6 +1,6 @@
 # Counting runes, not bytes
 
-## The idea
+## Intuition
 
 `len(s)` is the **byte** count. The number of characters is the rune count:
 
@@ -11,12 +11,24 @@ len(s)                    // bytes (>= rune count)
 
 Ranging over a string also yields runes, so counting iterations works too.
 
-## Why it matters
+## Approach
 
-Length limits, column widths, and "how many characters" all mean runes for
-human-facing text. Using `len(s)` overcounts any non-ASCII string.
+1. Convert the string to []rune, which decodes UTF-8.
+2. Return len of that rune slice (a range-count loop works equally).
 
-## Watch out
+## Solution
+
+```go
+func Count(s string) int {
+	return len([]rune(s))
+}
+```
+
+## Walkthrough
+
+Count of a 5-character accented word: []rune decodes to 5 code points, length 5.
+
+## Pitfalls
 
 - `len(s)` equals the rune count only for pure ASCII.
 - `for range s` decodes UTF-8; the index is a byte offset that jumps by rune

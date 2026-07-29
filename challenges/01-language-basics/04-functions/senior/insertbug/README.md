@@ -17,9 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-InsertAt([1 2 4], 2, 3) // => [1 2 3 4]
-InsertAt([2 3], 0, 1)   // => [1 2 3]
+**Example 1:**
+
+```
+Input:  InsertAt([1 2 4], 2, 3)
+Output: [1 2 3 4]
+```
+
+**Example 2:**
+
+```
+Input:  InsertAt([2 3], 0, 1)
+Output: [1 2 3]
+```
+
+**Example 3:**
+
+```
+Input:  InsertAt([1 2], 2, 3)
+Output: [1 2 3]
 ```
 
 ## Topics to Master

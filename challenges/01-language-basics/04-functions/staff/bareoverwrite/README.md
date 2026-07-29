@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Doubled(21) // => 42
+**Example 1:**
+
+```
+Input:  Doubled(21)
+Output: 42
+```
+
+**Example 2:**
+
+```
+Input:  Doubled(0)
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  Doubled(-5)
+Output: -10
 ```
 
 ## Topics to Master

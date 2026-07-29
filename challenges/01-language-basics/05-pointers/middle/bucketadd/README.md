@@ -16,8 +16,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-AddScore(m, "a", 3); AddScore(m, "a", 4) // m["a"].Total = 7
+**Example 1:**
+
+```
+Input:  AddScore(m, "a", 3); AddScore(m, "a", 4)
+Output: m["a"].Total == 7
+```
+
+**Example 2:**
+
+```
+Input:  AddScore(m, "b", 5)
+Output: m["b"].Total == 5
+```
+
+_Explanation:_ First touch creates the bucket.
+
+**Example 3:**
+
+```
+Input:  AddScore(m, "a", 0)
+Output: bucket exists, Total unchanged
 ```
 
 ## Topics to Master

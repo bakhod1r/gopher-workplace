@@ -11,15 +11,40 @@ To embed a double quote inside a double-quoted string you escape it with `\"`.
 
 Implement `Wrap(s)` returning `s` surrounded by literal `"` characters.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Wrap("hello") // => "\"hello\""
-Wrap("")      // => "\"\""
-Wrap("a b")   // => "\"a b\""
+**Example 1:**
+
+```
+Input:  Wrap("hello")
+Output: "hello" (with quote bytes)
 ```
 
+_Explanation:_ hello surrounded by literal quote bytes.
+
+**Example 2:**
+
+```
+Input:  Wrap("")
+Output: just two quote bytes
+```
+
+_Explanation:_ Empty input yields just the two quotes.
+
+**Example 3:**
+
+```
+Input:  Wrap("a b")
+Output: "a b" (with quote bytes)
+```
+
+_Explanation:_ Spaces preserved.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

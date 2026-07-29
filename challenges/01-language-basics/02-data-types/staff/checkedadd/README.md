@@ -14,14 +14,45 @@ exceeds the max), so `MaxInt64 + 1` wraps undetected.
 Fix the positive-overflow check between the markers in
 [checkedadd.go](checkedadd.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Add(math.MaxInt64, 1) // => 0, false
-Add(math.MaxInt64-1,1)// => MaxInt64, true
+**Example 1:**
+
+```
+Input:  math.MaxInt64, 1
+Output: 0, false
+```
+
+_Explanation:_ Positive overflow detected.
+
+**Example 2:**
+
+```
+Input:  math.MaxInt64-1, 1
+Output: math.MaxInt64, true
+```
+
+**Example 3:**
+
+```
+Input:  math.MinInt64, -1
+Output: 0, false
+```
+
+_Explanation:_ Negative overflow.
+
+**Example 4:**
+
+```
+Input:  -5, -5
+Output: -10, true
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

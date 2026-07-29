@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Point{1,2}.Scaled(3) // => {3, 6}
+**Example 1:**
+
+```
+Input:  Point{1, 2}.Scaled(3)
+Output: {3, 6}
+```
+
+**Example 2:**
+
+```
+Input:  Point{0, 0}.Scaled(9)
+Output: {0, 0}
+```
+
+**Example 3:**
+
+```
+Input:  Point{-1, 2}.Scaled(2)
+Output: {-2, 4}
 ```
 
 ## Topics to Master

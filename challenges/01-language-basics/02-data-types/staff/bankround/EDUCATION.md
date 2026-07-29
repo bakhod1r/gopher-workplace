@@ -1,6 +1,6 @@
 # Rounding modes and bias
 
-## The idea
+## Intuition
 
 `math.Round` rounds halves **away from zero** (2.5→3, 3.5→4), which biases sums
 upward when many values end in .5. Banker's rounding sends ties to the **even**
@@ -10,13 +10,27 @@ neighbor (2.5→2, 3.5→4), so the bias cancels over a data set:
 math.RoundToEven(x)
 ```
 
-## Why it matters
+## Approach
 
-Finance, statistics, and IEEE-754 default arithmetic all use round-half-to-even
-precisely to avoid cumulative drift. Choosing the wrong mode is a real accounting
-discrepancy that grows with volume.
+1. Bug: math.Round rounds half AWAY from zero (2.5->3, -2.5->-3).
+2. Bankers rounding sends ties to the even neighbor.
+3. Fix: use math.RoundToEven(x).
 
-## Watch out
+## Solution
+
+```go
+import "math"
+
+func Round(x float64) float64 {
+	return math.RoundToEven(x)
+}
+```
+
+## Walkthrough
+
+2.5 -> nearest evens 2 and 4, pick even 2. 3.5 -> pick even 4. 2.6 not a tie -> 3.
+
+## Pitfalls
 
 - `math.Round` ≠ `math.RoundToEven`; pick deliberately.
 - Half-to-even is the IEEE-754 default rounding for float ops.

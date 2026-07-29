@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Mirror(1 with 2,3) // children become 3,2
+**Example 1:**
+
+```
+Input:  Mirror(1 with children 2, 3)
+Output: children become 3, 2
+```
+
+**Example 2:**
+
+```
+Input:  Mirror(nil)
+Output: no-op
+```
+
+**Example 3:**
+
+```
+Input:  Mirror(single node)
+Output: unchanged
 ```
 
 ## Topics to Master

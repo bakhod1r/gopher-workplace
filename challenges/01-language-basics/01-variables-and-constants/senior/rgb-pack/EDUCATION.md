@@ -1,6 +1,6 @@
 # Bit packing with shifts
 
-## The idea
+## Intuition
 
 Several small fields can share one integer by giving each its own **bit lane**.
 For 8-bit RGB in a `uint32` as `0x00RRGGBB`, red occupies bits 16–23, green 8–15,
@@ -19,22 +19,27 @@ non-overlapping lanes together. Unpack with a shift-and-mask:
 red := uint8(v >> 16)
 ```
 
-## Why it matters
+## Approach
 
-Packing is everywhere: colours, flags, network headers, compact keys. If two
-fields share a shift amount (e.g. red also shifted 8), their bits collide and the
-value is corrupt in a way that is invisible until you unpack.
+1. Red occupies bits 16–23, so shift it by 16, not 8.
+2. `r<<16 | g<<8 | b`.
 
-## Watch out
+## Solution
+
+```go
+func Pack(r, g, b uint8) uint32 {
+	return uint32(r)<<16 | uint32(g)<<8 | uint32(b)
+}
+
+func Red(v uint32) uint8 { return uint8(v >> 16) }
+```
+
+## Walkthrough
+
+The bug shifts red by 8, colliding with green. Shifting by 16 places red in the high byte → 0x123456.
+
+## Pitfalls
 
 - Convert to `uint32` **before** shifting past 8 bits; a `uint8 << 16` is 0.
 - Lanes must not overlap — sum the field widths and keep them within the word.
 - Mask on unpack (`& 0xFF`) if the field is not at the top.
-
-## Try it yourself
-
-```go
-pack := func(hi, lo uint8) uint16 { return uint16(hi)<<8 | uint16(lo) }
-pack(0x12, 0x34) // 0x1234
-uint8(0x1234 >> 8) // 0x12
-```

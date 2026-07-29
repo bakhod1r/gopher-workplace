@@ -15,10 +15,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-EvenStats()                 // => 0, 0
-EvenStats(1, 2, 3, 4, 5, 6) // => 3, 12
-EvenStats(2, 4)             // => 2, 6
+**Example 1:**
+
+```
+Input:  EvenStats(1, 2, 3, 4)
+Output: 2, 6
+```
+
+**Example 2:**
+
+```
+Input:  EvenStats(1, 3, 5)
+Output: 0, 0
+```
+
+**Example 3:**
+
+```
+Input:  EvenStats()
+Output: 0, 0
 ```
 
 ## Topics to Master

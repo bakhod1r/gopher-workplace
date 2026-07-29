@@ -13,16 +13,34 @@ should be — masks silently overlap. The bug is one token in the iota expressio
 Fix the single line between the `CHANGE CODE` markers in [perms.go](perms.go) so
 `Read=1, Write=2, Execute=4`. Do not touch anything else.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Read     // must be 1
-Write    // must be 2
-Execute  // must be 4
-Has(Read|Write, Read) // => true
+**Example 1:**
+
+```
+Input:  Read, Write, Execute
+Output: 1, 2, 4
+```
+
+**Example 2:**
+
+```
+Input:  Has(Read|Execute, Read)
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  Has(Write, Read)
+Output: false
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

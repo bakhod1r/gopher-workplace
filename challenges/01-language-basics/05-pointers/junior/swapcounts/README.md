@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-SwapCounts(&x, &y) // exchange x.Count and y.Count
+**Example 1:**
+
+```
+Input:  a := Cart{Count:1}; b := Cart{Count:2}; SwapCounts(&a, &b)
+Output: a.Count == 2, b.Count == 1
+```
+
+**Example 2:**
+
+```
+Input:  a := Cart{Count:5}; b := Cart{Count:5}; SwapCounts(&a, &b)
+Output: a.Count == 5, b.Count == 5
+```
+
+**Example 3:**
+
+```
+Input:  a := Cart{Count:0}; b := Cart{Count:9}; SwapCounts(&a, &b)
+Output: a.Count == 9, b.Count == 0
 ```
 
 ## Topics to Master

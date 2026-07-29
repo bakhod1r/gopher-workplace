@@ -1,6 +1,6 @@
 # Deep-copying nested slices
 
-## The idea
+## Intuition
 
 A `[][]int` is a slice of slice-headers. `copy(out, grid)` (or a plain assignment)
 duplicates the outer headers but leaves every row pointing at the original backing
@@ -10,13 +10,27 @@ arrays. Clone each row:
 for i := range grid { out[i] = append([]int{}, grid[i]...) }
 ```
 
-## Why it matters
+## Approach
 
-Shallow copies of nested structures share their inner data. Mutating the "copy"
-corrupts the original — the same shallow-vs-deep lesson as struct slice fields,
-one level deeper.
+1. Bug: copy(out, grid) copies only the row-slice headers, so out's rows alias grid's rows. 2. Fix: allocate a fresh row per index: out[i] = append([]int(nil), grid[i]...). 3. Each row is deep-copied, so writes to out don't touch grid.
 
-## Watch out
+## Solution
+
+```go
+func Clone(grid [][]int) [][]int {
+	out := make([][]int, len(grid))
+	for i := range grid {
+		out[i] = append([]int(nil), grid[i]...)
+	}
+	return out
+}
+```
+
+## Walkthrough
+
+copy(out,grid) makes out[0] share grid[0]'s array; out[0][0]=9 mutates grid too. Copying each row into a new array isolates them.
+
+## Pitfalls
 
 - Each level of nesting needs its own copy.
 - `slices.Clone(grid)` is still shallow (rows shared) — clone rows explicitly.

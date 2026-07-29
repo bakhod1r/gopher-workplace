@@ -11,13 +11,36 @@ Finding common elements (shared permissions, mutual friends).
 
 Implement `Intersect(a, b)` — sorted, unique, present in both.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Intersect([]int{1,2,3,4}, []int{2,4,6}) // => [2 4]
+**Example 1:**
+
+```
+Input:  a=[1,2,3,4], b=[2,4,6,2]
+Output: [2,4]
+```
+
+_Explanation:_ in both, deduped+sorted
+
+**Example 2:**
+
+```
+Input:  a=[1], b=[2]
+Output: []
+```
+
+**Example 3:**
+
+```
+Input:  a=[3,3], b=[3]
+Output: [3]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

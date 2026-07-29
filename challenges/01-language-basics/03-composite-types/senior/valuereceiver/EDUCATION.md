@@ -1,6 +1,6 @@
 # Value vs pointer receivers
 
-## The idea
+## Intuition
 
 A value receiver copies the struct, so any field write inside the method affects
 only the copy:
@@ -9,12 +9,27 @@ only the copy:
 func (w *Wallet) Credit(amount int) { w.Balance += amount } // pointer: mutates
 ```
 
-## Why it matters
+## Approach
 
-This compiles cleanly and looks correct, but state never updates — a classic Go
-bug. Any method that mutates must use a pointer receiver.
+1. Bug: func (w Wallet) Credit uses a value receiver, so w is a copy; w.Balance += amount mutates the copy and is lost. 2. Fix: use a pointer receiver func (w *Wallet) Credit. 3. Then the method mutates the caller's Wallet in place.
 
-## Watch out
+## Solution
+
+```go
+type Wallet struct {
+	Balance int
+}
+
+func (w *Wallet) Credit(amount int) {
+	w.Balance += amount
+}
+```
+
+## Walkthrough
+
+With a value receiver, Credit(100) updates a copy; the caller's Balance stays 0. A pointer receiver writes through to the original -> Balance==100.
+
+## Pitfalls
 
 - `w.Credit(...)` auto-takes the address when `w` is addressable, hiding the
   distinction.

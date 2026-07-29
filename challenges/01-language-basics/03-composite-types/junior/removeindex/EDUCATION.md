@@ -1,6 +1,6 @@
 # Deleting from a slice, order-preserving
 
-## The idea
+## Intuition
 
 Removing index `i` while keeping order joins the parts before and after it:
 
@@ -10,12 +10,28 @@ return append(xs[:i], xs[i+1:]...)
 
 The `...` spreads the tail as individual arguments.
 
-## Why it matters
+## Approach
 
-The standard "delete keeping order" idiom (`slices.Delete` generalizes it). If
-order doesn't matter, swapping the last element in is O(1).
+1. If i is out of [0, len(xs)), return xs unchanged.
+2. Otherwise append(xs[:i], xs[i+1:]...) to splice out element i, preserving order.
+3. Return the result.
 
-## Watch out
+## Solution
+
+```go
+func RemoveAt(xs []int, i int) []int {
+	if i < 0 || i >= len(xs) {
+		return xs
+	}
+	return append(xs[:i], xs[i+1:]...)
+}
+```
+
+## Walkthrough
+
+RemoveAt([1,2,3,4],1): xs[:1]=[1], spread xs[2:]=[3,4] -> [1,3,4].
+
+## Pitfalls
 
 - It **overwrites** `xs`'s backing array — copy first if the caller's slice
   matters.

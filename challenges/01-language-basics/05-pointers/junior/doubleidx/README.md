@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-a := [4]int{1,2,3,4}; Double(&a, 2) // a[2]=6
+**Example 1:**
+
+```
+Input:  a := [4]int{1,2,3,4}; Double(&a, 2)
+Output: a[2] == 6
+```
+
+**Example 2:**
+
+```
+Input:  a := [4]int{1,2,3,4}; Double(&a, 0)
+Output: a[0] == 2
+```
+
+**Example 3:**
+
+```
+Input:  a := [4]int{0,0,0,0}; Double(&a, 3)
+Output: a[3] == 0
 ```
 
 ## Topics to Master

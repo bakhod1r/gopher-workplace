@@ -13,13 +13,34 @@ the caller's backing array. "SortedCopy" corrupts its input.
 Fix the copy between the markers in [sortmutates.go](sortmutates.go) to duplicate
 the data first.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-xs := []int{3,1,2}; SortedCopy(xs) // [1 2 3]; xs stays [3 1 2]
+**Example 1:**
+
+```
+Input:  [3,1,2]
+Output: [1,2,3]; input stays [3,1,2]
+```
+
+**Example 2:**
+
+```
+Input:  [1]
+Output: [1]
+```
+
+**Example 3:**
+
+```
+Input:  [5,4,3,2,1]
+Output: [1,2,3,4,5]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

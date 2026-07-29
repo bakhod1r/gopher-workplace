@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-ToSlice(1->2->3) // => [1 2 3]
+**Example 1:**
+
+```
+Input:  ToSlice(1->2->3)
+Output: [1 2 3]
+```
+
+**Example 2:**
+
+```
+Input:  ToSlice(nil)
+Output: [] (empty)
+```
+
+**Example 3:**
+
+```
+Input:  ToSlice(9)
+Output: [9]
 ```
 
 ## Topics to Master

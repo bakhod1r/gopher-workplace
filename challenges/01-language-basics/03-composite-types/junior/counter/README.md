@@ -12,13 +12,34 @@ Counting occurrences relies on the map zero value: a missing key reads as 0, so
 
 Implement `Count(xs)` returning element→count.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Count([]string{"a","b","a"}) // => {a:2, b:1}
+**Example 1:**
+
+```
+Input:  ["a","b","a","c","a","b"]
+Output: {"a":3,"b":2,"c":1}
+```
+
+**Example 2:**
+
+```
+Input:  nil
+Output: {} (empty map)
+```
+
+**Example 3:**
+
+```
+Input:  ["x"]
+Output: {"x":1}
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

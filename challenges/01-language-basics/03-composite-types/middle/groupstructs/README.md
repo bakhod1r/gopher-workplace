@@ -11,13 +11,34 @@ Aggregating records into per-key totals — a group-by-sum.
 
 Implement `TotalByCustomer(orders)`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-TotalByCustomer([{ann,100},{bob,50},{ann,25}]) // => {ann:125, bob:50}
+**Example 1:**
+
+```
+Input:  [{ann,100},{bob,50},{ann,25},{bob,75}]
+Output: {ann:125, bob:125}
+```
+
+**Example 2:**
+
+```
+Input:  [{ann,10}]
+Output: {ann:10}
+```
+
+**Example 3:**
+
+```
+Input:  []
+Output: {}
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

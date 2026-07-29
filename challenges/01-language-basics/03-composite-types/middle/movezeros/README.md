@@ -12,13 +12,34 @@ array-shuffling task.
 
 Implement `MoveZeros(xs)` (stable order of non-zeros).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-MoveZeros([]int{0,1,0,3,12}) // => [1 3 12 0 0]
+**Example 1:**
+
+```
+Input:  [0,1,0,3,12]
+Output: [1,3,12,0,0]
+```
+
+**Example 2:**
+
+```
+Input:  [1,2,3]
+Output: [1,2,3]
+```
+
+**Example 3:**
+
+```
+Input:  nil
+Output: []
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

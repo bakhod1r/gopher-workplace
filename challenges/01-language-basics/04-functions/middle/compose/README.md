@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Compose(inc, dbl)(3) // => 7  (inc(dbl(3)))
-Compose(dbl, inc)(3) // => 8  (dbl(inc(3)))
+**Example 1:**
+
+```
+Input:  Compose(inc, double)(3)
+Output: 7
+```
+
+**Example 2:**
+
+```
+Input:  applies g then f
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  Compose(double, inc)(3)
+Output: 8
 ```
 
 ## Topics to Master

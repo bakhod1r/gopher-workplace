@@ -14,15 +14,34 @@ is a memory-model fact the compiler encodes in the constant.
 Fix the single line between the markers in [limits.go](limits.go) so `MinInt`
 equals `math.MinInt64`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-MinInt            // => -9223372036854775808
-int64(MinInt)     // => math.MinInt64
-SymmetricTo()     // => true
+**Example 1:**
+
+```
+Input:  MinInt
+Output: most negative 64-bit value
+```
+
+**Example 2:**
+
+```
+Input:  SymmetricTo()
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  shift amount
+Output: 63, not 62
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

@@ -16,10 +16,28 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Reverse(1->2->3) // => 3->2->1
-Reverse(nil)     // => nil
+**Example 1:**
+
 ```
+Input:  Reverse(1->2->3)
+Output: 3->2->1
+```
+
+**Example 2:**
+
+```
+Input:  Reverse(nil)
+Output: nil
+```
+
+**Example 3:**
+
+```
+Input:  Reverse(5)
+Output: 5
+```
+
+_Explanation:_ A single node reverses to itself.
 
 ## Topics to Master
 

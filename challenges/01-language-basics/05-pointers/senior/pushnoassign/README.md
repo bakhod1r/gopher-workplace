@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-s.Push(1); s.Push(2) // len == 2
+**Example 1:**
+
+```
+Input:  s.Push(1); s.Push(2)
+Output: len == 2
+```
+
+**Example 2:**
+
+```
+Input:  s.Push(1)
+Output: len == 1
+```
+
+**Example 3:**
+
+```
+Input:  empty stack len
+Output: 0
 ```
 
 ## Topics to Master

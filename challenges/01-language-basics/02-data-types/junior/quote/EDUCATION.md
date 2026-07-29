@@ -1,6 +1,6 @@
 # Escaping quotes
 
-## The idea
+## Intuition
 
 Inside a double-quoted string, a literal double quote must be escaped as `\"`,
 because an unescaped `"` would end the string:
@@ -9,24 +9,27 @@ because an unescaped `"` would end the string:
 "\"" // a string of length 1: one quote character
 ```
 
-## Why it matters
+## Approach
 
-Generating JSON-ish output, CSV fields, or shell arguments by hand requires
-embedding quotes. Knowing `\"` is one character keeps lengths and comparisons
-correct.
+1. Build "\"" + s + "\"".
+2. The \" escape places a literal double-quote byte inside the interpreted literal.
 
-## Watch out
+## Solution
+
+```go
+func Wrap(s string) string {
+	return "\"" + s + "\""
+}
+```
+
+## Walkthrough
+
+Wrap("hello"): quote + hello + quote = a 7-byte string beginning and ending with a double quote.
+
+## Pitfalls
 
 - `len("\"")` is 1.
 - A raw literal sidesteps escaping quotes but **cannot contain a backtick**, so
   it cannot hold a backtick the way `"..."` holds a quote.
 - The standard `strconv.Quote` adds quotes *and* escapes contents — different
   job from simple wrapping.
-
-## Try it yourself
-
-```go
-"\""          // one quote char
-`"`           // also one quote char (raw)
-len("\"hi\"") // 4
-```

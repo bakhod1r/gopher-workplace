@@ -1,6 +1,6 @@
 # IEEE-754 double layout
 
-## The idea
+## Intuition
 
 A `float64` is 1 sign bit, 11 exponent bits, and 52 mantissa bits. The exponent
 is stored with a **bias of 1023**, so the real exponent is:
@@ -12,13 +12,29 @@ exp := raw - 1023
 
 `1.0` has raw exponent 1023 → unbiased 0; `2.0` → 1024 → 1.
 
-## Why it matters
+## Approach
 
-Reading float internals powers fast `frexp`, ULP comparisons, and custom
-formatting. The bias constant is easy to misremember (1023, not 1024); off by one
-and every exponent — and anything derived from it — is wrong.
+1. Bug: subtracts bias 1024; float64 exponent bias is 1023.
+2. Raw 11-bit exponent minus 1023 gives the unbiased exponent.
+3. Fix: return raw - 1023.
 
-## Watch out
+## Solution
+
+```go
+import "math"
+
+func Exponent(x float64) int {
+	bits := math.Float64bits(x)
+	raw := int((bits >> 52) & 0x7FF)
+	return raw - 1023
+}
+```
+
+## Walkthrough
+
+x=1 has raw exponent 1023; 1023-1023=0. x=2 raw=1024 -> 1.
+
+## Pitfalls
 
 - Bias is `2^(11-1) - 1 = 1023` for float64; float32's bias is 127.
 - `raw == 0` is subnormal/zero; `raw == 0x7FF` is Inf/NaN — special cases.

@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-TakeWhile([]int{1,2,3,-1,4}, pos) // => [1 2 3]
-TakeWhile([]int{-1,2}, pos)       // => []
-TakeWhile(nil, pos)               // => []
+**Example 1:**
+
+```
+Input:  TakeWhile([2 4 5 6], even)
+Output: [2 4]
+```
+
+**Example 2:**
+
+```
+Input:  TakeWhile([1 2], even)
+Output: []
+```
+
+**Example 3:**
+
+```
+Input:  TakeWhile([2 4], even)
+Output: [2 4]
 ```
 
 ## Topics to Master

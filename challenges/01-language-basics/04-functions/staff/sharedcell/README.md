@@ -17,9 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-cs := Counters(2); cs[0](); cs[0]() // => 1, 2
-cs[1]() // => 1 (independent)
+**Example 1:**
+
+```
+Input:  cs := Counters(2); cs[0](); cs[0]()
+Output: 1, 2
+```
+
+**Example 2:**
+
+```
+Input:  cs[1]()
+Output: 1 (independent)
+```
+
+**Example 3:**
+
+```
+Input:  each closure has its own counter
+Output: true
 ```
 
 ## Topics to Master

@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 03-composite-types
-**Estimated time:** 15 min
 
 ## Context
 
@@ -20,13 +19,31 @@ Implement `Dedupe` in [dedupe.go](dedupe.go) so that it:
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Dedupe([]int{1, 1, 2, 3, 3, 3}) // => []int{1, 2, 3}
-Dedupe([]int{5, 4, 5, 4})       // => []int{5, 4}
-Dedupe([]int{7, 7, 7})          // => []int{7}
-Dedupe(nil)                     // => []int{}
+**Example 1:**
+
+```
+Input:  []int{1,1,2,3,3,3}
+Output: []int{1,2,3}
+```
+
+**Example 2:**
+
+```
+Input:  []int{5,4,5,4}
+Output: []int{5,4}
+```
+
+_Explanation:_ Kept in first-appearance order.
+
+**Example 3:**
+
+```
+Input:  nil
+Output: []int{}
 ```
 
 ## Topics to Master
@@ -50,7 +67,5 @@ Never append into a slice that aliases the input.
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

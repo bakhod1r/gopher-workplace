@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Sum([1 2 3 4]) // => 10
-Sum(nil)       // => 0
+**Example 1:**
+
+```
+Input:  Sum([1 2 3 4])
+Output: 10
+```
+
+**Example 2:**
+
+```
+Input:  Sum(nil)
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  Sum([5])
+Output: 5
 ```
 
 ## Topics to Master

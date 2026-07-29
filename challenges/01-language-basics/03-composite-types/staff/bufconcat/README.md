@@ -12,13 +12,36 @@ The second `copy` writes `b` at offset 0, overwriting `a`. It must write at offs
 
 Fix the second copy between the markers in [bufconcat.go](bufconcat.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Concat([]byte("foo"), []byte("bar")) // => "foobar"
+**Example 1:**
+
+```
+Input:  a=[1 2], b=[3 4]
+Output: [1 2 3 4]
 ```
 
+**Example 2:**
+
+```
+Input:  a=[], b=[9]
+Output: [9]
+```
+
+**Example 3:**
+
+```
+Input:  a=[5], b=[]
+Output: [5]
+```
+
+_Explanation:_ copy target offset must be len(a).
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

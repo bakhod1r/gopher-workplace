@@ -13,15 +13,43 @@ exponent is off by one.
 
 Fix the bias between the markers in [floatbits.go](floatbits.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Exponent(1)    // => 0
-Exponent(8)    // => 3
-Exponent(0.5)  // => -1
+**Example 1:**
+
+```
+Input:  1
+Output: 0
+```
+
+_Explanation:_ 1 = 1.0 * 2^0.
+
+**Example 2:**
+
+```
+Input:  2
+Output: 1
+```
+
+**Example 3:**
+
+```
+Input:  0.5
+Output: -1
+```
+
+**Example 4:**
+
+```
+Input:  1024
+Output: 10
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Contains(bst, 8) // => true
-Contains(bst, 4) // => false
+**Example 1:**
+
+```
+Input:  Contains(bst, 8)
+Output: true
+```
+
+**Example 2:**
+
+```
+Input:  Contains(bst, 4)
+Output: false
+```
+
+**Example 3:**
+
+```
+Input:  Contains(nil, 1)
+Output: false
 ```
 
 ## Topics to Master

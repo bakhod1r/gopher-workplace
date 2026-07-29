@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-WithFirst([1 2 3], 9) // => [9 2 3]; input stays [1 2 3]
+**Example 1:**
+
+```
+Input:  WithFirst([1 2 3], 9)
+Output: [9 2 3]; input stays [1 2 3]
+```
+
+**Example 2:**
+
+```
+Input:  original slice unchanged
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  WithFirst([5], 0)
+Output: [0]
 ```
 
 ## Topics to Master

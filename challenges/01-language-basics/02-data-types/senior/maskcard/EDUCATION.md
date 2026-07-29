@@ -1,6 +1,6 @@
 # Index windows and inverted conditions
 
-## The idea
+## Intuition
 
 The last four characters are indices `i >= len-4`; everything before is
 `i < len-4`. To hide all but the last four, mask the **front**:
@@ -9,13 +9,37 @@ The last four characters are indices `i >= len-4`; everything before is
 if i < len(r)-4 { out[i] = '*' } else { out[i] = r[i] }
 ```
 
-## Why it matters
+## Approach
 
-Masking PII (cards, SSNs, tokens) is security-sensitive. An inverted window leaks
-exactly the data you meant to hide while looking superficially "masked" — a real
-data-exposure bug.
+1. Bug: condition `i >= len(r)-4` masked the LAST four and revealed the front.
+2. Fix: `i < len(r)-4` masks everything except the last four.
+3. Strings of <=4 runes return unchanged.
 
-## Watch out
+## Solution
+
+```go
+func Mask(s string) string {
+	r := []rune(s)
+	if len(r) <= 4 {
+		return s
+	}
+	out := make([]rune, len(r))
+	for i := range r {
+		if i < len(r)-4 {
+			out[i] = '*'
+		} else {
+			out[i] = r[i]
+		}
+	}
+	return string(out)
+}
+```
+
+## Walkthrough
+
+"12345": len 5, mask indices <1 (index 0) -> '*', keep 2345 -> "*2345".
+
+## Pitfalls
 
 - Operate on runes so multi-byte input isn't miscounted.
 - Return short inputs unchanged, or you might reveal everything (define the

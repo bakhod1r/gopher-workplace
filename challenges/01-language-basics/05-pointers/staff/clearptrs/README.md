@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Clear([]*int{&a,&b}) // len 0, backing array nilled
+**Example 1:**
+
+```
+Input:  Clear([]*int{&a, &b})
+Output: len 0, backing array nilled
+```
+
+**Example 2:**
+
+```
+Input:  len after Clear
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  backing slots
+Output: all nil
 ```
 
 ## Topics to Master

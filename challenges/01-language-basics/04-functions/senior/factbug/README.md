@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Fact(0) // => 1
-Fact(5) // => 120
-Fact(6) // => 720
+**Example 1:**
+
+```
+Input:  Fact(0)
+Output: 1
+```
+
+**Example 2:**
+
+```
+Input:  Fact(5)
+Output: 120
+```
+
+**Example 3:**
+
+```
+Input:  Fact(6)
+Output: 720
 ```
 
 ## Topics to Master

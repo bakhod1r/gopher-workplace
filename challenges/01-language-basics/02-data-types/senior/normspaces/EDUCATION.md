@@ -1,6 +1,6 @@
 # Fields + Join normalization
 
-## The idea
+## Intuition
 
 `strings.Fields(s)` splits on runs of any whitespace and drops empties;
 `strings.Join(..., " ")` rejoins with single spaces. Together they collapse and
@@ -10,13 +10,28 @@ trim in one step — no manual padding required:
 strings.Join(strings.Fields(s), " ")
 ```
 
-## Why it matters
+## Approach
 
-Normalizing text for search keys, dedup, and comparisons is everywhere. Adding a
-stray leading/trailing space defeats the whole point — keys silently differ by an
-invisible character.
+1. Bug: prepended a stray leading space: `return " " + collapsed`.
+2. Fix: return `collapsed` directly — Fields already trims and collapses.
+3. No leading/trailing whitespace remains.
 
-## Watch out
+## Solution
+
+```go
+import "strings"
+
+func Normalize(s string) string {
+	collapsed := strings.Join(strings.Fields(s), " ")
+	return collapsed
+}
+```
+
+## Walkthrough
+
+"  hello   world  ": Fields -> ["hello","world"] -> Join -> "hello world".
+
+## Pitfalls
 
 - `Fields` already handles leading/trailing and multiple spaces; don't re-add
   any.

@@ -1,6 +1,6 @@
 # Nil and empty slices differ at the boundary
 
-## The idea
+## Intuition
 
 `var out []string` is **nil**; `[]string{}` is non-nil with length 0. They behave
 identically for `len`, `range`, and `append` — but not for identity or
@@ -10,13 +10,29 @@ serialization:
 out := []string{} // marshals to [], not null
 ```
 
-## Why it matters
+## Approach
 
-APIs and clients often distinguish `[]` (present, empty) from `null` (absent). A
-handler that returns a nil slice emits `null`, breaking consumers that expect an
-array. The contract, not the length, dictates which to use.
+1. Bug: var out []string is nil; when nothing matches it stays nil and JSON-encodes as null instead of []. 2. Fix: initialize out := []string{} — a non-nil empty slice. 3. Appends work identically; the difference is the empty case returns [] not null.
 
-## Watch out
+## Solution
+
+```go
+func NonEmpty(in []string) []string {
+	out := []string{}
+	for _, s := range in {
+		if s != "" {
+			out = append(out, s)
+		}
+	}
+	return out
+}
+```
+
+## Walkthrough
+
+Input with no non-empty strings: buggy out is nil (encodes null). With []string{} out is empty-but-non-nil (encodes []).
+
+## Pitfalls
 
 - `out == nil` is the only way to tell them apart in Go.
 - `append` promotes nil to non-nil, so the distinction only matters when nothing

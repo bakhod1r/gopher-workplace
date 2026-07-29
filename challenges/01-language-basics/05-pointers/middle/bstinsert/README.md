@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Insert(nil, 5) // => tree with root 5
+**Example 1:**
+
+```
+Input:  Insert(nil, 5)
+Output: tree rooted at 5
+```
+
+**Example 2:**
+
+```
+Input:  Insert(root(5), 3)
+Output: 3 becomes left child
+```
+
+**Example 3:**
+
+```
+Input:  Insert(root(5), 8)
+Output: 8 becomes right child
 ```
 
 ## Topics to Master

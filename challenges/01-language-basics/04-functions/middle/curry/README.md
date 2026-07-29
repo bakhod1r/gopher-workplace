@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Add3()(1)(2)(3) // => 6
-Add3()(10)(0)(0) // => 10
+**Example 1:**
+
+```
+Input:  Add3()(1)(2)(3)
+Output: 6
+```
+
+**Example 2:**
+
+```
+Input:  Add3()(0)(0)(0)
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  Add3()(10)(20)(30)
+Output: 60
 ```
 
 ## Topics to Master

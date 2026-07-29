@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-FieldAlign(&S{}) // => unsafe.Alignof(int64)
+**Example 1:**
+
+```
+Input:  FieldAlign(&S{})
+Output: unsafe.Alignof(int64) (8)
+```
+
+**Example 2:**
+
+```
+Input:  alignment of int64 field
+Output: 8
+```
+
+**Example 3:**
+
+```
+Input:  result is an alignment, not a size
+Output: 8, not Sizeof
 ```
 
 ## Topics to Master

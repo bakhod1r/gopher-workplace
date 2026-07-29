@@ -17,16 +17,36 @@ In [units.go](units.go):
 2. Implement `Humanize(n)` returning the largest unit dividing `n` evenly and
    its symbol; `(n, "B")` below KB.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-KB                 // => 1024
-Humanize(2*KB)     // => 2, "KB"
-Humanize(512)      // => 512, "B"
-Humanize(5*TB)     // => 5, "TB"
+**Example 1:**
+
+```
+Input:  KB
+Output: 1024
 ```
 
+**Example 2:**
+
+```
+Input:  Humanize(1048576)
+Output: 1, "MB"
+```
+
+**Example 3:**
+
+```
+Input:  Humanize(512)
+Output: 512, "B"
+```
+
+_Explanation:_ Below KB, reported in bytes.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

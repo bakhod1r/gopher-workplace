@@ -11,7 +11,7 @@ func Class(code int) string {
 		return "client"
 	case 5:
 		return "server"
-		// CHANGE CODE BELOW THIS LINE
+	// CHANGE CODE BELOW THIS LINE
 	}
 	return ""
 	// CHANGE CODE ABOVE THIS LINE

@@ -14,13 +14,36 @@ breaking clients expecting an object.
 Fix the declaration between the markers in [mapniljson.go](mapniljson.go) to
 allocate upfront.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-json.Marshal(Counts(nil)) // must be "{}", not "null"
+**Example 1:**
+
+```
+Input:  xs=[] (empty)
+Output: non-nil empty map -> JSON {}
 ```
 
+**Example 2:**
+
+```
+Input:  xs=[a a b]
+Output: {a:2, b:1}
+```
+
+**Example 3:**
+
+```
+Input:  xs=[x]
+Output: {x:1}
+```
+
+_Explanation:_ empty input must not encode to null.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

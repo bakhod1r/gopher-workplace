@@ -13,14 +13,45 @@ are corrupt.
 
 Fix the digit offset between the markers in [base64val.go](base64val.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Value('0') // => 52
-Value('9') // => 61
+**Example 1:**
+
+```
+Input:  'A'
+Output: 0, true
 ```
 
+**Example 2:**
+
+```
+Input:  'z'
+Output: 51, true
+```
+
+**Example 3:**
+
+```
+Input:  '0'
+Output: 52, true
+```
+
+_Explanation:_ Digits start at value 52.
+
+**Example 4:**
+
+```
+Input:  '='
+Output: 0, false
+```
+
+_Explanation:_ Not a base64 char.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

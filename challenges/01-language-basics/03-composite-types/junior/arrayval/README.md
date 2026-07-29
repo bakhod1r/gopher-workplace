@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 03-composite-types
-**Estimated time:** 10 min
 
 ## Context
 
@@ -18,12 +17,34 @@ unchanged.
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-SetFirst([3]int{1, 2, 3}, 9) // => [3]int{9, 2, 3}
-SetFirst([3]int{0, 0, 0}, 5) // => [3]int{5, 0, 0}
+**Example 1:**
+
 ```
+Input:  a=[3]int{1,2,3}, v=9
+Output: [3]int{9,2,3}
+```
+
+_Explanation:_ First element replaced; caller's array untouched because arrays are copied on pass.
+
+**Example 2:**
+
+```
+Input:  a=[3]int{0,0,0}, v=5
+Output: [3]int{5,0,0}
+```
+
+**Example 3:**
+
+```
+Input:  a=[3]int{7,8,9}, v=7
+Output: [3]int{7,8,9}
+```
+
+_Explanation:_ Replacing with the same value leaves it identical.
 
 ## Topics to Master
 
@@ -43,7 +64,5 @@ Inside the function `a` is already your own copy. Set `a[0] = v` and return
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

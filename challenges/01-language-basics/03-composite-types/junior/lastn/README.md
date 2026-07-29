@@ -12,15 +12,36 @@ exceeds the length.
 
 Implement `Last(xs, n)` — last `n` in order; clamp `n` to `[0, len]`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Last([]int{1,2,3,4,5}, 2)  // => [4 5]
-Last([]int{1,2,3}, 10)     // => [1 2 3]
-Last([]int{1}, 0)          // => []
+**Example 1:**
+
+```
+Input:  xs=[1,2,3,4,5], n=2
+Output: []int{4,5}
 ```
 
+**Example 2:**
+
+```
+Input:  n=0
+Output: []int{}
+```
+
+**Example 3:**
+
+```
+Input:  n=10
+Output: []int{1,2,3,4,5}
+```
+
+_Explanation:_ n >= len returns all of xs.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

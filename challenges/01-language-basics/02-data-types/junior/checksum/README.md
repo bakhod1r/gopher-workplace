@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 02-data-types
-**Estimated time:** 15 min
 
 ## Context
 
@@ -22,13 +21,45 @@ modulo-256 sum of the bytes in `data`, accumulated in a `uint8`:
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Checksum([]byte{1, 2, 3})  // => 6
-Checksum([]byte{255, 1})   // => 0   (256 wraps to 0)
-Checksum([]byte{200, 100}) // => 44  (300 mod 256)
+**Example 1:**
+
 ```
+Input:  Checksum([]byte{1,2,3})
+Output: 6
+```
+
+_Explanation:_ 1+2+3, no wrap.
+
+**Example 2:**
+
+```
+Input:  Checksum([]byte{255,1})
+Output: 0
+```
+
+_Explanation:_ 255+1 wraps a uint8 to 0.
+
+**Example 3:**
+
+```
+Input:  Checksum([]byte{200,100})
+Output: 44
+```
+
+_Explanation:_ 300 mod 256 = 44.
+
+**Example 4:**
+
+```
+Input:  Checksum([]byte{255,255,255,255})
+Output: 252
+```
+
+_Explanation:_ 1020 mod 256 = 252.
 
 ## Topics to Master
 
@@ -49,7 +80,5 @@ directly in a `uint8` gives the wrap-around for free.
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Merge(1->3->5, 2->4->6) // => 1->2->3->4->5->6
+**Example 1:**
+
+```
+Input:  Merge(1->3->5, 2->4->6)
+Output: 1->2->3->4->5->6
+```
+
+**Example 2:**
+
+```
+Input:  Merge(nil, 2->4)
+Output: 2->4
+```
+
+**Example 3:**
+
+```
+Input:  Merge(1->2, nil)
+Output: 1->2
 ```
 
 ## Topics to Master

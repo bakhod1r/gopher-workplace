@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Clone(d); c.Tags[0]="X" // d.Tags unchanged
+**Example 1:**
+
+```
+Input:  d := Clone(src); c.Tags[0] = "X"
+Output: src.Tags unchanged
+```
+
+**Example 2:**
+
+```
+Input:  Clone(&Doc{})
+Output: independent empty Doc
+```
+
+**Example 3:**
+
+```
+Input:  len(Clone(d).Tags)
+Output: len(d.Tags)
 ```
 
 ## Topics to Master

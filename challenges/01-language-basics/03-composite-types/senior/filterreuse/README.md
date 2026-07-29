@@ -13,13 +13,36 @@ overwrites `xs` from the front, so the input is corrupted mid-iteration.
 Fix the initialization between the markers in
 [filterreuse.go](filterreuse.go) to use a fresh slice.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-xs := []int{1,2,3,4}; Evens(xs) // [2 4]; xs stays [1 2 3 4]
+**Example 1:**
+
+```
+Input:  [1,2,3,4]
+Output: [2,4]
+```
+
+_Explanation:_ input must stay [1,2,3,4].
+
+**Example 2:**
+
+```
+Input:  [2,4,6]
+Output: [2,4,6]
+```
+
+**Example 3:**
+
+```
+Input:  [1,3,5]
+Output: []
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

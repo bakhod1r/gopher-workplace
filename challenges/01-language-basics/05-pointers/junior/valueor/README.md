@@ -15,10 +15,30 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-ValueOr(nil, 5) // => 5
-ValueOr(&9, 5)  // => 9
+**Example 1:**
+
 ```
+Input:  ValueOr(nil, 5)
+Output: 5
+```
+
+_Explanation:_ Nil pointer → the default is returned, no dereference.
+
+**Example 2:**
+
+```
+Input:  n := 9; ValueOr(&n, 5)
+Output: 9
+```
+
+**Example 3:**
+
+```
+Input:  n := 0; ValueOr(&n, 5)
+Output: 0
+```
+
+_Explanation:_ A real pointer to 0 still returns 0, not the default.
 
 ## Topics to Master
 

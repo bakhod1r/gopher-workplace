@@ -1,6 +1,6 @@
 # Rune literals vs integer literals
 
-## The idea
+## Intuition
 
 `3` and `'3'` are both integer constants in Go. They are not the same number.
 
@@ -52,20 +52,29 @@ fmt.Printf("%c", b) // '4' — printing as a character reveals the kind
 
 The kind decides how the value *reads*, not whether it compiles.
 
-## Watch out
+## Approach
+
+1. Declare `MaxRetries = 3` (the number, not the rune `'3'`).
+2. `Budget` is `1 + MaxRetries`.
+
+## Solution
+
+```go
+const MaxRetries = 3
+
+func Budget() int {
+	return 1 + MaxRetries
+}
+```
+
+## Walkthrough
+
+The first try plus `MaxRetries` retries gives 4 total attempts.
+
+## Pitfalls
 
 - A rune is an alias for `int32`; `byte` is an alias for `uint8`. `'é'` needs 2
   bytes in UTF-8 but is one rune, value 233.
 - `%c` prints a number as a character, `%d` as a number, `%q` as a quoted
   character. Reach for `%c`/`%q` when a value looks 48 too big.
 - Digit conversion is `'7' - '0'`, never `int('7')` — the latter gives 55.
-
-## Try it yourself
-
-```go
-fmt.Println('3')        // 51
-fmt.Println(3)          // 3
-fmt.Printf("%c\n", 51)  // 3
-fmt.Println('7' - '0')  // 7   — char to digit
-fmt.Println('a' - 'A')  // 32  — case offset in ASCII
-```

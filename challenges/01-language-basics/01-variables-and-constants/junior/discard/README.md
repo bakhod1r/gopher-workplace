@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 01-variables-and-constants
-**Estimated time:** 8 min
 
 ## Context
 
@@ -25,19 +24,29 @@ Implement `Pages` and `Leftover` in [discard.go](discard.go) so that:
 
 Do **not** change the function signatures or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Split(10, 3)    // => 3, 1
+**Example 1:**
 
-Pages(10, 3)    // => 3
-Pages(9, 3)     // => 3
-Pages(2, 5)     // => 0
-Pages(7, 0)     // => 0
+```
+Input:  Pages(10, 3)
+Output: 3
+```
 
-Leftover(10, 3) // => 1
-Leftover(9, 3)  // => 0
-Leftover(7, 0)  // => 7
+**Example 2:**
+
+```
+Input:  Leftover(10, 3)
+Output: 1
+```
+
+**Example 3:**
+
+```
+Input:  Pages(2, 5)
+Output: 0
 ```
 
 ## Topics to Master
@@ -67,7 +76,5 @@ local variables, which is exactly why `_` exists.
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

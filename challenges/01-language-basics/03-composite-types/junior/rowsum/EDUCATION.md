@@ -1,6 +1,6 @@
 # 2-D data as slices of slices
 
-## The idea
+## Intuition
 
 Go's 2-D structures are slices of slices, and they can be **ragged**. Nested
 ranging handles that:
@@ -13,12 +13,34 @@ for _, row := range grid {
 }
 ```
 
-## Why it matters
+## Approach
 
-Grids, matrices, and tables are modeled this way. Rows are independent slices, so
-they need not be rectangular.
+1. Start with an empty result slice.
+2. Range each row; inner-range to accumulate its sum.
+3. Append each row's sum (0 for empty rows).
+4. Return result.
 
-## Watch out
+## Solution
+
+```go
+func RowSums(grid [][]int) []int {
+	result := []int{}
+	for _, row := range grid {
+		sum := 0
+		for _, v := range row {
+			sum += v
+		}
+		result = append(result, sum)
+	}
+	return result
+}
+```
+
+## Walkthrough
+
+RowSums({{1,2,3},{4,5},{}}): 1+2+3=6; 4+5=9; empty=0 -> [6,9,0].
+
+## Pitfalls
 
 - Rows can differ in length; don't assume a fixed width.
 - An empty row sums to 0.

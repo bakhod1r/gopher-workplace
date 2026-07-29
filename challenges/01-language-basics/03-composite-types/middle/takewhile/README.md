@@ -11,14 +11,36 @@ Reading a leading run until a condition breaks — like parsing a prefix.
 
 Implement `TakePositive(xs)` returning the longest all-positive prefix.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-TakePositive([]int{1,2,3,-1,4}) // => [1 2 3]
-TakePositive([]int{-1,2})       // => []
+**Example 1:**
+
+```
+Input:  [1,2,3,-1,4]
+Output: [1,2,3]
+```
+
+_Explanation:_ stops at first <=0
+
+**Example 2:**
+
+```
+Input:  [-1,2]
+Output: []
+```
+
+**Example 3:**
+
+```
+Input:  [1,2,3]
+Output: [1,2,3]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

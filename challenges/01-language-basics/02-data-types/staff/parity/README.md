@@ -13,15 +13,45 @@ A serial link appends a parity bit: 1 for an odd number of set bits. The code
 
 Fix the accumulation between the markers in [parity.go](parity.go) to XOR.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Parity(0b111) // => 1
-Parity(0xFF)  // => 0
-Parity(1)     // => 1
+**Example 1:**
+
+```
+Input:  1
+Output: 1
+```
+
+**Example 2:**
+
+```
+Input:  3
+Output: 0
+```
+
+_Explanation:_ Two set bits -> even parity.
+
+**Example 3:**
+
+```
+Input:  0xFF
+Output: 0
+```
+
+_Explanation:_ Eight set bits -> even.
+
+**Example 4:**
+
+```
+Input:  0x80000000
+Output: 1
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

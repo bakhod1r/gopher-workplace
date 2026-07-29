@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>gopher workplace · problems</title>
-<link rel="stylesheet" href="assets/css/styles.css?v=26">
-<link rel="stylesheet" href="assets/css/roadmap.css?v=26">
-<link rel="stylesheet" href="assets/css/problemset.css?v=26">
+<link rel="stylesheet" href="assets/css/styles.css?v=27">
+<link rel="stylesheet" href="assets/css/roadmap.css?v=27">
+<link rel="stylesheet" href="assets/css/problemset.css?v=27">
 </head>
 <body>
   <div class="nav">
@@ -32,20 +32,27 @@
 
     <div class="ps-filters">
       <input id="psSearch" class="ps-search" type="text" placeholder="Search challenges…">
-      <select id="psLevel" class="ps-sel">
-        <option value="">All levels</option>
-        <option value="J">Junior</option>
-        <option value="M">Middle</option>
-        <option value="S">Senior</option>
-        <option value="ST">Staff</option>
-      </select>
-      <select id="psTag" class="ps-sel"><option value="">All tags</option></select>
-      <select id="psStatus" class="ps-sel">
-        <option value="">All status</option>
-        <option value="solved">Solved</option>
-        <option value="todo">Todo</option>
-        <option value="locked">Locked</option>
-      </select>
+      <div class="ps-ms" id="psLevel" data-all="All levels">
+        <button type="button" class="ps-sel ps-ms-btn" aria-haspopup="true" aria-expanded="false">All levels ▾</button>
+        <div class="ps-ms-menu" hidden>
+          <label><input type="checkbox" value="J">Junior</label>
+          <label><input type="checkbox" value="M">Middle</label>
+          <label><input type="checkbox" value="S">Senior</label>
+          <label><input type="checkbox" value="ST">Staff</label>
+        </div>
+      </div>
+      <div class="ps-ms" id="psTag" data-all="All tags">
+        <button type="button" class="ps-sel ps-ms-btn" aria-haspopup="true" aria-expanded="false">All tags ▾</button>
+        <div class="ps-ms-menu" hidden></div>
+      </div>
+      <div class="ps-ms" id="psStatus" data-all="All status">
+        <button type="button" class="ps-sel ps-ms-btn" aria-haspopup="true" aria-expanded="false">All status ▾</button>
+        <div class="ps-ms-menu" hidden>
+          <label><input type="checkbox" value="solved">Solved</label>
+          <label><input type="checkbox" value="todo">Todo</label>
+          <label><input type="checkbox" value="locked">Locked</label>
+        </div>
+      </div>
       <button id="psRandom" class="ps-random" title="Open a random playable puzzle">🎲 random</button>
       <button id="psReset" class="ps-reset">reset</button>
     </div>
@@ -67,10 +74,10 @@
     </div>
   </div>
 
-  <script src="assets/js/localrunner.js?v=26"></script>
-  <script src="assets/js/problems.js?v=26"></script>
-  <script src="assets/js/progress.js?v=26"></script>
-  <script src="assets/js/problemset.js?v=26"></script>
+  <script src="assets/js/localrunner.js?v=27"></script>
+  <script src="assets/js/problems.js?v=27"></script>
+  <script src="assets/js/progress.js?v=27"></script>
+  <script src="assets/js/problemset.js?v=27"></script>
   <script>
     (function(){
       const sel=document.getElementById('theme');

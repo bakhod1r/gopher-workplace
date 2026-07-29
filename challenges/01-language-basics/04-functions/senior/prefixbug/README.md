@@ -17,9 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-RangeSum([1 2 3 4 5], 1, 4) // => 9
-RangeSum([1 2 3 4 5], 0, 5) // => 15
+**Example 1:**
+
+```
+Input:  RangeSum([1 2 3 4 5], 1, 4)
+Output: 9
+```
+
+**Example 2:**
+
+```
+Input:  RangeSum([1 2 3 4 5], 0, 5)
+Output: 15
+```
+
+**Example 3:**
+
+```
+Input:  RangeSum([1 2 3 4 5], 2, 3)
+Output: 3
 ```
 
 ## Topics to Master

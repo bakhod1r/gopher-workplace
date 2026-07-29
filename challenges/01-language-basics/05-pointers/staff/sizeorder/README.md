@@ -16,8 +16,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-unsafe.Sizeof(Record{}) // must be 16
+**Example 1:**
+
+```
+Input:  unsafe.Sizeof(Record{})
+Output: 16
+```
+
+_Explanation:_ Fields ordered wide-to-narrow pack without padding waste.
+
+**Example 2:**
+
+```
+Input:  fields A bool, B int64, C bool
+Output: 24 (padded)
+```
+
+**Example 3:**
+
+```
+Input:  fields B int64, A bool, C bool
+Output: 16 (packed)
 ```
 
 ## Topics to Master

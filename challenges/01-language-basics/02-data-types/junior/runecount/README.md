@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 02-data-types
-**Estimated time:** 10 min
 
 ## Context
 
@@ -17,15 +16,45 @@ Implement `Count` in [runecount.go](runecount.go) so it returns the number of
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Count("abc")   // => 3
-Count("héllo") // => 5   (é is 2 bytes, 1 rune)
-Count("日本")   // => 2
-Count("a🙂b")   // => 3
-Count("")      // => 0
+**Example 1:**
+
 ```
+Input:  Count("abc")
+Output: 3
+```
+
+_Explanation:_ ASCII, bytes==runes.
+
+**Example 2:**
+
+```
+Input:  Count("hello" with accent)
+Output: 5
+```
+
+_Explanation:_ The accented char is 2 bytes but 1 rune; len would give 6.
+
+**Example 3:**
+
+```
+Input:  Count("CJK pair")
+Output: 2
+```
+
+_Explanation:_ 3 bytes each, 2 runes.
+
+**Example 4:**
+
+```
+Input:  Count("a<emoji>b")
+Output: 3
+```
+
+_Explanation:_ The emoji is 4 bytes, still 1 rune.
 
 ## Topics to Master
 
@@ -45,7 +74,5 @@ a `range` loop over the string (which iterates rune by rune).
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

@@ -1,6 +1,6 @@
 # Joining strings
 
-## The idea
+## Intuition
 
 Write the separator **before** each element except the first, building into a
 `strings.Builder`:
@@ -14,13 +14,36 @@ for i, p := range parts {
 return b.String()
 ```
 
-## Why it matters
+## Approach
 
-Naive `result += sep + p` in a loop is O(n²) because strings are immutable —
-every `+=` copies. `strings.Builder` amortizes to O(n). It also shows the
-"separator between, not around" pattern.
+1. Use a strings.Builder.
+2. Iterate parts with index.
+3. Write sep before every part except the first.
+4. Write the part.
+5. Return builder string.
 
-## Watch out
+## Solution
+
+```go
+import "strings"
+
+func Join(parts []string, sep string) string {
+	var b strings.Builder
+	for i, p := range parts {
+		if i > 0 {
+			b.WriteString(sep)
+		}
+		b.WriteString(p)
+	}
+	return b.String()
+}
+```
+
+## Walkthrough
+
+["a","b","c"]: i0 write "a"; i1 write "," then "b"; i2 write "," then "c" -> "a,b,c".
+
+## Pitfalls
 
 - Don't put the separator after the last element.
 - Use `strings.Builder`, not repeated `+=`, for many parts.

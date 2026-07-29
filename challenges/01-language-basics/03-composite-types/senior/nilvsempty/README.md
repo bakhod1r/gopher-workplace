@@ -14,13 +14,34 @@ when nothing matches, breaking the API contract.
 Fix the declaration between the markers in [nilvsempty.go](nilvsempty.go) to start
 from a non-nil empty slice.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-json.Marshal(NonEmpty([]string{"",""})) // must be "[]", not "null"
+**Example 1:**
+
+```
+Input:  [a,,b]
+Output: [a,b]
+```
+
+**Example 2:**
+
+```
+Input:  [,,]
+Output: [] (non-nil)
+```
+
+**Example 3:**
+
+```
+Input:  []
+Output: [] (non-nil)
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

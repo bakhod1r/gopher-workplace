@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Rank(3) // => "bronze"
-Rank(6) // => "silver/bronze"
-Rank(9) // => "gold/silver/bronze"
+**Example 1:**
+
+```
+Input:  Rank(9)
+Output: "gold/silver/bronze"
+```
+
+**Example 2:**
+
+```
+Input:  Rank(6)
+Output: "silver/bronze"
+```
+
+**Example 3:**
+
+```
+Input:  Rank(1)
+Output: ""
 ```
 
 ## Topics to Master

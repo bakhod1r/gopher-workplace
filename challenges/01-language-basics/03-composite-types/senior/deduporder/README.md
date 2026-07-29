@@ -13,13 +13,34 @@ the output is exactly the duplicates.
 Fix the condition between the markers in [deduporder.go](deduporder.go) to keep
 first occurrences.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Unique([]int{3,1,3,2,1,4}) // => [3 1 2 4]
+**Example 1:**
+
+```
+Input:  [1,1,2,3,3]
+Output: [1,2,3]
+```
+
+**Example 2:**
+
+```
+Input:  [5,5,5]
+Output: [5]
+```
+
+**Example 3:**
+
+```
+Input:  [1,2,3]
+Output: [1,2,3]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

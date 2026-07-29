@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-add10 := Adder(10); add10(5) // => 15
-Adder(1)(5)                  // => 6
-Adder(0)(9)                  // => 9
+**Example 1:**
+
+```
+Input:  add5 := Adder(5); add5(3)
+Output: 8
+```
+
+**Example 2:**
+
+```
+Input:  Adder(0)(9)
+Output: 9
+```
+
+**Example 3:**
+
+```
+Input:  Adder(-2)(2)
+Output: 0
 ```
 
 ## Topics to Master

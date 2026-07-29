@@ -12,14 +12,40 @@ chunks, the last possibly short.
 
 Implement `Chunk(xs, size)`; `size <= 0` → empty.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Chunk([]int{1,2,3,4,5}, 2) // => [[1 2] [3 4] [5]]
-Chunk([]int{1,2,3}, 5)     // => [[1 2 3]]
+**Example 1:**
+
+```
+Input:  [1,2,3,4,5], size=2
+Output: [[1,2],[3,4],[5]]
 ```
 
+_Explanation:_ last chunk shorter
+
+**Example 2:**
+
+```
+Input:  [1,2,3], size=5
+Output: [[1,2,3]]
+```
+
+_Explanation:_ size exceeds len
+
+**Example 3:**
+
+```
+Input:  [1], size=0
+Output: []
+```
+
+_Explanation:_ size<=0 gives empty
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

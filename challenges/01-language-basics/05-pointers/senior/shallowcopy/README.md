@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Copy(tree) // independent subtree
+**Example 1:**
+
+```
+Input:  c := Copy(tree); mutate c.Left
+Output: original tree unchanged
+```
+
+**Example 2:**
+
+```
+Input:  Copy(nil)
+Output: nil
+```
+
+**Example 3:**
+
+```
+Input:  Copy(single node)
+Output: independent single node
 ```
 
 ## Topics to Master

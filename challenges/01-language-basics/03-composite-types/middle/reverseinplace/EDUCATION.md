@@ -1,6 +1,6 @@
 # In-place reversal
 
-## The idea
+## Intuition
 
 Swap symmetric pairs from the outside in, stopping at the middle:
 
@@ -10,12 +10,29 @@ for i, j := 0, len(xs)-1; i < j; i, j = i+1, j-1 {
 }
 ```
 
-## Why it matters
+## Approach
 
-In-place algorithms avoid allocation — important in hot paths. Reversal is also a
-building block: rotating a slice is three reversals.
+1. Two indices i=0, j=len-1.
+2. Swap xs[i],xs[j], move inward until i>=j.
+3. Mutates the input in place.
+4. Return xs.
 
-## Watch out
+## Solution
+
+```go
+func Reverse(xs []int) []int {
+	for i, j := 0, len(xs)-1; i < j; i, j = i+1, j-1 {
+		xs[i], xs[j] = xs[j], xs[i]
+	}
+	return xs
+}
+```
+
+## Walkthrough
+
+[1,2,3,4]: swap(0,3)->[4,2,3,1]; swap(1,2)->[4,3,2,1]; i>=j stop.
+
+## Pitfalls
 
 - This **mutates** the caller's slice (shared backing array); copy first if the
   original must survive.

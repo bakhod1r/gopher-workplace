@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-FirstOr(nil, 7) // => 7
-FirstOr(&Node{3}, 7) // => 3
+**Example 1:**
+
+```
+Input:  FirstOr(nil, 7)
+Output: 7
+```
+
+**Example 2:**
+
+```
+Input:  FirstOr(&Node{Val: 3}, 7)
+Output: 3
+```
+
+**Example 3:**
+
+```
+Input:  FirstOr(&Node{Val: 0}, 7)
+Output: 0
 ```
 
 ## Topics to Master

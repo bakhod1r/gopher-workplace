@@ -14,15 +14,36 @@ cross-service hashing disagrees.
 Fix the order between the markers in [fnv1a.go](fnv1a.go): FNV-1a is XOR first,
 then multiply.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Hash([]byte(""))     // => 0x811c9dc5
-Hash([]byte("a"))    // => 0xe40c292c
-Hash([]byte("foobar")) // => 0xbf9cf968
+**Example 1:**
+
+```
+Input:  ""
+Output: 0x811c9dc5
+```
+
+_Explanation:_ The FNV offset basis.
+
+**Example 2:**
+
+```
+Input:  "a"
+Output: 0xe40c292c
+```
+
+**Example 3:**
+
+```
+Input:  "foobar"
+Output: 0xbf9cf968
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

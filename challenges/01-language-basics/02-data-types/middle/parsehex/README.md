@@ -12,15 +12,40 @@ Fold hex digits into a value: `n = n*16 + d`, where `d` comes from `'0'..'9'`,
 
 Implement `Parse(s)` (no `0x`), returning `(value, ok)`; false on non-hex/empty.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Parse("ff")   // => 255, true
-Parse("1A2B") // => 6699, true
-Parse("xy")   // => 0, false
+**Example 1:**
+
+```
+Input:  Parse("ff")
+Output: (255, true)
 ```
 
+_Explanation:_ 15*16+15
+
+**Example 2:**
+
+```
+Input:  Parse("1A2B")
+Output: (6699, true)
+```
+
+_Explanation:_ uppercase accepted
+
+**Example 3:**
+
+```
+Input:  Parse("1g")
+Output: (0, false)
+```
+
+_Explanation:_ 'g' is not a hex digit
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

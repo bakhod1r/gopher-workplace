@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-SetFirst([1 2 3], 42) // s[0] = 42
+**Example 1:**
+
+```
+Input:  s := []int{1,2,3}; SetFirst(s, 42)
+Output: s[0] == 42
+```
+
+**Example 2:**
+
+```
+Input:  SetFirst([]int{9}, 0)
+Output: s[0] == 0
+```
+
+**Example 3:**
+
+```
+Input:  SetFirst(s, 7)
+Output: s[0] == 7
 ```
 
 ## Topics to Master

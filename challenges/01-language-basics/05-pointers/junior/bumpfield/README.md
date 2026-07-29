@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-c := Cart{Count:2}; Grow(&c) // c.Count = 3
+**Example 1:**
+
+```
+Input:  c := Cart{Count: 2}; Grow(&c)
+Output: c.Count == 3
+```
+
+**Example 2:**
+
+```
+Input:  c := Cart{Count: 0}; Grow(&c)
+Output: c.Count == 1
+```
+
+**Example 3:**
+
+```
+Input:  c := Cart{Count: -1}; Grow(&c)
+Output: c.Count == 0
 ```
 
 ## Topics to Master

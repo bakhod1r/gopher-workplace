@@ -1,6 +1,6 @@
 # Enumerations with a named type
 
-## The idea
+## Intuition
 
 Go has no `enum` keyword. The idiom is a **named integer type** plus a `const`
 block numbered by `iota`:
@@ -81,7 +81,40 @@ const base = 60
 
 A reviewer then sees the relationship, and changing `base` moves all of them.
 
-## Watch out
+## Approach
+
+1. Declare `Free, Pro, Enterprise` with `iota` (0, 1, 2).
+2. Map Pro→600 and Enterprise→6000 in a switch.
+3. `default` returns 60, covering Free and unknown tiers.
+
+## Solution
+
+```go
+type Tier int
+
+const (
+	Free Tier = iota
+	Pro
+	Enterprise
+)
+
+func Limit(t Tier) int {
+	switch t {
+	case Pro:
+		return 600
+	case Enterprise:
+		return 6000
+	default:
+		return 60
+	}
+}
+```
+
+## Walkthrough
+
+`iota` makes the tiers distinct and ascending; `Limit(Tier(99))` matches no case and hits `default` → 60.
+
+## Pitfalls
 
 - The constants are *untyped* if you omit the type on the first line
   (`Free = iota`), which weakens the checking you wanted. Write the type once,
@@ -89,22 +122,3 @@ A reviewer then sees the relationship, and changing `base` moves all of them.
 - Ordering is an API promise. Inserting a member in the middle renumbers
   everything after it — which matters if the values are ever serialised.
 - Comparing across types needs a conversion: `t == Tier(n)`, not `t == n`.
-
-## Try it yourself
-
-```go
-type Level int
-
-const (
-	Debug Level = iota
-	Info
-	Warn
-	Error
-)
-
-var l Level         // Debug — the zero value
-l = Error           // 3
-fmt.Println(l)      // 3 — printing shows the number, not the name
-```
-
-Printing the name is a job for a method — a later topic.

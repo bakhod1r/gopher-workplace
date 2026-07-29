@@ -14,15 +14,36 @@ wrong.
 Fix the falsey `case` between the markers in [parsebool.go](parsebool.go) to
 include `"off"`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Parse("on")  // => true, true
-Parse("off") // => false, true
-Parse("x")   // => false, false
+**Example 1:**
+
+```
+Input:  "TRUE"
+Output: true, true
+```
+
+**Example 2:**
+
+```
+Input:  "off"
+Output: false, true
+```
+
+_Explanation:_ must be recognized
+
+**Example 3:**
+
+```
+Input:  "maybe"
+Output: false, false
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

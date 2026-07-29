@@ -13,15 +13,34 @@
 Fix the single line between the markers in [percent.go](percent.go) so integer
 percentages compute correctly (floored).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Percent(1, 4) // => 25
-Percent(1, 3) // => 33
-Percent(3, 4) // => 75
+**Example 1:**
+
+```
+Input:  Percent(1, 4)
+Output: 25
+```
+
+**Example 2:**
+
+```
+Input:  Percent(3, 8)
+Output: 37
+```
+
+**Example 3:**
+
+```
+Input:  Percent(1, 3)
+Output: 33
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

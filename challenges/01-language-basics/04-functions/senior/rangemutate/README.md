@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-DoubleAll([1 2 3]) // slice becomes [2 4 6]
+**Example 1:**
+
+```
+Input:  DoubleAll([1 2 3])
+Output: [2 4 6]
+```
+
+**Example 2:**
+
+```
+Input:  DoubleAll([0])
+Output: [0]
+```
+
+**Example 3:**
+
+```
+Input:  DoubleAll(nil)
+Output: nil
 ```
 
 ## Topics to Master

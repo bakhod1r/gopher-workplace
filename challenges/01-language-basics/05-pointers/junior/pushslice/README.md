@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-var xs []int; Push(&xs, 1) // xs = [1]
+**Example 1:**
+
+```
+Input:  var xs []int; Push(&xs, 1)
+Output: xs == [1]
+```
+
+**Example 2:**
+
+```
+Input:  xs := []int{1}; Push(&xs, 2)
+Output: xs == [1 2]
+```
+
+**Example 3:**
+
+```
+Input:  var xs []int; Push(&xs, 1); Push(&xs, 2)
+Output: xs == [1 2]
 ```
 
 ## Topics to Master

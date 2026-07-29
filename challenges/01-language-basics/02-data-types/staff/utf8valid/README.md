@@ -14,14 +14,45 @@ are decoded as 2-byte sequences and valid text is rejected.
 Fix the 2-byte lead mask between the markers in
 [utf8valid.go](utf8valid.go) to match only `110xxxxx`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Valid([]byte("€"))     // => true  (E2 82 AC)
-Valid([]byte{0xC3,0x28}) // => false
+**Example 1:**
+
+```
+Input:  "é" (C3 A9)
+Output: true
 ```
 
+**Example 2:**
+
+```
+Input:  "€" (E2 82 AC)
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  [0xC3]
+Output: false
+```
+
+_Explanation:_ Truncated 2-byte sequence.
+
+**Example 4:**
+
+```
+Input:  [0x80]
+Output: false
+```
+
+_Explanation:_ Lone continuation byte.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

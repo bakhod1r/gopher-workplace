@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Process([1 2 3], nil)          // => 6
-Process([1 2 3], x*10)         // => 60
+**Example 1:**
+
+```
+Input:  Process([1 2 3], nil)
+Output: 6
+```
+
+**Example 2:**
+
+```
+Input:  Process([1 2 3], x*10)
+Output: 60
+```
+
+**Example 3:**
+
+```
+Input:  Process(nil, nil)
+Output: 0
 ```
 
 ## Topics to Master

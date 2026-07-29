@@ -12,15 +12,49 @@ need care, because `-7 % 2` is `-1` in Go, not `1`.
 
 Implement `Parity(n)` returning `"even"` or `"odd"`, correct for negatives.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Parity(4)  // => "even"
-Parity(3)  // => "odd"
-Parity(-7) // => "odd"
+**Example 1:**
+
+```
+Input:  Parity(0)
+Output: "even"
 ```
 
+_Explanation:_ 0%2==0.
+
+**Example 2:**
+
+```
+Input:  Parity(3)
+Output: "odd"
+```
+
+_Explanation:_ 3%2==1.
+
+**Example 3:**
+
+```
+Input:  Parity(-4)
+Output: "even"
+```
+
+_Explanation:_ -4%2==0 holds for negatives.
+
+**Example 4:**
+
+```
+Input:  Parity(-7)
+Output: "odd"
+```
+
+_Explanation:_ -7%2==-1 which is not 0, so odd. Testing ==1 would wrongly fail here.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

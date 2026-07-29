@@ -15,8 +15,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-CountNil([]*int{&a, nil, nil}) // => 2
+**Example 1:**
+
+```
+Input:  a := 1; CountNil([]*int{&a, nil, nil})
+Output: 2
+```
+
+**Example 2:**
+
+```
+Input:  CountNil([]*int{&a, &a})
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  CountNil(nil)
+Output: 0
 ```
 
 ## Topics to Master

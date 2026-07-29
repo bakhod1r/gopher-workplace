@@ -14,13 +14,34 @@ empty.
 Fix the store between the markers in
 [emptystructset.go](emptystructset.go) so membership is true.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Intersect([]int{1,2,3}, []int{2,3,5}) // => [2 3]
+**Example 1:**
+
+```
+Input:  a=[1,2,3], b=[2,3,4]
+Output: [2,3]
+```
+
+**Example 2:**
+
+```
+Input:  a=[1,1,2], b=[1]
+Output: [1]
+```
+
+**Example 3:**
+
+```
+Input:  a=[1,2], b=[3,4]
+Output: []
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

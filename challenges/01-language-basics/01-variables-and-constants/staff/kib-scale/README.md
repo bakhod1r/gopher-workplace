@@ -14,14 +14,34 @@ math at scale.
 Fix the single line between the markers in [scale.go](scale.go) so `KiB` is the
 binary factor.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-KiB      // => 1024
-Bytes(2) // => 2048
+**Example 1:**
+
+```
+Input:  KiB
+Output: 1024
+```
+
+**Example 2:**
+
+```
+Input:  Bytes(2)
+Output: 2048
+```
+
+**Example 3:**
+
+```
+Input:  Bytes(1)
+Output: 1024
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

@@ -1,6 +1,6 @@
 # Reversing a slice
 
-## The idea
+## Intuition
 
 Swap symmetric elements from the ends inward, stopping at the middle:
 
@@ -8,12 +8,27 @@ Swap symmetric elements from the ends inward, stopping at the middle:
 for i, j := 0, len(xs)-1; i < j; i, j = i+1, j-1 { xs[i], xs[j] = xs[j], xs[i] }
 ```
 
-## Why it matters
+## Approach
 
-Reversal is a building block (e.g. rotate = three reversals) and demonstrates the
-two-pointer technique and in-place mutation of a slice's backing array.
+1. Set two indices i=0 and j=len(nums)-1.
+2. While i < j, swap nums[i] and nums[j], then move i up and j down.
+3. Mutate the shared backing array in place; return nothing.
 
-## Watch out
+## Solution
+
+```go
+func Reverse(nums []int) {
+	for i, j := 0, len(nums)-1; i < j; i, j = i+1, j-1 {
+		nums[i], nums[j] = nums[j], nums[i]
+	}
+}
+```
+
+## Walkthrough
+
+Reverse([1,2,3]): i=0,j=2 swap -> [3,2,1]; i=1,j=1 loop stops. Caller sees [3,2,1].
+
+## Pitfalls
 
 - In-place reversal mutates the caller's slice (shared backing array).
 - Multiple assignment swaps without a temp.

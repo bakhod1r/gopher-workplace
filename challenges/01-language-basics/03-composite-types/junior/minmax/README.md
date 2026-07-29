@@ -11,14 +11,36 @@ A single pass finds both extremes — seed from the first element, then compare.
 
 Implement `MinMax(xs)` returning min, max, and `ok=false` for empty.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-MinMax([]int{3,1,4,1,5}) // => 1, 5, true
-MinMax(nil)              // => 0, 0, false
+**Example 1:**
+
+```
+Input:  []int{3,1,4,1,5}
+Output: 1, 5, true
 ```
 
+**Example 2:**
+
+```
+Input:  []int{7}
+Output: 7, 7, true
+```
+
+**Example 3:**
+
+```
+Input:  nil
+Output: 0, 0, false
+```
+
+_Explanation:_ Empty input -> ok is false.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

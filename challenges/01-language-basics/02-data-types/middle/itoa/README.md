@@ -12,15 +12,40 @@ divide by 10, reverse.
 
 Implement `Format(n)` (decimal, leading `-` for negatives). No `strconv`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Format(42)   // => "42"
-Format(-17)  // => "-17"
-Format(0)    // => "0"
+**Example 1:**
+
+```
+Input:  Format(42)
+Output: "42"
 ```
 
+_Explanation:_ digits extracted then reversed
+
+**Example 2:**
+
+```
+Input:  Format(-17)
+Output: "-17"
+```
+
+_Explanation:_ negative gets a leading '-'
+
+**Example 3:**
+
+```
+Input:  Format(0)
+Output: "0"
+```
+
+_Explanation:_ zero special case
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

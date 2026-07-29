@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-SafeInvoke(func(){})            // => false
-SafeInvoke(func(){ panic(1) }) // => true
+**Example 1:**
+
+```
+Input:  SafeInvoke(func(){})
+Output: false
+```
+
+**Example 2:**
+
+```
+Input:  SafeInvoke(func(){ panic(1) })
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  panic is contained
+Output: true
 ```
 
 ## Topics to Master

@@ -10,7 +10,7 @@ func TestVowels(t *testing.T) {
 		{"hello", 2},
 		{"AEIOU", 5},
 		{"xyz", 0},
-		{"café", 2}, // é is not an ASCII vowel
+		{"café", 1}, // é is not an ASCII vowel
 		{"", 0},
 	}
 	for _, c := range cases {

@@ -17,9 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-FinalCount(5) // => 5
-FinalCount(0) // => 0
+**Example 1:**
+
+```
+Input:  FinalCount(5)
+Output: 5
+```
+
+**Example 2:**
+
+```
+Input:  FinalCount(0)
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  FinalCount(3)
+Output: 3
 ```
 
 ## Topics to Master

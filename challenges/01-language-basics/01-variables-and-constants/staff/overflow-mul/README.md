@@ -13,14 +13,34 @@ widening conversion happens *after* the damage. Widen the operands first.
 Fix the single line between the markers in [area.go](area.go) so large products
 do not overflow.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Area(3, 4)             // => 12
-Area(100000, 100000)   // => 10000000000
+**Example 1:**
+
+```
+Input:  Area(100000, 100000)
+Output: 10000000000
+```
+
+**Example 2:**
+
+```
+Input:  Area(2, 3)
+Output: 6
+```
+
+**Example 3:**
+
+```
+Input:  Area(46341, 46341)
+Output: no 32-bit overflow
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

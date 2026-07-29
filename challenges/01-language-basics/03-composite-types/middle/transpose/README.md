@@ -11,13 +11,34 @@ Turning rows into columns — pivoting a table.
 
 Implement `Transpose(grid)` for a rectangular grid.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Transpose([][]int{{1,2,3},{4,5,6}}) // => [[1 4] [2 5] [3 6]]
+**Example 1:**
+
+```
+Input:  [[1,2,3],[4,5,6]]
+Output: [[1,4],[2,5],[3,6]]
+```
+
+**Example 2:**
+
+```
+Input:  nil
+Output: []
+```
+
+**Example 3:**
+
+```
+Input:  [[1],[2]]
+Output: [[1,2]]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

@@ -1,6 +1,6 @@
 # `const` vs `var`, and package-level state
 
-## The idea
+## Intuition
 
 A `const` is a value the compiler knows. A `var` is storage the program owns.
 
@@ -51,19 +51,13 @@ var greeting = "hello, " + name // name is a var → run-time concatenation
 
 The first two exist only in the compiled instructions. The third allocates.
 
-## Watch out
+## Approach
 
-- Package-level `var`s are global mutable state. Prefer `const` when the value
-  never changes, and prefer passing values as parameters over reaching for a
-  package-level variable.
-- A `var` cannot be used where a constant is required — array lengths, `case`
-  values in a constant switch, other constant declarations.
-- Initialisation order across *packages* follows imports: imported packages are
-  fully initialised first.
-- `init()` runs after variable initialisation, once per package, and cannot be
-  called by hand. Use it sparingly; explicit setup is easier to follow and test.
+1. Declare `BaseURL` and `Version` as constants.
+2. Build `Root` from them, not by pasting the string.
+3. `Path` joins `Root` and the resource, returning `Root` unchanged when empty.
 
-## Try it yourself
+## Solution
 
 ```go
 const (
@@ -79,8 +73,20 @@ func Path(resource string) string {
 	}
 	return Root + "/" + resource
 }
-
-fmt.Println(Root)            // https://api.example.com/v2
-fmt.Println(Path("users"))   // https://api.example.com/v2/users
-fmt.Println(Path(""))        // https://api.example.com/v2 — no trailing slash
 ```
+
+## Walkthrough
+
+`Root` concatenates the two constants with a slash. `Path("users")` appends `/users`; an empty resource returns `Root` with no trailing slash.
+
+## Pitfalls
+
+- Package-level `var`s are global mutable state. Prefer `const` when the value
+  never changes, and prefer passing values as parameters over reaching for a
+  package-level variable.
+- A `var` cannot be used where a constant is required — array lengths, `case`
+  values in a constant switch, other constant declarations.
+- Initialisation order across *packages* follows imports: imported packages are
+  fully initialised first.
+- `init()` runs after variable initialisation, once per package, and cannot be
+  called by hand. Use it sparingly; explicit setup is easier to follow and test.

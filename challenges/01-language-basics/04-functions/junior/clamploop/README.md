@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-ClampAll([]int{-5,3,20}, 0, 10) // => [0 3 10]
-ClampAll(nil, 0, 10)            // => []
-ClampAll([]int{5}, 0, 10)       // => [5]
+**Example 1:**
+
+```
+Input:  ClampAll([−1 5 99], 0, 10)
+Output: [0 5 10]
+```
+
+**Example 2:**
+
+```
+Input:  ClampAll([3], 0, 10)
+Output: [3]
+```
+
+**Example 3:**
+
+```
+Input:  ClampAll(nil, 0, 10)
+Output: []
 ```
 
 ## Topics to Master

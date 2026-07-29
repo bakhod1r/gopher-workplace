@@ -1,14 +1,29 @@
 # Partial application via closures
 
-## The idea
+## Intuition
 
 Capturing a factory parameter produces specialised functions without extra state types.
 
-## Why it matters
+## Approach
 
-It underlies configurable callbacks, middleware, and dependency injection in Go.
+1. Capture `base` in a closure.
+2. Return `func(x int) int { return base + x }`.
 
-## Watch out
+## Solution
+
+```go
+func Adder(base int) func(int) int {
+	return func(x int) int {
+		return base + x
+	}
+}
+```
+
+## Walkthrough
+
+`Adder(5)` returns a function that always adds 5, so `add5(3)` is 8.
+
+## Pitfalls
 
 - `base` is captured by reference but never mutated here, so each Adder is stable.
 - The returned type must exactly match `func(int) int`.

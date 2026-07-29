@@ -17,9 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-IndexOf([1 3 5 7 9], 7) // => 3
-IndexOf([1 3 5 7 9], 4) // => -1
+**Example 1:**
+
+```
+Input:  IndexOf([1 3 5 7 9], 7)
+Output: 3
+```
+
+**Example 2:**
+
+```
+Input:  IndexOf([1 3 5 7 9], 4)
+Output: -1
+```
+
+**Example 3:**
+
+```
+Input:  IndexOf([1 3 5 7 9], 1)
+Output: 0
 ```
 
 ## Topics to Master

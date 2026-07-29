@@ -14,19 +14,41 @@ character.
 Fix the single line between the markers in [hexdecode.go](hexdecode.go) so the
 first hex char is the high nibble.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Decode("1a2b") // => [0x1a, 0x2b]
-Decode("ff")   // => [0xff]
+**Example 1:**
+
+```
+Input:  "ff"
+Output: [0xff], true
 ```
 
+**Example 2:**
+
+```
+Input:  "476F"
+Output: "Go", true
+```
+
+**Example 3:**
+
+```
+Input:  "abc"
+Output: nil, false
+```
+
+_Explanation:_ odd length
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|
 | 1 | **Nibble position** | First char = high 4 bits. |
-| 2 | **Shift + OR** | `hi<<4 | lo`. |
+| 2 | **Shift + OR** | `hi<<4 |
 | 3 | **Even length** | Two hex chars per byte. |
 
 ## Hint

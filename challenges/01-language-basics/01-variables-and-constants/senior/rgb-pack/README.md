@@ -13,21 +13,40 @@ code shifts red by only 8, colliding it with green.
 Fix the single line between the markers in [color.go](color.go) so red occupies
 bits 16–23.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Pack(0xFF,0,0) // => 0xFF0000
-Pack(0,0xFF,0) // => 0x00FF00
-Pack(0x12,0x34,0x56) // => 0x123456
+**Example 1:**
+
+```
+Input:  Pack(0x12, 0x34, 0x56)
+Output: 0x123456
+```
+
+**Example 2:**
+
+```
+Input:  Red(0x123456)
+Output: 0x12
+```
+
+**Example 3:**
+
+```
+Input:  Pack(255, 0, 0)
+Output: 0xFF0000
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|
 | 1 | **Bit shifting** | Each channel occupies its own 8-bit lane. |
 | 2 | **Conversion width** | Convert `uint8` to `uint32` before shifting past 8 bits. |
-| 3 | **OR composition** | `|` merges non-overlapping lanes. |
+| 3 | **OR composition** | ` |
 
 ## Hint
 

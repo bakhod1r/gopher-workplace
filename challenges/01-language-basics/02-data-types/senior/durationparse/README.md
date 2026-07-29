@@ -14,14 +14,36 @@ short.
 Fix the minute multiplier between the markers in
 [durationparse.go](durationparse.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Seconds("2m")     // => 120
-Seconds("1h30m")  // => 5400
+**Example 1:**
+
+```
+Input:  "2m"
+Output: 120, true
 ```
 
+**Example 2:**
+
+```
+Input:  "1h30m"
+Output: 5400, true
+```
+
+**Example 3:**
+
+```
+Input:  "10"
+Output: 0, false
+```
+
+_Explanation:_ trailing number without a unit
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

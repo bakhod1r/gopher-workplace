@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-CleanRows([[1 2 3],[1 -1 2],[4 5]]) // => 2
+**Example 1:**
+
+```
+Input:  CleanRows([[1 2 3],[1 -1 2],[4 5]])
+Output: 2
+```
+
+**Example 2:**
+
+```
+Input:  rows with a negative are skipped
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  count of clean rows
+Output: 2
 ```
 
 ## Topics to Master

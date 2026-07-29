@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Tally([]string{"a","b","a"}) // => {a:2, b:1}
-Tally(nil)                    // => {}
+**Example 1:**
+
+```
+Input:  Tally(["a","b","a"])
+Output: {a:2, b:1}
+```
+
+**Example 2:**
+
+```
+Input:  Tally(nil)
+Output: {} (empty, non-nil)
+```
+
+**Example 3:**
+
+```
+Input:  Tally(["x"])
+Output: {x:1}
 ```
 
 ## Topics to Master

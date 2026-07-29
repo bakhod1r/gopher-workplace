@@ -13,14 +13,34 @@ wrong place.
 
 Fix the masks between the markers in [endianswap.go](endianswap.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Swap32(0x11223344) // => 0x44332211
-Swap32(0xDEADBEEF) // => 0xEFBEADDE
+**Example 1:**
+
+```
+Input:  0x11223344
+Output: 0x44332211
+```
+
+**Example 2:**
+
+```
+Input:  0x00000001
+Output: 0x01000000
+```
+
+**Example 3:**
+
+```
+Input:  0xDEADBEEF
+Output: 0xEFBEADDE
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

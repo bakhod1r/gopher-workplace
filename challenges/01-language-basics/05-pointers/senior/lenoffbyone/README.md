@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Length(nil) // => 0
-Length(1->2->3) // => 3
+**Example 1:**
+
+```
+Input:  Length(nil)
+Output: 0
+```
+
+**Example 2:**
+
+```
+Input:  Length(1->2->3)
+Output: 3
+```
+
+**Example 3:**
+
+```
+Input:  Length(5)
+Output: 1
 ```
 
 ## Topics to Master

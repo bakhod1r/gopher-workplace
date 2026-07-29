@@ -13,15 +13,36 @@ masks `0x40` (bit 6), so it misreads `0x40` and `0x80`.
 Fix the single line between the markers in [sign.go](sign.go) so it tests the
 correct sign bit.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Negative(0x80) // => true  (-128)
-Negative(0xFF) // => true  (-1)
-Negative(0x40) // => false (64)
+**Example 1:**
+
+```
+Input:  Negative(0x80)
+Output: true
+```
+
+_Explanation:_ Bit 7 set.
+
+**Example 2:**
+
+```
+Input:  Negative(0x7F)
+Output: false
+```
+
+**Example 3:**
+
+```
+Input:  Negative(0xFF)
+Output: true
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

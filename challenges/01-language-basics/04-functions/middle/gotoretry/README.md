@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-SumUntil([]int{1,2,3,4}, 5) // => 6, 3
-SumUntil([]int{1,1}, 100)   // => 2, 2
+**Example 1:**
+
+```
+Input:  SumUntil([1 2 3 4], 5)
+Output: 6, 3 (stops once sum >= 5)
+```
+
+**Example 2:**
+
+```
+Input:  SumUntil(nil, 10)
+Output: 0, 0
+```
+
+**Example 3:**
+
+```
+Input:  SumUntil([10], 5)
+Output: 10, 1
 ```
 
 ## Topics to Master

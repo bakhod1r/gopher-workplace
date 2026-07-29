@@ -17,9 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Guard(func(){})            // => false
-Guard(func(){ panic(1) })  // => true
+**Example 1:**
+
+```
+Input:  Guard(func(){})
+Output: false
+```
+
+**Example 2:**
+
+```
+Input:  Guard(func(){ panic(1) })
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  Guard(func(){ panic("x") })
+Output: true
 ```
 
 ## Topics to Master

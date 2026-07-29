@@ -16,9 +16,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-SetName(m, 1, "new") // m[1].Name = "new", true
-SetName(m, 99, ..)   // false
+**Example 1:**
+
+```
+Input:  SetName(m, 1, "new")
+Output: m[1].Name == "new", returns true
+```
+
+**Example 2:**
+
+```
+Input:  SetName(m, 99, "x")
+Output: false
+```
+
+_Explanation:_ Missing key → no write, report failure.
+
+**Example 3:**
+
+```
+Input:  SetName(m, 2, "")
+Output: m[2].Name == "", true
 ```
 
 ## Topics to Master

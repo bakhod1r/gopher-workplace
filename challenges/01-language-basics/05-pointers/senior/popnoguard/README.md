@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-(&Queue{}).Pop() // => 0, false
+**Example 1:**
+
+```
+Input:  (&Queue{}).Pop()
+Output: 0, false
+```
+
+**Example 2:**
+
+```
+Input:  q with head 5; q.Pop()
+Output: 5, true
+```
+
+**Example 3:**
+
+```
+Input:  pop until empty then Pop()
+Output: 0, false, no panic
 ```
 
 ## Topics to Master

@@ -15,15 +15,36 @@ In [perms.go](perms.go):
 1. Define `Read, Write, Execute` with `1 << iota`.
 2. Implement `Revoke(set, drop)` clearing `drop`'s bits from `set`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Revoke(Read|Write|Execute, Write) // => Read|Execute
-Revoke(Read, Write)               // => Read (no-op)
-Revoke(Read|Write, Read|Write)    // => 0
+**Example 1:**
+
+```
+Input:  Revoke(Read|Write, Write)
+Output: Read
+```
+
+**Example 2:**
+
+```
+Input:  Revoke(Read, Write)
+Output: Read
+```
+
+_Explanation:_ Dropping an absent bit is a no-op.
+
+**Example 3:**
+
+```
+Input:  Revoke(Read|Write|Execute, Read)
+Output: Write|Execute
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

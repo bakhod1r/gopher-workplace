@@ -14,15 +14,36 @@ classic inventory bug.
 Fix the single line between the markers in [stock.go](stock.go) so overselling
 returns 0, never a wrapped value.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Remaining(10, 3) // => 7
-Remaining(5, 5)  // => 0
-Remaining(2, 9)  // => 0  (not 18446744073709551609)
+**Example 1:**
+
+```
+Input:  Remaining(10, 3)
+Output: 7
 ```
 
+**Example 2:**
+
+```
+Input:  Remaining(5, 5)
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  Remaining(2, 9)
+Output: 0
+```
+
+_Explanation:_ Not a wrapped 18446744073709551609.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

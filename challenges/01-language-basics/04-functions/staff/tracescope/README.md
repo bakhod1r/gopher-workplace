@@ -18,8 +18,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Trace(2) // => [start0 end0 start1 end1]
+**Example 1:**
+
+```
+Input:  Trace(2)
+Output: [start0 end0 start1 end1]
+```
+
+**Example 2:**
+
+```
+Input:  each iteration's defer fires at iteration end
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  Trace(1)
+Output: [start0 end0]
 ```
 
 ## Topics to Master

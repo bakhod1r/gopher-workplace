@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-DropFirst([10 20 30 40]) // => [20 30 40]
+**Example 1:**
+
+```
+Input:  DropFirst([10 20 30 40])
+Output: [20 30 40]
+```
+
+**Example 2:**
+
+```
+Input:  DropFirst([1 2])
+Output: [2]
+```
+
+**Example 3:**
+
+```
+Input:  DropFirst([9])
+Output: []
 ```
 
 ## Topics to Master

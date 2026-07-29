@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-ToVec(&Point{3, 4}) // => {3 4}
+**Example 1:**
+
+```
+Input:  ToVec(&Point{3, 4})
+Output: {3 4}
+```
+
+**Example 2:**
+
+```
+Input:  ToVec(&Point{0, 0})
+Output: {0 0}
+```
+
+**Example 3:**
+
+```
+Input:  ToVec(&Point{-1, 2})
+Output: {-1 2}
 ```
 
 ## Topics to Master

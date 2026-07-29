@@ -13,15 +13,49 @@ A billing service must never store money as a float. You parse the user's
 Implement `Cents(s)` → integer cents; `"7"`→700, `"3.5"`→350, `"12.34"`→1234.
 Reject >2 decimals or bad format.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Cents("12.34") // => 1234, true
-Cents("7")     // => 700,  true
-Cents("1.234") // => 0,    false
+**Example 1:**
+
+```
+Input:  Cents("12.34")
+Output: (1234, true)
 ```
 
+_Explanation:_ 12 dollars 34 cents
+
+**Example 2:**
+
+```
+Input:  Cents("3.5")
+Output: (350, true)
+```
+
+_Explanation:_ one decimal padded to 50 cents
+
+**Example 3:**
+
+```
+Input:  Cents("7")
+Output: (700, true)
+```
+
+_Explanation:_ no decimals -> whole dollars
+
+**Example 4:**
+
+```
+Input:  Cents("1.234")
+Output: (0, false)
+```
+
+_Explanation:_ more than two decimals rejected
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

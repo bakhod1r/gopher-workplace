@@ -14,13 +14,34 @@ least one operand a floating literal so the constant division stays exact.
 Fix the single line between the markers in [ratio.go](ratio.go) so `Value()`
 returns ≈1.618.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Value() // => 1.6180555...
+**Example 1:**
+
+```
+Input:  Value()
+Output: ~1.618
+```
+
+**Example 2:**
+
+```
+Input:  233/144 as int
+Output: 1 (truncated)
+```
+
+**Example 3:**
+
+```
+Input:  233.0/144
+Output: ~1.618
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

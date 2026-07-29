@@ -15,16 +15,36 @@ In [tiers.go](tiers.go):
 1. Define `Bronze=100, Silver=200, Gold=300` using `(iota+1)*100` written once.
 2. Implement `Rank(score)` returning the highest tier ≤ score, else 0.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Silver          // => 200
-Rank(50)        // => 0
-Rank(150)       // => 100 (Bronze)
-Rank(350)       // => 300 (Gold)
+**Example 1:**
+
+```
+Input:  Bronze, Silver, Gold
+Output: 100, 200, 300
 ```
 
+**Example 2:**
+
+```
+Input:  Rank(250)
+Output: Silver
+```
+
+**Example 3:**
+
+```
+Input:  Rank(50)
+Output: 0
+```
+
+_Explanation:_ Below Bronze.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

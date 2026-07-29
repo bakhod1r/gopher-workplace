@@ -13,13 +13,34 @@ changes the copy; the slice is untouched.
 Fix the loop between the markers in
 [rangecopymutate.go](rangecopymutate.go) to mutate the slice element.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Discount([]Order{{100}}, 10) // orders[0].Price becomes 90
+**Example 1:**
+
+```
+Input:  orders=[{100},{200}], pct=10
+Output: [{90},{180}]
+```
+
+**Example 2:**
+
+```
+Input:  orders=[{50}], pct=0
+Output: [{50}]
+```
+
+**Example 3:**
+
+```
+Input:  orders=[{100}], pct=100
+Output: [{0}]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

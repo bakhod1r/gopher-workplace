@@ -17,10 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-MinMax([]int{5, -2, 9, 0}) // => -2, 9
-MinMax([]int{3})          // => 3, 3
-MinMax([]int{1, 2, 3})    // => 1, 3
+**Example 1:**
+
+```
+Input:  MinMax([3 -1 7])
+Output: -1, 7
+```
+
+**Example 2:**
+
+```
+Input:  MinMax([5])
+Output: 5, 5
+```
+
+**Example 3:**
+
+```
+Input:  MinMax([2 2 2])
+Output: 2, 2
 ```
 
 ## Topics to Master

@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-s.Push(1); s.Push(2) // stack: [1 2]
+**Example 1:**
+
+```
+Input:  s := &Stack{}; s.Push(1); s.Push(2); s.Len()
+Output: 2
+```
+
+**Example 2:**
+
+```
+Input:  s := &Stack{}; s.Len()
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  s.Push(1); s.Pop(); s.Len()
+Output: 0
 ```
 
 ## Topics to Master

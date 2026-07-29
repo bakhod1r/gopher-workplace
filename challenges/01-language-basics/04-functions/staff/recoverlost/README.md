@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Safe(func(){ panic("boom") }) // => non-nil error
+**Example 1:**
+
+```
+Input:  Safe(func(){ panic("boom") })
+Output: non-nil error
+```
+
+**Example 2:**
+
+```
+Input:  Safe(func(){})
+Output: nil
+```
+
+**Example 3:**
+
+```
+Input:  error message contains boom
+Output: true
 ```
 
 ## Topics to Master

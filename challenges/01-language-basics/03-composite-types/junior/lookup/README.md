@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 03-composite-types
-**Estimated time:** 10 min
 
 ## Context
 
@@ -18,14 +17,32 @@ and a boolean reporting whether the key was actually present. A key mapped to
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Lookup(map[string]int{"a": 5}, "a") // => 5, true
-Lookup(map[string]int{"a": 5}, "z") // => 0, false
-Lookup(map[string]int{"z": 0}, "z") // => 0, true   (present, value 0)
-Lookup(nil, "a")                    // => 0, false
+**Example 1:**
+
 ```
+Input:  m={"a":5}, key="a"
+Output: 5, true
+```
+
+**Example 2:**
+
+```
+Input:  m={"a":5}, key="z"
+Output: 0, false
+```
+
+**Example 3:**
+
+```
+Input:  m={"z":0}, key="z"
+Output: 0, true
+```
+
+_Explanation:_ Present with zero value; comma-ok reports found.
 
 ## Topics to Master
 
@@ -45,7 +62,5 @@ Don't test `v != 0` to decide presence — that misreports a stored `0`.
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

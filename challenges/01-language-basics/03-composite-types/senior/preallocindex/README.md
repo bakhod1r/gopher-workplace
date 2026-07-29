@@ -13,13 +13,34 @@
 Fix the build between the markers in
 [preallocindex.go](preallocindex.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Doubled([]int{1,2,3}) // => [2 4 6]
+**Example 1:**
+
+```
+Input:  [1,2,3]
+Output: [2,4,6]
+```
+
+**Example 2:**
+
+```
+Input:  []
+Output: []
+```
+
+**Example 3:**
+
+```
+Input:  [-1,4]
+Output: [-2,8]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

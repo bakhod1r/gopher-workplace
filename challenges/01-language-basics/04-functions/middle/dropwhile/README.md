@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-DropWhile([]int{1,2,-1,3}, pos) // => [-1 3]
-DropWhile([]int{1,2}, pos)      // => []
-DropWhile([]int{-1}, pos)       // => [-1]
+**Example 1:**
+
+```
+Input:  DropWhile([2 4 5 6], even)
+Output: [5 6]
+```
+
+**Example 2:**
+
+```
+Input:  DropWhile([1 2], even)
+Output: [1 2]
+```
+
+**Example 3:**
+
+```
+Input:  DropWhile([2 4], even)
+Output: []
 ```
 
 ## Topics to Master

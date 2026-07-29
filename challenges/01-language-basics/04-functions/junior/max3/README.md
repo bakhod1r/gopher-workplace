@@ -15,10 +15,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Max3(1, 2, 3)    // => 3
-Max3(5, 9, 5)    // => 9
-Max3(-1, -2, -3) // => -1
+**Example 1:**
+
+```
+Input:  Max3(1, 2, 3)
+Output: 3
+```
+
+**Example 2:**
+
+```
+Input:  Max3(9, 1, 5)
+Output: 9
+```
+
+**Example 3:**
+
+```
+Input:  Max3(4, 4, 4)
+Output: 4
 ```
 
 ## Topics to Master

@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Bits(1.5) // => 0x3ff8000000000000
+**Example 1:**
+
+```
+Input:  Bits(1.5)
+Output: 0x3ff8000000000000
+```
+
+**Example 2:**
+
+```
+Input:  Bits(0.0)
+Output: 0x0
+```
+
+**Example 3:**
+
+```
+Input:  Bits(-2.0)
+Output: 0xc000000000000000
 ```
 
 ## Topics to Master

@@ -13,14 +13,36 @@ piece between cuts.
 Implement `Split(s, sep)` (single-byte separator), matching `strings.Split`
 semantics.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Split("a,,c", ',') // => ["a" "" "c"]
-Split("", ',')     // => [""]
+**Example 1:**
+
+```
+Input:  "a,b,c", sep=,
+Output: ["a","b","c"]
+```
+
+**Example 2:**
+
+```
+Input:  "a,,c", sep=,
+Output: ["a","","c"]
+```
+
+_Explanation:_ empty field between seps
+
+**Example 3:**
+
+```
+Input:  ",", sep=,
+Output: ["",""]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

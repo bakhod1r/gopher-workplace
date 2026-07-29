@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-TotalSize(&[4]int32{}) // => 16
+**Example 1:**
+
+```
+Input:  TotalSize(&[4]int32{})
+Output: 16
+```
+
+**Example 2:**
+
+```
+Input:  TotalSize(&[2]int64{})
+Output: 16
+```
+
+**Example 3:**
+
+```
+Input:  TotalSize(&[1]byte{})
+Output: 1
 ```
 
 ## Topics to Master

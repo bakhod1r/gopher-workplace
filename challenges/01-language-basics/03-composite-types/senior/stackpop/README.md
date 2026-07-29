@@ -13,13 +13,34 @@ popping repeatedly returns the same value.
 Fix the return between the markers in [stackpop.go](stackpop.go) to drop the last
 element.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Pop([]int{1,2,3}) // => [1 2], 3, true
+**Example 1:**
+
+```
+Input:  [1,2,3]
+Output: ([1,2], 3, true)
+```
+
+**Example 2:**
+
+```
+Input:  [9]
+Output: ([], 9, true)
+```
+
+**Example 3:**
+
+```
+Input:  []
+Output: ([], 0, false)
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

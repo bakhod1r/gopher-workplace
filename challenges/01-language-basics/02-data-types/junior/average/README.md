@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 02-data-types
-**Estimated time:** 15 min
 
 ## Context
 
@@ -23,13 +22,45 @@ mean of `nums` as a `float64`:
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Average([]int{1, 2})    // => 1.5
-Average([]int{1, 2, 4}) // => 2.333…
-Average(nil)            // => 0
+**Example 1:**
+
 ```
+Input:  Average([]int{1, 2})
+Output: 1.5
+```
+
+_Explanation:_ (1+2)/2 in float = 1.5.
+
+**Example 2:**
+
+```
+Input:  Average([]int{1, 2, 4})
+Output: 2.3333333333333335
+```
+
+_Explanation:_ 7/3 kept in floating point.
+
+**Example 3:**
+
+```
+Input:  Average(nil)
+Output: 0
+```
+
+_Explanation:_ Empty/nil guard returns 0, avoiding divide-by-zero.
+
+**Example 4:**
+
+```
+Input:  Average([]int{10, 20, 30, 5})
+Output: 16.25
+```
+
+_Explanation:_ 65/4 = 16.25.
 
 ## Topics to Master
 
@@ -51,7 +82,5 @@ divide by zero.
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 02-data-types
-**Estimated time:** 10 min
 
 ## Context
 
@@ -21,15 +20,45 @@ not compare floats with `==`.
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-AlmostEqual(0.1+0.2, 0.3) // => true   (== would be false)
-AlmostEqual(1.0, 1.0)     // => true
-AlmostEqual(1.0, 1.0001)  // => false
-AlmostEqual(0, 1e-12)     // => true    (within tolerance)
-AlmostEqual(0, 1e-6)      // => false   (outside tolerance)
+**Example 1:**
+
 ```
+Input:  AlmostEqual(0.1+0.2, 0.3)
+Output: true
+```
+
+_Explanation:_ 0.1+0.2 is 0.30000000000000004; the difference is ~5.5e-17 < 1e-9, so almost equal even though == is false.
+
+**Example 2:**
+
+```
+Input:  AlmostEqual(1.0, 1.0001)
+Output: false
+```
+
+_Explanation:_ Difference 1e-4 is far above the 1e-9 tolerance.
+
+**Example 3:**
+
+```
+Input:  AlmostEqual(-2.5, -2.5)
+Output: true
+```
+
+_Explanation:_ Identical values, difference 0.
+
+**Example 4:**
+
+```
+Input:  AlmostEqual(0, 1e-12)
+Output: true
+```
+
+_Explanation:_ 1e-12 < 1e-9, inside tolerance.
 
 ## Topics to Master
 
@@ -51,7 +80,5 @@ Add `import "math"` at the top of the file, then
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-var xs []int; Extend(&xs, 1,2,3) // xs = [1 2 3]
+**Example 1:**
+
+```
+Input:  var xs []int; Extend(&xs, 1, 2, 3)
+Output: xs == [1 2 3]
+```
+
+**Example 2:**
+
+```
+Input:  xs := []int{0}; Extend(&xs, 1)
+Output: xs == [0 1]
+```
+
+**Example 3:**
+
+```
+Input:  Extend(&xs)
+Output: xs unchanged
 ```
 
 ## Topics to Master

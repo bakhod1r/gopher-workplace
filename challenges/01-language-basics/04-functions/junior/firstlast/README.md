@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-FirstLast(nil)              // => 0, 0, false
-FirstLast([]int{7})         // => 7, 7, true
-FirstLast([]int{2, 4, 6, 8}) // => 2, 8, true
+**Example 1:**
+
+```
+Input:  FirstLast([1 2 3])
+Output: 1, 3, true
+```
+
+**Example 2:**
+
+```
+Input:  FirstLast([9])
+Output: 9, 9, true
+```
+
+**Example 3:**
+
+```
+Input:  FirstLast(nil)
+Output: 0, 0, false
 ```
 
 ## Topics to Master

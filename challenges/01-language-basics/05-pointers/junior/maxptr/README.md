@@ -16,9 +16,28 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-MaxPtr(&3, &8) // => &8
+**Example 1:**
+
 ```
+Input:  a, b := 3, 8; MaxPtr(&a, &b)
+Output: &b (points at 8)
+```
+
+**Example 2:**
+
+```
+Input:  a, b := 8, 3; MaxPtr(&a, &b)
+Output: &a (points at 8)
+```
+
+**Example 3:**
+
+```
+Input:  a, b := 5, 5; MaxPtr(&a, &b)
+Output: &a
+```
+
+_Explanation:_ On a tie the first pointer is returned.
 
 ## Topics to Master
 

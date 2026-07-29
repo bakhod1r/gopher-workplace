@@ -1,6 +1,6 @@
 # Set operations via maps
 
-## The idea
+## Intuition
 
 Insert both inputs into a set (a map), then collect and sort:
 
@@ -13,12 +13,40 @@ for x := range set { out = append(out, x) }
 sort.Ints(out)
 ```
 
-## Why it matters
+## Approach
 
-Union/intersection/difference on tags, permissions, or IDs are everyday set
-tasks. Maps give O(1) membership; sorting restores a deterministic order.
+1. Add all of a then all of b into one set.
+2. Collect keys into a slice.
+3. sort.Ints ascending.
+4. Return slice.
 
-## Watch out
+## Solution
+
+```go
+import "sort"
+
+func Union(a, b []int) []int {
+	set := map[int]bool{}
+	for _, v := range a {
+		set[v] = true
+	}
+	for _, v := range b {
+		set[v] = true
+	}
+	out := make([]int, 0, len(set))
+	for v := range set {
+		out = append(out, v)
+	}
+	sort.Ints(out)
+	return out
+}
+```
+
+## Walkthrough
+
+set from a={3,1,2}, add b -> {1,2,3,4}; sort -> [1,2,3,4].
+
+## Pitfalls
 
 - Map order is random — sort for stable output.
 - `struct{}` values use no memory.

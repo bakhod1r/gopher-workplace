@@ -12,15 +12,40 @@ Each byte becomes two hex chars: the high nibble `b>>4` and the low nibble
 
 Implement `Encode(b)` (lowercase, two chars/byte). No `encoding/hex`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Encode([]byte{0xFF})     // => "ff"
-Encode([]byte{0x1a,0x2b})// => "1a2b"
-Encode([]byte("Go"))     // => "476f"
+**Example 1:**
+
+```
+Input:  Encode([]byte{0xFF})
+Output: "ff"
 ```
 
+_Explanation:_ high nibble f, low nibble f
+
+**Example 2:**
+
+```
+Input:  Encode([]byte{0x1a,0x2b})
+Output: "1a2b"
+```
+
+_Explanation:_ two bytes -> four hex chars
+
+**Example 3:**
+
+```
+Input:  Encode([]byte("Go"))
+Output: "476f"
+```
+
+_Explanation:_ 'G'=0x47, 'o'=0x6f
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

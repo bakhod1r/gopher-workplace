@@ -1,7 +1,7 @@
 # Challenge 01 — Plan Rate Limits
 
-**Level:** Junior  
-**Estimated time:** 15 min
+**Level:** junior
+**Topic:** 01-language-basics → 01-variables-and-constants
 
 ## Context
 
@@ -19,65 +19,47 @@ Implement [plan.go](plan.go) so that:
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Limit(Free)        // => 60
-Limit(Pro)         // => 600    (baseLimit * 10)
-Limit(Enterprise)  // => 6000   (baseLimit * 100)
+**Example 1:**
+
+```
+Input:  Limit(Free)
+Output: 60
 ```
 
-## Hints
+**Example 2:**
 
-<details>
-<summary>Hint 1</summary>
-
-Two pieces: the `const` block that defines the tiers, and the body of `Limit`.
-Start with the constants.
-</details>
-
-<details>
-<summary>Hint 2</summary>
-
-There is a Go keyword that auto-increments successive constants in a `const`
-block, starting from 0 — perfect for `Free, Pro, Enterprise`.
-</details>
-
-<details>
-<summary>Hint 3</summary>
-
-For `Limit`, a `switch t` (or `if`/`else`) mapping each tier to its multiple of
-`baseLimit` works. The `default` case covers unknown tiers by returning
-`baseLimit`.
-</details>
-
-<details>
-<summary>Solution</summary>
-
-```go
-const (
-	Free Tier = iota // 0
-	Pro              // 1
-	Enterprise       // 2
-)
-
-func Limit(t Tier) int {
-	switch t {
-	case Pro:
-		return baseLimit * 10
-	case Enterprise:
-		return baseLimit * 100
-	default:
-		return baseLimit
-	}
-}
 ```
-</details>
+Input:  Limit(Pro)
+Output: 600
+```
 
-## Topics
+**Example 3:**
 
-<details>
-<summary>Topics (5)</summary>
+```
+Input:  Limit(Tier(99))
+Output: 60
+```
 
-`Variables & Constants` · `iota` · `typed constants` · `variable shadowing` · `zero value`
-</details>
+_Explanation:_ Unknown tier falls back to Free's limit.
+
+## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
+
+| # | Topic | What to understand |
+|---|-------|--------------------|
+
+
+## Hint
+
+
+
+## Validate
+
+```bash
+make verify
+```

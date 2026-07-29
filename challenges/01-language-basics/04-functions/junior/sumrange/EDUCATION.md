@@ -1,14 +1,30 @@
 # The for-range loop
 
-## The idea
+## Intuition
 
 `range` over a slice returns `(index, value)` copies; discarding the index with `_` gives a clean value iteration.
 
-## Why it matters
+## Approach
 
-It's the default way to traverse slices, maps, strings, and channels in Go.
+1. Range and accumulate each element.
 
-## Watch out
+## Solution
+
+```go
+func SumRange(xs []int) int {
+	total := 0
+	for _, v := range xs {
+		total += v
+	}
+	return total
+}
+```
+
+## Walkthrough
+
+`SumRange([1 2 3 4])` adds to 10.
+
+## Pitfalls
 
 - `v` is a copy; writing to it does not change the slice.
 - A nil slice ranges zero times — no special case needed.

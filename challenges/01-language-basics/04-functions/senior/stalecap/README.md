@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-FirstAfterGrow(7) // => 99
+**Example 1:**
+
+```
+Input:  FirstAfterGrow(7)
+Output: 99
+```
+
+**Example 2:**
+
+```
+Input:  result reflects write through fresh pointer
+Output: 99
+```
+
+**Example 3:**
+
+```
+Input:  element after grow
+Output: 99
 ```
 
 ## Topics to Master

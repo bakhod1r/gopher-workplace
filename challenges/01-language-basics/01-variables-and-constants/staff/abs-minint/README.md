@@ -13,15 +13,36 @@ stays `-128`, and `int(-x)` is `-128`. Two's-complement asymmetry again. Widen
 
 Fix the code between the markers in [absval.go](absval.go) so `Abs(-128)` is 128.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Abs(-5)   // => 5
-Abs(-128) // => 128
-Abs(127)  // => 127
+**Example 1:**
+
+```
+Input:  Abs(int8(-5))
+Output: 5
+```
+
+**Example 2:**
+
+```
+Input:  Abs(int8(-128))
+Output: 128
+```
+
+_Explanation:_ The most negative int8 must widen correctly.
+
+**Example 3:**
+
+```
+Input:  Abs(int8(7))
+Output: 7
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

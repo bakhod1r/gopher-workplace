@@ -16,9 +16,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-DerefOrZero(nil) // => 0
-DerefOrZero(&8)  // => 8
+**Example 1:**
+
+```
+Input:  DerefOrZero(nil)
+Output: 0
+```
+
+_Explanation:_ Nil → zero, no dereference.
+
+**Example 2:**
+
+```
+Input:  n := 8; DerefOrZero(&n)
+Output: 8
+```
+
+**Example 3:**
+
+```
+Input:  n := 0; DerefOrZero(&n)
+Output: 0
 ```
 
 ## Topics to Master

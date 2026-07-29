@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 03-composite-types
-**Estimated time:** 10 min
 
 ## Context
 
@@ -17,13 +16,32 @@ shifted by `(dx, dy)`, without changing the caller's `p`.
 
 Do **not** change the function signature, the `Point` type, or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Translate(Point{1, 2}, 3, 4)   // => Point{4, 6}
-Translate(Point{0, 0}, -1, -1) // => Point{-1, -1}
-Translate(Point{5, 5}, 0, 0)   // => Point{5, 5}
+**Example 1:**
+
 ```
+Input:  p=Point{1,2}, dx=3, dy=4
+Output: Point{4,6}
+```
+
+**Example 2:**
+
+```
+Input:  p=Point{0,0}, dx=-1, dy=-1
+Output: Point{-1,-1}
+```
+
+**Example 3:**
+
+```
+Input:  p=Point{5,5}, dx=0, dy=0
+Output: Point{5,5}
+```
+
+_Explanation:_ Caller's p not mutated — a fresh Point is returned.
 
 ## Topics to Master
 
@@ -44,7 +62,5 @@ Return a fresh literal built from the shifted fields:
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

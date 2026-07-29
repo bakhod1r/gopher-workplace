@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Snapshot() // => 1
+**Example 1:**
+
+```
+Input:  Snapshot()
+Output: 1
+```
+
+**Example 2:**
+
+```
+Input:  deferred arg captured before mutation
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  later x=100 ignored
+Output: true
 ```
 
 ## Topics to Master

@@ -17,9 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Reverse([1 2 3 4]) // => [4 3 2 1]
-Reverse([1 2 3])   // => [3 2 1]
+**Example 1:**
+
+```
+Input:  Reverse([1 2 3 4])
+Output: [4 3 2 1]
+```
+
+**Example 2:**
+
+```
+Input:  Reverse([1 2 3])
+Output: [3 2 1]
+```
+
+**Example 3:**
+
+```
+Input:  Reverse([1])
+Output: [1]
 ```
 
 ## Topics to Master

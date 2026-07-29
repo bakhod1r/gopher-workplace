@@ -13,14 +13,36 @@ code appends the pad on the right instead, so columns don't line up.
 Fix the return between the markers in [padleft.go](padleft.go) to pad on the
 left.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Pad("42", 5, '0') // => "00042"
-Pad("x", 4, '.')  // => "...x"
+**Example 1:**
+
+```
+Input:  "42",5,'0'
+Output: "00042"
 ```
 
+**Example 2:**
+
+```
+Input:  "x",4,'.'
+Output: "...x"
+```
+
+**Example 3:**
+
+```
+Input:  "toolong",3,'0'
+Output: "toolong"
+```
+
+_Explanation:_ already >= width
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

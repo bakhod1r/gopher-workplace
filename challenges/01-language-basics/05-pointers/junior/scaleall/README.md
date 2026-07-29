@@ -16,8 +16,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-ScaleAll([]*int{&a,&b}, 10) // scales a and b by 10
+**Example 1:**
+
+```
+Input:  a, b := 2, 3; ScaleAll([]*int{&a, &b}, 10)
+Output: a == 20, b == 30
+```
+
+**Example 2:**
+
+```
+Input:  a := 5; ScaleAll([]*int{&a, nil}, 2)
+Output: a == 10
+```
+
+_Explanation:_ Nil entries are skipped, no panic.
+
+**Example 3:**
+
+```
+Input:  ScaleAll(nil, 10)
+Output: no-op
 ```
 
 ## Topics to Master

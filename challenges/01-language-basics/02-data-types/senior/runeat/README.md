@@ -14,14 +14,36 @@ through — `"日本"` has 2 runes but `len` is 6.
 Fix the bounds check between the markers in [runeat.go](runeat.go) to use the
 rune count.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-At("héllo", 2) // => 'l', true
-At("日本", 2)   // => 0, false  (only 2 runes)
+**Example 1:**
+
+```
+Input:  "héllo",2
+Output: 'l', true
 ```
 
+**Example 2:**
+
+```
+Input:  "日本",1
+Output: '本', true
+```
+
+**Example 3:**
+
+```
+Input:  "日本",2
+Output: 0, false
+```
+
+_Explanation:_ index out of rune range
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

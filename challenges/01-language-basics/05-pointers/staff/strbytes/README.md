@@ -16,9 +16,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-ByteLen("hello") // => 5
-ByteLen("héllo")  // => 6
+**Example 1:**
+
+```
+Input:  ByteLen("hello")
+Output: 5
+```
+
+**Example 2:**
+
+```
+Input:  ByteLen("héllo")
+Output: 6
+```
+
+_Explanation:_ The accented é is two UTF-8 bytes.
+
+**Example 3:**
+
+```
+Input:  ByteLen("")
+Output: 0
 ```
 
 ## Topics to Master

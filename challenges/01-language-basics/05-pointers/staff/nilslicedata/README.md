@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-FirstOr(nil, 7) // => 7
-FirstOr([]int{5}, 7) // => 5
+**Example 1:**
+
+```
+Input:  FirstOr(nil, 7)
+Output: 7
+```
+
+**Example 2:**
+
+```
+Input:  FirstOr([]int{5}, 7)
+Output: 5
+```
+
+**Example 3:**
+
+```
+Input:  FirstOr([]int{}, 7)
+Output: 7
 ```
 
 ## Topics to Master

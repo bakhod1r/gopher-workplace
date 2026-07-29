@@ -12,15 +12,36 @@ zero. The comma-ok idiom tells them apart.
 
 Implement `GetOr(m, key, def)` returning the value if present, else `def`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-GetOr({a:1}, "a", 99)      // => 1
-GetOr({zero:0}, "zero", 99)// => 0  (present, not default)
-GetOr({}, "x", 99)         // => 99
+**Example 1:**
+
+```
+Input:  m={"a":1,"zero":0}, key="a", def=99
+Output: 1
+```
+
+**Example 2:**
+
+```
+Input:  key="zero", def=99
+Output: 0
+```
+
+_Explanation:_ Present with value 0 — the comma-ok distinguishes it from missing.
+
+**Example 3:**
+
+```
+Input:  key="missing", def=99
+Output: 99
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

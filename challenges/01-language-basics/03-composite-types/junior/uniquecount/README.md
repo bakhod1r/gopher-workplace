@@ -12,14 +12,34 @@ each into a set and taking its size.
 
 Implement `Distinct(xs)`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Distinct([]int{1,2,2,3,3,3}) // => 3
-Distinct([]int{5,5,5})       // => 1
+**Example 1:**
+
+```
+Input:  []int{1,2,2,3,3,3}
+Output: 3
+```
+
+**Example 2:**
+
+```
+Input:  []int{5,5,5}
+Output: 1
+```
+
+**Example 3:**
+
+```
+Input:  nil
+Output: 0
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

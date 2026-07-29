@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Compute() // => 20
+**Example 1:**
+
+```
+Input:  Compute()
+Output: 20
+```
+
+**Example 2:**
+
+```
+Input:  deferred func mutates named return
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  n set to 10 then doubled
+Output: true
 ```
 
 ## Topics to Master

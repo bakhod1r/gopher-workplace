@@ -13,13 +13,36 @@ on a non-square grid).
 
 Fix the index between the markers in [gridcolsum.go](gridcolsum.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-ColSum([[1,2,3],[4,5,6],[7,8,9]], 0) // => 12
+**Example 1:**
+
+```
+Input:  grid=[[1 2][3 4][5 6]], c=1
+Output: 12
 ```
 
+**Example 2:**
+
+```
+Input:  grid=[[1 2][3 4]], c=0
+Output: 4
+```
+
+**Example 3:**
+
+```
+Input:  grid=[[7]], c=0
+Output: 7
+```
+
+_Explanation:_ single cell.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

@@ -19,16 +19,34 @@ In [perms.go](perms.go):
 
 Do not change signatures or tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Read|Write            // => 3
-Has(Read|Write, Read) // => true
-Has(Read|Write, Execute) // => false
-Has(0, Read)          // => false
+**Example 1:**
+
+```
+Input:  Read, Write, Execute
+Output: 1, 2, 4
+```
+
+**Example 2:**
+
+```
+Input:  Has(Read|Write, Read)
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  Has(Read, Write)
+Output: false
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

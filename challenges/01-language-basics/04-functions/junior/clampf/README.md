@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Clamp(5, 0, 10)   // => 5
-Clamp(-3, 0, 10)  // => 0
-Clamp(99, 0, 10)  // => 10
+**Example 1:**
+
+```
+Input:  Clamp(99, 0, 10)
+Output: 10
+```
+
+**Example 2:**
+
+```
+Input:  Clamp(-5, 0, 10)
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  Clamp(4, 0, 10)
+Output: 4
 ```
 
 ## Topics to Master

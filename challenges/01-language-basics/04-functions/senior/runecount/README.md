@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-CharCount("héllo") // => 5
-CharCount("日本語")   // => 3
+**Example 1:**
+
+```
+Input:  CharCount("héllo")
+Output: 5
+```
+
+**Example 2:**
+
+```
+Input:  CharCount("日本語")
+Output: 3
+```
+
+**Example 3:**
+
+```
+Input:  CharCount("abc")
+Output: 3
 ```
 
 ## Topics to Master

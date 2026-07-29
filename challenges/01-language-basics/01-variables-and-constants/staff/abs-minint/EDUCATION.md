@@ -1,6 +1,6 @@
 # abs() and the most-negative value
 
-## The idea
+## Intuition
 
 Because of two's-complement asymmetry, the most-negative value has no positive
 counterpart in the same width. Negating it overflows and returns itself:
@@ -17,23 +17,29 @@ Widen **first**, then negate in the larger type where the result fits:
 -int(x)   // 128
 ```
 
-## Why it matters
+## Approach
 
-Naive `abs` (`if x < 0 { return -x }`) is wrong for `MinInt`. This bites sort
-comparators, distance metrics, and hashing. The fix is about *when* you widen,
-not the branch logic.
+1. Negating `int8(-128)` overflows int8.
+2. Widen first: `-int(x)` computes in `int`, not `int8`.
 
-## Watch out
+## Solution
+
+```go
+func Abs(x int8) int {
+	if x < 0 {
+		return -int(x)
+	}
+	return int(x)
+}
+```
+
+## Walkthrough
+
+`-x` on -128 stays -128 (int8 overflow); `-int(x)` widens to int then negates → 128.
+
+## Pitfalls
 
 - `-int8(-128)` overflows; `-int(int8(-128))` does not.
 - Standard libraries often document that `abs(MinInt)` is undefined/overflowing —
   handle it explicitly if it can occur.
 - The same asymmetry breaks `x / -1` for MinInt in some languages.
-
-## Try it yourself
-
-```go
-var m int8 = -128
-if m < 0 { fmt.Println(-int(m)) } // 128, correct
-if m < 0 { fmt.Println(int(-m)) } // -128, wrong
-```

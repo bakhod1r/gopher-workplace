@@ -12,14 +12,40 @@ escape sequences inside an interpreted string.
 
 Implement `Row(name, value)` returning `name`, a tab, `value`, and a newline.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Row("id", "42")   // => "id\t42\n"
-Row("a", "b")     // => "a\tb\n"
+**Example 1:**
+
+```
+Input:  Row("id", "42")
+Output: "id\t42\n"
 ```
 
+_Explanation:_ name, a tab byte, value, then a newline byte.
+
+**Example 2:**
+
+```
+Input:  Row("a", "b")
+Output: "a\tb\n"
+```
+
+_Explanation:_ Same TSV shape.
+
+**Example 3:**
+
+```
+Input:  Row("", "")
+Output: "\t\n"
+```
+
+_Explanation:_ Empty fields still get the tab and newline.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

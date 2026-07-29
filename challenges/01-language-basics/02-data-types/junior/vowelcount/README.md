@@ -13,15 +13,49 @@ for ranging over runes and a `switch`.
 Implement `Vowels(s)` counting ASCII vowels (a,e,i,o,u, any case). Accented
 letters like `é` do not count.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Vowels("hello") // => 2
-Vowels("AEIOU") // => 5
-Vowels("café")  // => 2
+**Example 1:**
+
+```
+Input:  Vowels("hello")
+Output: 2
 ```
 
+_Explanation:_ e and o.
+
+**Example 2:**
+
+```
+Input:  Vowels("AEIOU")
+Output: 5
+```
+
+_Explanation:_ Case-insensitive, all five.
+
+**Example 3:**
+
+```
+Input:  Vowels("xyz")
+Output: 0
+```
+
+_Explanation:_ No vowels.
+
+**Example 4:**
+
+```
+Input:  Vowels("")
+Output: 0
+```
+
+_Explanation:_ Empty string.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

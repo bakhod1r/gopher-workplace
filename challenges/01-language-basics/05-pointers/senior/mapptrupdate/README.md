@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Credit(m, 1, 50) // m[1].Balance += 50
+**Example 1:**
+
+```
+Input:  Credit(m, 1, 50)
+Output: m[1].Balance += 50
+```
+
+**Example 2:**
+
+```
+Input:  m[1].Balance == 100; Credit(m, 1, 50)
+Output: 150
+```
+
+**Example 3:**
+
+```
+Input:  Credit(m, 1, 0)
+Output: unchanged
 ```
 
 ## Topics to Master

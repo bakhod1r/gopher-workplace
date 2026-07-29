@@ -16,16 +16,36 @@ In [clamp.go](clamp.go):
 1. If `lo > hi`, swap them (locally).
 2. Return `v` limited to `[lo, hi]`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Clamp(5, 0, 10)  // => 5
-Clamp(-3, 0, 10) // => 0
-Clamp(99, 0, 10) // => 10
-Clamp(5, 10, 0)  // => 5  (bounds swapped)
+**Example 1:**
+
+```
+Input:  Clamp(5, 0, 10)
+Output: 5
 ```
 
+**Example 2:**
+
+```
+Input:  Clamp(-3, 0, 10)
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  Clamp(5, 10, 0)
+Output: 5
+```
+
+_Explanation:_ Reversed bounds are swapped first.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

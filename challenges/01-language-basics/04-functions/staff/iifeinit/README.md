@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-BuildTable(4) // => {0:0, 1:1, 2:4, 3:9}
+**Example 1:**
+
+```
+Input:  BuildTable(4)
+Output: {0:0, 1:1, 2:4, 3:9}
+```
+
+**Example 2:**
+
+```
+Input:  BuildTable(1)
+Output: {0:0}
+```
+
+**Example 3:**
+
+```
+Input:  BuildTable(0)
+Output: {}
 ```
 
 ## Topics to Master

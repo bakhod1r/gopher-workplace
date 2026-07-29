@@ -13,14 +13,36 @@ wrongly returns the default. Only the comma-ok form distinguishes them.
 Fix the presence check between the markers in
 [commaokzero.go](commaokzero.go) to use comma-ok.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-GetOr({zero:0}, "zero", 99) // => 0 (present)
-GetOr({}, "x", 99)          // => 99
+**Example 1:**
+
+```
+Input:  m={a:0}, key=a, def=7
+Output: 0
+```
+
+_Explanation:_ Key present with value 0 -> return stored 0, not default.
+
+**Example 2:**
+
+```
+Input:  m={a:5}, key=b, def=7
+Output: 7
+```
+
+**Example 3:**
+
+```
+Input:  m={}, key=x, def=-1
+Output: -1
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Join(",")            // => ""
-Join("-", "a")       // => "a"
-Join("/", "a","b","c") // => "a/b/c"
+**Example 1:**
+
+```
+Input:  Join(",", "a", "b", "c")
+Output: "a,b,c"
+```
+
+**Example 2:**
+
+```
+Input:  Join("-", "x")
+Output: "x"
+```
+
+**Example 3:**
+
+```
+Input:  Join(",")
+Output: ""
 ```
 
 ## Topics to Master

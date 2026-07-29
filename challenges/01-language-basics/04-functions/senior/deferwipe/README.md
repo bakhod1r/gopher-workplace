@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Compute(6, 7) // => 42
+**Example 1:**
+
+```
+Input:  Compute(6, 7)
+Output: 42
+```
+
+**Example 2:**
+
+```
+Input:  Compute(0, 5)
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  Compute(3, 3)
+Output: 9
 ```
 
 ## Topics to Master

@@ -15,10 +15,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Countdown(0) // => []
-Countdown(3) // => [3 2 1]
-Countdown(1) // => [1]
+**Example 1:**
+
+```
+Input:  Countdown(3)
+Output: [3 2 1]
+```
+
+**Example 2:**
+
+```
+Input:  Countdown(1)
+Output: [1]
+```
+
+**Example 3:**
+
+```
+Input:  Countdown(0)
+Output: []
 ```
 
 ## Topics to Master

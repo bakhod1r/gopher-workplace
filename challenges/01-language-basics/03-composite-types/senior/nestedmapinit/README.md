@@ -13,13 +13,34 @@
 Add the inner-map initialization between the markers in
 [nestedmapinit.go](nestedmapinit.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Tally([{a,x},{a,x},{a,y}]) // => {a:{x:2, y:1}}
+**Example 1:**
+
+```
+Input:  [[x,a],[x,a],[x,b]]
+Output: {x:{a:2,b:1}}
+```
+
+**Example 2:**
+
+```
+Input:  [[p,q]]
+Output: {p:{q:1}}
+```
+
+**Example 3:**
+
+```
+Input:  []
+Output: {}
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

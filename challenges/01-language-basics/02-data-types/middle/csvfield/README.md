@@ -12,15 +12,40 @@ contains a comma, quote, or newline — and inner quotes are doubled.
 
 Implement `Quote(s)` following that rule.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Quote("plain")     // => "plain"
-Quote("a,b")       // => `"a,b"`
-Quote(`say "hi"`)  // => `"say ""hi"""`
+**Example 1:**
+
+```
+Input:  Quote("plain")
+Output: "plain"
 ```
 
+_Explanation:_ no special chars -> unchanged
+
+**Example 2:**
+
+```
+Input:  Quote("a,b")
+Output: "\"a,b\""
+```
+
+_Explanation:_ comma forces quoting
+
+**Example 3:**
+
+```
+Input:  Quote("say \"hi\"")
+Output: "\"say \"\"hi\"\"\""
+```
+
+_Explanation:_ inner quotes doubled and field wrapped
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

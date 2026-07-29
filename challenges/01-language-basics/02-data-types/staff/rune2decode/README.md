@@ -13,20 +13,42 @@ byte with `0x0F` (4 bits), but a 2-byte lead carries **5** payload bits
 
 Fix the lead-byte mask between the markers in [rune2decode.go](rune2decode.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Decode2(0xC3, 0xA9) // => 'é' (U+00E9)
-Decode2(0xC3, 0xB1) // => 'ñ' (U+00F1)
+**Example 1:**
+
+```
+Input:  0xC3, 0xA9
+Output: 'é' (U+00E9)
+```
+
+**Example 2:**
+
+```
+Input:  0xD0, 0x81
+Output: 'Ё' (U+0401)
+```
+
+_Explanation:_ Needs the 5th lead payload bit.
+
+**Example 3:**
+
+```
+Input:  0xD8, 0xA7
+Output: 'ا' (U+0627)
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|
 | 1 | **Payload bits** | 2-byte lead has 5 payload bits (`0x1F`). |
 | 2 | **Continuation** | 6 payload bits (`0x3F`). |
-| 3 | **Assembly** | `lead5<<6 | cont6`. |
+| 3 | **Assembly** | `lead5<<6 |
 
 ## Hint
 

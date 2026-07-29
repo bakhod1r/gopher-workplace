@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 01-variables-and-constants
-**Estimated time:** 10 min
 
 ## Context
 
@@ -20,16 +19,32 @@ Implement the `const` block in [byteunits.go](byteunits.go) so that:
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-KiB       // => 1024
-MiB       // => 1048576
-GiB       // => 1073741824
-Bytes(0)  // => 0
-Bytes(1)  // => 1024
-Bytes(4)  // => 4096
+**Example 1:**
+
 ```
+Input:  KiB
+Output: 1024
+```
+
+**Example 2:**
+
+```
+Input:  MiB
+Output: 1048576 (1024*1024)
+```
+
+**Example 3:**
+
+```
+Input:  Bytes(2)
+Output: 2048
+```
+
+_Explanation:_ 2 whole KiB in bytes.
 
 ## Topics to Master
 
@@ -50,7 +65,5 @@ zero index with a leading `_ = iota` so the first real constant lands on `1`.
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

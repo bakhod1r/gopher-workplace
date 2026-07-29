@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Pipe(3, inc, dbl) // => 8
-Pipe(5)           // => 5
-Pipe(2, dbl, dbl) // => 8
+**Example 1:**
+
+```
+Input:  Pipe(3, inc, double)
+Output: 8
+```
+
+**Example 2:**
+
+```
+Input:  Pipe(5)
+Output: 5
+```
+
+**Example 3:**
+
+```
+Input:  Pipe(2, double, double)
+Output: 8
 ```
 
 ## Topics to Master

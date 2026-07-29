@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-SumDiffs([1 4 9]) // => 8
-SumDiffs([5])     // => 0
+**Example 1:**
+
+```
+Input:  SumDiffs([1 4 9])
+Output: 8
+```
+
+**Example 2:**
+
+```
+Input:  SumDiffs([5])
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  SumDiffs([1 2 3 4])
+Output: 3
 ```
 
 ## Topics to Master

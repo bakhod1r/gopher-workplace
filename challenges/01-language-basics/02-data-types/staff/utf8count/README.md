@@ -13,14 +13,41 @@ the continuation bytes, so ASCII counts as 0 and multi-byte text is undercounted
 
 Fix the condition between the markers in [utf8count.go](utf8count.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Count([]byte("héllo")) // => 5
-Count([]byte("日本語"))  // => 3
+**Example 1:**
+
+```
+Input:  "hello"
+Output: 5
+```
+
+**Example 2:**
+
+```
+Input:  "héllo"
+Output: 5
+```
+
+**Example 3:**
+
+```
+Input:  "日本語"
+Output: 3
+```
+
+**Example 4:**
+
+```
+Input:  "a€b"
+Output: 3
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

@@ -16,8 +16,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Dedup(1->1->2->3->3) // => 1->2->3
+**Example 1:**
+
+```
+Input:  Dedup(1->1->2->3->3)
+Output: 1->2->3
+```
+
+_Explanation:_ Adjacent duplicates in a sorted list are removed.
+
+**Example 2:**
+
+```
+Input:  Dedup(nil)
+Output: nil
+```
+
+**Example 3:**
+
+```
+Input:  Dedup(1->2->3)
+Output: 1->2->3
 ```
 
 ## Topics to Master

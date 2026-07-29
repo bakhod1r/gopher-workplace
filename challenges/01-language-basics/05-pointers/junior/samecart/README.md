@@ -16,9 +16,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Same(c, c) // => true
-Same(c, d) // => false
+**Example 1:**
+
+```
+Input:  c := &Cart{}; Same(c, c)
+Output: true
+```
+
+**Example 2:**
+
+```
+Input:  Same(&Cart{}, &Cart{})
+Output: false
+```
+
+_Explanation:_ Two separate allocations → different addresses.
+
+**Example 3:**
+
+```
+Input:  c := &Cart{}; d := c; Same(c, d)
+Output: true
 ```
 
 ## Topics to Master

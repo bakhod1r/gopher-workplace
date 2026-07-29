@@ -17,9 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Use(false) // => []
-Use(true)  // => [open close]
+**Example 1:**
+
+```
+Input:  Use(false)
+Output: []
+```
+
+**Example 2:**
+
+```
+Input:  Use(true)
+Output: [open close]
+```
+
+**Example 3:**
+
+```
+Input:  close only after open
+Output: true
 ```
 
 ## Topics to Master

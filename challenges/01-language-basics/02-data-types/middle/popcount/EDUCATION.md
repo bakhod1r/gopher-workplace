@@ -1,6 +1,6 @@
 # Counting set bits
 
-## The idea
+## Intuition
 
 `x & (x-1)` clears the **lowest** set bit of `x`. Repeat until zero and you have
 counted exactly the set bits:
@@ -12,13 +12,28 @@ for x != 0 { x &= x - 1; n++ }
 Subtracting 1 flips the lowest 1 to 0 and all bits below it to 1; ANDing with
 the original keeps only the higher bits.
 
-## Why it matters
+## Approach
 
-Popcount powers Hamming distance, sparse-set sizes, and bitboard tricks. The
-`x&(x-1)` idiom runs in as many steps as there are 1-bits, faster than scanning
-all 64.
+1. Loop while x!=0. 2. Clear the lowest set bit with x &= x-1. 3. Count each clear. The loop runs once per set bit.
 
-## Watch out
+## Solution
+
+```go
+func Count(x uint64) int {
+	n := 0
+	for x != 0 {
+		x &= x - 1
+		n++
+	}
+	return n
+}
+```
+
+## Walkthrough
+
+Count(0b1011): 1011->1010->1000->0000, 3 iterations -> 3.
+
+## Pitfalls
 
 - Use an unsigned type so the right shift alternative is logical, not
   arithmetic.

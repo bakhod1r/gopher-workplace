@@ -14,13 +14,36 @@ head lives. Copy to release it.
 Fix the return between the markers in [sliceleak.go](sliceleak.go) to return an
 independent 3-element slice.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-h := Head3(bigSlice) // cap(h) == 3, source array can be GC'd
+**Example 1:**
+
+```
+Input:  xs=make([]int,3,100000) = [1 2 3]
+Output: [1 2 3] with cap <= 3
 ```
 
+**Example 2:**
+
+```
+Input:  len(head)
+Output: 3
+```
+
+**Example 3:**
+
+```
+Input:  cap(head)
+Output: 3
+```
+
+_Explanation:_ must not retain the huge backing array.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

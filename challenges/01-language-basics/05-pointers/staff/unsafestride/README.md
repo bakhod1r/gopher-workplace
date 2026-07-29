@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-At(&[10 20 30 40], 2) // => 30
+**Example 1:**
+
+```
+Input:  At(&[10 20 30 40], 2)
+Output: 30
+```
+
+**Example 2:**
+
+```
+Input:  At(&[10 20 30 40], 0)
+Output: 10
+```
+
+**Example 3:**
+
+```
+Input:  At(&[10 20 30 40], 3)
+Output: 40
 ```
 
 ## Topics to Master

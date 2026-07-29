@@ -1,14 +1,27 @@
 # Full-slice expressions and retention
 
-## The idea
+## Intuition
 
 `s[:k:k]` limits capacity so appends reallocate instead of spilling; it also lets the unused tail be collected once the parent is gone.
 
-## Why it matters
+## Approach
 
-A small sub-slice pinning a huge array is a real memory leak, and shared spare capacity corrupts data.
+1. `xs[:k]` keeps the original capacity, so appending overwrites `xs[k]`.
+2. Use a full-slice expression `xs[:k:k]` to cap capacity at k.
 
-## Watch out
+## Solution
+
+```go
+func Prefix(xs []int, k int) []int {
+	return xs[:k:k]
+}
+```
+
+## Walkthrough
+
+With `xs[:2]` the capacity is still 5, so `append` writes into `xs[2]`. `xs[:2:2]` forces a reallocation on append, protecting `xs`.
+
+## Pitfalls
 
 - `xs[:k]` keeps cap == cap(xs); appends spill into the parent.
 - `xs[:k:k]` (or a copy) isolates the prefix.

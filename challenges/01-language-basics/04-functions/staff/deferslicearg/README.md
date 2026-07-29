@@ -17,9 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-BuildAndReport(4) // => 4
-BuildAndReport(0) // => 0
+**Example 1:**
+
+```
+Input:  BuildAndReport(4)
+Output: 4
+```
+
+**Example 2:**
+
+```
+Input:  BuildAndReport(0)
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  reported equals final length
+Output: true
 ```
 
 ## Topics to Master

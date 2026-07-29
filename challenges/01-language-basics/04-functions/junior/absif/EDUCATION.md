@@ -1,14 +1,30 @@
 # The single-branch if
 
-## The idea
+## Intuition
 
 An `if` without `else` handles the exceptional case and falls through to the common return.
 
-## Why it matters
+## Approach
 
-Guard clauses and early returns keep the happy path un-indented.
+1. Negatives → negate.
+2. Otherwise return as-is.
 
-## Watch out
+## Solution
+
+```go
+func Abs(n int) int {
+	if n < 0 {
+		return -n
+	}
+	return n
+}
+```
+
+## Walkthrough
+
+`Abs(-5)` returns `-(-5) = 5`.
+
+## Pitfalls
 
 - `math.MinInt` has no positive counterpart; ignore that edge for this junior task.
 - No `else` is needed after a `return`.

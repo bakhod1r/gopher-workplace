@@ -17,8 +17,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Prefix([1 2 3 4 5], 2); append(p,99) // xs[2] stays 3
+**Example 1:**
+
+```
+Input:  p := Prefix([1 2 3 4 5], 2); append(p, 99)
+Output: xs[2] stays 3
+```
+
+_Explanation:_ Full-slice bound stops append from writing into xs.
+
+**Example 2:**
+
+```
+Input:  len(Prefix(xs, 2))
+Output: 2
+```
+
+**Example 3:**
+
+```
+Input:  cap(Prefix(xs, 2))
+Output: 2
 ```
 
 ## Topics to Master

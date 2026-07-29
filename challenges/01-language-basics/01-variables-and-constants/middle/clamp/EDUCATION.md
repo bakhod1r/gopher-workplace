@@ -1,6 +1,6 @@
 # Block scope and shadowing
 
-## The idea
+## Intuition
 
 A variable exists only inside the block (`{ ... }`) where it is declared, and
 disappears at the block's closing brace. Re-declaring a name with `:=` inside a
@@ -23,27 +23,40 @@ if lo > hi {
 }
 ```
 
-## Why it matters
+## Approach
 
-Shadowing compiles cleanly and looks correct, which makes it a nasty class of
-bug: your update evaporates when the block ends. The `=` vs `:=` distinction is
-the whole difference.
+1. Normalize the bounds when `lo > hi`.
+2. Clamp `v` below `lo` and above `hi`.
+3. Otherwise return `v`.
 
-## Watch out
+## Solution
+
+```go
+func Clamp(v, lo, hi int) int {
+	if lo, hi = order(lo, hi); v < lo {
+		return lo
+	} else if v > hi {
+		return hi
+	}
+	return v
+}
+
+func order(lo, hi int) (int, int) {
+	if lo > hi {
+		return hi, lo
+	}
+	return lo, hi
+}
+```
+
+## Walkthrough
+
+`Clamp(5, 10, 0)` swaps to `[0, 10]`, and 5 is inside, so it returns 5.
+
+## Pitfalls
 
 - `:=` requires at least one new name on the left; if all names exist in the
   current scope it is a compile error — but in a *nested* block it silently
   shadows instead.
 - `go vet`'s shadow analysis and linters can flag suspicious shadows.
 - Multiple assignment (`lo, hi = hi, lo`) swaps without a temporary.
-
-## Try it yourself
-
-```go
-x := 1
-{
-	x := 2 // shadows
-	_ = x
-}
-// x is still 1
-```

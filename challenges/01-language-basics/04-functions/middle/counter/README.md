@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-c := MakeCounter(); c() // => 1
-c()                      // => 2
-d := MakeCounter(); d()  // => 1 (independent)
+**Example 1:**
+
+```
+Input:  c := MakeCounter(); c(); c()
+Output: 1, then 2
+```
+
+**Example 2:**
+
+```
+Input:  two counters are independent
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  c := MakeCounter(); c()
+Output: 1
 ```
 
 ## Topics to Master

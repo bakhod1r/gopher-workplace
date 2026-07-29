@@ -1,4 +1,4 @@
-.PHONY: all test vet fmt fmt-check lint verify clean
+.PHONY: all test test-v vet fmt fmt-check lint verify clean
 
 all: verify
 

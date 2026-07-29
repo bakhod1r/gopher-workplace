@@ -14,13 +14,36 @@ indices), duplicating the first element.
 Fix the copy between the markers in
 [copyshiftleft.go](copyshiftleft.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-ShiftLeft([]int{1,2,3,4}) // => [2 3 4 0]
+**Example 1:**
+
+```
+Input:  [1 2 3]
+Output: [2 3 0]
 ```
 
+**Example 2:**
+
+```
+Input:  [5]
+Output: [0]
+```
+
+**Example 3:**
+
+```
+Input:  [] 
+Output: []
+```
+
+_Explanation:_ empty returns early.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

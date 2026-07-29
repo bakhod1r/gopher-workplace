@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-ReadN(&Rec{true, 123}) // => 123
+**Example 1:**
+
+```
+Input:  ReadN(&Rec{true, 123})
+Output: 123
+```
+
+**Example 2:**
+
+```
+Input:  ReadN(&Rec{false, 0})
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  ReadN(&Rec{true, -7})
+Output: -7
 ```
 
 ## Topics to Master

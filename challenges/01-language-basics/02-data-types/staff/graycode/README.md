@@ -13,15 +13,41 @@ property.
 
 Fix the shift between the markers in [graycode.go](graycode.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-ToGray(2) // => 3
-ToGray(3) // => 2
-ToGray(4) // => 6
+**Example 1:**
+
+```
+Input:  2
+Output: 3
+```
+
+**Example 2:**
+
+```
+Input:  3
+Output: 2
+```
+
+**Example 3:**
+
+```
+Input:  4
+Output: 6
+```
+
+**Example 4:**
+
+```
+Input:  7
+Output: 4
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-hs := Handlers(3); hs[0]() // => 0
-hs[1]() // => 1
-hs[2]() // => 2
+**Example 1:**
+
+```
+Input:  Handlers(3)[1]()
+Output: 1
+```
+
+**Example 2:**
+
+```
+Input:  each closure returns its index
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  Handlers(2)[0]()
+Output: 0
 ```
 
 ## Topics to Master

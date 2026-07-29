@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-CountLeaves(tree) // => number of leaves
+**Example 1:**
+
+```
+Input:  CountLeaves(nil)
+Output: 0
+```
+
+**Example 2:**
+
+```
+Input:  CountLeaves(single node)
+Output: 1
+```
+
+**Example 3:**
+
+```
+Input:  CountLeaves(root with 2 children)
+Output: 2
 ```
 
 ## Topics to Master

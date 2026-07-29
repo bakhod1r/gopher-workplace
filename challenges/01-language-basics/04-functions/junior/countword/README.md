@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-CountEqual([]int{1,2,1,3,1}, 1) // => 3
-CountEqual(nil, 1)              // => 0
-CountEqual([]int{2,2}, 5)       // => 0
+**Example 1:**
+
+```
+Input:  CountEqual([1 2 2 3 2], 2)
+Output: 3
+```
+
+**Example 2:**
+
+```
+Input:  CountEqual([1 2 3], 9)
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  CountEqual(nil, 1)
+Output: 0
 ```
 
 ## Topics to Master

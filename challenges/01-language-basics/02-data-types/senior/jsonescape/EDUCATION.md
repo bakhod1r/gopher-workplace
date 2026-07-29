@@ -1,6 +1,6 @@
 # Escaping the escape character
 
-## The idea
+## Intuition
 
 In JSON, the backslash introduces every escape, so a literal backslash must
 itself be written as `\\`. If you escape quotes and newlines but forget the
@@ -11,13 +11,44 @@ case '\\':
 	b.WriteString(`\\`) // raw literal: two backslash characters
 ```
 
-## Why it matters
+## Approach
 
-Serialization must escape the delimiter **and** the escape character. Missing the
-backslash is a real injection/parse bug — Windows paths, regexes, and LaTeX in
-user data all contain backslashes.
+1. Bug: the backslash case was missing, so `\` passed through unescaped (producing invalid JSON).
+2. Fix: add `case '\\': b.WriteString("\\\\")` before the quote case.
+3. Quote, newline, tab, CR cases stay.
 
-## Watch out
+## Solution
+
+```go
+import "strings"
+
+func Escape(s string) string {
+	var b strings.Builder
+	for _, r := range s {
+		switch r {
+		case '\\':
+			b.WriteString(`\\`)
+		case '"':
+			b.WriteString(`\"`)
+		case '\n':
+			b.WriteString(`\n`)
+		case '\t':
+			b.WriteString(`\t`)
+		case '\r':
+			b.WriteString(`\r`)
+		default:
+			b.WriteRune(r)
+		}
+	}
+	return b.String()
+}
+```
+
+## Walkthrough
+
+a\b: the \ now matches the backslash case and emits \\ -> a\\b.
+
+## Pitfalls
 
 - Escape the backslash *before* other rules conceptually; order in a `switch`
   doesn't matter since each rune matches once.

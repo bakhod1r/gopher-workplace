@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Squares(4) // => [1 4 9 16]
+**Example 1:**
+
+```
+Input:  Squares(4)
+Output: [1 4 9 16]
+```
+
+**Example 2:**
+
+```
+Input:  Squares(1)
+Output: [1]
+```
+
+**Example 3:**
+
+```
+Input:  Squares(0)
+Output: []
 ```
 
 ## Topics to Master

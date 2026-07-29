@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-p := &a; Reseat(&p, &b) // p now == &b
+**Example 1:**
+
+```
+Input:  a, b := 1, 2; p := &a; Reseat(&p, &b)
+Output: p == &b
+```
+
+**Example 2:**
+
+```
+Input:  p := &a; Reseat(&p, nil)
+Output: p == nil
+```
+
+**Example 3:**
+
+```
+Input:  p := &a; Reseat(&p, &a)
+Output: p == &a (unchanged target)
 ```
 
 ## Topics to Master

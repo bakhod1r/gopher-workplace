@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-ZipWith([]int{1,2,3}, []int{10,20}, add) // => [11 22]
-ZipWith(nil, []int{1}, f)                // => []
+**Example 1:**
+
+```
+Input:  ZipWith([1 2 3], [10 20 30], add)
+Output: [11 22 33]
+```
+
+**Example 2:**
+
+```
+Input:  ZipWith([1 2], [10], add)
+Output: [11]
+```
+
+**Example 3:**
+
+```
+Input:  ZipWith(nil, [1], add)
+Output: []
 ```
 
 ## Topics to Master

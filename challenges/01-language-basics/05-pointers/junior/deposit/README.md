@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Deposit(&a, 50) // a.Balance += 50
+**Example 1:**
+
+```
+Input:  a := Account{Balance: 100}; Deposit(&a, 50)
+Output: a.Balance == 150
+```
+
+**Example 2:**
+
+```
+Input:  a := Account{}; Deposit(&a, 20)
+Output: a.Balance == 20
+```
+
+**Example 3:**
+
+```
+Input:  a := Account{Balance: 5}; Deposit(&a, 0)
+Output: a.Balance == 5
 ```
 
 ## Topics to Master

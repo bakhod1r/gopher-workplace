@@ -1,6 +1,6 @@
 # iota in expressions
 
-## The idea
+## Intuition
 
 `iota` is just an integer you can put inside any constant expression. Scale or
 offset it and the block repeats the expression with `iota` advancing:
@@ -16,28 +16,43 @@ const (
 
 Only `Bronze` needs the expression; `Silver` and `Gold` inherit it.
 
-## Why it matters
+## Approach
 
-You express the *pattern* once. Change the step from 100 to 250 and every tier
-updates — no hand-maintained list to drift out of sync.
+1. Define thresholds with `(iota + 1) * 100`.
+2. `Rank` returns the highest tier whose threshold `<= score`.
 
-## Watch out
+## Solution
+
+```go
+type Tier int
+
+const (
+	Bronze Tier = (iota + 1) * 100
+	Silver
+	Gold
+)
+
+func Rank(score int) Tier {
+	switch {
+	case score >= int(Gold):
+		return Gold
+	case score >= int(Silver):
+		return Silver
+	case score >= int(Bronze):
+		return Bronze
+	default:
+		return 0
+	}
+}
+```
+
+## Walkthrough
+
+`Rank(250)`: 250 ≥ Silver(200) but < Gold(300), so Silver.
+
+## Pitfalls
 
 - `iota` starts at 0, so plain `iota * 100` gives 0,100,200. Use `(iota+1)` when
   you want the run to start at the step, not at zero.
 - The expression is copied verbatim to bare lines; an explicit value on one line
   breaks the run for the lines below it.
-
-## Try it yourself
-
-```go
-const (
-	_  = iota
-	KB = 1 << (10 * iota)
-)
-const (
-	Low  = iota*10 + 5 // 5
-	Mid                // 15
-	High               // 25
-)
-```

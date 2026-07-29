@@ -17,9 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-PeakThenDrain(3) // => 3
-PeakThenDrain(0) // => 0
+**Example 1:**
+
+```
+Input:  PeakThenDrain(3)
+Output: 3
+```
+
+**Example 2:**
+
+```
+Input:  PeakThenDrain(0)
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  PeakThenDrain(1)
+Output: 1
 ```
 
 ## Topics to Master

@@ -1,6 +1,6 @@
 # Scope and shadowing
 
-## The idea
+## Intuition
 
 A variable exists from its declaration to the end of the **block** that contains
 it — the nearest enclosing pair of braces. Inside a nested block you may declare
@@ -66,7 +66,31 @@ Shadowing keeps short names usable in small scopes without fear of collision,
 and it makes blocks self-contained. The cost is exactly the bug above, which is
 why `go vet -shadow` (and linters like `govet`'s shadow check) exist.
 
-## Watch out
+## Approach
+
+1. Accumulate into a `sum` declared before the loop.
+2. Add each positive value.
+3. Avoid re-declaring `sum` inside the loop (which would shadow it).
+
+## Solution
+
+```go
+func Tally(nums []int) int {
+	sum := 0
+	for _, n := range nums {
+		if n > 0 {
+			sum += n
+		}
+	}
+	return sum
+}
+```
+
+## Walkthrough
+
+For `[1 -2 3]`, 1 and 3 are positive, so `sum` reaches 4; negatives are skipped.
+
+## Pitfalls
 
 - Unused *variables* are a compile error, but a shadowed variable that you do
   assign is "used" — so the compiler will not save you here.
@@ -74,20 +98,3 @@ why `go vet -shadow` (and linters like `govet`'s shadow check) exist.
   where the outer `x` is an `int` compiles fine.
 - Package-level names can be shadowed too, including built-ins. `len := 3` is
   legal and disables `len(...)` for that block.
-
-## Try it yourself
-
-```go
-x := 1
-{
-	x := 2
-	fmt.Println(x)   // 2
-}
-fmt.Println(x)       // 1
-
-total := 0
-for _, n := range []int{1, 2, 3} {
-	total += n       // correct: assignment, not declaration
-}
-fmt.Println(total)   // 6
-```

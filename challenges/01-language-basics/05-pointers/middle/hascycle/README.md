@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-HasCycle(acyclic) // => false
-HasCycle(cyclic)  // => true
+**Example 1:**
+
+```
+Input:  HasCycle(1->2->3 acyclic)
+Output: false
+```
+
+**Example 2:**
+
+```
+Input:  HasCycle(1->2->3->back to 1)
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  HasCycle(nil)
+Output: false
 ```
 
 ## Topics to Master

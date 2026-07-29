@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-TwoTails([1 2]cap8, 100, 200) // a=[1 2 100], b=[1 2 200] independent
+**Example 1:**
+
+```
+Input:  TwoTails([1 2](cap 8), 100, 200)
+Output: a == [1 2 100], b == [1 2 200]
+```
+
+**Example 2:**
+
+```
+Input:  a and b independent
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  a[2]
+Output: 100 (not 200)
 ```
 
 ## Topics to Master

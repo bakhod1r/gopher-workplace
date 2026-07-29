@@ -14,14 +14,36 @@ jumps to the end instead of the next rune.
 Fix the return between the markers in [runewidth.go](runewidth.go) to return the
 first rune's byte size.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-FirstWidth("é")   // => 2
-FirstWidth("日本") // => 3  (first rune only)
+**Example 1:**
+
+```
+Input:  "a"
+Output: 1
 ```
 
+**Example 2:**
+
+```
+Input:  "é"
+Output: 2
+```
+
+**Example 3:**
+
+```
+Input:  "日本"
+Output: 3
+```
+
+_Explanation:_ first rune only
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

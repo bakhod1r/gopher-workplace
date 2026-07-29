@@ -12,16 +12,49 @@ Rune arithmetic plus a modulo does the wrap.
 
 Implement `Shift(s, n)` (letters only, case preserved, wrap, `n` any int).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Shift("abc", 1)          // => "bcd"
-Shift("xyz", 3)          // => "abc"
-Shift("Hello, World!",13)// => "Uryyb, Jbeyq!"
-Shift("abc", -1)         // => "zab"
+**Example 1:**
+
+```
+Input:  Shift("abc", 1)
+Output: "bcd"
 ```
 
+_Explanation:_ each letter +1
+
+**Example 2:**
+
+```
+Input:  Shift("xyz", 3)
+Output: "abc"
+```
+
+_Explanation:_ wraps past z back to a
+
+**Example 3:**
+
+```
+Input:  Shift("Hello, World!", 13)
+Output: "Uryyb, Jbeyq!"
+```
+
+_Explanation:_ ROT13; punctuation/space unchanged
+
+**Example 4:**
+
+```
+Input:  Shift("abc", -1)
+Output: "zab"
+```
+
+_Explanation:_ negative shift normalized modulo 26
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

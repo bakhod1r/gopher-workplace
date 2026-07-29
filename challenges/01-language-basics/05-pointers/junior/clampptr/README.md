@@ -16,9 +16,32 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-x := 99; Clamp(&x, 0, 10) // x=10
+**Example 1:**
+
 ```
+Input:  x := 99; Clamp(&x, 0, 10)
+Output: x == 10
+```
+
+_Explanation:_ Above the range → pulled down to `hi`.
+
+**Example 2:**
+
+```
+Input:  x := -5; Clamp(&x, 0, 10)
+Output: x == 0
+```
+
+_Explanation:_ Below the range → raised to `lo`.
+
+**Example 3:**
+
+```
+Input:  x := 4; Clamp(&x, 0, 10)
+Output: x == 4
+```
+
+_Explanation:_ Inside the range → unchanged.
 
 ## Topics to Master
 

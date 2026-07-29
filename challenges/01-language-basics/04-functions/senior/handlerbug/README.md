@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Labelers([]string{"a","b","c"})[1]() // => "b"
+**Example 1:**
+
+```
+Input:  Labelers(["a","b","c"])[1]()
+Output: b
+```
+
+**Example 2:**
+
+```
+Input:  Labelers(["a","b"])[0]()
+Output: a
+```
+
+**Example 3:**
+
+```
+Input:  each closure returns its own name
+Output: true
 ```
 
 ## Topics to Master

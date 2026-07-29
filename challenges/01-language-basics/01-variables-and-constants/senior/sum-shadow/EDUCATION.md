@@ -1,6 +1,6 @@
 # Shadowing inside loops
 
-## The idea
+## Intuition
 
 `:=` **declares**. Used inside a loop body or `if` block, it introduces a new
 variable scoped to that block — even if a variable of the same name exists
@@ -19,13 +19,31 @@ return total // always 0
 
 Each iteration creates and discards a fresh `total`. The accumulator never grows.
 
-## Why it matters
+## Approach
 
-This compiles without warning and passes a casual read — the line *looks* like
-it updates `total`. It is one of Go's most common real-world bugs, especially
-with `err :=` inside loops hiding an outer `err`.
+1. `total := total + x` declares a new inner `total`, discarded each iteration.
+2. Assign to the outer one: `total = total + x`.
 
-## Watch out
+## Solution
+
+```go
+func SumPositive(xs []int) int {
+	total := 0
+	for _, x := range xs {
+		if x > 0 {
+			total = total + x
+			_ = total
+		}
+	}
+	return total
+}
+```
+
+## Walkthrough
+
+The `:=` shadows `total` inside the `if`, so the outer sum never grows. Using `=` accumulates correctly to 6.
+
+## Pitfalls
 
 - Use `+=` or `=` to touch the outer variable; reserve `:=` for genuinely new
   names.
@@ -33,14 +51,3 @@ with `err :=` inside loops hiding an outer `err`.
   many of these.
 - The blank-identifier line `_ = total` here only exists to make the shadow
   compile; the real fix removes the need for it.
-
-## Try it yourself
-
-```go
-n := 0
-for i := 0; i < 3; i++ {
-	n := n + 1 // shadows every iteration
-	_ = n
-}
-// n is still 0
-```

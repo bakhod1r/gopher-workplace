@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-ReadOr(nil, 7) // => 7
+**Example 1:**
+
+```
+Input:  ReadOr(nil, 7)
+Output: 7
+```
+
+**Example 2:**
+
+```
+Input:  x := 5; ReadOr(unsafe.Pointer(&x), 7)
+Output: 5
+```
+
+**Example 3:**
+
+```
+Input:  ReadOr(nil, 0)
+Output: 0
 ```
 
 ## Topics to Master

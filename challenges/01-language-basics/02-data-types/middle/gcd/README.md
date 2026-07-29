@@ -12,16 +12,40 @@ until `b` is 0. Signs must be normalized so the result is non-negative.
 
 Implement `GCD(a, b)` (non-negative, `GCD(0,0)=0`).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-GCD(12, 8) // => 4
-GCD(17, 5) // => 1
-GCD(0, 9)  // => 9
-GCD(-12, 8)// => 4
+**Example 1:**
+
+```
+Input:  GCD(12, 8)
+Output: 4
 ```
 
+_Explanation:_ Euclid: 12%8=4, 8%4=0 -> 4
+
+**Example 2:**
+
+```
+Input:  GCD(0, 9)
+Output: 9
+```
+
+_Explanation:_ gcd with 0 is the other value
+
+**Example 3:**
+
+```
+Input:  GCD(-12, 8)
+Output: 4
+```
+
+_Explanation:_ absolute values used, result non-negative
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

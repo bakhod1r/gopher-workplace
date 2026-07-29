@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-SumList(1->2->3->4) // => 10
-SumList(nil)        // => 0
+**Example 1:**
+
+```
+Input:  SumList(1->2->3->4)
+Output: 10
+```
+
+**Example 2:**
+
+```
+Input:  SumList(nil)
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  SumList(5)
+Output: 5
 ```
 
 ## Topics to Master

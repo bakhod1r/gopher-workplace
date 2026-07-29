@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-AboveThreshold([]int{1,5,5,8,3}, 5) // => [8]
+**Example 1:**
+
+```
+Input:  AboveThreshold([1 5 5 8 3], 5)
+Output: [8]
+```
+
+**Example 2:**
+
+```
+Input:  AboveThreshold([1 2 3], 0)
+Output: [1 2 3]
+```
+
+**Example 3:**
+
+```
+Input:  AboveThreshold([1], 5)
+Output: []
 ```
 
 ## Topics to Master

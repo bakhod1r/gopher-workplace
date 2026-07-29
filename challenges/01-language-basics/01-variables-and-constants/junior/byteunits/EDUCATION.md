@@ -1,6 +1,6 @@
 # `iota` and constant blocks
 
-## The idea
+## Intuition
 
 Inside a `const (...)` block, `iota` is the index of the current *line*. It
 resets to 0 at the start of every block and increments by one per ConstSpec:
@@ -54,7 +54,32 @@ Three things to see there:
 and says nothing about the pattern. The derived form documents the rule, and the
 compiler does the arithmetic — constant expressions cost nothing at run time.
 
-## Watch out
+## Approach
+
+1. Start the `const` block with `_ = iota` to burn slot 0.
+2. Define `KiB = 1 << (10 * iota)`; the next lines repeat the expression for MiB and GiB.
+3. `Bytes(n)` is `n * KiB`.
+
+## Solution
+
+```go
+const (
+	_   = iota
+	KiB = 1 << (10 * iota)
+	MiB
+	GiB
+)
+
+func Bytes(n int) int {
+	return n * KiB
+}
+```
+
+## Walkthrough
+
+At `KiB` iota is 1, so `1 << 10 = 1024`; MiB gets iota 2 → `1 << 20`; GiB iota 3 → `1 << 30`.
+
+## Pitfalls
 
 - `iota` counts **lines in the block**, not named constants. A line declaring
   three names (`A, B, C = iota, iota, iota`) still advances it by one.
@@ -69,20 +94,3 @@ compiler does the arithmetic — constant expressions cost nothing at run time.
 `KiB` is 1024 bytes (binary); `KB` is 1000 bytes (decimal). Disk vendors use the
 decimal one, operating systems usually the binary one — the reason a "500 GB"
 drive shows up as ~465 GiB.
-
-## Try it yourself
-
-```go
-const (
-	_   = iota
-	KiB = 1 << (10 * iota)   // 1024
-	MiB                      // 1048576
-	GiB                      // 1073741824
-)
-
-const (
-	Read = 1 << iota   // 1
-	Write              // 2
-	Exec               // 4
-)                      // bit flags: Read|Write == 3
-```

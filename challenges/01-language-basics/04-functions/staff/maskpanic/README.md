@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-FirstPanic(func(){ panic("original") }) // => "original"
+**Example 1:**
+
+```
+Input:  FirstPanic(func(){ panic("original") })
+Output: "original"
+```
+
+**Example 2:**
+
+```
+Input:  deferred cleanup does not mask
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  FirstPanic reports first panic
+Output: original
 ```
 
 ## Topics to Master

@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Items([1 2 3]) // => pointers to V=1,2,3
+**Example 1:**
+
+```
+Input:  Items([1 2 3])
+Output: pointers to V=1, V=2, V=3
+```
+
+**Example 2:**
+
+```
+Input:  deref results
+Output: 1, 2, 3 (distinct)
+```
+
+**Example 3:**
+
+```
+Input:  Items([])
+Output: empty
 ```
 
 ## Topics to Master

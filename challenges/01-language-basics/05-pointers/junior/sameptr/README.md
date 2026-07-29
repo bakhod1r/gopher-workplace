@@ -16,9 +16,29 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Same(&x, &x) // => true
-Same(&x, &y) // => false (distinct vars)
+**Example 1:**
+
+```
+Input:  x := 1; Same(&x, &x)
+Output: true
+```
+
+_Explanation:_ Same variable → same address.
+
+**Example 2:**
+
+```
+Input:  x, y := 1, 1; Same(&x, &y)
+Output: false
+```
+
+_Explanation:_ Equal values but distinct variables → different addresses.
+
+**Example 3:**
+
+```
+Input:  x := 1; p := &x; Same(p, &x)
+Output: true
 ```
 
 ## Topics to Master

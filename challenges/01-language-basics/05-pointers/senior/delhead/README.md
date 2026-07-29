@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-RemoveFirst(1->2->3) // => 2->3
+**Example 1:**
+
+```
+Input:  RemoveFirst(1->2->3)
+Output: 2->3
+```
+
+**Example 2:**
+
+```
+Input:  RemoveFirst(1)
+Output: nil
+```
+
+**Example 3:**
+
+```
+Input:  RemoveFirst(1->2)
+Output: 2
 ```
 
 ## Topics to Master

@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-NthFromEnd(1->2->3->4->5, 1) // => node 5
+**Example 1:**
+
+```
+Input:  NthFromEnd(1->2->3->4->5, 1)
+Output: node 5
+```
+
+**Example 2:**
+
+```
+Input:  NthFromEnd(1->2->3->4->5, 2)
+Output: node 4
+```
+
+**Example 3:**
+
+```
+Input:  NthFromEnd(1->2->3->4->5, 5)
+Output: node 1
 ```
 
 ## Topics to Master

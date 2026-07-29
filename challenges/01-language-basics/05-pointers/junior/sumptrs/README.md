@@ -16,8 +16,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-SumPtrs([]*int{&1, nil, &2}) // => 3
+**Example 1:**
+
+```
+Input:  a, b := 1, 2; SumPtrs([]*int{&a, nil, &b})
+Output: 3
+```
+
+_Explanation:_ Nil entries contribute nothing.
+
+**Example 2:**
+
+```
+Input:  SumPtrs(nil)
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  a := 5; SumPtrs([]*int{&a, &a})
+Output: 10
 ```
 
 ## Topics to Master

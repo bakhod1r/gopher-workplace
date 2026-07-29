@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Pointers([10 20 30]) // => pointers to 10, 20, 30
+**Example 1:**
+
+```
+Input:  Pointers([10 20 30])
+Output: pointers to 10, 20, 30
+```
+
+**Example 2:**
+
+```
+Input:  deref each result
+Output: 10, 20, 30 (distinct)
+```
+
+**Example 3:**
+
+```
+Input:  Pointers([])
+Output: empty
 ```
 
 ## Topics to Master

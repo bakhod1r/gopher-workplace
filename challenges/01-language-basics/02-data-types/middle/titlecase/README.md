@@ -12,15 +12,40 @@ case conversion on ASCII letters via arithmetic or `unicode` helpers.
 
 Implement `Title(s)` for space-separated words.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Title("hello world") // => "Hello World"
-Title("GO is FUN")   // => "Go Is Fun"
-Title("a")           // => "A"
+**Example 1:**
+
+```
+Input:  Title("hello world")
+Output: "Hello World"
 ```
 
+_Explanation:_ first letter of each word capitalized
+
+**Example 2:**
+
+```
+Input:  Title("GO is FUN")
+Output: "Go Is Fun"
+```
+
+_Explanation:_ rest of each word lowercased
+
+**Example 3:**
+
+```
+Input:  Title("a")
+Output: "A"
+```
+
+_Explanation:_ single letter uppercased
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

@@ -15,16 +15,36 @@ run so 0 stays reserved for "unknown".
 `Pending` and the values are 0,1,2. Fix only the marked line so
 `Pending=1, Shipped=2, Delivered=3` and the zero value is unknown.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-var s Status       // 0
-IsKnown(s)         // => false
-Pending            // => 1
-Delivered          // => 3
+**Example 1:**
+
+```
+Input:  IsKnown(Pending)
+Output: true
+```
+
+**Example 2:**
+
+```
+Input:  IsKnown(Status(0))
+Output: false
+```
+
+_Explanation:_ A zero-valued Status must be unknown.
+
+**Example 3:**
+
+```
+Input:  IsKnown(Delivered)
+Output: true
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

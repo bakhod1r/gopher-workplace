@@ -13,13 +13,36 @@ full-slice expression. The code returns `xs` unchanged.
 
 Fix the return between the markers in [clipcap.go](clipcap.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-c := Clip(make([]int,3,10)) // cap(c) == 3
+**Example 1:**
+
+```
+Input:  xs=make([]int,3,10)
+Output: len 3, cap 3
 ```
 
+**Example 2:**
+
+```
+Input:  xs len 3
+Output: len stays 3
+```
+
+**Example 3:**
+
+```
+Input:  cap 10 clipped
+Output: cap 3
+```
+
+_Explanation:_ three-index slice caps future append growth.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

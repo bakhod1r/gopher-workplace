@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Detach(n) // n.Next = nil
+**Example 1:**
+
+```
+Input:  n := &Node{Next: other}; Detach(n)
+Output: n.Next == nil
+```
+
+**Example 2:**
+
+```
+Input:  n := &Node{}; Detach(n)
+Output: n.Next == nil
+```
+
+**Example 3:**
+
+```
+Input:  Detach(&Node{Value: 5, Next: x})
+Output: Next == nil, Value == 5
 ```
 
 ## Topics to Master

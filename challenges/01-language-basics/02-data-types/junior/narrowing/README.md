@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 02-data-types
-**Estimated time:** 10 min
 
 ## Context
 
@@ -17,15 +16,45 @@ to an `int32`, wrapping around (two's-complement) when the value does not fit.
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-ToInt32(42)         // => 42
-ToInt32(-7)         // => -7
-ToInt32(2147483647) // => 2147483647   (int32 max)
-ToInt32(2147483648) // => -2147483648  (wraps to int32 min)
-ToInt32(4294967296) // => 0            (2^32 wraps to 0)
+**Example 1:**
+
 ```
+Input:  ToInt32(42)
+Output: 42
+```
+
+_Explanation:_ Fits.
+
+**Example 2:**
+
+```
+Input:  ToInt32(2147483647)
+Output: 2147483647
+```
+
+_Explanation:_ int32 max, still fits.
+
+**Example 3:**
+
+```
+Input:  ToInt32(2147483648)
+Output: -2147483648
+```
+
+_Explanation:_ One past max wraps two's-complement to int32 min.
+
+**Example 4:**
+
+```
+Input:  ToInt32(4294967296)
+Output: 0
+```
+
+_Explanation:_ 2^32 wraps to 0 (low 32 bits are all zero).
 
 ## Topics to Master
 
@@ -45,7 +74,5 @@ defines the wrap-around behaviour — you do not add any range checks or clampin
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

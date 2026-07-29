@@ -13,14 +13,36 @@ bytes. A header parser must guard the length and report failure instead.
 Fix the body between the markers in
 [slicetoarray.go](slicetoarray.go) to check length first.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-First4([]byte{1,2,3,4,5}) // => [1 2 3 4], true
-First4([]byte{1,2})       // => zero, false (no panic)
+**Example 1:**
+
+```
+Input:  b=[1 2 3 4 5]
+Output: [1 2 3 4], true
+```
+
+**Example 2:**
+
+```
+Input:  b=[1 2]
+Output: [0 0 0 0], false
+```
+
+_Explanation:_ too short: return false, not panic.
+
+**Example 3:**
+
+```
+Input:  b=[9 8 7 6]
+Output: [9 8 7 6], true
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

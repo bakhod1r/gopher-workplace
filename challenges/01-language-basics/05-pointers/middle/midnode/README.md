@@ -16,9 +16,29 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Middle(1->2->3->4->5) // => node 3
-Middle(1->2->3->4)    // => node 3
+**Example 1:**
+
+```
+Input:  Middle(1->2->3->4->5)
+Output: node 3
+```
+
+_Explanation:_ Odd length → exact middle.
+
+**Example 2:**
+
+```
+Input:  Middle(1->2->3->4)
+Output: node 3
+```
+
+_Explanation:_ Even length → second of the two middles.
+
+**Example 3:**
+
+```
+Input:  Middle(1)
+Output: node 1
 ```
 
 ## Topics to Master

@@ -12,15 +12,40 @@ Lerp blends two values by a factor `t`: at `t=0` you get `a`, at `t=1` you get
 
 Implement `Lerp(a, b, t)` = `a + (b-a)*t`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Lerp(0, 10, 0.5)  // => 5
-Lerp(2, 4, 0.25)  // => 2.5
-Lerp(0, 10, 1)    // => 10
+**Example 1:**
+
+```
+Input:  Lerp(0, 10, 0.5)
+Output: 5
 ```
 
+_Explanation:_ halfway between 0 and 10
+
+**Example 2:**
+
+```
+Input:  Lerp(2, 4, 0.25)
+Output: 2.5
+```
+
+_Explanation:_ a quarter of the way from 2 to 4
+
+**Example 3:**
+
+```
+Input:  Lerp(0, 10, 1)
+Output: 10
+```
+
+_Explanation:_ t=1 gives b
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

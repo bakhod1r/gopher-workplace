@@ -13,13 +13,34 @@ rows. Writing a cell in the clone changes the original.
 Fix the copy between the markers in [twodshallow.go](twodshallow.go) to clone each
 row.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-c := Clone(g); c[0][0]=99 // g[0][0] stays 1
+**Example 1:**
+
+```
+Input:  [[1,2],[3,4]]
+Output: independent copy; mutating out[0][0] doesn't affect input
+```
+
+**Example 2:**
+
+```
+Input:  [[9]]
+Output: [[9]]
+```
+
+**Example 3:**
+
+```
+Input:  []
+Output: []
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

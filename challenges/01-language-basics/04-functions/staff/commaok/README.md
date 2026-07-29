@@ -17,9 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Lookup({a:0,b:5}, "a") // => 0, true
-Lookup({a:0,b:5}, "z") // => 0, false
+**Example 1:**
+
+```
+Input:  Lookup({a:0, b:5}, "a")
+Output: 0, true
+```
+
+**Example 2:**
+
+```
+Input:  Lookup({a:0, b:5}, "z")
+Output: 0, false
+```
+
+**Example 3:**
+
+```
+Input:  present key with zero value
+Output: 0, true
 ```
 
 ## Topics to Master

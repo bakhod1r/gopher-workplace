@@ -16,9 +16,28 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Rotate(1->2->3->4->5, 2) // => 4->5->1->2->3
+**Example 1:**
+
 ```
+Input:  Rotate(1->2->3->4->5, 2)
+Output: 4->5->1->2->3
+```
+
+**Example 2:**
+
+```
+Input:  Rotate(1->2->3, 0)
+Output: 1->2->3
+```
+
+**Example 3:**
+
+```
+Input:  Rotate(1->2->3, 3)
+Output: 1->2->3
+```
+
+_Explanation:_ k equal to the length is a no-op.
 
 ## Topics to Master
 

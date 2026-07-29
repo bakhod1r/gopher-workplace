@@ -13,13 +13,34 @@ the length.
 Fix the return between the markers in
 [subsliceclamp.go](subsliceclamp.go) to clamp `n`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Take([]int{1,2,3}, 10) // => [1 2 3] (no panic)
+**Example 1:**
+
+```
+Input:  xs=[1,2,3], n=2
+Output: [1,2]
+```
+
+**Example 2:**
+
+```
+Input:  xs=[1,2,3], n=10
+Output: [1,2,3]
+```
+
+**Example 3:**
+
+```
+Input:  xs=[1,2,3], n=0
+Output: []
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

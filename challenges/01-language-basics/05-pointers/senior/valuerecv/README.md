@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-c := &Counter{}; c.Inc(); c.Inc() // c.N should be 2
+**Example 1:**
+
+```
+Input:  c := &Counter{}; c.Inc(); c.Inc()
+Output: c.N == 2
+```
+
+**Example 2:**
+
+```
+Input:  c := &Counter{N: 5}; c.Inc()
+Output: c.N == 6
+```
+
+**Example 3:**
+
+```
+Input:  c := &Counter{}; c.Inc()
+Output: c.N == 1
 ```
 
 ## Topics to Master

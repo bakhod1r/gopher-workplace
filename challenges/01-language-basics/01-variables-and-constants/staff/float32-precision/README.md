@@ -15,14 +15,34 @@ precision.
 Fix the single line between the markers in [sums.go](sums.go) so the running sum
 holds enough precision.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-SumTenths(10)  // => ~1.0  (within 1e-9)
-SumTenths(100) // => ~10.0 (within 1e-9)
+**Example 1:**
+
+```
+Input:  SumTenths(10)
+Output: ~1.0
+```
+
+**Example 2:**
+
+```
+Input:  SumTenths(3)
+Output: ~0.3
+```
+
+**Example 3:**
+
+```
+Input:  accumulator type
+Output: float64, not float32
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

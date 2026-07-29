@@ -11,14 +11,38 @@ Bucketing items by a key — the map-of-slices pattern.
 
 Implement `ByFirst(words)` grouping by first byte; skip empty words.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-ByFirst([]string{"apple","banana","avocado"})
-// => {'a':[apple avocado], 'b':[banana]}
+**Example 1:**
+
+```
+Input:  ["apple","banana","avocado","cherry",""]
+Output: {a:[apple,avocado], b:[banana], c:[cherry]}
 ```
 
+_Explanation:_ empty word skipped
+
+**Example 2:**
+
+```
+Input:  ["dog"]
+Output: {d:[dog]}
+```
+
+**Example 3:**
+
+```
+Input:  [""]
+Output: {}
+```
+
+_Explanation:_ only empty -> empty map
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

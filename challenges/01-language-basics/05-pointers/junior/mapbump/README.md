@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-BumpAll(map[string]*int{"a":&a}) // *m["a"]++
+**Example 1:**
+
+```
+Input:  a := 1; BumpAll(map[string]*int{"a": &a})
+Output: a == 2
+```
+
+**Example 2:**
+
+```
+Input:  a, b := 1, 2; BumpAll(m{"a":&a,"b":&b})
+Output: a == 2, b == 3
+```
+
+**Example 3:**
+
+```
+Input:  BumpAll(map[string]*int{})
+Output: no-op
 ```
 
 ## Topics to Master

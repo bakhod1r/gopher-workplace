@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-FirstByte("Xyz") // => 'X'
+**Example 1:**
+
+```
+Input:  FirstByte("Xyz")
+Output: 'X' (88)
+```
+
+**Example 2:**
+
+```
+Input:  FirstByte("abc")
+Output: 'a' (97)
+```
+
+**Example 3:**
+
+```
+Input:  FirstByte("0")
+Output: '0' (48)
 ```
 
 ## Topics to Master

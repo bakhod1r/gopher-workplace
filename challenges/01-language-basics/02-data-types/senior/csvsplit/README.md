@@ -14,14 +14,38 @@ quoted field.
 Fix the `case c == ','` guard between the markers in [csvsplit.go](csvsplit.go)
 so commas inside quotes are literal.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Split(`a,"b,c",d`) // => ["a", "b,c", "d"]
-Split(`"x""y",z`)  // => [`x"y`, "z"]
+**Example 1:**
+
+```
+Input:  a,b,c
+Output: ["a" "b" "c"]
 ```
 
+**Example 2:**
+
+```
+Input:  a,"b,c",d
+Output: ["a" "b,c" "d"]
+```
+
+_Explanation:_ comma inside quotes is literal
+
+**Example 3:**
+
+```
+Input:  "x""y",z
+Output: [x"y z]
+```
+
+_Explanation:_ doubled quote -> literal quote
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

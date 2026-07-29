@@ -12,16 +12,40 @@ Counting set bits (popcount) is a bit-manipulation staple. The trick
 
 Implement `Count(x)` returning the number of 1-bits.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Count(0)       // => 0
-Count(0b1011)  // => 3
-Count(0xFF)    // => 8
-Count(^uint64(0)) // => 64
+**Example 1:**
+
+```
+Input:  Count(0b1011)
+Output: 3
 ```
 
+_Explanation:_ three set bits
+
+**Example 2:**
+
+```
+Input:  Count(0xFF)
+Output: 8
+```
+
+_Explanation:_ all low 8 bits set
+
+**Example 3:**
+
+```
+Input:  Count(^uint64(0))
+Output: 64
+```
+
+_Explanation:_ every bit set
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

@@ -1,29 +1,39 @@
-# Letter Grade
+# Letter Grade Ladder
 
 **Level:** junior
-**Topic:** 01-language-basics → 04-conditionals
-**Estimated time:** 10 min
+**Topic:** 01-language-basics → 04-functions · _control-flow_
 
 ## Context
 
-A gradebook turns a numeric score into a letter. The natural tool is an
-`if / else if / else` ladder — but the branch order and the boundary
-comparisons decide whether an exact `90` is an `A` or slips to a `B`.
+An if / else-if / else ladder maps a numeric score to a letter, testing the highest threshold first so boundaries stay inclusive.
 
 ## Task
 
-Implement `Grade` in [grade.go](grade.go): 90+ `"A"`, 80+ `"B"`, 70+ `"C"`,
-60+ `"D"`, below 60 `"F"`. Boundaries are inclusive.
+Implement `Grade` in [grade.go](grade.go) mapping 0–100 to A–F.
 
 Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Grade(95) // => "A"
-Grade(90) // => "A"
-Grade(72) // => "C"
-Grade(59) // => "F"
+**Example 1:**
+
+```
+Input:  Grade(95)
+Output: "A"
+```
+
+**Example 2:**
+
+```
+Input:  Grade(70)
+Output: "C"
+```
+
+**Example 3:**
+
+```
+Input:  Grade(59)
+Output: "F"
 ```
 
 ## Topics to Master
@@ -32,19 +42,16 @@ Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|
-| 1 | **if / else if / else** | Branches are tested top to bottom; the first true one wins and the rest are skipped. |
-| 2 | **Branch ordering** | Check the highest threshold first, or a lower branch captures high scores too early. |
-| 3 | **Inclusive boundaries** | Use `>=`, not `>`, so an exact threshold like `90` lands in the right band. |
+| 1 | **if/else-if ladder** | Test thresholds high to low. |
+| 2 | **inclusive bounds** | `>= 90` catches exactly 90. |
+| 3 | **fallthrough default** | Below 60 is F. |
 
 ## Hint
 
-Order the tests high to low and compare with `>=`: `if score >= 90 { "A" }
-else if score >= 80 { "B" } …`, ending in an `else` for `"F"`.
+`if score >= 90 { return "A" } ... return "F"`.
 
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

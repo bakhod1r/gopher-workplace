@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-ElemSize(&[8]int32{}) // => 4
+**Example 1:**
+
+```
+Input:  ElemSize(&[8]int32{})
+Output: 4
+```
+
+**Example 2:**
+
+```
+Input:  ElemSize(&[8]int64{})
+Output: 8
+```
+
+**Example 3:**
+
+```
+Input:  ElemSize(&[2]byte{})
+Output: 1
 ```
 
 ## Topics to Master

@@ -14,15 +14,34 @@ iteration — the outer one never changes.
 Fix the single line between the markers in [accumulate.go](accumulate.go) so the
 outer `total` accumulates. Keep the signature and the surrounding code.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-SumPositive([]int{1,2,3})       // => 6
-SumPositive([]int{-1,5,-2,4})   // => 9
-SumPositive(nil)                // => 0
+**Example 1:**
+
+```
+Input:  SumPositive([1 2 3])
+Output: 6
+```
+
+**Example 2:**
+
+```
+Input:  SumPositive([1 -2 3])
+Output: 4
+```
+
+**Example 3:**
+
+```
+Input:  SumPositive(nil)
+Output: 0
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

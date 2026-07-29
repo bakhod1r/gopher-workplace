@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Parity(4)  // => "even"
-Parity(7)  // => "odd"
-Parity(-3) // => "odd"
+**Example 1:**
+
+```
+Input:  Parity(4)
+Output: "even"
+```
+
+**Example 2:**
+
+```
+Input:  Parity(7)
+Output: "odd"
+```
+
+**Example 3:**
+
+```
+Input:  Parity(0)
+Output: "even"
 ```
 
 ## Topics to Master

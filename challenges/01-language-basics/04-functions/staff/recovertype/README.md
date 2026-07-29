@@ -17,9 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Call(func(){ panic(errBoom) })   // => errBoom
-Call(func(){ panic("x") })       // => nil
+**Example 1:**
+
+```
+Input:  Call(func(){ panic(errBoom) })
+Output: errBoom
+```
+
+**Example 2:**
+
+```
+Input:  Call(func(){ panic("x") })
+Output: nil
+```
+
+**Example 3:**
+
+```
+Input:  Call(func(){})
+Output: nil
 ```
 
 ## Topics to Master

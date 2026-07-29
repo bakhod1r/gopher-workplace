@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 01-variables-and-constants
-**Estimated time:** 8 min
 
 ## Context
 
@@ -26,17 +25,29 @@ Implement [endpoint.go](endpoint.go) so that:
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-BaseURL         // => "https://api.example.com"
-Version         // => "v2"
-Root            // => "https://api.example.com/v2"
+**Example 1:**
 
-Path("users")   // => "https://api.example.com/v2/users"
-Path("orders")  // => "https://api.example.com/v2/orders"
-Path("users/42")// => "https://api.example.com/v2/users/42"
-Path("")        // => "https://api.example.com/v2"
+```
+Input:  Root
+Output: "https://api.example.com/v2"
+```
+
+**Example 2:**
+
+```
+Input:  Path("users")
+Output: "https://api.example.com/v2/users"
+```
+
+**Example 3:**
+
+```
+Input:  Path("")
+Output: "https://api.example.com/v2"
 ```
 
 ## Topics to Master
@@ -62,7 +73,5 @@ trailing slash for `Path("")`, which the tests reject.
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

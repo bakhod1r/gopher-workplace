@@ -14,13 +14,40 @@ sub-slice so append must reallocate.
 Fix the sub-slice between the markers in
 [appendcapshared.go](appendcapshared.go) to not share spare capacity.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-xs := []int{1,2,3} (cap>3); FirstTwoPlus(xs,99) // [1 2 99], xs[2] stays 3
+**Example 1:**
+
+```
+Input:  xs=[1,2,3], extra=9
+Output: [1,2,9]
 ```
 
+_Explanation:_ head is capped to len 2, so append allocates a new array; xs stays [1,2,3].
+
+**Example 2:**
+
+```
+Input:  xs=[5,6,7,8], extra=0
+Output: [5,6,0]
+```
+
+_Explanation:_ xs[2] must remain 7 afterwards.
+
+**Example 3:**
+
+```
+Input:  xs=[1,2], extra=3
+Output: [1,2,3]
+```
+
+_Explanation:_ No spare capacity so append reallocates anyway.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

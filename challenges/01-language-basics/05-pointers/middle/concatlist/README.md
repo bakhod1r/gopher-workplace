@@ -15,8 +15,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Concat(1->2, 3->4) // => 1->2->3->4
+**Example 1:**
+
+```
+Input:  Concat(1->2, 3->4)
+Output: 1->2->3->4
+```
+
+**Example 2:**
+
+```
+Input:  Concat(nil, 3->4)
+Output: 3->4
+```
+
+**Example 3:**
+
+```
+Input:  Concat(1->2, nil)
+Output: 1->2
 ```
 
 ## Topics to Master

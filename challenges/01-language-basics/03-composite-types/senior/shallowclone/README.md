@@ -14,13 +14,34 @@ original.
 Fix `Clone` between the markers in [shallowclone.go](shallowclone.go) to copy the
 `Tags` slice independently.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-c := Clone(orig); c.Tags[0]="MUT" // orig.Tags unchanged
+**Example 1:**
+
+```
+Input:  Doc{Title:A, Tags:[x,y]}
+Output: independent copy; mutating copy.Tags[0] doesn't affect original
+```
+
+**Example 2:**
+
+```
+Input:  Doc{Title:B, Tags:[]}
+Output: Doc{Title:B, Tags:[]}
+```
+
+**Example 3:**
+
+```
+Input:  Doc{Title:C, Tags:[t]}
+Output: Doc{Title:C, Tags:[t]}
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

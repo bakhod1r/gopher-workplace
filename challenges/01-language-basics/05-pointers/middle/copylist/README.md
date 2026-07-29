@@ -16,8 +16,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Copy(1->2->3) // independent 1->2->3
+**Example 1:**
+
+```
+Input:  c := Copy(1->2->3)
+Output: independent 1->2->3
+```
+
+_Explanation:_ Nodes are freshly allocated, not shared.
+
+**Example 2:**
+
+```
+Input:  Copy(nil)
+Output: nil
+```
+
+**Example 3:**
+
+```
+Input:  c := Copy(orig); c.Val = 9
+Output: orig.Val unchanged
 ```
 
 ## Topics to Master

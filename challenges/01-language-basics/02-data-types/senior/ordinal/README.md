@@ -13,15 +13,36 @@ so it wrongly prints `11st, 12nd, 13rd` — but 11–13 are always `th`.
 Fix the `switch` between the markers in [ordinal.go](ordinal.go) so 11–13 (and
 111–113, etc.) use `"th"`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Format(11)  // => "11th"
-Format(21)  // => "21st"
-Format(113) // => "113th"
+**Example 1:**
+
+```
+Input:  21
+Output: "21st"
+```
+
+**Example 2:**
+
+```
+Input:  11
+Output: "11th"
+```
+
+_Explanation:_ teens exception
+
+**Example 3:**
+
+```
+Input:  112
+Output: "112th"
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

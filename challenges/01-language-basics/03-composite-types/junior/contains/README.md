@@ -12,15 +12,36 @@ find it.
 
 Implement `Contains(xs, target)`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Contains([]string{"a","b"}, "a") // => true
-Contains([]string{"a","b"}, "z") // => false
-Contains(nil, "x")               // => false
+**Example 1:**
+
+```
+Input:  xs=["a","b","c"], target="a"
+Output: true
 ```
 
+**Example 2:**
+
+```
+Input:  xs=["a","b","c"], target="z"
+Output: false
+```
+
+**Example 3:**
+
+```
+Input:  xs=nil, target="x"
+Output: false
+```
+
+_Explanation:_ Ranging a nil slice never executes the loop body.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

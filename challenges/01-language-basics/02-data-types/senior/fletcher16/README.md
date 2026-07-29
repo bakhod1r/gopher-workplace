@@ -14,19 +14,42 @@ reference implementation and the bootloader rejects valid images.
 Fix the two modulus operations between the markers in
 [fletcher16.go](fletcher16.go) to use `255`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Checksum([]byte("abcde")) // => 0xC8F0
+**Example 1:**
+
+```
+Input:  "abcde"
+Output: 0xC8F0
 ```
 
+**Example 2:**
+
+```
+Input:  ""
+Output: 0x0000
+```
+
+**Example 3:**
+
+```
+Input:  "a"
+Output: 0x6161
+```
+
+_Explanation:_ sum1=sum2=97
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|
 | 1 | **Fletcher sums** | Two accumulators, one of running totals. |
 | 2 | **Modulus 255** | The algorithm specifies mod 255, not 256. |
-| 3 | **Combine** | `(sum2 << 8) | sum1`. |
+| 3 | **Combine** | `(sum2 << 8) |
 
 ## Hint
 

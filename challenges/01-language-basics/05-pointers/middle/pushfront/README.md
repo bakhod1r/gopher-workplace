@@ -16,8 +16,29 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-PushFront(1->2, 0) // => 0->1->2
+**Example 1:**
+
+```
+Input:  PushFront(1->2, 0)
+Output: 0->1->2
+```
+
+_Explanation:_ A new node points at the old head, becoming the new head.
+
+**Example 2:**
+
+```
+Input:  PushFront(nil, 5)
+Output: 5
+```
+
+_Explanation:_ Prepending to an empty list yields a single node.
+
+**Example 3:**
+
+```
+Input:  PushFront(9, 7)
+Output: 7->9
 ```
 
 ## Topics to Master

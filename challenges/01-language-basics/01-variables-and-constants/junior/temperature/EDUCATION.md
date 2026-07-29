@@ -1,6 +1,6 @@
 # Untyped constants and constant kinds
 
-## The idea
+## Intuition
 
 An untyped constant has no type — it has a **kind**: integer, float, rune,
 string, bool, complex. The kind decides how arithmetic behaves; the type is
@@ -59,7 +59,26 @@ typed variable.
 One float operand is enough: mixing kinds in a constant expression promotes to
 the "wider" one (integer → rune → float → complex).
 
-## Watch out
+## Approach
+
+1. Use floating-point arithmetic so `9/5` is 1.8, not 1.
+2. Compute `c*9.0/5.0 + 32`.
+
+## Solution
+
+```go
+const freezingF = 32
+
+func CToF(c float64) float64 {
+	return c*9.0/5.0 + freezingF
+}
+```
+
+## Walkthrough
+
+`CToF(100)`: `100*1.8 = 180`, plus 32 → 212. Integer `9/5` would truncate to 1 and break it.
+
+## Pitfalls
 
 - Give a constant a type only when you want to *restrict* it. `const ratio
   float64 = 1.8` is fine here; `const n int = 3` stops `n` being used as a
@@ -69,15 +88,3 @@ the "wider" one (integer → rune → float → complex).
   is `c * 1`.
 - Integer division truncates toward zero, it does not round: `7/2 == 3`,
   `-7/2 == -3`.
-
-## Try it yourself
-
-```go
-const a = 9 / 5        // 1
-const b = 9.0 / 5.0    // 1.8
-fmt.Println(a, b)      // 1 1.8
-
-c := 100.0
-fmt.Println(c*9/5 + 32)     // 212
-fmt.Println(c*(9/5) + 32)   // 132  — the constant division ran first
-```

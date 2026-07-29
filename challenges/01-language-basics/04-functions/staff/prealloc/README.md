@@ -17,9 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Doubles(3) // => [2 4 6]
-Doubles(0) // => []
+**Example 1:**
+
+```
+Input:  Doubles(3)
+Output: [2 4 6]
+```
+
+**Example 2:**
+
+```
+Input:  Doubles(0)
+Output: []
+```
+
+**Example 3:**
+
+```
+Input:  Doubles(1)
+Output: [2]
 ```
 
 ## Topics to Master

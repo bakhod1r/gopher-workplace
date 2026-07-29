@@ -15,16 +15,34 @@ In [temp.go](temp.go):
 1. Define `AbsoluteZero Celsius = -273.15` and `Boiling Celsius = 100`.
 2. Implement `Valid(c)` returning true when `c >= AbsoluteZero`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-AbsoluteZero      // => -273.15
-Valid(-300)       // => false
-Valid(0)          // => true
-Valid(Boiling)    // => true
+**Example 1:**
+
+```
+Input:  Valid(-273.15)
+Output: true
+```
+
+**Example 2:**
+
+```
+Input:  Valid(-300)
+Output: false
+```
+
+**Example 3:**
+
+```
+Input:  Valid(100)
+Output: true
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

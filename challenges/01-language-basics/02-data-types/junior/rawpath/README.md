@@ -13,14 +13,40 @@ must be doubled; a raw `` `...` `` literal takes the characters verbatim.
 Implement `TempPath()` returning `C:\Users\temp\log.txt` using a **raw** string
 literal (backticks).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-TempPath() // => `C:\Users\temp\log.txt`
-len(TempPath()) // => 21
+**Example 1:**
+
+```
+Input:  TempPath()
+Output: C:\Users\temp\log.txt
 ```
 
+_Explanation:_ Raw literal keeps every backslash verbatim.
+
+**Example 2:**
+
+```
+Input:  len(TempPath())
+Output: 21
+```
+
+_Explanation:_ Three literal single-byte backslashes, no escaping.
+
+**Example 3:**
+
+```
+Input:  TempPath() equals the escaped form
+Output: true
+```
+
+_Explanation:_ Equal to "C:\\Users\\temp\\log.txt".
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

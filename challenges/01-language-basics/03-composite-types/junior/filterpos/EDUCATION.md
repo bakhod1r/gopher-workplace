@@ -1,6 +1,6 @@
 # Building slices with append
 
-## The idea
+## Intuition
 
 `append` adds to a slice and returns a (possibly relocated) new header — always
 assign the result back:
@@ -12,13 +12,31 @@ for _, x := range xs {
 }
 ```
 
-## Why it matters
+## Approach
 
-Filter/map/collect all build a result incrementally with `append`. Forgetting to
-capture `append`'s return, or starting from `nil` when the caller distinguishes
-nil from empty, are common slice bugs.
+1. Start with an empty (non-nil) result slice.
+2. Range xs; append only elements with x > 0.
+3. Return result, preserving original order.
 
-## Watch out
+## Solution
+
+```go
+func Positives(xs []int) []int {
+	result := []int{}
+	for _, x := range xs {
+		if x > 0 {
+			result = append(result, x)
+		}
+	}
+	return result
+}
+```
+
+## Walkthrough
+
+Positives([1,-2,3,0,4]): 1>0 keep; -2 drop; 3 keep; 0 drop; 4 keep -> [1,3,4].
+
+## Pitfalls
 
 - `append(s, x)` may reallocate; the returned slice is authoritative.
 - `[]int{}` is non-nil length 0; `var out []int` is nil — pick per the test/spec.

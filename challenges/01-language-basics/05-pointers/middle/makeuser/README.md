@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-NewUser("ann", 30) // => &User{Name:"ann", Age:30}
+**Example 1:**
+
+```
+Input:  NewUser("ann", 30)
+Output: &User{Name:"ann", Age:30}
+```
+
+**Example 2:**
+
+```
+Input:  u := NewUser("x", 0); u != nil
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  NewUser("", -1)
+Output: &User{Name:"", Age:-1}
 ```
 
 ## Topics to Master

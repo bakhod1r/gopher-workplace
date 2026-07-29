@@ -1,14 +1,29 @@
 # Struct identity via pointers
 
-## The idea
+## Intuition
 
 Pointer `==` compares addresses, distinguishing two structurally-equal instances.
 
-## Why it matters
+## Approach
 
-Identity checks power caches, sets of objects, and cycle detection.
+1. Compare the pointers with `==`.
+2. True only when both name the same struct in memory.
 
-## Watch out
+## Solution
+
+```go
+type Cart struct{ Count int }
+
+func Same(a, b *Cart) bool {
+	return a == b
+}
+```
+
+## Walkthrough
+
+`Same(c, c)` compares one address to itself → `true`. Two `&Cart{}` literals allocate distinct structs → `false`.
+
+## Pitfalls
 
 - `*a == *b` compares fields; `a == b` compares identity.
 - Distinct `&Cart{}` values are never equal pointers.

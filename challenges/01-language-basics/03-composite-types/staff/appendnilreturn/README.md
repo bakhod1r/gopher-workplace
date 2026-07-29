@@ -14,13 +14,36 @@ element.
 Remove the unnecessary guard between the markers in
 [appendnilreturn.go](appendnilreturn.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Add(nil, 5) // => [5]
+**Example 1:**
+
+```
+Input:  s=nil, x=5
+Output: [5]
+```
+
+_Explanation:_ append to a nil slice allocates a new one-element slice.
+
+**Example 2:**
+
+```
+Input:  s=[1 2], x=3
+Output: [1 2 3]
+```
+
+**Example 3:**
+
+```
+Input:  s=[], x=7
+Output: [7]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

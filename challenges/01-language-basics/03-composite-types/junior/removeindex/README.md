@@ -11,14 +11,36 @@ Deleting an element while keeping order uses the append-of-two-halves idiom.
 
 Implement `RemoveAt(xs, i)`; out-of-range `i` returns `xs` unchanged.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-RemoveAt([]int{1,2,3,4}, 1) // => [1 3 4]
-RemoveAt([]int{1,2,3}, 5)   // => [1 2 3]
+**Example 1:**
+
+```
+Input:  xs=[1,2,3,4], i=1
+Output: []int{1,3,4}
 ```
 
+**Example 2:**
+
+```
+Input:  xs=[1,2,3], i=0
+Output: []int{2,3}
+```
+
+**Example 3:**
+
+```
+Input:  xs=[1,2,3], i=5
+Output: []int{1,2,3}
+```
+
+_Explanation:_ Out-of-range index returns xs unchanged.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

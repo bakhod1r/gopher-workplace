@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Repeat(inc, 3)(0) // => 3
-Repeat(inc, 0)(9) // => 9
-Repeat(dbl, 2)(1) // => 4
+**Example 1:**
+
+```
+Input:  Repeat(inc, 3)(0)
+Output: 3
+```
+
+**Example 2:**
+
+```
+Input:  Repeat(double, 2)(1)
+Output: 4
+```
+
+**Example 3:**
+
+```
+Input:  Repeat(inc, 0)(5)
+Output: 5
 ```
 
 ## Topics to Master

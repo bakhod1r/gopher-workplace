@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-DivMod(7, 3)  // => 2, 1
-DivMod(10, 5) // => 2, 0
-DivMod(9, 4)  // => 2, 1
+**Example 1:**
+
+```
+Input:  DivMod(17, 5)
+Output: 3, 2
+```
+
+**Example 2:**
+
+```
+Input:  DivMod(10, 2)
+Output: 5, 0
+```
+
+**Example 3:**
+
+```
+Input:  DivMod(4, 5)
+Output: 0, 4
 ```
 
 ## Topics to Master

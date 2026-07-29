@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-CharAt("héllo", 2) // => 'l'
-CharAt("日本語", 1) // => '本'
+**Example 1:**
+
+```
+Input:  CharAt("héllo", 2)
+Output: 'l'
+```
+
+**Example 2:**
+
+```
+Input:  CharAt("日本語", 1)
+Output: '本'
+```
+
+**Example 3:**
+
+```
+Input:  CharAt("abc", 0)
+Output: 'a'
 ```
 
 ## Topics to Master

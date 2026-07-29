@@ -13,13 +13,36 @@ the same index, so the second overwrites the first — `b` ends up `[1 2 4]`.
 Fix the base between the markers in
 [appendtwobranch.go](appendtwobranch.go) so the two appends don't alias.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-b, c := Branch([1,2](cap>2), 3, 4) // b=[1 2 3], c=[1 2 4]
+**Example 1:**
+
+```
+Input:  a=[1 2] (cap 10), x=3, y=4
+Output: b=[1 2 3], c=[1 2 4]
+```
+
+_Explanation:_ each branch must not reuse a's spare capacity, or the second append overwrites the first.
+
+**Example 2:**
+
+```
+Input:  b after Branch
+Output: [1 2 3]
+```
+
+**Example 3:**
+
+```
+Input:  c after Branch
+Output: [1 2 4]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-DupAll([3 5]) // => [3 6 5 10]
+**Example 1:**
+
+```
+Input:  DupAll([3 5])
+Output: [3 6 5 10]
+```
+
+**Example 2:**
+
+```
+Input:  DupAll([1])
+Output: [1 2]
+```
+
+**Example 3:**
+
+```
+Input:  DupAll(nil)
+Output: []
 ```
 
 ## Topics to Master

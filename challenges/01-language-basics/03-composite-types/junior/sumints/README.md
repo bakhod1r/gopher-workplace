@@ -11,15 +11,34 @@ The most basic slice operation: walk it and accumulate.
 
 Implement `Sum(xs)` returning the total; empty/nil → 0.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Sum([]int{1,2,3}) // => 6
-Sum(nil)          // => 0
-Sum([]int{-5,5})  // => 0
+**Example 1:**
+
+```
+Input:  []int{1,2,3}
+Output: 6
+```
+
+**Example 2:**
+
+```
+Input:  nil
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  []int{-5,5}
+Output: 0
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-FizzBuzz(3)  // => "Fizz"
-FizzBuzz(5)  // => "Buzz"
-FizzBuzz(15) // => "FizzBuzz"
+**Example 1:**
+
+```
+Input:  FizzBuzz(15)
+Output: "FizzBuzz"
+```
+
+**Example 2:**
+
+```
+Input:  FizzBuzz(9)
+Output: "Fizz"
+```
+
+**Example 3:**
+
+```
+Input:  FizzBuzz(7)
+Output: "7"
 ```
 
 ## Topics to Master

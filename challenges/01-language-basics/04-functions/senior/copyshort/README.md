@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Clone([1 2 3]) // => [1 2 3], independent
+**Example 1:**
+
+```
+Input:  Clone([1 2 3])
+Output: [1 2 3], independent
+```
+
+**Example 2:**
+
+```
+Input:  len(Clone([1 2 3]))
+Output: 3
+```
+
+**Example 3:**
+
+```
+Input:  Clone(nil)
+Output: []
 ```
 
 ## Topics to Master

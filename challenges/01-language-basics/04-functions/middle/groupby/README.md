@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-GroupBy([]int{1,2,3,4}, mod2) // => {0:[2 4], 1:[1 3]}
-GroupBy(nil, k)               // => map[]
+**Example 1:**
+
+```
+Input:  GroupBy([1 2 3 4], mod2)
+Output: {0:[2 4], 1:[1 3]}
+```
+
+**Example 2:**
+
+```
+Input:  GroupBy(nil, mod2)
+Output: {}
+```
+
+**Example 3:**
+
+```
+Input:  GroupBy([2 4], mod2)
+Output: {0:[2 4]}
 ```
 
 ## Topics to Master

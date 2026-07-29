@@ -17,8 +17,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-get := Getter(a); a.Balance = 250; get() // => 250
+**Example 1:**
+
+```
+Input:  get := Getter(a); a.Balance = 250; get()
+Output: 250
+```
+
+_Explanation:_ The closure must observe later mutations.
+
+**Example 2:**
+
+```
+Input:  a := &Account{Balance: 100}; Getter(a)()
+Output: 100
+```
+
+**Example 3:**
+
+```
+Input:  get := Getter(a); a.Balance = 0; get()
+Output: 0
 ```
 
 ## Topics to Master

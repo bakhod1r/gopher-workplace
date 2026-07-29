@@ -16,8 +16,29 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-SwapHead(1->2->3) // => 2->1->3
+**Example 1:**
+
+```
+Input:  SwapHead(1->2->3)
+Output: 2->1->3
+```
+
+_Explanation:_ The first two nodes swap; the tail is untouched.
+
+**Example 2:**
+
+```
+Input:  SwapHead(1)
+Output: 1
+```
+
+_Explanation:_ Fewer than two nodes → unchanged.
+
+**Example 3:**
+
+```
+Input:  SwapHead(nil)
+Output: nil
 ```
 
 ## Topics to Master

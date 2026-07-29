@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 03-composite-types
-**Estimated time:** 10 min
 
 ## Context
 
@@ -18,12 +17,29 @@ for `nil` or empty input.
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Count([]string{"a", "b", "a"}) // => map[string]int{"a": 2, "b": 1}
-Count([]string{"x"})           // => map[string]int{"x": 1}
-Count(nil)                     // => map[string]int{}
+**Example 1:**
+
+```
+Input:  ["a","b","a"]
+Output: {"a":2,"b":1}
+```
+
+**Example 2:**
+
+```
+Input:  ["x"]
+Output: {"x":1}
+```
+
+**Example 3:**
+
+```
+Input:  nil
+Output: {} (empty, non-nil)
 ```
 
 ## Topics to Master
@@ -45,7 +61,5 @@ increment work without a special first-time case.
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

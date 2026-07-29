@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 02-data-types
-**Estimated time:** 10 min
 
 ## Context
 
@@ -22,13 +21,45 @@ integer part of `amount`:
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-WholePart(9.99)  // => 9
-WholePart(-9.99) // => -9
-WholePart(4.0)   // => 4
+**Example 1:**
+
 ```
+Input:  WholePart(9.99)
+Output: 9
+```
+
+_Explanation:_ float->int truncates toward zero, dropping .99.
+
+**Example 2:**
+
+```
+Input:  WholePart(-9.99)
+Output: -9
+```
+
+_Explanation:_ Truncation is toward zero, not floor.
+
+**Example 3:**
+
+```
+Input:  WholePart(0.999)
+Output: 0
+```
+
+_Explanation:_ Fraction dropped.
+
+**Example 4:**
+
+```
+Input:  WholePart(12345.678)
+Output: 12345
+```
+
+_Explanation:_ Whole part kept.
 
 ## Topics to Master
 
@@ -49,7 +80,5 @@ which is exactly what a `float64`→`int` conversion already does.
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

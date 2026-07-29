@@ -11,14 +11,34 @@ Collapsing runs of equal values (e.g. deduping a sorted list) in one pass.
 
 Implement `Dedupe(xs)` collapsing consecutive duplicates.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Dedupe([]int{1,1,2,3,3,3,4}) // => [1 2 3 4]
-Dedupe([]int{5,5,5})         // => [5]
+**Example 1:**
+
+```
+Input:  [1,1,2,3,3,3,4]
+Output: [1,2,3,4]
+```
+
+**Example 2:**
+
+```
+Input:  [5,5,5]
+Output: [5]
+```
+
+**Example 3:**
+
+```
+Input:  []
+Output: []
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

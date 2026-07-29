@@ -14,13 +14,36 @@ bool` forces the `int64` to an 8-byte boundary and pads the trailing bool, givin
 Reorder the fields between the markers in
 [structpadding.go](structpadding.go) to minimize size (16 bytes on 64-bit).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-unsafe.Sizeof(Record{}) // must be 16
+**Example 1:**
+
+```
+Input:  fields A bool, B int64, C bool
+Output: size 24 (bloated)
 ```
 
+**Example 2:**
+
+```
+Input:  fields B int64, A bool, C bool
+Output: size 16 (minimal)
+```
+
+**Example 3:**
+
+```
+Input:  unsafe.Sizeof(Record{})
+Output: 16
+```
+
+_Explanation:_ grouping the two bools after the int64 removes padding.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

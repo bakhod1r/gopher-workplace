@@ -1,6 +1,6 @@
 # Membership by linear scan
 
-## The idea
+## Intuition
 
 For an unsorted slice, membership is a linear scan with an early return:
 
@@ -11,18 +11,30 @@ for _, x := range xs {
 return false
 ```
 
-## Why it matters
+## Approach
 
-It is the simplest search and the basis for filtering and dedup. For large or
-hot lookups you'd switch to a `map[T]struct{}` set (O(1)); for small slices a
-scan is fine and allocation-free.
+1. Range over xs.
+2. Compare each element to target; return true on the first match.
+3. If the loop finishes with no match, return false.
 
-## Why the standard library
+## Solution
 
-`slices.Contains` (Go 1.21+) does exactly this; hand-writing it shows the
-early-return pattern.
+```go
+func Contains(xs []string, target string) bool {
+	for _, x := range xs {
+		if x == target {
+			return true
+		}
+	}
+	return false
+}
+```
 
-## Watch out
+## Walkthrough
+
+Contains(["a","b","c"],"c"): "a"!="c", "b"!="c", "c"=="c" -> return true.
+
+## Pitfalls
 
 - Return `false` only after the whole loop — not inside it.
 - `==` must be defined for the element type (strings, numbers, comparable

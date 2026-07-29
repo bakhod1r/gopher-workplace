@@ -1,14 +1,29 @@
 # Value receivers and immutability
 
-## The idea
+## Intuition
 
 A value-receiver method works on a copy; returning a new value keeps the original immutable — natural for small value types.
 
-## Why it matters
+## Approach
 
-Immutable value semantics (points, complex numbers, money) use value receivers that return new values.
+1. A value receiver is fine: we return a new `Point`, not mutate.
+2. Multiply each field by `k` and construct the result.
 
-## Watch out
+## Solution
+
+```go
+type Point struct{ X, Y int }
+
+func (p Point) Scaled(k int) Point {
+	return Point{X: p.X * k, Y: p.Y * k}
+}
+```
+
+## Walkthrough
+
+`Point{1,2}.Scaled(3)` returns `Point{3, 6}`; the original is unchanged because the receiver is a copy.
+
+## Pitfalls
 
 - Mutating `p` inside a value receiver changes only the copy.
 - Return a new struct to express a transform.

@@ -13,16 +13,40 @@ digit`. A character's digit value is `c - '0'`.
 Implement `Parse(s)` (optional leading `-`), returning `(value, ok)`; `ok=false`
 on any non-digit. Don't use `strconv`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Parse("42")  // => 42, true
-Parse("-17") // => -17, true
-Parse("1a")  // => 0, false
-Parse("")    // => 0, false
+**Example 1:**
+
+```
+Input:  Parse("42")
+Output: (42, true)
 ```
 
+_Explanation:_ digit-by-digit: 4, then 4*10+2=42
+
+**Example 2:**
+
+```
+Input:  Parse("-17")
+Output: (-17, true)
+```
+
+_Explanation:_ leading '-' sets sign, magnitude 17 negated
+
+**Example 3:**
+
+```
+Input:  Parse("1a")
+Output: (0, false)
+```
+
+_Explanation:_ 'a' is not a digit -> invalid
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

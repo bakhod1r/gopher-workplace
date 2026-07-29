@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Add(g, "a", "b") then g["a"]["b"] == true
+**Example 1:**
+
+```
+Input:  Add(g, "a", "b"); g["a"]["b"]
+Output: true
+```
+
+**Example 2:**
+
+```
+Input:  Add on empty graph
+Output: no panic
+```
+
+**Example 3:**
+
+```
+Input:  Add(g, "a", "c") after "a","b"
+Output: both present
 ```
 
 ## Topics to Master

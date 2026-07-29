@@ -1,14 +1,33 @@
 # Currying with nested closures
 
-## The idea
+## Intuition
 
 Each closure captures its argument and returns the next; the innermost sees the whole accumulated environment.
 
-## Why it matters
+## Approach
 
-Currying underlies configurable builders and some functional APIs.
+1. Return nested closures, each capturing one argument.
+2. The innermost sums all three.
 
-## Watch out
+## Solution
+
+```go
+func Add3() func(int) func(int) func(int) int {
+	return func(a int) func(int) func(int) int {
+		return func(b int) func(int) int {
+			return func(c int) int {
+				return a + b + c
+			}
+		}
+	}
+}
+```
+
+## Walkthrough
+
+`Add3()(1)(2)(3)` captures 1, then 2, then adds 3 → 6.
+
+## Pitfalls
 
 - Every inner closure captures its enclosing arguments by reference.
 - The type signature nests exactly as the calls do.

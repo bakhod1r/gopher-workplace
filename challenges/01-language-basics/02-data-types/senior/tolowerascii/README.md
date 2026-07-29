@@ -14,14 +14,36 @@ too, corrupting the text.
 Fix the condition between the markers in [tolowerascii.go](tolowerascii.go) to
 bound `A..Z`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Lower("Hello") // => "hello"
-Lower("a[b]")  // => "a[b]"  (brackets unchanged)
+**Example 1:**
+
+```
+Input:  "Hello"
+Output: "hello"
+```
+
+**Example 2:**
+
+```
+Input:  "a[b]"
+Output: "a[b]"
+```
+
+_Explanation:_ '[' just past 'Z' must stay
+
+**Example 3:**
+
+```
+Input:  "MixED_case"
+Output: "mixed_case"
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

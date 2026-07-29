@@ -12,15 +12,40 @@ reverse, convert back.
 
 Implement `Reverse(s)` reversing runes, keeping characters intact.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Reverse("hello") // => "olleh"
-Reverse("café")  // => "éfac"
-Reverse("日本語") // => "語本日"
+**Example 1:**
+
+```
+Input:  Reverse("hello")
+Output: "olleh"
 ```
 
+_Explanation:_ ASCII reversal
+
+**Example 2:**
+
+```
+Input:  Reverse("café")
+Output: "éfac"
+```
+
+_Explanation:_ é kept intact (rune-aware)
+
+**Example 3:**
+
+```
+Input:  Reverse("日本語")
+Output: "語本日"
+```
+
+_Explanation:_ multi-byte kanji reversed as whole runes
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

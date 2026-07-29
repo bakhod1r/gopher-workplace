@@ -87,6 +87,7 @@ _template/
   puzzle.go.tmpl     doc comment + implement-from-scratch stub (see §5e)
   puzzle_test.go.tmpl  red-until-fixed table tests
   README.tmpl.md     Context / Task / Examples(≥3) / Topics to Master / hint
+  EDUCATION.md       Intuition / Approach / Solution / Walkthrough / Pitfalls (§5g)
 ```
 
 Placeholders:
@@ -272,6 +273,58 @@ Guidance:
 - Exemplars: `byteunits` (must use `iota`), `temperature` (`CToF` must use its
   input `c`).
 
+## 5g. README examples + EDUCATION.md (LeetCode style) — required
+
+Every puzzle ships a `README.md` and an `EDUCATION.md`, both in the fixed shape
+below. This is enforced, not optional.
+
+**README `## Examples` — at least 3.** Each example is its own block:
+
+```
+**Example 1:**
+
+​```
+Input:  Call(args)
+Output: result
+​```
+
+_Explanation:_ one line (optional, but include it where it clarifies).
+```
+
+Use concrete values drawn from the tests; cover the interesting edge (empty,
+wrap, boundary, error). Fewer than 3 examples is a defect — the generator raises.
+
+**EDUCATION.md — exactly these five sections, in order:**
+
+```
+# <concept title>
+
+## Intuition
+Why the concept exists, in plain words.
+
+## Approach
+1. numbered steps a solver follows.
+
+## Solution
+​```go
+<the full, correct solution — the whole function(s), gofmt-clean>
+​```
+
+## Walkthrough
+A concrete trace of one example, step by step.
+
+## Pitfalls
+- the traps; for a planted-bug puzzle, name the bug and the fix.
+```
+
+Rules:
+- The **Solution** block is the real, verified green code (stub implemented, or
+  the one-line bug fixed). Strip `// CHANGE CODE …` markers and narration
+  comments — the prose explains; the code just shows the answer.
+- **Intuition** ← the idea; **Pitfalls** ← the traps. No "Why it matters" / "Try
+  it yourself" sections (the old shape is retired).
+- EDUCATION is not copyable in the UI; it is there to be read and retyped.
+
 ## 6. Conventions carried from the exemplar
 
 - One authoring mode per puzzle (§5e): from-scratch stub *or* one planted bug
@@ -279,4 +332,6 @@ Guidance:
 - Do not change the function signature or the tests in the task.
 - README **Topics to Master** lists only covered-set + target concepts.
 - No `SOLUTION.md`; no roadmap-path references in READMEs.
+- README has ≥3 LeetCode-style examples; EDUCATION has the five §5g sections with
+  the full verified solution. Both required on every puzzle.
 - Each puzzle is its own module (own `go.mod`), `go 1.26`.

@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Head([1 2 3 4 5], 2) then append(h,99) leaves xs[2]==3
+**Example 1:**
+
+```
+Input:  h := Head([1 2 3 4 5], 2); append(h, 99)
+Output: xs[2] stays 3
+```
+
+**Example 2:**
+
+```
+Input:  cap(Head(xs, 2))
+Output: 2
+```
+
+**Example 3:**
+
+```
+Input:  append reallocates
+Output: true
 ```
 
 ## Topics to Master

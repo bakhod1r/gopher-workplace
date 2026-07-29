@@ -11,14 +11,34 @@ The inverse of split: glue parts with a separator, but not before the first.
 
 Implement `Join(parts, sep)` without `strings.Join`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Join([]string{"a","b","c"}, ",") // => "a,b,c"
-Join([]string{"x"}, ",")         // => "x"
+**Example 1:**
+
+```
+Input:  ["a","b","c"], sep=","
+Output: "a,b,c"
+```
+
+**Example 2:**
+
+```
+Input:  ["x"], sep=","
+Output: "x"
+```
+
+**Example 3:**
+
+```
+Input:  [], sep=","
+Output: ""
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

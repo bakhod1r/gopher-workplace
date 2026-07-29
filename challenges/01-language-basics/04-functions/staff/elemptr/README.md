@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-BumpHead(9) // => [42 9]
+**Example 1:**
+
+```
+Input:  BumpHead(9)
+Output: [42 9]
+```
+
+**Example 2:**
+
+```
+Input:  write lands on element 0
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  pointer re-taken after grow
+Output: true
 ```
 
 ## Topics to Master

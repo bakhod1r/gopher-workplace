@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 01-variables-and-constants
-**Estimated time:** 10 min
 
 ## Context
 
@@ -31,19 +30,32 @@ would make an absurdly large batch "fit".
 
 Do **not** change the function signatures or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Fits(0)     // => true
-Fits(200)   // => true   (exactly the limit)
-Fits(201)   // => false
-Fits(256)   // => false  (byte(256) == 0 would wrongly say true)
-Fits(-1)    // => false
+**Example 1:**
 
-Budget(1.5) // => 4.5
-Budget(1)   // => 3
-Budget(0)   // => 0
 ```
+Input:  Fits(200)
+Output: true
+```
+
+**Example 2:**
+
+```
+Input:  Fits(201)
+Output: false
+```
+
+**Example 3:**
+
+```
+Input:  Budget(1.5)
+Output: 4.5
+```
+
+_Explanation:_ Untyped Retries multiplies a float64 directly.
 
 ## Topics to Master
 
@@ -69,7 +81,5 @@ the other way instead, `int(MaxBatch)`, and nothing wraps.
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

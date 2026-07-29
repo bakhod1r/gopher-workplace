@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 01-variables-and-constants
-**Estimated time:** 5 min
 
 ## Context
 
@@ -19,11 +18,31 @@ Declare the `MaxRetries` constant in [retries.go](retries.go) so that:
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-MaxRetries // => 3
-Budget()   // => 4
+**Example 1:**
+
+```
+Input:  MaxRetries
+Output: 3
+```
+
+**Example 2:**
+
+```
+Input:  Budget()
+Output: 4
+```
+
+_Explanation:_ First attempt plus 3 retries.
+
+**Example 3:**
+
+```
+Input:  type of MaxRetries
+Output: untyped int constant
 ```
 
 ## Topics to Master
@@ -44,7 +63,5 @@ digit, which is `51`. Drop the quotes so it is the integer `3`.
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

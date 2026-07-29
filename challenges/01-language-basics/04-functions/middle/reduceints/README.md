@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Reduce([]int{1,2,3,4}, 0, add) // => 10
-Reduce([]int{1,2,3,4}, 1, mul) // => 24
-Reduce(nil, 5, add)            // => 5
+**Example 1:**
+
+```
+Input:  Reduce([1 2 3 4], 0, add)
+Output: 10
+```
+
+**Example 2:**
+
+```
+Input:  Reduce([1 2 3], 1, mul)
+Output: 6
+```
+
+**Example 3:**
+
+```
+Input:  Reduce(nil, 5, add)
+Output: 5
 ```
 
 ## Topics to Master

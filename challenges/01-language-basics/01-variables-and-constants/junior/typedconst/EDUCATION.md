@@ -1,6 +1,6 @@
 # Typed vs untyped constants
 
-## The idea
+## Intuition
 
 A constant may be declared with a type or without one, and the two behave very
 differently at the point of use.
@@ -67,7 +67,34 @@ b := byte(n)            // no error: runtime conversion, wraps to 44
 Same-looking code, opposite outcome — the difference is whether the value is a
 constant.
 
-## Watch out
+## Approach
+
+1. `MaxBatch byte = 200` is typed; comparing with an `int` needs `int(MaxBatch)`.
+2. `Retries = 3` is untyped; it adapts to float64 in `Budget`.
+3. `Fits` guards negatives.
+
+## Solution
+
+```go
+const (
+	MaxBatch byte = 200
+	Retries       = 3
+)
+
+func Fits(n int) bool {
+	return n >= 0 && n <= int(MaxBatch)
+}
+
+func Budget(base float64) float64 {
+	return base * Retries
+}
+```
+
+## Walkthrough
+
+`Fits(200)` converts `MaxBatch` to int and compares; `Budget(1.5)` multiplies by the untyped 3 → 4.5 with no conversion.
+
+## Pitfalls
 
 - `byte` is an alias for `uint8`, `rune` for `int32`. Aliases are the *same*
   type, so no conversion is needed between `byte` and `uint8`.
@@ -75,18 +102,3 @@ constant.
   expression and overflows at 400 → 144.
 - Do not sprinkle conversions to silence the compiler. Each one is a claim that
   the value fits; make sure it does.
-
-## Try it yourself
-
-```go
-const Typed byte = 200
-const Untyped = 200
-
-var a float64 = Untyped        // fine
-// var b float64 = Typed       // compile error
-var b float64 = float64(Typed) // fine, explicit
-
-fmt.Println(byte(256), byte(456))   // 0 200
-fmt.Println(int(Typed) + 100)       // 300
-fmt.Println(Typed + 100)            // 44 — wrapped inside a byte
-```

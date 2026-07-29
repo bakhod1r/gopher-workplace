@@ -1,6 +1,6 @@
 # Multiple assignment
 
-## The idea
+## Intuition
 
 Go assigns in two phases. First it evaluates **every** expression on the right of
 the `=`, then it copies those results into the operands on the left. Nothing on
@@ -21,25 +21,23 @@ a = b
 b = tmp
 ```
 
-## Why it matters
+## Approach
 
-The two-phase rule holds for any number of operands, which makes rotations and
-shifts read as one statement:
+1. Return the arguments reversed: `return b, a`.
 
-```go
-x, y, z = y, z, x     // rotate left
-first, rest = rest, first
-```
-
-It also protects you from a class of bug that plagues sequential assignment:
+## Solution
 
 ```go
-// sequential — broken
-a = b   // a is now b; the old a is gone
-b = a   // b gets b, not the old a
+func Swap(a, b int) (int, int) {
+	return b, a
+}
 ```
 
-## Watch out
+## Walkthrough
+
+Multiple return values let `Swap(1, 2)` hand back `2, 1` directly.
+
+## Pitfalls
 
 - `a, b = a, b` is legal and does nothing. Every variable is reassigned its own
   value. Easy to write by accident when the operands are longer expressions.
@@ -65,14 +63,3 @@ pages, rest := Split(10, 3)   // 3, 1
 
 Both must be received. If you only want one, discard the rest with the blank
 identifier — see the *Discarded Remainder* puzzle.
-
-## Try it yourself
-
-```go
-a, b := 1, 2
-a, b = b, a          // 2, 1
-x, y, z := 1, 2, 3
-x, y, z = z, x, y    // 3, 1, 2
-n, m := 5, 5
-n, m = m, n          // unchanged: 5, 5
-```

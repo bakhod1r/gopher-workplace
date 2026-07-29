@@ -15,10 +15,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Filter([]int{1,2,3,4}, even) // => [2 4]
-Filter(nil, p)               // => []
-Filter([]int{1,3}, even)     // => []
+**Example 1:**
+
+```
+Input:  Filter([1 2 3 4], even)
+Output: [2 4]
+```
+
+**Example 2:**
+
+```
+Input:  Filter([1 3], even)
+Output: []
+```
+
+**Example 3:**
+
+```
+Input:  Filter(nil, even)
+Output: []
 ```
 
 ## Topics to Master

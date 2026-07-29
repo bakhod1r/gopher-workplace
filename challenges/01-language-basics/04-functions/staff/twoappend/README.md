@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Fork([7]cap4, 100, 200) // x=[7 100], last=100
+**Example 1:**
+
+```
+Input:  Fork([7](cap 4), 100, 200)
+Output: x == [7 100], last == 100
+```
+
+**Example 2:**
+
+```
+Input:  x unaffected by second append
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  x[1]
+Output: 100 (not 200)
 ```
 
 ## Topics to Master

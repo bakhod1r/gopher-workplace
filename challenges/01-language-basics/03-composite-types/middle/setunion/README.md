@@ -11,13 +11,34 @@ Combining two tag sets into one sorted, unique list.
 
 Implement `Union(a, b)` — sorted, de-duplicated.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Union([]int{3,1,2}, []int{2,4,1}) // => [1 2 3 4]
+**Example 1:**
+
+```
+Input:  a=[3,1,2], b=[2,4,1]
+Output: [1,2,3,4]
+```
+
+**Example 2:**
+
+```
+Input:  nil,nil
+Output: []
+```
+
+**Example 3:**
+
+```
+Input:  a=[1,1], b=[1]
+Output: [1]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

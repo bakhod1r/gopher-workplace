@@ -12,14 +12,34 @@ and a count.
 
 Implement `Encode(s)` producing `char + count` per run.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Encode("aaab") // => "a3b1"
-Encode("abc")  // => "a1b1c1"
+**Example 1:**
+
+```
+Input:  "aaab"
+Output: "a3b1"
+```
+
+**Example 2:**
+
+```
+Input:  "abc"
+Output: "a1b1c1"
+```
+
+**Example 3:**
+
+```
+Input:  ""
+Output: ""
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

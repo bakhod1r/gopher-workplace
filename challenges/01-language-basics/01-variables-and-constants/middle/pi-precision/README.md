@@ -15,16 +15,34 @@ In [geo.go](geo.go):
 1. Define `Pi` as an untyped constant with ≥20 significant digits.
 2. Implement `Area(r)` returning `Pi*r*r`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Area(1)   // => 3.14159...
-Area(2)   // => 12.566...
-Area(0)   // => 0
-Area(0.5) // => 0.785...
+**Example 1:**
+
+```
+Input:  Area(1)
+Output: ~3.14159
+```
+
+**Example 2:**
+
+```
+Input:  Area(2)
+Output: ~12.566
+```
+
+**Example 3:**
+
+```
+Input:  Area(0)
+Output: 0
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

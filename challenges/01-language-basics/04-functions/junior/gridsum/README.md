@@ -15,10 +15,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-GridSum(nil)                  // => 0
-GridSum([][]int{{1,2},{3,4}})  // => 10
-GridSum([][]int{{5}})          // => 5
+**Example 1:**
+
+```
+Input:  GridSum([[1 2],[3 4]])
+Output: 10
+```
+
+**Example 2:**
+
+```
+Input:  GridSum([[5]])
+Output: 5
+```
+
+**Example 3:**
+
+```
+Input:  GridSum(nil)
+Output: 0
 ```
 
 ## Topics to Master

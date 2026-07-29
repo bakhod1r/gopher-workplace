@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-CloseOrder(3) // => [2 1 0]
-CloseOrder(1) // => [0]
-CloseOrder(0) // => []
+**Example 1:**
+
+```
+Input:  CloseOrder(3)
+Output: [2 1 0]
+```
+
+**Example 2:**
+
+```
+Input:  defers fire LIFO
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  CloseOrder(1)
+Output: [0]
 ```
 
 ## Topics to Master

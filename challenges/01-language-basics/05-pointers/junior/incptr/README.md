@@ -16,9 +16,30 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-x := 41; Inc(&x) // x becomes 42
+**Example 1:**
+
 ```
+Input:  x := 41; Inc(&x)
+Output: x == 42
+```
+
+_Explanation:_ `Inc` follows the pointer to `x` and adds 1 in place.
+
+**Example 2:**
+
+```
+Input:  x := 0; Inc(&x)
+Output: x == 1
+```
+
+**Example 3:**
+
+```
+Input:  x := -1; Inc(&x)
+Output: x == 0
+```
+
+_Explanation:_ Works for negatives too — dereference, add one, store back.
 
 ## Topics to Master
 

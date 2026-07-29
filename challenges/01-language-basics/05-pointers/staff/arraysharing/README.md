@@ -16,8 +16,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Views(&arr); a[0]=42 // b[0] == 42
+**Example 1:**
+
+```
+Input:  a, b := Views(&arr); a[0] = 42
+Output: b[0] == 42
+```
+
+_Explanation:_ Both views must alias the same array.
+
+**Example 2:**
+
+```
+Input:  a and b share backing
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  mutate a, observe b
+Output: reflected
 ```
 
 ## Topics to Master

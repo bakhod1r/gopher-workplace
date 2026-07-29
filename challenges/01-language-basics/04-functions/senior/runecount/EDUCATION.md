@@ -1,14 +1,31 @@
 # String length in bytes vs runes
 
-## The idea
+## Intuition
 
 A Go string is UTF-8 bytes; `len` returns bytes while ranging or `utf8.RuneCountInString` returns code points.
 
-## Why it matters
+## Approach
 
-Byte/rune confusion corrupts indexing, truncation, and length limits for non-ASCII text.
+1. `len(s)` counts **bytes**, not characters.
+2. Range over the string (which yields runes) and count.
 
-## Watch out
+## Solution
+
+```go
+func CharCount(s string) int {
+	n := 0
+	for range s {
+		n++
+	}
+	return n
+}
+```
+
+## Walkthrough
+
+`"héllo"` is 6 bytes but 5 runes; `len` returns 6. Ranging decodes UTF-8 and counts 5 runes.
+
+## Pitfalls
 
 - `len("é")` is 2, not 1.
 - Range indices over a string are BYTE offsets, but the value is a rune.

@@ -14,15 +14,40 @@ tags.
 Implement `Parse(s)` returning `(major, minor, patch, ok)`; `ok=false` unless the
 string is exactly three dot-separated non-negative integers.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Parse("1.4.10") // => 1, 4, 10, true
-Parse("2.0")    // => 0, 0, 0, false
-Parse("1.x.0")  // => 0, 0, 0, false
+**Example 1:**
+
+```
+Input:  Parse("1.4.10")
+Output: (1, 4, 10, true)
 ```
 
+_Explanation:_ three integer parts
+
+**Example 2:**
+
+```
+Input:  Parse("2.0")
+Output: (0, 0, 0, false)
+```
+
+_Explanation:_ only two parts
+
+**Example 3:**
+
+```
+Input:  Parse("1.x.0")
+Output: (0, 0, 0, false)
+```
+
+_Explanation:_ non-digit component
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

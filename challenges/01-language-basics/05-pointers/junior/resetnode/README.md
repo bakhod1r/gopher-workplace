@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Reset(n) // n.Value=0, n.Next=nil
+**Example 1:**
+
+```
+Input:  n := &Node{Value: 5, Next: other}; Reset(n)
+Output: n.Value == 0, n.Next == nil
+```
+
+**Example 2:**
+
+```
+Input:  n := &Node{}; Reset(n)
+Output: n.Value == 0, n.Next == nil
+```
+
+**Example 3:**
+
+```
+Input:  Reset(&Node{Value: -3})
+Output: Value == 0, Next == nil
 ```
 
 ## Topics to Master

@@ -15,10 +15,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Reverse([]int{1,2,3})  // => [3 2 1]
-Reverse(nil)           // => []
-Reverse([]int{9})      // => [9]
+**Example 1:**
+
+```
+Input:  Reverse([1 2 3])
+Output: [3 2 1]
+```
+
+**Example 2:**
+
+```
+Input:  Reverse([1])
+Output: [1]
+```
+
+**Example 3:**
+
+```
+Input:  Reverse(nil)
+Output: []
 ```
 
 ## Topics to Master

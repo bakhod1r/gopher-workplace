@@ -13,14 +13,34 @@ A search indexer normalizes whitespace so `"  hello   world  "` becomes
 Fix the return between the markers in [normspaces.go](normspaces.go). Note
 `strings.Fields` already dropped the empties — no manual space needed.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Normalize("  hello   world  ") // => "hello world"
-Normalize("a\tb\nc")           // => "a b c"
+**Example 1:**
+
+```
+Input:  "  hello   world  "
+Output: "hello world"
+```
+
+**Example 2:**
+
+```
+Input:  "a\tb\nc"
+Output: "a b c"
+```
+
+**Example 3:**
+
+```
+Input:  ""
+Output: ""
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

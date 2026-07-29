@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Insert 5,3,8 // => 3-node BST
+**Example 1:**
+
+```
+Input:  Insert 5, then 3, then 8
+Output: 3-node BST
+```
+
+**Example 2:**
+
+```
+Input:  Insert(nil, 5)
+Output: root 5
+```
+
+**Example 3:**
+
+```
+Input:  Insert(root(5), 3)
+Output: 3 as left child
 ```
 
 ## Topics to Master

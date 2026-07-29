@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-FirstOf([1 2]) // => [42 2 0]
+**Example 1:**
+
+```
+Input:  FirstOf([1 2])
+Output: [42 2 0]
+```
+
+**Example 2:**
+
+```
+Input:  result length
+Output: 3
+```
+
+**Example 3:**
+
+```
+Input:  s[0] after call
+Output: 42
 ```
 
 ## Topics to Master

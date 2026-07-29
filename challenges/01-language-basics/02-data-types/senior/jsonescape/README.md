@@ -14,14 +14,36 @@ strict parser rejects.
 Add the missing `'\\'` case between the markers in
 [jsonescape.go](jsonescape.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Escape(`a"b`) // => `a\"b`
-Escape(`a\b`) // => `a\\b`
+**Example 1:**
+
+```
+Input:  a"b
+Output: a\"b
+```
+
+**Example 2:**
+
+```
+Input:  a\b
+Output: a\\b
+```
+
+_Explanation:_ backslash must be escaped
+
+**Example 3:**
+
+```
+Input:  line\n
+Output: line\n
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

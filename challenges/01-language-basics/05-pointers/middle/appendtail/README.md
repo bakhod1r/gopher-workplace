@@ -16,9 +16,28 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Append(&h, 1); Append(&h, 2) // h = 1->2
+**Example 1:**
+
 ```
+Input:  var h *Node; Append(&h, 1); Append(&h, 2)
+Output: 1->2
+```
+
+**Example 2:**
+
+```
+Input:  h := &Node{Val:1}; Append(&h, 2)
+Output: 1->2
+```
+
+**Example 3:**
+
+```
+Input:  var h *Node; Append(&h, 9)
+Output: 9
+```
+
+_Explanation:_ First append sets the head through the double pointer.
 
 ## Topics to Master
 

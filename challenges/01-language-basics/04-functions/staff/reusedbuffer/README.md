@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-r := Reader(); a := r(1,2); b := r(3,4) // a stays [1 2]
+**Example 1:**
+
+```
+Input:  r := Reader(); a := r(1,2); b := r(3,4)
+Output: a stays [1 2]
+```
+
+**Example 2:**
+
+```
+Input:  a and b independent
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  a after second call
+Output: [1 2]
 ```
 
 ## Topics to Master

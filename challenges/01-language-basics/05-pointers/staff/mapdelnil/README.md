@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Remove(m, 1) // key 1 gone, len decreases
+**Example 1:**
+
+```
+Input:  Remove(m, 1)
+Output: key 1 gone, len decreases
+```
+
+**Example 2:**
+
+```
+Input:  len(m) after Remove
+Output: len-1
+```
+
+**Example 3:**
+
+```
+Input:  _, ok := m[1]
+Output: false
 ```
 
 ## Topics to Master

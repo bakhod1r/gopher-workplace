@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-AsU64(-1) // => 0xffffffffffffffff
+**Example 1:**
+
+```
+Input:  AsU64(-1)
+Output: 0xffffffffffffffff
+```
+
+**Example 2:**
+
+```
+Input:  AsU64(0)
+Output: 0x0
+```
+
+**Example 3:**
+
+```
+Input:  AsU64(1)
+Output: 0x1
 ```
 
 ## Topics to Master

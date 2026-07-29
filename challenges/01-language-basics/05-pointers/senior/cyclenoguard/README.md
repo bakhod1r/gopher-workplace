@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-HasCycle(acyclic) // => false (no panic)
+**Example 1:**
+
+```
+Input:  HasCycle(acyclic list)
+Output: false, no panic
+```
+
+**Example 2:**
+
+```
+Input:  HasCycle(cyclic list)
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  HasCycle(nil)
+Output: false
 ```
 
 ## Topics to Master

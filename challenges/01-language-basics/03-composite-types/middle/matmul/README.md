@@ -11,13 +11,36 @@ The classic triple-loop matrix product.
 
 Implement `Mul(a, b)`; return nil on dimension mismatch.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Mul([[1,2],[3,4]], [[5,6],[7,8]]) // => [[19 22] [43 50]]
+**Example 1:**
+
+```
+Input:  [[1,2],[3,4]] * [[5,6],[7,8]]
+Output: [[19,22],[43,50]]
+```
+
+**Example 2:**
+
+```
+Input:  [[1,2,3]] * [[1]]
+Output: nil
+```
+
+_Explanation:_ inner dims 3 vs 1 mismatch
+
+**Example 3:**
+
+```
+Input:  [[2]] * [[3]]
+Output: [[6]]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

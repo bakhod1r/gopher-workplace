@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Order() // => [3 2 1]
+**Example 1:**
+
+```
+Input:  Order()
+Output: [3 2 1]
+```
+
+**Example 2:**
+
+```
+Input:  defers run LIFO
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  last deferred runs first
+Output: true
 ```
 
 ## Topics to Master

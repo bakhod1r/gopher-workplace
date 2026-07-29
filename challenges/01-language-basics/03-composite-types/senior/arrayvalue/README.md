@@ -13,13 +13,34 @@ copy; the caller's array via `a` is never touched.
 Fix the body between the markers in [arrayvalue.go](arrayvalue.go) to mutate
 through the pointer.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-a := [3]int{1,2,3}; Double(&a) // a becomes [2 4 6]
+**Example 1:**
+
+```
+Input:  [1,2,3]
+Output: [2,4,6]
+```
+
+**Example 2:**
+
+```
+Input:  [0,0,0]
+Output: [0,0,0]
+```
+
+**Example 3:**
+
+```
+Input:  [-1,5,10]
+Output: [-2,10,20]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

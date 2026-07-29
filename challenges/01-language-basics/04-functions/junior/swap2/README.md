@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Swap(1, 2)   // => 2, 1
-Swap(-5, 5)  // => 5, -5
-x, y = Swap(x, y) // exchange in place at the call site
+**Example 1:**
+
+```
+Input:  Swap(1, 2)
+Output: 2, 1
+```
+
+**Example 2:**
+
+```
+Input:  Swap(5, 5)
+Output: 5, 5
+```
+
+**Example 3:**
+
+```
+Input:  Swap(-1, 9)
+Output: 9, -1
 ```
 
 ## Topics to Master

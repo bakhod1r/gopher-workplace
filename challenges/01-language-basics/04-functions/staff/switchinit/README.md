@@ -17,10 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Classify(5)  // => pos, 1
-Classify(0)  // => zero, 1
-Classify(-3) // => neg, 1
+**Example 1:**
+
+```
+Input:  Classify(5)
+Output: pos, 1 call
+```
+
+**Example 2:**
+
+```
+Input:  Classify(0)
+Output: zero, 1 call
+```
+
+**Example 3:**
+
+```
+Input:  Classify(-3)
+Output: neg, 1 call
 ```
 
 ## Topics to Master

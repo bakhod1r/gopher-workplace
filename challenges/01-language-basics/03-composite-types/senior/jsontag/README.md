@@ -12,13 +12,34 @@ is wrong and clients break.
 
 Fix the struct tag between the markers in [jsontag.go](jsontag.go).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Marshal(User{"Ada","Lovelace"}) // => {"first_name":"Ada","last_name":"Lovelace"}
+**Example 1:**
+
+```
+Input:  User{First:Ada, Last:Lovelace}
+Output: {"first_name":"Ada","last_name":"Lovelace"}
+```
+
+**Example 2:**
+
+```
+Input:  User{First:Grace, Last:Hopper}
+Output: {"first_name":"Grace","last_name":"Hopper"}
+```
+
+**Example 3:**
+
+```
+Input:  User{}
+Output: {"first_name":"","last_name":""}
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

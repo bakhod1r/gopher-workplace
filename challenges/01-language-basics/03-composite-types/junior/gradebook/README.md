@@ -12,13 +12,36 @@ scores are skipped.
 
 Implement `Averages(book)` (integer average).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Averages({ann:{90,80,100}, bob:{70,75}, cid:{}}) // => {ann:90, bob:72}
+**Example 1:**
+
+```
+Input:  {"ann":[90,80,100],"bob":[70,75],"cid":[]}
+Output: {"ann":90,"bob":72}
+```
+
+_Explanation:_ cid has no scores and is omitted; 145/2=72 via integer division.
+
+**Example 2:**
+
+```
+Input:  {"x":[10,20]}
+Output: {"x":15}
+```
+
+**Example 3:**
+
+```
+Input:  {}
+Output: {}
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

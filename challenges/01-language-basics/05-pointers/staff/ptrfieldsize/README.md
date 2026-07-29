@@ -16,8 +16,27 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Size() // => 16
+**Example 1:**
+
+```
+Input:  Size()
+Output: 16
+```
+
+_Explanation:_ A struct of two 8-byte pointers.
+
+**Example 2:**
+
+```
+Input:  Sizeof(Pair{})
+Output: 16
+```
+
+**Example 3:**
+
+```
+Input:  Sizeof((*int)(nil))
+Output: 8 (wrong answer)
 ```
 
 ## Topics to Master

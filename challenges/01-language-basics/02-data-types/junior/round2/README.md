@@ -12,15 +12,49 @@ scale up, round, and scale back down.
 
 Implement `Round(x, places)` rounding to `places` decimals, half away from zero.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Round(3.14159, 2) // => 3.14
-Round(2.5, 0)     // => 3
-Round(-2.675, 2)  // => -2.68
+**Example 1:**
+
+```
+Input:  Round(3.14159, 2)
+Output: 3.14
 ```
 
+_Explanation:_ Scale by 100, round, divide.
+
+**Example 2:**
+
+```
+Input:  Round(2.5, 0)
+Output: 3
+```
+
+_Explanation:_ math.Round is half away from zero.
+
+**Example 3:**
+
+```
+Input:  Round(-2.675, 2)
+Output: -2.68
+```
+
+_Explanation:_ Half away from zero on negatives too.
+
+**Example 4:**
+
+```
+Input:  Round(1.005, 2)
+Output: 1.0
+```
+
+_Explanation:_ 1.005 is stored slightly below, so it rounds down - a float fact.
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

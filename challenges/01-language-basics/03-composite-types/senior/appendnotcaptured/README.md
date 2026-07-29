@@ -13,13 +13,34 @@ discards that return (`_ = append(...)`), so `out` never grows.
 Fix the line between the markers in
 [appendnotcaptured.go](appendnotcaptured.go) to capture `append`'s result.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Doubled([]int{1,2,3}) // => [2 4 6]
+**Example 1:**
+
+```
+Input:  [1,2,3]
+Output: [2,4,6]
+```
+
+**Example 2:**
+
+```
+Input:  []
+Output: []
+```
+
+**Example 3:**
+
+```
+Input:  [-1,0,5]
+Output: [-2,0,10]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

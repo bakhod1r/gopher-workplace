@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-IsLeap(2000) // => true
-IsLeap(1900) // => false
-IsLeap(2024) // => true
+**Example 1:**
+
+```
+Input:  IsLeap(2000)
+Output: true
+```
+
+**Example 2:**
+
+```
+Input:  IsLeap(1900)
+Output: false
+```
+
+**Example 3:**
+
+```
+Input:  IsLeap(2024)
+Output: true
 ```
 
 ## Topics to Master

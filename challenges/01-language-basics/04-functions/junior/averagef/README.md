@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Average()          // => 0, false
-Average(2, 4)      // => 3, true
-Average(1, 2, 3, 4) // => 2.5, true
+**Example 1:**
+
+```
+Input:  Average(2, 4, 6)
+Output: 4.0, true
+```
+
+**Example 2:**
+
+```
+Input:  Average(5)
+Output: 5.0, true
+```
+
+**Example 3:**
+
+```
+Input:  Average()
+Output: 0, false
 ```
 
 ## Topics to Master

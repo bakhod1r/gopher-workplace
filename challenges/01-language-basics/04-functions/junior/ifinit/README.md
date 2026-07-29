@@ -1,28 +1,39 @@
-# If With Init
+# If with Init Clause
 
 **Level:** junior
-**Topic:** 01-language-basics → 04-conditionals
-**Estimated time:** 10 min
+**Topic:** 01-language-basics → 04-functions · _control-flow_
 
 ## Context
 
-A sharding helper buckets values by `n % 3`. Go lets you compute that remainder
-right in the `if` header with an init statement, keeping the variable scoped to
-the if/else chain instead of leaking into the surrounding function.
+An `if` init clause (`if r := n % 3; ...`) computes a value once and scopes it to the if/else chain.
 
 ## Task
 
-Implement `Bucket` in [ifinit.go](ifinit.go) using an `if` with an init clause
-(`if r := n % 3; r == 0 { … }`): remainder 0 → "zero", 1 → "one", 2 → "two".
+Implement `Bucket` in [ifinit.go](ifinit.go) classifying `n` by `n % 3`.
 
 Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Bucket(9)  // => "zero"
-Bucket(10) // => "one"
-Bucket(11) // => "two"
+**Example 1:**
+
+```
+Input:  Bucket(9)
+Output: "zero"
+```
+
+**Example 2:**
+
+```
+Input:  Bucket(10)
+Output: "one"
+```
+
+**Example 3:**
+
+```
+Input:  Bucket(11)
+Output: "two"
 ```
 
 ## Topics to Master
@@ -31,19 +42,16 @@ Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|
-| 1 | **if with init** | `if x := expr; cond { … }` runs the init, then tests the condition. |
-| 2 | **Init scope** | The init variable is visible only inside the if/else-if/else chain, not after it. |
-| 3 | **Modulo** | `n % 3` yields 0, 1, or 2 for non-negative `n`. |
+| 1 | **if init clause** | `if r := expr; cond` scopes `r`. |
+| 2 | **modulo** | `n % 3` gives 0,1,2. |
+| 3 | **scoped variable** | `r` is visible only in the if/else. |
 
 ## Hint
 
-`if r := n % 3; r == 0 { return "zero" } else if r == 1 { return "one" } else
-{ return "two" }`. `r` lives only inside the chain.
+`if r := n % 3; r == 0 { ... } else if r == 1 { ... }`.
 
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

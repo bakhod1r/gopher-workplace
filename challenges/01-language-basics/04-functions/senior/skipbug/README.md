@@ -17,9 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-SumPositive([]int{1,-2,3,-4,5}) // => 9
-SumPositive([]int{-1,-2})       // => 0
+**Example 1:**
+
+```
+Input:  SumPositive([1 -2 3 -4 5])
+Output: 9
+```
+
+**Example 2:**
+
+```
+Input:  SumPositive([-1 -2])
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  SumPositive([1 2 3])
+Output: 6
 ```
 
 ## Topics to Master

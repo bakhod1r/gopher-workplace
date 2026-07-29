@@ -16,10 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-m := Memoize(square); m(4) // => 16 (computes)
-m(4)                       // => 16 (cached, no recompute)
-m(5)                       // computes once
+**Example 1:**
+
+```
+Input:  m := Memoize(f); m(2); m(2)
+Output: f called once for 2
+```
+
+**Example 2:**
+
+```
+Input:  cached result returned
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  distinct inputs computed once each
+Output: true
 ```
 
 ## Topics to Master

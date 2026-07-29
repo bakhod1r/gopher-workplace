@@ -17,8 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-RotateLeft(1, 2, 3) // => 2, 3, 1
+**Example 1:**
+
+```
+Input:  RotateLeft(1, 2, 3)
+Output: 2, 3, 1
+```
+
+**Example 2:**
+
+```
+Input:  RotateLeft(5, 5, 5)
+Output: 5, 5, 5
+```
+
+**Example 3:**
+
+```
+Input:  RotateLeft(0, 1, 2)
+Output: 1, 2, 0
 ```
 
 ## Topics to Master

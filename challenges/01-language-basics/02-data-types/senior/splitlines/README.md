@@ -14,14 +14,36 @@ fail.
 Fix the loop body between the markers in [splitlines.go](splitlines.go) to strip
 a trailing `\r`.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Lines("a\r\nb") // => ["a", "b"]
-Lines("a\nb")   // => ["a", "b"]
+**Example 1:**
+
+```
+Input:  "a\nb\nc"
+Output: ["a" "b" "c"]
+```
+
+**Example 2:**
+
+```
+Input:  "a\r\nb\r\nc"
+Output: ["a" "b" "c"]
+```
+
+_Explanation:_ CRLF trimmed
+
+**Example 3:**
+
+```
+Input:  ""
+Output: [""]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

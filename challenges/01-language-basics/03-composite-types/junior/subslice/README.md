@@ -2,7 +2,6 @@
 
 **Level:** junior
 **Topic:** 01-language-basics → 03-composite-types
-**Estimated time:** 12 min
 
 ## Context
 
@@ -18,12 +17,31 @@ elements of `s` as an **independent copy**: writes to the result must not touch
 
 Do **not** change the function signature or the tests.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Head([]int{1, 2, 3, 4}, 2) // => []int{1, 2}
-Head([]int{1, 2}, 5)       // => []int{1, 2}   (clamped)
-Head([]int{1, 2, 3}, 0)    // => []int{}
+**Example 1:**
+
+```
+Input:  s=[1,2,3,4], n=2
+Output: []int{1,2} (independent copy)
+```
+
+**Example 2:**
+
+```
+Input:  s=[1,2], n=5
+Output: []int{1,2}
+```
+
+_Explanation:_ n clamped to len(s).
+
+**Example 3:**
+
+```
+Input:  s=[1,2,3], n=0
+Output: []int{}
 ```
 
 ## Topics to Master
@@ -45,7 +63,5 @@ Returning `s[:n]` shares the backing array and fails the independence test.
 ## Validate
 
 ```bash
-make verify   # fmt-check + vet + test
+make verify
 ```
-
-Green tests + clean `vet`/`gofmt` = challenge passed.

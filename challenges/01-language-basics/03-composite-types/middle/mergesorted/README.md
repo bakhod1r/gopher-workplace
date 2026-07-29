@@ -11,13 +11,36 @@ The merge step of merge sort: combine two sorted runs into one, in O(n).
 
 Implement `Merge(a, b)` (ascending, duplicates kept).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Merge([]int{1,3,5}, []int{2,4,6}) // => [1 2 3 4 5 6]
+**Example 1:**
+
+```
+Input:  [1,3,5],[2,4,6]
+Output: [1,2,3,4,5,6]
+```
+
+**Example 2:**
+
+```
+Input:  [1,1,2],[1,3]
+Output: [1,1,1,2,3]
+```
+
+_Explanation:_ duplicates kept
+
+**Example 3:**
+
+```
+Input:  nil,nil
+Output: []
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

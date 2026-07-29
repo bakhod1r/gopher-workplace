@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Sum(&Pair{3, 4}) // => 7
+**Example 1:**
+
+```
+Input:  Sum(&Pair{3, 4})
+Output: 7
+```
+
+**Example 2:**
+
+```
+Input:  Sum(&Pair{0, 0})
+Output: 0
+```
+
+**Example 3:**
+
+```
+Input:  Sum(&Pair{-1, 5})
+Output: 4
 ```
 
 ## Topics to Master

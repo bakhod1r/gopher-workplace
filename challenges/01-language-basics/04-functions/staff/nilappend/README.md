@@ -16,9 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Collect(nil, [1 2 3]) // => [1 2 3]
-Collect([0], [9])     // => [0 9]
+**Example 1:**
+
+```
+Input:  Collect(nil, [1 2 3])
+Output: [1 2 3]
+```
+
+**Example 2:**
+
+```
+Input:  Collect([0], [9])
+Output: [0 9]
+```
+
+**Example 3:**
+
+```
+Input:  Collect(nil, nil)
+Output: []
 ```
 
 ## Topics to Master

@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Append(nil, 1) // => 1
+**Example 1:**
+
+```
+Input:  Append(nil, 1)
+Output: 1
+```
+
+**Example 2:**
+
+```
+Input:  Append(1, 2)
+Output: 1->2
+```
+
+**Example 3:**
+
+```
+Input:  Append(nil, 9)
+Output: 9
 ```
 
 ## Topics to Master

@@ -11,14 +11,36 @@ The statistical mode: the most frequent value, tie broken deterministically.
 
 Implement `Mode(xs)`; empty → ok=false; ties → smaller value.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Mode([]int{1,2,2,3}) // => 2, true
-Mode([]int{1,1,2,2}) // => 1, true (tie)
+**Example 1:**
+
+```
+Input:  [1,2,2,3]
+Output: (2,true)
+```
+
+**Example 2:**
+
+```
+Input:  [1,1,2,2]
+Output: (1,true)
+```
+
+_Explanation:_ tie -> smaller value
+
+**Example 3:**
+
+```
+Input:  nil
+Output: (0,false)
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

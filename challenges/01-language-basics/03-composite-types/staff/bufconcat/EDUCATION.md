@@ -1,6 +1,6 @@
 # Writing into a buffer at an offset
 
-## The idea
+## Intuition
 
 Filling a preallocated buffer means copying each piece to its correct offset. The
 second slice starts where the first ends:
@@ -11,13 +11,27 @@ copy(out, a)
 copy(out[len(a):], b) // offset by len(a)
 ```
 
-## Why it matters
+## Approach
 
-Manual buffer assembly (encoders, network frames, `bytes` plumbing) depends on
-offset arithmetic. Copying to offset 0 twice overwrites earlier data — a classic
-buffer-building bug.
+1. Bug: `copy(out, b)` writes b at offset 0, overwriting the copy of a.
+2. Fix: `copy(out[len(a):], b)` writes b right after a.
 
-## Watch out
+## Solution
+
+```go
+func Concat(a, b []byte) []byte {
+	out := make([]byte, len(a)+len(b))
+	copy(out, a)
+	copy(out[len(a):], b)
+	return out
+}
+```
+
+## Walkthrough
+
+out is zeroed len 4. copy(out,a) -> [1 2 0 0]. Bug copy(out,b) -> [3 4 0 0]. Fixed copy(out[2:],b) -> [1 2 3 4].
+
+## Pitfalls
 
 - `copy` returns the count; the destination sub-slice sets where it lands.
 - Size the buffer exactly, or trailing zeros/overflows appear.

@@ -11,14 +11,40 @@ Grouping anagrams by a canonical key — a real "normalize then group" task.
 
 Implement `Count(words)` — number of distinct anagram groups.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Count([]string{"eat","tea","tan","ate","nat","bat"}) // => 3
-Count([]string{"listen","silent"})                    // => 1
+**Example 1:**
+
+```
+Input:  ["eat","tea","tan","ate","nat","bat"]
+Output: 3
 ```
 
+_Explanation:_ {eat,tea,ate}, {tan,nat}, {bat}
+
+**Example 2:**
+
+```
+Input:  ["a","b","c"]
+Output: 3
+```
+
+_Explanation:_ no anagrams, 3 distinct
+
+**Example 3:**
+
+```
+Input:  ["listen","silent"]
+Output: 1
+```
+
+_Explanation:_ same sorted letters
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

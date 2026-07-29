@@ -1,6 +1,6 @@
 # Integer limits from bit patterns
 
-## The idea
+## Intuition
 
 The maximum and minimum of a machine integer are just bit patterns you can build
 with constant operations — no `math` package needed:
@@ -15,13 +15,31 @@ const MinInt  = -MaxInt - 1        // two's complement
 unsigned value. Shifting right by one clears the top (sign) bit, giving the
 largest **signed** value.
 
-## Why it matters
+## Approach
 
-These fold at compile time and adapt to the platform word size (32- or 64-bit),
-because `uint`/`int` are platform-width. `math.MaxInt` in the stdlib is defined
-exactly this way.
+1. `MaxUint = ^uint(0)` sets all bits.
+2. `MaxInt = int(MaxUint >> 1)` clears the sign bit.
+3. `MinInt = -MaxInt - 1`.
 
-## Watch out
+## Solution
+
+```go
+const (
+	MaxUint = ^uint(0)
+	MaxInt  = int(MaxUint >> 1)
+	MinInt  = -MaxInt - 1
+)
+
+func FitsInInt(v uint) bool {
+	return v <= uint(MaxInt)
+}
+```
+
+## Walkthrough
+
+Shifting `MaxUint` right by one drops the top bit, yielding the largest positive int; `FitsInInt` compares against it.
+
+## Pitfalls
 
 - `int(^uint(0))` alone is **-1**, not the max: all-bits *signed* is -1. You must
   shift first.
@@ -29,11 +47,3 @@ exactly this way.
   positive.
 - A typed `int` constant that overflows is a **compile error**, so build wide
   values as `uint` and convert, or keep them untyped.
-
-## Try it yourself
-
-```go
-const MaxUint8 = ^uint8(0)      // 255
-const MaxInt8  = int8(^uint8(0) >> 1) // 127
-const MinInt8  = -MaxInt8 - 1   // -128
-```

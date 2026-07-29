@@ -11,13 +11,34 @@ Building a reverse lookup: given name→id, produce id→name.
 
 Implement `Invert(m)` returning value→key (values unique).
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Invert({one:1, two:2}) // => {1:"one", 2:"two"}
+**Example 1:**
+
+```
+Input:  {"one":1,"two":2,"three":3}
+Output: {1:"one",2:"two",3:"three"}
+```
+
+**Example 2:**
+
+```
+Input:  {}
+Output: {} (empty)
+```
+
+**Example 3:**
+
+```
+Input:  {"a":5}
+Output: {5:"a"}
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

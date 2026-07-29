@@ -16,8 +16,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Apply(&x, square) // x = square(x)
+**Example 1:**
+
+```
+Input:  x := 3; Apply(&x, func(n int) int { return n*n })
+Output: x == 9
+```
+
+**Example 2:**
+
+```
+Input:  x := 5; Apply(&x, func(n int) int { return n+1 })
+Output: x == 6
+```
+
+**Example 3:**
+
+```
+Input:  x := 4; Apply(&x, func(n int) int { return n })
+Output: x == 4
 ```
 
 ## Topics to Master

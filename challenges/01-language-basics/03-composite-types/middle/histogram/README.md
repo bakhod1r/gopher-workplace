@@ -11,13 +11,36 @@ Binning values into a histogram — latency buckets, size distributions.
 
 Implement `Bucket(xs, size)`: count per `[i*size, (i+1)*size)` bin.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Bucket([]int{5,12,15,25,3}, 10) // => [2 2 1]
+**Example 1:**
+
+```
+Input:  [5,12,15,25,3], size=10
+Output: [2,2,1]
+```
+
+_Explanation:_ bins [0,10)=2, [10,20)=2, [20,30)=1
+
+**Example 2:**
+
+```
+Input:  nil, size=10
+Output: []
+```
+
+**Example 3:**
+
+```
+Input:  [0], size=5
+Output: [1]
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

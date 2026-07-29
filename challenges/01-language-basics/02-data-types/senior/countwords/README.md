@@ -13,15 +13,36 @@ run of spaces into empty strings — so `"  a   b  "` counts as 6, not 2.
 Fix the single line between the markers in [countwords.go](countwords.go) to
 count only non-empty words.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Count("  a   b  ") // => 2
-Count("")          // => 0
-Count("   ")       // => 0
+**Example 1:**
+
+```
+Input:  "hello world"
+Output: 2
+```
+
+**Example 2:**
+
+```
+Input:  "  a   b  "
+Output: 2
+```
+
+_Explanation:_ runs of spaces are not words
+
+**Example 3:**
+
+```
+Input:  "   "
+Output: 0
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

@@ -15,16 +15,36 @@ In [frame.go](frame.go):
 1. Implement `FrameBudgetMicros()` = `1_000_000 / TargetFPS` (integer division).
 2. Implement `OverBudget(us)` returning true when `us` exceeds the budget.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-FrameBudgetMicros()      // => 16666
-OverBudget(10000)        // => false
-OverBudget(20000)        // => true
-OverBudget(16666)        // => false
+**Example 1:**
+
+```
+Input:  FrameBudgetMicros()
+Output: 16666
+```
+
+_Explanation:_ 1_000_000 / 60, integer-divided.
+
+**Example 2:**
+
+```
+Input:  OverBudget(20000)
+Output: true
+```
+
+**Example 3:**
+
+```
+Input:  OverBudget(1000)
+Output: false
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

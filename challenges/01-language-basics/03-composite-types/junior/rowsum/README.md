@@ -11,13 +11,36 @@ A spreadsheet totals each row. A 2-D grid is a slice of slices, possibly ragged.
 
 Implement `RowSums(grid)` returning one sum per row.
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-RowSums([][]int{{1,2,3},{4,5},{}}) // => [6 9 0]
+**Example 1:**
+
+```
+Input:  [][]int{{1,2,3},{4,5},{}}
+Output: []int{6,9,0}
+```
+
+_Explanation:_ Empty row sums to 0.
+
+**Example 2:**
+
+```
+Input:  nil
+Output: []int{}
+```
+
+**Example 3:**
+
+```
+Input:  [][]int{{5}}
+Output: []int{5}
 ```
 
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|

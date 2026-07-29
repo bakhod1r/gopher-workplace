@@ -17,10 +17,25 @@ Do **not** change the function signature or the tests.
 
 ## Examples
 
-```go
-Class(200) // => "success"
-Class(301) // => "unknown"
-Class(100) // => "unknown"
+**Example 1:**
+
+```
+Input:  Class(200)
+Output: success
+```
+
+**Example 2:**
+
+```
+Input:  Class(301)
+Output: unknown
+```
+
+**Example 3:**
+
+```
+Input:  Class(100)
+Output: unknown
 ```
 
 ## Topics to Master

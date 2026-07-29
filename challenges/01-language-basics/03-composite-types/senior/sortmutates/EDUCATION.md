@@ -1,6 +1,6 @@
 # "Copy" that isn't
 
-## The idea
+## Intuition
 
 `out := xs` copies the slice header (pointer/len/cap) — both names point at the
 same backing array. `sort.Ints(out)` therefore sorts `xs` too. Duplicate the data
@@ -11,13 +11,27 @@ out := append([]int{}, xs...) // independent copy
 sort.Ints(out)
 ```
 
-## Why it matters
+## Approach
 
-Functions advertised as non-mutating ("SortedCopy", "Cleaned") must not alter
-their inputs. The shared-header trap makes an in-place sort masquerade as a copy —
-a surprising, action-at-a-distance bug.
+1. Bug: out := xs aliases the caller's slice; sort.Ints(out) sorts in place, corrupting xs. 2. Fix: copy first: out := append([]int(nil), xs...). 3. Sorting the independent copy leaves the input untouched.
 
-## Watch out
+## Solution
+
+```go
+import "sort"
+
+func SortedCopy(xs []int) []int {
+	out := append([]int(nil), xs...)
+	sort.Ints(out)
+	return out
+}
+```
+
+## Walkthrough
+
+out=xs shares the array; sort.Ints sorts it so xs is reordered too. A copied out is sorted independently, xs preserved.
+
+## Pitfalls
 
 - Assigning a slice never copies its elements.
 - `slices.Sorted`/`slices.Clone` avoid the footgun.

@@ -13,15 +13,40 @@ Brightening an image adds to pixel values; a result of `300` must saturate to
 Fix the conversion between the markers in [clampbyte.go](clampbyte.go) to
 saturate to [0,255].
 
+Do **not** change the function signature or the tests.
+
 ## Examples
 
-```go
-Clamp(300) // => 255
-Clamp(-20) // => 0
-Clamp(128) // => 128
+**Example 1:**
+
+```
+Input:  128
+Output: 128
 ```
 
+_Explanation:_ in range, unchanged
+
+**Example 2:**
+
+```
+Input:  300
+Output: 255
+```
+
+_Explanation:_ saturates to max byte
+
+**Example 3:**
+
+```
+Input:  -20
+Output: 0
+```
+
+_Explanation:_ saturates to min byte
+
 ## Topics to Master
+
+Only concepts taught at or before this slot (scope rule, see GENERATION.md).
 
 | # | Topic | What to understand |
 |---|-------|--------------------|
