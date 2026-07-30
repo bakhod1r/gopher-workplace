@@ -14,6 +14,10 @@ COVERED.txt
 *.test
 *.out
 
+# Per-run sandbox state the local runner drops inside a challenge dir
+.gopath/
+.gocache/
+
 # OS / editor cruft
 .DS_Store
 *.swp

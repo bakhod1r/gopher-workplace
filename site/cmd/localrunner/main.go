@@ -124,6 +124,10 @@ func run(args []string, hooks ...serveHook) error {
 		log.Printf("           port can execute arbitrary Go code as %s. Use -host 127.0.0.1.", os.Getenv("USER"))
 	}
 
+	// Warm the shared build cache (compile std once) so the first submission
+	// isn't a slow cold compile that trips the run timeout.
+	go WarmBuildCache()
+
 	httpSrv := &http.Server{Handler: srv.routes()}
 	for _, h := range hooks {
 		go h(ln, httpSrv)

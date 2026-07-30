@@ -20,7 +20,7 @@ import (
 
 // runTimeout bounds a single toolchain invocation. A var, not a const, so
 // tests can shrink it instead of waiting out the real budget.
-var runTimeout = 20 * time.Second
+var runTimeout = 40 * time.Second
 
 // runReq is the POST /run body. Either files (name->content) or src (single
 // candidate file) must be provided, plus the challengeId (path under
@@ -305,18 +305,45 @@ func goTest(dir string, race bool) report {
 	err := cmd.Run()
 
 	if ctx.Err() == context.DeadlineExceeded {
-		return report{Error: fmt.Sprintf("timed out after %s (possible infinite loop) — process killed", runTimeout)}
+		return report{Error: fmt.Sprintf("timed out after %s — process killed. If your code has no infinite loop, this can be a slow first compile; run it again.", runTimeout)}
 	}
 	return parseTestJSON(stdout.Bytes(), stderr.String(), err)
 }
 
-// sandboxEnv returns a locked-down environment: no network, isolated caches.
+// sharedGOCACHE is one build cache reused by every challenge. Each puzzle is its
+// own module, so a per-dir cache forced a full standard-library recompile on the
+// first run of every puzzle — 20s+ on a cold Mac, which surfaced as a bogus
+// "possible infinite loop" timeout until the cache warmed. A shared cache is
+// content-addressed and concurrency-safe, so std is compiled once and reused.
+var sharedGOCACHE = func() string {
+	base, err := os.UserCacheDir()
+	if err != nil || base == "" {
+		base = os.TempDir()
+	}
+	c := filepath.Join(base, "gopher-workplace", "gocache")
+	_ = os.MkdirAll(c, 0o755)
+	return c
+}()
+
+// WarmBuildCache compiles the standard library into the shared cache so the
+// first real submission does not pay that one-time cost. Safe to call in the
+// background at startup; failures are non-fatal.
+func WarmBuildCache() {
+	ctx, cancel := context.WithTimeout(context.Background(), 90*time.Second)
+	defer cancel()
+	cmd := exec.CommandContext(ctx, "go", "build", "std")
+	cmd.Env = append(os.Environ(), "GOCACHE="+sharedGOCACHE, "CGO_ENABLED=1")
+	_ = cmd.Run()
+}
+
+// sandboxEnv returns a locked-down environment: no network, shared build cache,
+// isolated module/tmp state.
 func sandboxEnv(dir string) []string {
 	env := []string{
 		"GOPROXY=off",
 		"GOFLAGS=-mod=mod",
 		"GOSUMDB=off",
-		"GOCACHE=" + filepath.Join(dir, ".gocache"),
+		"GOCACHE=" + sharedGOCACHE,
 		"GOPATH=" + filepath.Join(dir, ".gopath"),
 		"GOTMPDIR=" + dir,
 		"CGO_ENABLED=1", // -race needs cgo
