@@ -1,0 +1,27 @@
+// Package factorymeth — Gopher Workplace challenge.
+package factorymeth
+
+// Store is an interface for storage.
+type Store interface {
+	Save(string)
+}
+
+// MemStore saves to memory.
+type MemStore struct{}
+
+func (MemStore) Save(s string) {}
+
+// DiskStore saves to disk.
+type DiskStore struct{}
+
+func (DiskStore) Save(s string) {}
+
+// StoreFactory creates stores.
+type StoreFactory struct{}
+
+// Create returns a Store based on the type string ("mem" or "disk").
+// Returns nil for unknown types.
+func (f StoreFactory) Create(storeType string) Store {
+	// TODO(candidate): return MemStore{} or DiskStore{}
+	panic("not implemented")
+}

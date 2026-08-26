@@ -1,0 +1,26 @@
+// Package retrylogic — Gopher Workplace challenge.
+package retrylogic
+
+import "errors"
+
+// Client simulates a network client.
+type Client struct {
+	Attempts int
+	FailInt  int // fails this many times before succeeding
+}
+
+// Do fails FailInt times, then succeeds.
+func (c *Client) Do() error {
+	c.Attempts++
+	if c.Attempts <= c.FailInt {
+		return errors.New("temporary error")
+	}
+	return nil
+}
+
+// DoWithRetry calls Do up to maxAttempts times. Returns nil if successful,
+// or the last error if it exhausts all attempts.
+func (c *Client) DoWithRetry(maxAttempts int) error {
+	// TODO(candidate): loop up to maxAttempts, calling Do().
+	panic("not implemented")
+}

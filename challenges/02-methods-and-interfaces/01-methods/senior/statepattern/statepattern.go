@@ -1,0 +1,23 @@
+// Package statepattern — Gopher Workplace challenge.
+package statepattern
+
+// State is an enum for the document state.
+type State int
+
+const (
+	Draft State = iota
+	Moderation
+	Published
+)
+
+// Document has a state and methods to transition.
+type Document struct {
+	State State
+}
+
+// Publish moves Draft -> Moderation, Moderation -> Published.
+// Published stays Published.
+func (d *Document) Publish() {
+	// TODO(candidate): implement state transition.
+	panic("not implemented")
+}

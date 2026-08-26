@@ -1,0 +1,22 @@
+// Package observer — Gopher Workplace challenge.
+package observer
+
+// Observer is a function that receives state updates.
+type Observer func(state int)
+
+// Subject holds state and notifies observers on change.
+type Subject struct {
+	state     int
+	observers []Observer
+}
+
+// Attach adds an observer.
+func (s *Subject) Attach(o Observer) {
+	s.observers = append(s.observers, o)
+}
+
+// SetState updates the state and calls all observers.
+func (s *Subject) SetState(val int) {
+	// TODO(candidate): update state, then call all observers with the new state.
+	panic("not implemented")
+}
