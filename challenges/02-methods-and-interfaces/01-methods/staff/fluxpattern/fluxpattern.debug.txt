@@ -1,0 +1,17 @@
+// Package fluxpattern — Gopher Workplace challenge.
+package fluxpattern
+
+// Store holds state.
+type Store struct {
+	Count int
+}
+
+// Dispatch processes an action string to mutate state.
+func (s *Store) Dispatch(action string) {
+	// CHANGE CODE BELOW THIS LINE
+	switch action {
+	case "INC":
+		s.Count++
+	}
+	// CHANGE CODE ABOVE THIS LINE
+}

@@ -1,30 +1,35 @@
 // Package formatter — Gopher Workplace challenge.
 package formatter
 
-import "fmt"
-
-// Formatter is an interface for custom formatting.
+// Formatter renders a log message.
 type Formatter interface {
-	Format() string
+	Format(msg string) string
 }
 
-// Name holds first and last names.
-type Name struct {
-	First, Last string
-}
+// Plain renders the message as-is.
+type Plain struct{}
 
-// Format returns "Last, First".
-func (n Name) Format() string {
-	_ = fmt.Sprint
-	// TODO(candidate): return n.Last + ", " + n.First
+// Format returns the message unchanged.
+func (p Plain) Format(msg string) string {
+	// TODO(candidate): return msg.
 	panic("not implemented")
 }
 
-// FormatAll formats a slice of Formatters.
-func FormatAll(fs []Formatter) []string {
-	result := make([]string, len(fs))
-	for i, f := range fs {
-		result[i] = f.Format()
-	}
-	return result
+// KeyValue renders the message as key=value.
+type KeyValue struct{}
+
+// Format returns "msg=<msg>".
+//
+// Examples:
+//
+//	KeyValue{}.Format("hi") => "msg=hi"
+func (k KeyValue) Format(msg string) string {
+	// TODO(candidate): prefix with "msg=".
+	panic("not implemented")
+}
+
+// Render formats msg using f.
+func Render(f Formatter, msg string) string {
+	// TODO(candidate): delegate to the formatter.
+	panic("not implemented")
 }

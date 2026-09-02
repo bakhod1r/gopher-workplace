@@ -18,8 +18,6 @@ func (e *CSVEncoder) Encode(fields ...string) {
 }
 ```
 
-(Add `"strings"` to imports.)
-
 ## Walkthrough
 
 `e.Encode("a", "b", "c")`:
@@ -29,4 +27,4 @@ func (e *CSVEncoder) Encode(fields ...string) {
 ## Pitfalls
 
 - `fmt.Sprint` doesn't join with commas — it adds spaces.
-- Need to import `"strings"` for `Join`.
+- `strings.Join` on an empty `fields` returns `""` — an empty row, not a skipped one.

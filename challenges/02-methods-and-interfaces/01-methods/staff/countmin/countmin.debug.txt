@@ -1,0 +1,32 @@
+// Package countmin — Gopher Workplace challenge.
+package countmin
+
+// Sketch simulates a CMS with two rows.
+type Sketch struct {
+	row1 [256]int
+	row2 [256]int
+}
+
+func h1(s string) byte { return s[0] }
+func h2(s string) byte { return s[len(s)-1] }
+
+// Add increments counts.
+func (s *Sketch) Add(item string) {
+	// CHANGE CODE BELOW THIS LINE
+	if len(item) == 0 {
+		return
+	}
+	s.row1[h1(item)]++
+	s.row2[h2(item)]++
+	// CHANGE CODE ABOVE THIS LINE
+}
+
+// Count returns the minimum of the counts.
+func (s *Sketch) Count(item string) int {
+	// CHANGE CODE BELOW THIS LINE
+	if len(item) == 0 {
+		return 0
+	}
+	return s.row1[h1(item)] + s.row2[h2(item)]
+	// CHANGE CODE ABOVE THIS LINE
+}

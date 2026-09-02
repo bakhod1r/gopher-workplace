@@ -3,9 +3,9 @@ package mergeobj
 
 // Config holds settings.
 type Config struct {
-	Host    string
-	Port    int
-	Debug   bool
+	Host  string
+	Port  int
+	Debug bool
 }
 
 // Merge applies non-zero fields from other into c.

@@ -1,0 +1,16 @@
+// Package gcmark — Gopher Workplace challenge.
+package gcmark
+
+type Object struct {
+	Marked bool
+	Refs   []*Object
+}
+
+func (o *Object) Mark() {
+	// CHANGE CODE BELOW THIS LINE
+	if o == nil || o.Marked {
+		return
+	}
+	o.Marked = true
+	// CHANGE CODE ABOVE THIS LINE
+}

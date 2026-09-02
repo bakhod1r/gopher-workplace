@@ -13,9 +13,9 @@ func TestPromotedHello(t *testing.T) {
 
 func TestDescribe(t *testing.T) {
 	cases := []struct {
-		name  string
-		e     Extended
-		want  string
+		name string
+		e    Extended
+		want string
 	}{
 		{"normal", Extended{Base{"Go"}, "fast"}, "Hello from Go [fast]"},
 		{"empty_extra", Extended{Base{"X"}, ""}, "Hello from X []"},

@@ -1,0 +1,45 @@
+// Package io_uring — Gopher Workplace challenge.
+package io_uring
+
+// ringSize is the fixed capacity of the submission queue.
+const ringSize = 4
+
+// Ring is a fixed-capacity submission queue backed by a circular buffer.
+// head is the next slot to read, tail the next slot to write, and count the
+// number of entries currently queued.
+type Ring struct {
+	buf   [ringSize]int
+	head  int
+	tail  int
+	count int
+}
+
+// Submit enqueues op. It reports false and drops op when the ring is full.
+func (r *Ring) Submit(op int) bool {
+	// CHANGE CODE BELOW THIS LINE
+	if r.count > ringSize {
+		return false
+	}
+	r.buf[r.tail] = op
+	r.tail = (r.tail + 1) % ringSize
+	r.count++
+	return true
+	// CHANGE CODE ABOVE THIS LINE
+}
+
+// Complete dequeues the oldest entry. The second result is false when the
+// ring is empty.
+func (r *Ring) Complete() (int, bool) {
+	// CHANGE CODE BELOW THIS LINE
+	if r.count == 0 {
+		return 0, false
+	}
+	op := r.buf[r.head]
+	r.head = (r.head + 1) % ringSize
+	r.count--
+	return op, true
+	// CHANGE CODE ABOVE THIS LINE
+}
+
+// Len returns the number of queued entries.
+func (r *Ring) Len() int { return r.count }

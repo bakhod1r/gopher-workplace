@@ -1,0 +1,35 @@
+// Package iterpatt — Gopher Workplace challenge.
+package iterpatt
+
+// Node is a linked list node.
+type Node struct {
+	Val  int
+	Next *Node
+}
+
+// ListIter iterates over a linked list.
+type ListIter struct {
+	current *Node
+}
+
+// NewIter creates an iterator starting at head.
+func NewIter(head *Node) *ListIter {
+	return &ListIter{current: head}
+}
+
+// HasNext returns true if there is a current node.
+func (it *ListIter) HasNext() bool {
+	// CHANGE CODE BELOW THIS LINE
+	return it.current != nil && it.current.Next != nil
+	// CHANGE CODE ABOVE THIS LINE
+}
+
+// Next returns the current value and advances the iterator.
+// Assumes HasNext() is true.
+func (it *ListIter) Next() int {
+	// CHANGE CODE BELOW THIS LINE
+	v := it.current.Val
+	it.current = it.current.Next
+	return v
+	// CHANGE CODE ABOVE THIS LINE
+}

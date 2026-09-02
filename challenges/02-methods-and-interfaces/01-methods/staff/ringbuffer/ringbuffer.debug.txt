@@ -1,0 +1,54 @@
+// Package ringbuffer — Gopher Workplace challenge.
+package ringbuffer
+
+import "errors"
+
+// ErrFull is returned by Push when the buffer has no free slot.
+var ErrFull = errors.New("ring buffer full")
+
+// ErrEmpty is returned by Pop when the buffer holds no elements.
+var ErrEmpty = errors.New("ring buffer empty")
+
+// RingBuffer is a fixed-size circular buffer.
+type RingBuffer struct {
+	data []int
+	head int
+	tail int
+	size int
+}
+
+// New creates a RingBuffer with room for cap elements.
+func New(cap int) *RingBuffer {
+	return &RingBuffer{data: make([]int, cap)}
+}
+
+// Len returns the number of buffered elements.
+func (r *RingBuffer) Len() int { return r.size }
+
+// Push appends val. It returns ErrFull, and changes nothing, when the buffer
+// is full.
+func (r *RingBuffer) Push(val int) error {
+	// CHANGE CODE BELOW THIS LINE
+	if r.size > len(r.data) {
+		return ErrFull
+	}
+	r.data[r.tail] = val
+	r.tail = (r.tail + 1) % len(r.data)
+	r.size++
+	return nil
+	// CHANGE CODE ABOVE THIS LINE
+}
+
+// Pop removes and returns the oldest element. It returns ErrEmpty when the
+// buffer holds nothing.
+func (r *RingBuffer) Pop() (int, error) {
+	// CHANGE CODE BELOW THIS LINE
+	if r.size == 0 {
+		return 0, ErrEmpty
+	}
+	val := r.data[r.head]
+	r.head = (r.head + 1) % len(r.data)
+	r.size--
+	return val, nil
+	// CHANGE CODE ABOVE THIS LINE
+}

@@ -1,0 +1,28 @@
+// Package eventbus — Gopher Workplace challenge.
+package eventbus
+
+// Bus manages event listeners.
+type Bus struct {
+	listeners map[string][]func(string)
+}
+
+// New creates an event bus.
+func New() *Bus {
+	return &Bus{listeners: make(map[string][]func(string))}
+}
+
+// On registers a listener for an event type.
+func (b *Bus) On(eventType string, listener func(data string)) {
+	// CHANGE CODE BELOW THIS LINE
+	b.listeners[eventType] = []func(string){listener}
+	// CHANGE CODE ABOVE THIS LINE
+}
+
+// Emit calls all listeners for an event type synchronously.
+func (b *Bus) Emit(eventType string, data string) {
+	// CHANGE CODE BELOW THIS LINE
+	for _, l := range b.listeners[eventType] {
+		l(data)
+	}
+	// CHANGE CODE ABOVE THIS LINE
+}

@@ -1,15 +1,36 @@
 // Package eater — Gopher Workplace challenge.
 package eater
 
-// Eater is an interface for things that eat.
+// Eater reports whether it accepts a food.
 type Eater interface {
-	Eat(food string) string
+	Eats(food string) bool
 }
 
-// Human eats.
-type Human struct{ Name string }
+// Cow is a herbivore.
+type Cow struct{}
 
-func (h Human) Eat(food string) string {
-	// TODO(candidate): return h.Name + " eats " + food
+// Eats reports whether the cow accepts food.
+//
+// Examples:
+//
+//	Cow{}.Eats("grass") => true
+//	Cow{}.Eats("meat")  => false
+func (c Cow) Eats(food string) bool {
+	// TODO(candidate): grass only.
+	panic("not implemented")
+}
+
+// Lion is a carnivore.
+type Lion struct{}
+
+// Eats reports whether the lion accepts food.
+func (l Lion) Eats(food string) bool {
+	// TODO(candidate): meat only.
+	panic("not implemented")
+}
+
+// FeedableCount counts eaters that accept food.
+func FeedableCount(es []Eater, food string) int {
+	// TODO(candidate): count the accepting eaters.
 	panic("not implemented")
 }

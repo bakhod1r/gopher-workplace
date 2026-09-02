@@ -1,20 +1,43 @@
 // Package stringer — Gopher Workplace challenge.
 package stringer
 
-import "fmt"
-
-// Color represents an RGB color.
-type Color struct {
-	R, G, B uint8
+// Stringer renders itself as text (same shape as fmt.Stringer).
+type Stringer interface {
+	String() string
 }
 
-// String implements fmt.Stringer, returning "#RRGGBB".
+// Color is a colour code.
+type Color int
+
+// Known colours.
+const (
+	Red Color = iota
+	Green
+	Blue
+)
+
+// String names the colour, or "unknown".
 //
 // Examples:
 //
-//	Color{255, 0, 128}.String() => "#ff0080"
+//	Red.String()      => "red"
+//	Color(9).String() => "unknown"
 func (c Color) String() string {
-	_ = fmt.Sprintf
-	// TODO(candidate): return fmt.Sprintf("#%02x%02x%02x", c.R, c.G, c.B)
+	// TODO(candidate): map the code to a name.
+	panic("not implemented")
+}
+
+// Temp is a temperature in Celsius.
+type Temp int
+
+// String renders "<n>C".
+func (t Temp) String() string {
+	// TODO(candidate): number followed by "C".
+	panic("not implemented")
+}
+
+// Print returns the text form of s.
+func Print(s Stringer) string {
+	// TODO(candidate): ask the value.
 	panic("not implemented")
 }

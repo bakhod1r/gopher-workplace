@@ -1,0 +1,18 @@
+// Package gcswp — Gopher Workplace challenge.
+package gcswp
+
+type Heap struct {
+	Objects []bool // true = marked
+}
+
+func (h *Heap) Sweep() int {
+	// CHANGE CODE BELOW THIS LINE
+	freed := 0
+	for _, marked := range h.Objects {
+		if marked {
+			freed++
+		}
+	}
+	return freed
+	// CHANGE CODE ABOVE THIS LINE
+}

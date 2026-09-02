@@ -1,7 +1,7 @@
 // Package encoder — Gopher Workplace challenge.
 package encoder
 
-import "fmt"
+import "strings"
 
 // CSVEncoder encodes records as CSV rows.
 type CSVEncoder struct {
@@ -17,6 +17,6 @@ type CSVEncoder struct {
 //	e.Encode("1", "2")      // e.Rows == ["a,b,c", "1,2"]
 func (e *CSVEncoder) Encode(fields ...string) {
 	// TODO(candidate): join fields with commas, append to Rows.
-	_ = fmt.Sprint // hint (or use strings.Join)
+	_ = strings.Join // hint
 	panic("not implemented")
 }

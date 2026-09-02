@@ -1,0 +1,39 @@
+// Package promisefut — Gopher Workplace challenge.
+package promisefut
+
+// Future is a value that becomes available later. Every Get blocks until the
+// future is completed and then returns the same value.
+type Future struct {
+	done chan struct{}
+	val  int
+}
+
+// NewFuture returns an uncompleted Future.
+func NewFuture() *Future {
+	return &Future{done: make(chan struct{})}
+}
+
+// Complete resolves the future with val and unblocks every waiter.
+func (f *Future) Complete(val int) {
+	// CHANGE CODE BELOW THIS LINE
+	f.val = val
+	close(f.done)
+	// CHANGE CODE ABOVE THIS LINE
+}
+
+// Get blocks until the future is completed and returns its value.
+func (f *Future) Get() int {
+	// CHANGE CODE BELOW THIS LINE
+	return f.val
+	// CHANGE CODE ABOVE THIS LINE
+}
+
+// IsDone reports whether the future has been completed, without blocking.
+func (f *Future) IsDone() bool {
+	select {
+	case <-f.done:
+		return true
+	default:
+		return false
+	}
+}

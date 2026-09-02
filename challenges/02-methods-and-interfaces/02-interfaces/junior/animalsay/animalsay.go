@@ -1,28 +1,41 @@
 // Package animalsay — Gopher Workplace challenge.
 package animalsay
 
-// Animal is an interface for things that make sounds.
+// Animal makes a sound.
 type Animal interface {
 	Sound() string
 }
 
-// Dog says woof.
+// Dog barks.
 type Dog struct{}
 
+// Sound returns the dog's noise.
+//
+// Examples:
+//
+//	Dog{}.Sound() => "Woof!"
 func (d Dog) Sound() string {
-	// TODO(candidate): return "Woof!"
+	// TODO(candidate): "Woof!".
 	panic("not implemented")
 }
 
-// Cat says meow.
+// Cat meows.
 type Cat struct{}
 
+// Sound returns the cat's noise.
 func (c Cat) Sound() string {
-	// TODO(candidate): return "Meow!"
+	// TODO(candidate): "Meow!".
 	panic("not implemented")
 }
 
 // MakeNoise returns the sound of any animal.
 func MakeNoise(a Animal) string {
-	return a.Sound()
+	// TODO(candidate): ask the animal.
+	panic("not implemented")
+}
+
+// Chorus joins every sound with a single space.
+func Chorus(as []Animal) string {
+	// TODO(candidate): space-separated sounds.
+	panic("not implemented")
 }

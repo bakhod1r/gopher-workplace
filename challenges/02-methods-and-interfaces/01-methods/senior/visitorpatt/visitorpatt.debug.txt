@@ -1,0 +1,20 @@
+// Package visitorpatt — Gopher Workplace challenge.
+package visitorpatt
+
+// Node represents a tree node.
+type Node struct {
+	Val   int
+	Left  *Node
+	Right *Node
+}
+
+// Accept calls the visitor function on the node's value, then recurses.
+func (n *Node) Accept(visitor func(int)) {
+	// CHANGE CODE BELOW THIS LINE
+	if n == nil {
+		return
+	}
+	visitor(n.Val)
+	n.Left.Accept(visitor)
+	// CHANGE CODE ABOVE THIS LINE
+}

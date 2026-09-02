@@ -1,0 +1,23 @@
+// Package arcpool — Gopher Workplace challenge.
+package arcpool
+
+// ARC simulates Adaptive Replacement Cache lists tracking.
+type ARC struct {
+	T1 map[int]bool // recently used
+	T2 map[int]bool // frequently used
+}
+
+// Access simulates accessing an item.
+// If in T1, it moves to T2. If not in T1 or T2, it goes to T1.
+func (a *ARC) Access(key int) {
+	// CHANGE CODE BELOW THIS LINE
+	if a.T1[key] {
+		a.T2[key] = true
+		return
+	}
+	if a.T2[key] {
+		return
+	}
+	a.T1[key] = true
+	// CHANGE CODE ABOVE THIS LINE
+}

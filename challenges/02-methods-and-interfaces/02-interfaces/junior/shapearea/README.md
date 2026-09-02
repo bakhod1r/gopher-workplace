@@ -5,38 +5,51 @@
 
 ## Context
 
-Different shapes compute area differently. An interface lets us sum areas
-without knowing the concrete types.
+A CAD export totals the surface of every shape on a drawing.
 
 ## Task
 
-Implement `Area` on `Circle` and `Rectangle` in [shapearea.go](shapearea.go):
+Implement the stub(s) in [shapearea.go](shapearea.go):
 
-1. `Circle.Area()` returns `math.Pi * r²`.
-2. `Rectangle.Area()` returns `w * h`.
+1. Implement `Area` on `Rect` and `Square`.
+2. Implement `TotalArea`, which sums the areas of every shape.
+
+Do **not** change the function signature or the tests.
 
 ## Examples
 
 **Example 1:**
 
 ```
-Input:  Circle{5}.Area()
-Output: 78.54...
+Input:  Rect{W: 3, H: 4}.Area()
+Output: 12
 ```
 
 **Example 2:**
 
 ```
-Input:  Rectangle{3, 4}.Area()
-Output: 12.0
+Input:  Square{Side: 5}.Area()
+Output: 25
+```
+
+**Example 3:**
+
+```
+Input:  TotalArea([]Shape{Rect{W: 2, H: 2}, Square{Side: 3}})
+Output: 13
 ```
 
 ## Topics to Master
 
 | # | Topic | What to understand |
 |---|-------|---------------------|
-| 1 | **Interface polymorphism** | `Shape` can be Circle or Rectangle. |
-| 2 | **math.Pi** | Standard constant for π. |
+| 1 | **Classic shape interface** | The canonical example of polymorphism in Go. |
+| 2 | **Value receivers** | Shapes are immutable measurements. |
+| 3 | **Float accumulation** | Reused from data types: summing `float64`. |
+
+## Hint
+
+`TotalArea` calls `s.Area()` — it never mentions `Rect` or `Square`.
 
 ## Validate
 

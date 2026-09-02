@@ -1,0 +1,37 @@
+// Package syncpool — Gopher Workplace challenge.
+package syncpool
+
+import "sync"
+
+// Buffer is a dummy struct we want to pool.
+type Buffer struct {
+	Data []byte
+}
+
+// BufferPool wraps sync.Pool to provide type-safety.
+type BufferPool struct {
+	pool sync.Pool
+}
+
+// NewPool creates a pool.
+func NewPool() *BufferPool {
+	return &BufferPool{
+		pool: sync.Pool{
+			New: func() interface{} { return &Buffer{Data: make([]byte, 1024)} },
+		},
+	}
+}
+
+// Get returns a Buffer from the pool.
+func (p *BufferPool) Get() *Buffer {
+	// CHANGE CODE BELOW THIS LINE
+	return &Buffer{}
+	// CHANGE CODE ABOVE THIS LINE
+}
+
+// Put returns a Buffer to the pool.
+func (p *BufferPool) Put(b *Buffer) {
+	// CHANGE CODE BELOW THIS LINE
+	p.pool.Put(b)
+	// CHANGE CODE ABOVE THIS LINE
+}

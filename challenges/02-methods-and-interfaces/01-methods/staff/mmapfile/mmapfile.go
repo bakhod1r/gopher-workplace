@@ -1,11 +1,26 @@
 // Package mmapfile — Gopher Workplace challenge.
 package mmapfile
 
+import "io"
+
+// Mmap models a file mapped into memory as a flat byte region.
 type Mmap struct {
 	Data []byte
 }
 
-func (m *Mmap) ReadByteAt(pos int) byte {
-	// TODO(candidate): return m.Data[pos]
+// ReadAt copies up to len(p) bytes starting at off, following the io.ReaderAt
+// contract:
+//
+//   - a negative offset, or an offset at or past the end of the region, is an
+//     error: (0, io.EOF) for off >= len(Data), (0, io.EOF) for a negative off;
+//   - a read that reaches the end of the region returns the bytes it did copy
+//     together with io.EOF;
+//   - a read fully inside the region returns (len(p), nil).
+func (m *Mmap) ReadAt(p []byte, off int) (int, error) {
+	// TODO(candidate): implement the contract above.
+	_ = io.EOF
 	panic("not implemented")
 }
+
+// Len returns the size of the mapped region.
+func (m *Mmap) Len() int { return len(m.Data) }

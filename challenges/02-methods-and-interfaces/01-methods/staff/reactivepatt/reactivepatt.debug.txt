@@ -1,0 +1,30 @@
+// Package reactivepatt — Gopher Workplace challenge.
+package reactivepatt
+
+// Stream represents a stream of ints.
+type Stream struct {
+	Data []int
+}
+
+// Filter modifies the stream in place, keeping only elements satisfying fn.
+func (s *Stream) Filter(fn func(int) bool) *Stream {
+	// CHANGE CODE BELOW THIS LINE
+	out := s.Data[:0]
+	for _, v := range s.Data {
+		if fn(v) {
+			out = append(out, v)
+		}
+	}
+	return s
+	// CHANGE CODE ABOVE THIS LINE
+}
+
+// Map modifies the stream in place, applying fn to each.
+func (s *Stream) Map(fn func(int) int) *Stream {
+	// CHANGE CODE BELOW THIS LINE
+	for i := range s.Data {
+		s.Data[i] = fn(s.Data[i])
+	}
+	return s
+	// CHANGE CODE ABOVE THIS LINE
+}

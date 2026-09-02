@@ -1,38 +1,39 @@
 // Package shapearea — Gopher Workplace challenge.
 package shapearea
 
-// Shape is an interface for geometric shapes.
+// Shape has a measurable area.
 type Shape interface {
 	Area() float64
 }
 
-// Circle has a radius.
-type Circle struct {
-	Radius float64
+// Rect is a rectangle.
+type Rect struct {
+	W, H float64
 }
 
-// Area returns the area of the circle: π * r².
-func (c Circle) Area() float64 {
-	// TODO(candidate): return math.Pi * c.Radius * c.Radius
+// Area returns W*H.
+//
+// Examples:
+//
+//	Rect{W: 3, H: 4}.Area() => 12
+func (r Rect) Area() float64 {
+	// TODO(candidate): width times height.
 	panic("not implemented")
 }
 
-// Rectangle has width and height.
-type Rectangle struct {
-	Width, Height float64
+// Square is a square.
+type Square struct {
+	Side float64
 }
 
-// Area returns the area of the rectangle: w * h.
-func (r Rectangle) Area() float64 {
-	// TODO(candidate): return r.Width * r.Height
+// Area returns Side*Side.
+func (s Square) Area() float64 {
+	// TODO(candidate): side squared.
 	panic("not implemented")
 }
 
-// TotalArea sums the areas of all shapes.
+// TotalArea sums the area of every shape.
 func TotalArea(shapes []Shape) float64 {
-	total := 0.0
-	for _, s := range shapes {
-		total += s.Area()
-	}
-	return total
+	// TODO(candidate): accumulate Area().
+	panic("not implemented")
 }

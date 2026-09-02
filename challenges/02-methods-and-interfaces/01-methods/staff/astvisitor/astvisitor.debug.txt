@@ -1,0 +1,21 @@
+// Package astvisitor — Gopher Workplace challenge.
+package astvisitor
+
+type Node struct {
+	Type        string // "BinOp", "Ident"
+	Left, Right *Node
+	Name        string
+}
+
+// Visit counts all "Ident" nodes.
+func (n *Node) Visit(count *int) {
+	// CHANGE CODE BELOW THIS LINE
+	if n == nil {
+		return
+	}
+	if n.Type == "Ident" {
+		*count++
+	}
+	n.Left.Visit(count)
+	// CHANGE CODE ABOVE THIS LINE
+}

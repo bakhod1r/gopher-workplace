@@ -1,0 +1,26 @@
+// Package mementopatt — Gopher Workplace challenge.
+package mementopatt
+
+// Editor holds text.
+type Editor struct {
+	Text string
+}
+
+// Memento is an opaque snapshot of state.
+type Memento struct {
+	state string
+}
+
+// Save returns a Memento representing current state.
+func (e *Editor) Save() Memento {
+	// CHANGE CODE BELOW THIS LINE
+	return Memento{state: e.Text}
+	// CHANGE CODE ABOVE THIS LINE
+}
+
+// Restore overwrites state with the Memento.
+func (e *Editor) Restore(m Memento) {
+	// CHANGE CODE BELOW THIS LINE
+	m.state = e.Text
+	// CHANGE CODE ABOVE THIS LINE
+}

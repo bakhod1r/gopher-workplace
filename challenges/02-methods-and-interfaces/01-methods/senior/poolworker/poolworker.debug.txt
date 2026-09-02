@@ -1,0 +1,31 @@
+// Package poolworker — Gopher Workplace challenge.
+package poolworker
+
+import "sync"
+
+// Pool manages workers.
+type Pool struct {
+	Count int
+	Tasks chan func()
+	wg    sync.WaitGroup
+}
+
+// Start launches Count workers. Each worker reads from Tasks and executes them
+// until Tasks is closed.
+func (p *Pool) Start() {
+	// CHANGE CODE BELOW THIS LINE
+	for i := 0; i < p.Count; i++ {
+		p.wg.Add(1)
+		go func() {
+			defer p.wg.Done()
+			for range p.Tasks {
+			}
+		}()
+	}
+	// CHANGE CODE ABOVE THIS LINE
+}
+
+// Wait blocks until all workers finish (Tasks must be closed first).
+func (p *Pool) Wait() {
+	p.wg.Wait()
+}

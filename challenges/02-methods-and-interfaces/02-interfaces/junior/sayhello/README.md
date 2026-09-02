@@ -5,40 +5,51 @@
 
 ## Context
 
-Different types satisfy the same interface by implementing its methods. The
-caller doesn't need to know the concrete type.
+A multilingual greeter picks the language from the visitor's locale object.
 
 ## Task
 
-Implement `Greet` on `English` and `Uzbek` in [sayhello.go](sayhello.go):
+Implement the stub(s) in [sayhello.go](sayhello.go):
 
-1. `English.Greet()` returns `"Hello!"`.
-2. `Uzbek.Greet()` returns `"Salom!"`.
+1. Implement `Hello` on `English` and `Uzbek`.
+2. Implement `Greet`, which returns the greeting followed by `", <name>"`.
 
-Do **not** change the function signatures or the tests.
+Do **not** change the function signature or the tests.
 
 ## Examples
 
 **Example 1:**
 
 ```
-Input:  SayHello(English{})
-Output: "Hello!"
+Input:  English{}.Hello()
+Output: "Hello"
 ```
 
 **Example 2:**
 
 ```
-Input:  SayHello(Uzbek{})
-Output: "Salom!"
+Input:  Uzbek{}.Hello()
+Output: "Salom"
+```
+
+**Example 3:**
+
+```
+Input:  Greet(Uzbek{}, "Ali")
+Output: "Salom, Ali"
 ```
 
 ## Topics to Master
 
 | # | Topic | What to understand |
 |---|-------|---------------------|
-| 1 | **Interface definition** | `type Greeter interface { Greet() string }` declares a contract. |
-| 2 | **Implicit satisfaction** | A type satisfies an interface by having all its methods. |
+| 1 | **Interface dispatch** | One call site, many greetings. |
+| 2 | **Empty struct implementers** | Behaviour without state. |
+| 3 | **String concatenation** | Reused: building the final line. |
+
+## Hint
+
+`return g.Hello() + ", " + name`.
 
 ## Validate
 

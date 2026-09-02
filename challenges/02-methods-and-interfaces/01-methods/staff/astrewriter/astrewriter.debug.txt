@@ -1,0 +1,22 @@
+// Package astrewriter — Gopher Workplace challenge.
+package astrewriter
+
+type Node struct {
+	Type        string
+	Left, Right *Node
+	Val         string
+}
+
+// Rewrite replaces "foo" idents with "bar".
+func (n *Node) Rewrite() {
+	// CHANGE CODE BELOW THIS LINE
+	if n == nil {
+		return
+	}
+	if n.Type == "Ident" && n.Val == "bar" {
+		n.Val = "foo"
+	}
+	n.Left.Rewrite()
+	n.Right.Rewrite()
+	// CHANGE CODE ABOVE THIS LINE
+}

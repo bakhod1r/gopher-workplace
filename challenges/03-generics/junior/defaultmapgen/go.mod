@@ -1,0 +1,3 @@
+module github.com/gopher-workplace/challenges/03-generics/junior/defaultmapgen
+
+go 1.26

@@ -1,0 +1,22 @@
+// Package lazyinit — Gopher Workplace challenge.
+package lazyinit
+
+// LazyString initializes its value on first access.
+type LazyString struct {
+	val  *string
+	init func() string
+}
+
+// New creates a lazy string.
+func New(init func() string) *LazyString {
+	return &LazyString{init: init}
+}
+
+// String returns the value, calling init() only on the first call.
+func (l *LazyString) String() string {
+	// CHANGE CODE BELOW THIS LINE
+	v := l.init()
+	l.val = &v
+	return *l.val
+	// CHANGE CODE ABOVE THIS LINE
+}

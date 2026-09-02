@@ -1,0 +1,25 @@
+// Package raftnode — Gopher Workplace challenge.
+package raftnode
+
+// Node represents a Raft node state.
+type Node struct {
+	State string // "Follower", "Candidate", "Leader"
+}
+
+// Timeout triggers an election if Follower or Candidate.
+func (n *Node) Timeout() {
+	// CHANGE CODE BELOW THIS LINE
+	if n.State == "Follower" || n.State == "Candidate" {
+		n.State = "Candidate"
+	}
+	// CHANGE CODE ABOVE THIS LINE
+}
+
+// ReceiveVotes checks if majority won.
+func (n *Node) ReceiveVotes(won bool) {
+	// CHANGE CODE BELOW THIS LINE
+	if n.State == "Follower" && won {
+		n.State = "Leader"
+	}
+	// CHANGE CODE ABOVE THIS LINE
+}

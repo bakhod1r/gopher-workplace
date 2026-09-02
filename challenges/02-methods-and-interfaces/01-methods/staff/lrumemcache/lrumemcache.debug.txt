@@ -1,0 +1,69 @@
+// Package lrumemcache — Gopher Workplace challenge.
+package lrumemcache
+
+type node struct {
+	key        string
+	val        int
+	prev, next *node
+}
+
+// LRU cache.
+type LRU struct {
+	cap        int
+	cache      map[string]*node
+	head, tail *node
+}
+
+func New(cap int) *LRU {
+	l := &LRU{cap: cap, cache: make(map[string]*node)}
+	l.head = &node{}
+	l.tail = &node{}
+	l.head.next = l.tail
+	l.tail.prev = l.head
+	return l
+}
+
+func (l *LRU) remove(n *node) {
+	n.prev.next = n.next
+	n.next.prev = n.prev
+}
+
+func (l *LRU) insert(n *node) {
+	n.next = l.head.next
+	n.prev = l.head
+	l.head.next.prev = n
+	l.head.next = n
+}
+
+// Get moves to front and returns value.
+func (l *LRU) Get(key string) (int, bool) {
+	// CHANGE CODE BELOW THIS LINE
+	n, ok := l.cache[key]
+	if !ok {
+		return 0, false
+	}
+	l.remove(n)
+	l.insert(n)
+	return n.val, true
+	// CHANGE CODE ABOVE THIS LINE
+}
+
+// Put inserts or updates, moving to front. Evicts tail if needed.
+func (l *LRU) Put(key string, val int) {
+	// CHANGE CODE BELOW THIS LINE
+	if n, ok := l.cache[key]; ok {
+		n.val = val
+		l.remove(n)
+		l.insert(n)
+		return
+	}
+
+	n := &node{key: key, val: val}
+	l.insert(n)
+	l.cache[key] = n
+
+	if len(l.cache) > l.cap {
+		l.remove(l.tail.prev)
+	}
+	// CHANGE CODE ABOVE THIS LINE
+}

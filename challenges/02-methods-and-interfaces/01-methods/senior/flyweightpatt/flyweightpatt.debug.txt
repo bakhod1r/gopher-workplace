@@ -1,0 +1,21 @@
+// Package flyweightpatt — Gopher Workplace challenge.
+package flyweightpatt
+
+// FontData is heavy.
+type FontData struct{ data string }
+
+// FlyweightFactory shares FontData.
+type FlyweightFactory struct {
+	fonts map[string]*FontData
+}
+
+// Get returns the existing FontData or creates a new one.
+func (f *FlyweightFactory) Get(name string) *FontData {
+	// CHANGE CODE BELOW THIS LINE
+	fd := &FontData{data: name}
+	if _, ok := f.fonts[name]; !ok {
+		f.fonts[name] = fd
+	}
+	return fd
+	// CHANGE CODE ABOVE THIS LINE
+}

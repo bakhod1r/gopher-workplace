@@ -1,0 +1,22 @@
+// Package compositepatt — Gopher Workplace challenge.
+package compositepatt
+
+// Folder contains files (sizes).
+type Folder struct {
+	Files []int
+	Sub   []*Folder
+}
+
+// Size returns total size of files and subfolders.
+func (f *Folder) Size() int {
+	// CHANGE CODE BELOW THIS LINE
+	total := 0
+	for _, size := range f.Files {
+		total += size
+	}
+	for _, sub := range f.Sub {
+		total += len(sub.Files)
+	}
+	return total
+	// CHANGE CODE ABOVE THIS LINE
+}
