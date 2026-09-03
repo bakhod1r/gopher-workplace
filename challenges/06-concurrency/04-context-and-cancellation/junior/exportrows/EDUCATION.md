@@ -14,6 +14,8 @@ Cancelling only the consumer solves half the problem: the producer would still b
 ## Solution
 
 ```go
+import "fmt"
+
 // ExportRows renders each account ID into a CSV line, streaming the work
 // through a goroutine so the consumer can abandon the export the moment the
 // request context finishes.

@@ -14,6 +14,11 @@ A context created with `WithTimeout` can end in two ways, and only the first one
 ## Solution
 
 ```go
+import (
+	"context"
+	"time"
+)
+
 // DisconnectDuringTimeout models a request that was given a generous timeout
 // but whose client hung up long before the deadline: the handler's cancel func
 // runs first. It returns the reason the context ultimately recorded.

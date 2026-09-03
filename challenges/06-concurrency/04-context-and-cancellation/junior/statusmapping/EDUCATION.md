@@ -14,6 +14,11 @@ By the time an error reaches the top of a handler it has usually been wrapped wi
 ## Solution
 
 ```go
+import (
+	"context"
+	"errors"
+)
+
 // Status maps the error a handler finished with onto the label the access log
 // and the metrics counter use.
 //

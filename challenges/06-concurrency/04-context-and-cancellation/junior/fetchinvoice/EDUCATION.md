@@ -13,6 +13,8 @@ Putting `ctx` first is not decoration: it makes cancellation impossible to forge
 ## Solution
 
 ```go
+import "fmt"
+
 // FetchInvoice loads one invoice from the billing store. Following the standard
 // convention, the context is the first parameter and is checked before the
 // lookup runs.

@@ -14,6 +14,8 @@ A context is a node in a tree. `WithCancel` registers the new context as a child
 ## Solution
 
 ```go
+import "context"
+
 // QueryErrAfterRequestCancel builds the per-request context, derives the
 // database query context from it, cancels the request (the client hung up),
 // and returns the error the query context reports.

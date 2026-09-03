@@ -13,6 +13,8 @@
 ## Solution
 
 ```go
+import "context"
+
 // AbortUpload starts a cancellable upload context, aborts it because the user
 // pressed Cancel in the UI, and returns the reason recorded on the context.
 //

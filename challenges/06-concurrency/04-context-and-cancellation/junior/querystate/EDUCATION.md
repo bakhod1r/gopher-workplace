@@ -14,6 +14,8 @@ A context's error is a one-way latch. It reads nil for as long as the query may 
 ## Solution
 
 ```go
+import "context"
+
 // QueryState models the reporting endpoint's database query context. It
 // returns the context's error twice: once while the client is still connected
 // and the query is allowed to run, and once after the client disconnected and

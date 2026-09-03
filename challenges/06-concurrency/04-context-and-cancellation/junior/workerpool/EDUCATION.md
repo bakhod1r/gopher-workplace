@@ -14,6 +14,11 @@ One `cancel()` closes one channel, and every goroutine blocked on it wakes: that
 ## Solution
 
 ```go
+import (
+	"context"
+	"sync"
+)
+
 // StopWorkers starts n image-resize workers that are idle, waiting on the pool
 // context, then triggers the pool shutdown and waits for every worker to
 // finish. It returns the stop reason each worker observed, indexed by worker

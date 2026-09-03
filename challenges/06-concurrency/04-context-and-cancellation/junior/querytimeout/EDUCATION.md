@@ -14,6 +14,8 @@ A timeout is just a deadline computed as `now + d`. With `d == 0` the deadline i
 ## Solution
 
 ```go
+import "context"
+
 // ExhaustedQueryBudget models a database query whose time budget is already
 // spent by the time the query is dispatched: the surrounding request used it
 // all up. It builds the query context with a zero timeout, waits for it to

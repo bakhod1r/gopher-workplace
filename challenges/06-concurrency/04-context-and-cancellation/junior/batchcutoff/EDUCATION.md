@@ -14,6 +14,8 @@
 ## Solution
 
 ```go
+import "context"
+
 // MissedCutoff builds the batch job's context from the absolute cut-off instant
 // handed down by the scheduler, waits for that context to finish, and returns
 // the reason. Callers pass a cut-off that has already passed, meaning the job

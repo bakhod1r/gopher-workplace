@@ -13,6 +13,8 @@
 ## Solution
 
 ```go
+import "context"
+
 // ShutdownTwice models an operator sending SIGTERM and then, impatiently,
 // SIGINT: the signal handler calls the shutdown cancel func twice. It returns
 // the shutdown context's error afterwards.

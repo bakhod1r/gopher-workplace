@@ -14,6 +14,8 @@ Deriving a context is how you carve out a sub-operation you can abandon on its o
 ## Solution
 
 ```go
+import "context"
+
 // RequestErrAfterQueryCancel builds the per-request context, derives a query
 // context from it, cancels only the query (the handler abandoned that lookup
 // and will fall back to the cache), and returns the error the *request*
