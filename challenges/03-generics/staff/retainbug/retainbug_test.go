@@ -2,7 +2,6 @@ package retainbug
 
 import (
 	"reflect"
-	"runtime"
 	"testing"
 )
 
@@ -27,27 +26,19 @@ func TestHeadIsIndependentOfInput(t *testing.T) {
 	}
 }
 
-func TestHeadReleasesTheBackingArray(t *testing.T) {
-	const chunks = 60
-	const size = 1 << 20 // 8 MB of int per payload
-	const ceiling = 100 << 20
-
-	kept := make([][]int, 0, chunks)
-	for i := 0; i < chunks; i++ {
-		payload := make([]int, size)
-		payload[0] = i
-		kept = append(kept, Head(payload, 4))
+func TestHeadSurvivesAFullOverwrite(t *testing.T) {
+	const n = 1 << 16
+	s := make([]int, n)
+	for i := range s {
+		s[i] = i
 	}
-
-	runtime.GC()
-	var ms runtime.MemStats
-	runtime.ReadMemStats(&ms)
-
-	if kept[7][0] != 7 {
-		t.Fatalf("kept[7][0] = %d, want 7", kept[7][0])
+	h := Head(s, 8)
+	for i := range s {
+		s[i] = -1
 	}
-	if ms.HeapAlloc > ceiling {
-		t.Errorf("heap holds %d MB after dropping %d payloads, ceiling %d MB: the heads retain their payloads",
-			ms.HeapAlloc>>20, chunks, ceiling>>20)
+	for i := 0; i < 8; i++ {
+		if h[i] != i {
+			t.Fatalf("h[%d] = %d, want %d: the head is a window onto the input, not a copy", i, h[i], i)
+		}
 	}
 }

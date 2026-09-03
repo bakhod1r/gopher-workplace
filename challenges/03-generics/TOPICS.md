@@ -60,17 +60,16 @@ windowmaxexpirebug, zipmapbug
 
 anyboxhotloopbug, asserthelperpassbug, binheapchildbug, bucketsplitcopybug,
 clipheaderbug, clone2dsharebug, cmpoverflowbug, dequewrapmodbug,
-dsucompressbug, ifacekeyguardbug, intervalboundbug, lesserselfbug,
-lowerboundbug, lruo1bug, memokeynormbug, multisetremovebug, mustswallowbug,
-nanminmaxbug, orderleakbug, ordmapunlinkbug, percentilerankbug,
-pipelinerebuildbug, prealloclenbug, prependquadbug, ptrmethodsetbug,
-radixlongestbug, rankvalueonlybug, retainbug, ringcapbug, satclampbug,
-scaleroundbug, shallowclonebug, sparsegridkeybug, stdbinsearchcmpbug,
-stdcompactadjbug, stdcomparelenbug, stddeletediscardbug, stdequalfuncfieldbug,
-stdinsertdriftbug, stdmapsclonealiasbug, stdmapsdeletewalkbug,
-stdrepeatsharedbug, stdsortstableweakbug, tablecaseptrbug, tallycopybug,
-tildeconvbug, typeswitchdefaultbug, unionprecisionbug, unsigneddeltabug,
-versionsnapaliasbug
+dsucompressbug, intervalboundbug, lesserselfbug, lowerboundbug, lruo1bug,
+memokeynormbug, multisetremovebug, mustswallowbug, nanminmaxbug, orderleakbug,
+ordmapunlinkbug, percentilerankbug, pipelinerebuildbug, prealloclenbug,
+prependquadbug, ptrmethodsetbug, radixlongestbug, rankvalueonlybug, retainbug,
+ringcapbug, satclampbug, scaleroundbug, shallowclonebug, sparsegridkeybug,
+stdbinsearchcmpbug, stdcompactadjbug, stdcomparelenbug, stddeletediscardbug,
+stdequalfuncfieldbug, stdinsertdriftbug, stdmapsclonealiasbug,
+stdmapsdeletewalkbug, stdrepeatsharedbug, stdsortstableweakbug,
+stringkeycollidebug, tablecaseptrbug, tallycopybug, tildeconvbug,
+typeswitchdefaultbug, unionprecisionbug, unsigneddeltabug, versionsnapaliasbug
 
 ## Progress
 
