@@ -1,10 +1,10 @@
 # 03 Generics — Topics to Master
 
-Layout: `03-generics/<level>/<puzzle>/`, **120 puzzles per level**
-(junior, middle, senior, staff).
+Layout: `03-generics/<level>/<puzzle>/`, **50 puzzles per level**
+(junior, middle, senior, staff) — 200 in total.
 
 The roadmap's 17 generics subtopics are covered inside each level, in
-learning-path order, as four blocks of 30 puzzles.
+learning-path order, as four blocks.
 
 | Block | Covers | Roadmap subtopics |
 |-------|--------|-------------------|
@@ -13,50 +13,69 @@ learning-path order, as four blocks of 30 puzzles.
 | 3 | Generic types and methods | generic-types-interfaces, methods-on-generic-types, generic-data-structures, generic-type-aliases |
 | 4 | Generics in practice | stdlib-generic-packages, generics-vs-interfaces, generic-performance, generic-limitations, generic-pitfalls, generic-testing-helpers |
 
-## Junior (120 authored)
+Junior and middle puzzles are **implement-from-scratch** stubs
+(`panic("not implemented")`). Senior and staff puzzles are
+**planted-bug** fixes: exactly one bug between the `CHANGE CODE` markers.
+Staff additionally carries the difficulty dial — many of its tests are
+graded on scale, with a wall-clock or allocation ceiling that only the
+correct implementation meets.
 
-**Block 1 — generic functions:** identityfn, firstof, lastof, swapgen,
-containsgen, indexofgen, countgen, equalslices, reversegen, fillgen, repeatgen,
-mapfn, filtergen, reducegen, anyofgen, uniquegen, tosetgen, keysgen, valuesgen,
-getordefault, ptrofgen, derefgen, iszerogen, coalescegen, chunkgen, flattengen,
-appendifgen, concatgen, zipwithgen, groupsizegen
+## Junior (50)
 
-**Block 2 — type constraints:** sumnum, maxof, minof, clampgen, absgen, avggen,
-productgen, maxslice, minslice, issortedgen, betweengen, tildeint, longesttext,
-lengthof, tofloats, countpositive, sortedcopy, indexmax, boundsgen,
-sortedkeysgen, comparegen, clampslice, sumvalues, normalizegen, maxbykey,
-rangegen, sorteduniquegen, percentgen, signgen, sumifgen
+absgen, aliasgen, assertequalhelper, avggen, boxgen, cachegen, chunkgen,
+clampgen, cmpcomparegen, comparegen, containsgen, filtergen, firstof,
+groupbygen, identityfn, indexofgen, inferenceexplicit, issortedgen, lastof,
+listgen, longesttext, mapfn, mapsclonegen, matrixgen, maxof, maxslice,
+minmaxbuiltin, minof, optionalgen, pairgen, queuegen, reducegen, reversegen,
+ringgen, setgen, slicesbinsearch, slicesclonegen, slicescompact,
+slicescontains, slicesmaxmin, slicessortfunc, sortedcopy, stackgen, sumifgen,
+sumnum, swapgen, tildeint, treegen, uniquegen, zipwithgen
 
-**Block 3 — generic types and methods:** stackgen, queuegen, pairgen, setgen,
-boxgen, optionalgen, counterstruct, listgen, nodegen, ringgen, matrixgen,
-multimapgen, defaultmapgen, trackergen, accgen, triplegen, zippairs, setopsgen,
-dequegen, cachegen, slicetypegen, mapmethodlesson, groupbygen, indexbygen,
-treegen, stackembed, resultgen, registrygen, chaingen, swaptypegen
+## Middle (50)
 
-**Block 4 — generics in practice:** slicescontains, slicesindexfunc,
-slicessortbasic, slicessortfunc, slicesreversestd, slicesmaxmin,
-slicesequalstd, slicescompact, slicesclonegen, slicesinsertgen,
-slicesdeletegen, slicesbinsearch, slicescontainsfunc, mapsclonegen,
-mapsequalgen, mapscopygen, cmpcomparegen, cmporgen, minmaxbuiltin, stringerifc,
-anyslicepitfall, inferenceexplicit, nilslicepitfall, comparablepitfall,
-aliasgen, assertequalhelper, mustgen, ptrslicehelper, dedupestdlib,
-constraintifcmethod
+bfsgen, comparableembed, composegen, currygen, divmodgen, eventbusgen,
+fieldaccessgen, flatmapgen, gcdgen, graphgen, heapgen, lessergen, lrugen,
+mapsdeletefunc, mediangen, memoizegen, mergesortedgen, methodtypeparamgen,
+minbygen, minstackgen, nansafegen, numberfull, orderedmapgen, percentilegen,
+powintgen, pqgen, preallocgen, queuetwostacks, rotategen, satadd, scangen,
+signedonly, slicesbsearchfunc, slicescompactfunc, slicesconcatstd,
+slicesdeletefunc, slicesgrowgen, slicesminmaxfunc, tabletestgen, takewhilegen,
+tempconv, topngen, transposegen, triegen, typeswitchgen, unionfindgen,
+uniquebygen, variancegen, windowgen, zipmapgen
 
-## Middle (120 authored)
+## Senior (50, planted bugs)
 
-**Block 1 — higher-order functions:** composegen, currygen, memoizegen, flatmapgen, windowgen, rotategen, mergesortedgen, searchbygen, chunkbygen, scangen, takewhilegen, dropwhilegen, uniquebygen, countbygen, minbygen, sortbykeygen, equalbygen, differencegen, intersectgen, splitatgen, lastindexgen, insertsortedgen, modegen, pipelinegen, groupconsecutivegen, interleavegen, transposegen, cartesiangen, everynthgen, zipmapgen
+aliasbug, bagzerobug, batcherbug, bfsmarkbug, binsearchbug, buildcapbug,
+chainmergebug, clipbug, compactbug, concatalias, deepclonebug,
+defaultmapzerobug, divbug, dropwhilebug, everynthzerobug, filterinplacebug,
+groupbybug, growbug, heapsiftbug, insertboundbug, interleaveremainderbug,
+lastindexbug, lazyzerobug, lrupromotebug, mapiterbug, memoizezerobug,
+mergetiebug, minstacksyncbug, nanbug, orderedmapdupbug, partitionorderbug,
+percentilebug, pqtiebug, queuetwostacksbug, ringstartbug, rotatebug, satbug,
+scanbug, seedbug, setopsmutatebug, stablebug, tiebug, topnstablebug,
+transposeraggedbug, triesetbug, unionfindbug, uniquekeybug, windowbug,
+windowmaxexpirebug, zipmapbug
 
-**Block 2 — deeper constraints:** numberfull, signedonly, satadd, unitclamp, tempconv, idvalidate, variancegen, mediangen, gcdgen, powintgen, divmodgen, roundgen, measurablegen, lessergen, minlessergen, sortlessergen, combineconstraint, typesetmethodgen, keystringgen, bytestringgen, parseintorgen, rangesumgen, percentilegen, scaleintgen, bucketsgen, comparableembed, positivegen, unitmulgen, nansafegen, mycmpgen
+## Staff (50, planted bugs, graded on scale)
 
-**Block 3 — generic data structures:** heapgen, pqgen, lrugen, unionfindgen, orderedmapgen, triegen, graphgen, bfsgen, minstackgen, queuetwostacks, ringidxgen, poolgen, buildergen, statemachinegen, eithergen, treemapgen, topngen, vecgen, setmethodgen, multisetgen, lazygen, windowmaxgen, indexedlistgen, chainmapgen, versionedgen, eventbusgen, batchergen, sparsegridgen, stackofstacksgen, resultchaingen
-
-**Block 4 — stdlib, limits and pitfalls:** slicesdeletefunc, slicescompactfunc, slicesequalfunc, slicesbsearchfunc, slicesgrowgen, slicesconcatstd, slicesrepeatstd, mapsdeletefunc, slicesminmaxfunc, slicesissortedfunc, slicescomparefunc, preallocgen, boxingcostgen, fieldaccessgen, methodtypeparamgen, addviamethodgen, typeswitchgen, anyfallbackgen, comparablekeygen, lazymapgen, receiverfuncgen, slicesclipgen, tabletestgen, asserteqgen, requirelengen, sortstablecheckgen, mapdeepclonegen, clone2dgen, detmapgen, whennotgenericgen
+anyboxhotloopbug, asserthelperpassbug, binheapchildbug, bucketsplitcopybug,
+clipheaderbug, clone2dsharebug, cmpoverflowbug, dequewrapmodbug,
+dsucompressbug, intervalboundbug, lesserselfbug, lowerboundbug, lruo1bug,
+memokeynormbug, multisetremovebug, mustswallowbug, nanminmaxbug, orderleakbug,
+ordmapunlinkbug, percentilerankbug, pipelinerebuildbug, prealloclenbug,
+prependquadbug, ptrmethodsetbug, radixlongestbug, rankvalueonlybug, retainbug,
+ringcapbug, satclampbug, scaleroundbug, shallowclonebug, sparsegridkeybug,
+stdbinsearchcmpbug, stdcompactadjbug, stdcomparelenbug, stddeletediscardbug,
+stdequalfuncfieldbug, stdinsertdriftbug, stdmapsclonealiasbug,
+stdmapsdeletewalkbug, stdrepeatsharedbug, stdsortstableweakbug,
+stringkeycollidebug, tablecaseptrbug, tallycopybug, tildeconvbug,
+typeswitchdefaultbug, unionprecisionbug, unsigneddeltabug, versionsnapaliasbug
 
 ## Progress
 
-| Level | Authored | Target |
-|-------|----------|--------|
-| junior | 120 | 120 |
-| middle | 120 | 120 |
-| senior | 0 | 120 |
-| staff | 0 | 120 |
+| Level | Authored | Target | Mode |
+|-------|----------|--------|------|
+| junior | 50 | 50 | implement stub |
+| middle | 50 | 50 | implement stub |
+| senior | 50 | 50 | planted bug |
+| staff | 50 | 50 | planted bug + scale |
