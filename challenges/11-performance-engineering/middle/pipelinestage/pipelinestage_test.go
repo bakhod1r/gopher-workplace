@@ -66,7 +66,7 @@ func TestRunPreservesOrder(t *testing.T) {
 	}
 	got := Run(values, []func(int) int{double, inc, double})
 	for i, v := range got {
-		if want := ((i*2)+1)*2; v != want {
+		if want := ((i * 2) + 1) * 2; v != want {
 			t.Fatalf("result[%d] = %d, want %d", i, v, want)
 		}
 	}

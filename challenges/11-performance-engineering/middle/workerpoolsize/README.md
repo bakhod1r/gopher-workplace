@@ -13,7 +13,7 @@ Implement both functions in [workerpoolsize.go](workerpoolsize.go):
 
 1. `Map` applies `f` to every item with at most `workers` goroutines, returning results in input order.
 2. A non-positive `workers` runs one goroutine; more workers than items is harmless; the result must be race-free under `-race`.
-3. `Sizing` returns `cpus` for CPU-bound work and `cpus/(1-blocked)` when a `blocked` fraction is spent waiting, floored, never below 1, with `blocked` clamped into `[0,1)`.
+3. `Sizing` returns `cpus` for CPU-bound work and `cpus/(1-blocked)` when a `blocked` fraction is spent waiting, floored and never below 1; a `cpus` below 1 gives 1, and a `blocked` outside `[0,1)` is treated as 0.
 
 ## Examples
 

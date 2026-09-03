@@ -14,9 +14,9 @@ func Map(items []int, workers int, f func(int) int) []int {
 }
 
 // Sizing returns a sensible worker count for a workload: cpus for CPU-bound
-// work, and cpus*blocked for work that spends a blocked fraction of its time
-// waiting on I/O, rounded down but never below 1. blocked is clamped into
-// [0,1).
+// work, and cpus/(1-blocked) for work that spends a blocked fraction of its
+// time waiting on I/O, rounded down but never below 1. A cpus below 1 gives 1,
+// and a blocked outside [0,1) is treated as 0.
 //
 // Examples:
 //

@@ -101,6 +101,6 @@ workerpoolresizebug, zerocopyslicebug
 | Level | Authored | Target | Mode |
 |-------|----------|--------|------|
 | junior | 50 | 50 | implement stub |
-| middle | 30 | 50 | implement stub |
-| senior | 0 | 50 | planted bug |
+| middle | 50 | 50 | implement stub |
+| senior | 10 | 50 | planted bug |
 | staff | 0 | 50 | planted bug + dial |

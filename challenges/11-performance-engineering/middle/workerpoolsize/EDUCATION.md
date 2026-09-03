@@ -43,15 +43,18 @@ func Map(items []int, workers int, f func(int) int) []int {
 
 func Sizing(cpus int, blocked float64) int {
 	if cpus < 1 {
-		cpus = 1
+		return 1
 	}
-	blocked = min(max(blocked, 0), 0.999999)
-	n := int(float64(cpus) / (1 - blocked))
-	return max(n, 1)
+	if blocked < 0 || blocked >= 1 {
+		blocked = 0
+	}
+	return max(int(float64(cpus)/(1-blocked)), 1)
 }
 ```
 
 ## Walkthrough
+
+Treating an out-of-range `blocked` as 0 rather than clamping it to just under 1 is the safer failure: a nonsense fraction falls back to the CPU-bound answer instead of asking for eight million goroutines.
 
 Writing `out[i]` from several goroutines is safe because the slots are distinct memory: no two workers ever hold the same `i`, so there is no shared word to race on. `-race` confirms it.
 
